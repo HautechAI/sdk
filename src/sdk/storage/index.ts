@@ -18,7 +18,7 @@ const storage = (options: ClientSDKOptions) => {
                 run: (methods) => methods.storageControllerDeleteRecordV1({ key: props.key }),
             }),
         getMany: async (props: { keys: string[] }) =>
-            api.callWithReturningUndefinedOn404({
+            api.call({
                 run: (methods) => methods.storageControllerGetRecordsV1({ keys: props.keys }),
             }),
         update: async (props: { key: string; value: any }): Promise<any> =>

@@ -1,9 +1,9 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './sdk';
+import { randomString, sdk } from './utils';
 
 describe('Accounts', () => {
     it('should create account', async () => {
-        const alias = Math.random().toString(36).substring(2, 15);
+        const alias = randomString();
 
         const account = await sdk.accounts.create({ alias });
         expect(account).toBeDefined();

@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './sdk';
+import { sdk } from './utils';
 
 describe('Collections', () => {
     it('should create collection', async () => {
