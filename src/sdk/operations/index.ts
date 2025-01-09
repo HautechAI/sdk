@@ -48,7 +48,7 @@ const operations = (options: ClientSDKOptions) => {
             api.call({
                 run: (methods) => methods.operationsControllerGetOperationsV1({ ids: props.ids }),
             }),
-        list: (props: ListProps) =>
+        list: (props: ListProps = {}) =>
             api.call({
                 run: (methods) =>
                     methods.operationsControllerListOperationsV1(props.orderBy, props.limit, props.cursor),
@@ -77,7 +77,8 @@ const operations = (options: ClientSDKOptions) => {
                     const operation = await api.call({
                         run: (methods) => methods.operationsControllerGetOperationV1(props.id),
                     });
-                    if (operation.status !== 'pending') return resolve(operation);
+                    // TODO: restore this
+                    // if (operation.status !== 'pending') return resolve(operation);
                     timeoutId = setTimeout(poll, delay);
                     updates.unsubscribe({ callback: listenToOperation });
                 };

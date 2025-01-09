@@ -16,7 +16,7 @@ const stacks = (options: ClientSDKOptions) => {
             api.callWithReturningUndefinedOn404({
                 run: (methods) => methods.stacksControllerGetStackV1(props.id),
             }),
-        list: async (props: ListProps) =>
+        list: async (props: ListProps = {}) =>
             api.call({
                 run: (methods) => methods.stacksControllerListStacksV1(props.orderBy, props.limit, props.cursor),
             }),

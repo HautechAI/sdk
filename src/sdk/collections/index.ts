@@ -35,7 +35,7 @@ const collections = (options: ClientSDKOptions) => {
                         methods.collectionsControllerRemoveItemsV1(props.collectionId, { itemIds: props.itemIds }),
                 }),
         },
-        list: async (props: ListProps) =>
+        list: async (props: ListProps = {}) =>
             api.call({
                 run: (methods) =>
                     methods.collectionsControllerListCollectionsV1(props.orderBy, props.limit, props.cursor),

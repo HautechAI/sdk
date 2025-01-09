@@ -9,4 +9,9 @@ describe('Collections', () => {
         const sameCollection = await sdk.collections.get({ id: collection.id });
         expect(sameCollection).toEqual(collection);
     });
+
+    it('should list collections', async () => {
+        const collections = await sdk.collections.list();
+        expect(collections).toBeDefined();
+    });
 });

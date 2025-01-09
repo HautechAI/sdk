@@ -9,4 +9,9 @@ describe('Stacks', () => {
         const sameStack = await sdk.stacks.get({ id: stack.id });
         expect(sameStack).toEqual(stack);
     });
+
+    it('should list stacks', async () => {
+        const stacks = await sdk.stacks.list();
+        expect(stacks).toBeDefined();
+    });
 });
