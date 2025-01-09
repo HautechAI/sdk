@@ -39,6 +39,10 @@ const groups = (options: ClientSDKOptions) => {
             api.call({
                 run: (methods) => methods.groupsControllerDeleteGroupV1(props.id),
             }),
+        get: (props: { id: string }) =>
+            api.callWithReturningUndefinedOn404({
+                run: (methods) => methods.groupsControllerGetGroupV1(props.id),
+            }),
     };
 };
 
