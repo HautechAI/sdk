@@ -1,7 +1,7 @@
 import { describe, it, expect } from '@jest/globals';
 import { sdk } from './sdk';
 
-describe('Balances', () => {
+describe('Accounts', () => {
     it('should create account', async () => {
         const alias = Math.random().toString(36).substring(2, 15);
 
