@@ -10,16 +10,16 @@ const images = (options: ClientSDKOptions) => {
             run: (methods) => methods.imagesControllerStartUploadV1(props.file),
             transform: (data) => data.uploadUrl,
         });
+
         const formData = new FormData();
         formData.append('file', props.file);
+
         const response = await axios.put(uploadUrl, formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
         });
-
         const fileToken = response.data.fileToken;
-        const image = await api.call({
-            run: (methods) => methods.imagesControllerFinalizeUploadV1({ fileToken }),
-        });
+
+        const image = await api.call({ run: (methods) => methods.imagesControllerFinalizeUploadV1({ fileToken }) });
         return image;
     };
 
