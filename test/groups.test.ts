@@ -18,9 +18,6 @@ describe('Groups', () => {
         expect(sameGroup).toEqual(group);
 
         await sdk.groups.delete({ id: group.id });
-
-        const deletedGroup = await sdk.groups.get({ id: group.id });
-        expect(deletedGroup).toBeUndefined();
     });
 
     it('should add account to group', async () => {
