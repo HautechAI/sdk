@@ -213,6 +213,119 @@ export interface CollectionEntity {
 /**
  * 
  * @export
+ * @interface ConstructPromptV1Input
+ */
+export interface ConstructPromptV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'age'?: ConstructPromptV1InputAgeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'angle'?: ConstructPromptV1InputAngleEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'background'?: ConstructPromptV1InputBackgroundEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'ethnicity'?: ConstructPromptV1InputEthnicityEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'gender'?: ConstructPromptV1InputGenderEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'photoType'?: ConstructPromptV1InputPhotoTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'productDescription'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConstructPromptV1Input
+     */
+    'prompt'?: string;
+}
+
+export const ConstructPromptV1InputAgeEnum = {
+    Adult: 'adult',
+    Infant: 'infant',
+    PreTeen: 'pre-teen',
+    Senior: 'senior',
+    Teen: 'teen',
+    Toddler: 'toddler'
+} as const;
+
+export type ConstructPromptV1InputAgeEnum = typeof ConstructPromptV1InputAgeEnum[keyof typeof ConstructPromptV1InputAgeEnum];
+export const ConstructPromptV1InputAngleEnum = {
+    Back: 'back',
+    Front: 'front',
+    Side: 'side'
+} as const;
+
+export type ConstructPromptV1InputAngleEnum = typeof ConstructPromptV1InputAngleEnum[keyof typeof ConstructPromptV1InputAngleEnum];
+export const ConstructPromptV1InputBackgroundEnum = {
+    Beach: 'beach',
+    City: 'city',
+    Desert: 'desert',
+    Hotel: 'hotel',
+    Lounge: 'lounge',
+    Paris: 'paris',
+    Park: 'park',
+    Street: 'street',
+    Studio: 'studio'
+} as const;
+
+export type ConstructPromptV1InputBackgroundEnum = typeof ConstructPromptV1InputBackgroundEnum[keyof typeof ConstructPromptV1InputBackgroundEnum];
+export const ConstructPromptV1InputEthnicityEnum = {
+    African: 'african',
+    AfricanAmerican: 'african-american',
+    Asian: 'asian',
+    Australian: 'australian',
+    CentralAsian: 'central-asian',
+    European: 'european',
+    Indian: 'indian',
+    MiddleEastern: 'middle-eastern',
+    NativeAmerican: 'native-american'
+} as const;
+
+export type ConstructPromptV1InputEthnicityEnum = typeof ConstructPromptV1InputEthnicityEnum[keyof typeof ConstructPromptV1InputEthnicityEnum];
+export const ConstructPromptV1InputGenderEnum = {
+    Male: 'male',
+    Female: 'female'
+} as const;
+
+export type ConstructPromptV1InputGenderEnum = typeof ConstructPromptV1InputGenderEnum[keyof typeof ConstructPromptV1InputGenderEnum];
+export const ConstructPromptV1InputPhotoTypeEnum = {
+    Closeup: 'closeup',
+    Fullbody: 'fullbody',
+    Headshot: 'headshot'
+} as const;
+
+export type ConstructPromptV1InputPhotoTypeEnum = typeof ConstructPromptV1InputPhotoTypeEnum[keyof typeof ConstructPromptV1InputPhotoTypeEnum];
+
+/**
+ * 
+ * @export
  * @interface CreateAccountParamsDto
  */
 export interface CreateAccountParamsDto {
@@ -331,6 +444,55 @@ export interface DeleteStorageParamsDto {
      * @memberof DeleteStorageParamsDto
      */
     'key': string;
+}
+/**
+ * 
+ * @export
+ * @interface GenerateV3Input
+ */
+export interface GenerateV3Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateV3Input
+     */
+    'prompt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateV3Input
+     */
+    'category': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateV3Input
+     */
+    'garmentImage': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateV3Input
+     */
+    'poseImage': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GenerateV3Input
+     */
+    'seed': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GenerateV3Input
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GenerateV3Input
+     */
+    'height': number;
 }
 /**
  * 
@@ -498,116 +660,64 @@ export interface InitializeImageUploadResultDto {
 /**
  * 
  * @export
- * @interface Input
+ * @interface InpaintV1Input
  */
-export interface Input {
+export interface InpaintV1Input {
     /**
      * 
      * @type {string}
-     * @memberof Input
+     * @memberof InpaintV1Input
      */
-    'age'?: InputAgeEnum;
+    'image': string;
     /**
      * 
      * @type {string}
-     * @memberof Input
+     * @memberof InpaintV1Input
      */
-    'angle'?: InputAngleEnum;
+    'mask': string;
     /**
      * 
      * @type {string}
-     * @memberof Input
+     * @memberof InpaintV1Input
      */
-    'background'?: InputBackgroundEnum;
+    'prompt': string;
     /**
      * 
-     * @type {string}
-     * @memberof Input
+     * @type {number}
+     * @memberof InpaintV1Input
      */
-    'ethnicity'?: InputEthnicityEnum;
+    'seed': number;
     /**
      * 
-     * @type {string}
-     * @memberof Input
+     * @type {number}
+     * @memberof InpaintV1Input
      */
-    'gender'?: InputGenderEnum;
+    'strength': number;
     /**
      * 
-     * @type {string}
-     * @memberof Input
+     * @type {number}
+     * @memberof InpaintV1Input
      */
-    'photoType'?: InputPhotoTypeEnum;
+    'height': number;
     /**
      * 
-     * @type {string}
-     * @memberof Input
+     * @type {number}
+     * @memberof InpaintV1Input
      */
-    'productDescription'?: string;
+    'width': number;
     /**
      * 
-     * @type {string}
-     * @memberof Input
+     * @type {number}
+     * @memberof InpaintV1Input
      */
-    'prompt'?: string;
+    'numInferenceSteps': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InpaintV1Input
+     */
+    'guidance_scale': number;
 }
-
-export const InputAgeEnum = {
-    Adult: 'adult',
-    Infant: 'infant',
-    PreTeen: 'pre-teen',
-    Senior: 'senior',
-    Teen: 'teen',
-    Toddler: 'toddler'
-} as const;
-
-export type InputAgeEnum = typeof InputAgeEnum[keyof typeof InputAgeEnum];
-export const InputAngleEnum = {
-    Back: 'back',
-    Front: 'front',
-    Side: 'side'
-} as const;
-
-export type InputAngleEnum = typeof InputAngleEnum[keyof typeof InputAngleEnum];
-export const InputBackgroundEnum = {
-    Beach: 'beach',
-    City: 'city',
-    Desert: 'desert',
-    Hotel: 'hotel',
-    Lounge: 'lounge',
-    Paris: 'paris',
-    Park: 'park',
-    Street: 'street',
-    Studio: 'studio'
-} as const;
-
-export type InputBackgroundEnum = typeof InputBackgroundEnum[keyof typeof InputBackgroundEnum];
-export const InputEthnicityEnum = {
-    African: 'african',
-    AfricanAmerican: 'african-american',
-    Asian: 'asian',
-    Australian: 'australian',
-    CentralAsian: 'central-asian',
-    European: 'european',
-    Indian: 'indian',
-    MiddleEastern: 'middle-eastern',
-    NativeAmerican: 'native-american'
-} as const;
-
-export type InputEthnicityEnum = typeof InputEthnicityEnum[keyof typeof InputEthnicityEnum];
-export const InputGenderEnum = {
-    Male: 'male',
-    Female: 'female'
-} as const;
-
-export type InputGenderEnum = typeof InputGenderEnum[keyof typeof InputGenderEnum];
-export const InputPhotoTypeEnum = {
-    Closeup: 'closeup',
-    Fullbody: 'fullbody',
-    Headshot: 'headshot'
-} as const;
-
-export type InputPhotoTypeEnum = typeof InputPhotoTypeEnum[keyof typeof InputPhotoTypeEnum];
-
 /**
  * 
  * @export
@@ -3590,13 +3700,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {Input} input 
+         * @param {ConstructPromptV1Input} constructPromptV1Input 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunConstructPromptV1V1: async (input: Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'input' is not null or undefined
-            assertParamExists('operationsControllerRunConstructPromptV1V1', 'input', input)
+        operationsControllerRunConstructPromptV1V1: async (constructPromptV1Input: ConstructPromptV1Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'constructPromptV1Input' is not null or undefined
+            assertParamExists('operationsControllerRunConstructPromptV1V1', 'constructPromptV1Input', constructPromptV1Input)
             const localVarPath = `/v1/operations/run/constructPrompt.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3620,7 +3730,85 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(input, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(constructPromptV1Input, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {GenerateV3Input} generateV3Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunGenerateV3V1: async (generateV3Input: GenerateV3Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'generateV3Input' is not null or undefined
+            assertParamExists('operationsControllerRunGenerateV3V1', 'generateV3Input', generateV3Input)
+            const localVarPath = `/v1/operations/run/generate.v3`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(generateV3Input, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunInpaintV1V1: async (inpaintV1Input: InpaintV1Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'inpaintV1Input' is not null or undefined
+            assertParamExists('operationsControllerRunInpaintV1V1', 'inpaintV1Input', inpaintV1Input)
+            const localVarPath = `/v1/operations/run/inpaint.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(inpaintV1Input, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3720,14 +3908,38 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {Input} input 
+         * @param {ConstructPromptV1Input} constructPromptV1Input 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunConstructPromptV1V1(input: Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunConstructPromptV1V1(input, options);
+        async operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunConstructPromptV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {GenerateV3Input} generateV3Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGenerateV3V1(generateV3Input, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunGenerateV3V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintV1V1(inpaintV1Input, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunInpaintV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -3784,12 +3996,30 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {Input} input 
+         * @param {ConstructPromptV1Input} constructPromptV1Input 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunConstructPromptV1V1(input: Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
-            return localVarFp.operationsControllerRunConstructPromptV1V1(input, options).then((request) => request(axios, basePath));
+        operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {GenerateV3Input} generateV3Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunGenerateV3V1(generateV3Input, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunInpaintV1V1(inpaintV1Input, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3848,13 +4078,35 @@ export class OperationsApi extends BaseAPI {
 
     /**
      * 
-     * @param {Input} input 
+     * @param {ConstructPromptV1Input} constructPromptV1Input 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunConstructPromptV1V1(input: Input, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunConstructPromptV1V1(input, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GenerateV3Input} generateV3Input 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunGenerateV3V1(generateV3Input, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {InpaintV1Input} inpaintV1Input 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunInpaintV1V1(inpaintV1Input, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
