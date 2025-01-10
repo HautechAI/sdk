@@ -5,9 +5,9 @@ import { useInternalAPI } from '../../api';
 const balances = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: BalancesApi, options });
     return {
-        add: async (props: { accountId: string; balance: string }): Promise<void> =>
+        add: async (props: { accountId: string; amount: string }): Promise<void> =>
             api.call({
-                run: (methods) => methods.balancesControllerAddBalanceV1(props.accountId, { balance: props.balance }),
+                run: (methods) => methods.balancesControllerAddBalanceV1(props.accountId, { amount: props.amount }),
             }),
         get: async (): Promise<string> =>
             api.call({

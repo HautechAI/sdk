@@ -12,7 +12,7 @@ describe('Balances', () => {
         const balanceBefore = await sdk.balances.getByAccountId({ accountId: account.id });
         expect(balanceBefore).toEqual('0.00000000');
 
-        await sdk.balances.add({ accountId: account.id, balance: '100' });
+        await sdk.balances.add({ accountId: account.id, amount: '100' });
         const balanceAfter = await sdk.balances.getByAccountId({ accountId: account.id });
         expect(balanceAfter).toEqual('100.00000000');
     });
