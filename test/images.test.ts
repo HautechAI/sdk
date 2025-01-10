@@ -8,5 +8,11 @@ describe('Images', () => {
 
         const image = await sdk.images.createFromFile({ file });
         expect(image).toBeDefined();
+
+        const sameImage = await sdk.images.get({ id: image.id });
+        expect(sameImage).toEqual(image);
+
+        const urls = await sdk.images.getUrls({ ids: [image.id] });
+        expect(urls[image.id]).toBeDefined();
     });
 });
