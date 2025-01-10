@@ -1,11 +1,12 @@
 import { ClientSDKOptions, ListProps } from '../../types';
 import createOperationUpdater from './updater';
 import {
-    InputAngleEnum,
-    InputBackgroundEnum,
-    InputEthnicityEnum,
-    InputGenderEnum,
-    InputPhotoTypeEnum,
+    ConstructPromptV1InputAgeEnum,
+    ConstructPromptV1InputAngleEnum,
+    ConstructPromptV1InputBackgroundEnum,
+    ConstructPromptV1InputEthnicityEnum,
+    ConstructPromptV1InputGenderEnum,
+    ConstructPromptV1InputPhotoTypeEnum,
     OperationsApi,
 } from '../../internal';
 import { useInternalAPI } from '../../api';
@@ -18,17 +19,19 @@ const operations = (options: ClientSDKOptions) => {
         create: {
             constructPrompt: {
                 v1: (props: {
-                    angle?: InputAngleEnum;
-                    background?: InputBackgroundEnum;
-                    ethnicity?: InputEthnicityEnum;
-                    gender?: InputGenderEnum;
-                    photoType?: InputPhotoTypeEnum;
+                    age?: ConstructPromptV1InputAgeEnum;
+                    angle?: ConstructPromptV1InputAngleEnum;
+                    background?: ConstructPromptV1InputBackgroundEnum;
+                    ethnicity?: ConstructPromptV1InputEthnicityEnum;
+                    gender?: ConstructPromptV1InputGenderEnum;
+                    photoType?: ConstructPromptV1InputPhotoTypeEnum;
                     productDescription?: string;
                     prompt?: string;
                 }) =>
                     api.call({
                         run: (methods) =>
                             methods.operationsControllerRunConstructPromptV1V1({
+                                age: props.age,
                                 angle: props.angle,
                                 background: props.background,
                                 ethnicity: props.ethnicity,
@@ -36,6 +39,56 @@ const operations = (options: ClientSDKOptions) => {
                                 photoType: props.photoType,
                                 productDescription: props.productDescription,
                                 prompt: props.prompt,
+                            }),
+                    }),
+            },
+            generate: {
+                v1: (props: {
+                    category: string;
+                    garmentImage: string;
+                    height: number;
+                    poseImage: string;
+                    prompt: string;
+                    seed: number;
+                    width: number;
+                }) =>
+                    api.call({
+                        run: (methods) =>
+                            methods.operationsControllerRunGenerateV3V1({
+                                category: props.category,
+                                garmentImage: props.garmentImage,
+                                height: props.height,
+                                poseImage: props.poseImage,
+                                prompt: props.prompt,
+                                seed: props.seed,
+                                width: props.width,
+                            }),
+                    }),
+            },
+            inpaint: {
+                v1: (props: {
+                    guidanceScale: number;
+                    height: number;
+                    image: string;
+                    mask: string;
+                    numOfInferenceSteps: number;
+                    prompt: string;
+                    seed: number;
+                    strength: number;
+                    width: number;
+                }) =>
+                    api.call({
+                        run: (methods) =>
+                            methods.operationsControllerRunInpaintV1V1({
+                                guidanceScale: props.guidanceScale,
+                                height: props.height,
+                                image: props.image,
+                                mask: props.mask,
+                                numInferenceSteps: props.numOfInferenceSteps,
+                                prompt: props.prompt,
+                                seed: props.seed,
+                                strength: props.strength,
+                                width: props.width,
                             }),
                     }),
             },

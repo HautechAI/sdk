@@ -716,7 +716,7 @@ export interface InpaintV1Input {
      * @type {number}
      * @memberof InpaintV1Input
      */
-    'guidance_scale': number;
+    'guidanceScale': number;
 }
 /**
  * 
