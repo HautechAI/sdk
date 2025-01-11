@@ -1,14 +1,6 @@
 import { ClientSDKOptions, ListProps } from '../../types';
 import createOperationUpdater from './updater';
-import {
-    ConstructPromptV1InputAgeEnum,
-    ConstructPromptV1InputAngleEnum,
-    ConstructPromptV1InputBackgroundEnum,
-    ConstructPromptV1InputEthnicityEnum,
-    ConstructPromptV1InputGenderEnum,
-    ConstructPromptV1InputPhotoTypeEnum,
-    OperationsApi,
-} from '../../internal';
+import { ConstructPromptV1Input, GenerateV3Input, InpaintV1Input, OperationsApi } from '../../internal';
 import { useInternalAPI } from '../../api';
 
 const operations = (options: ClientSDKOptions) => {
@@ -18,19 +10,7 @@ const operations = (options: ClientSDKOptions) => {
     return {
         create: {
             constructPrompt: {
-                v1: (props: {
-                    input: {
-                        age?: ConstructPromptV1InputAgeEnum;
-                        angle?: ConstructPromptV1InputAngleEnum;
-                        background?: ConstructPromptV1InputBackgroundEnum;
-                        ethnicity?: ConstructPromptV1InputEthnicityEnum;
-                        gender?: ConstructPromptV1InputGenderEnum;
-                        photoType?: ConstructPromptV1InputPhotoTypeEnum;
-                        productDescription?: string;
-                        prompt?: string;
-                    };
-                    metadata?: any;
-                }) =>
+                v1: (props: { input: ConstructPromptV1Input; metadata?: any }) =>
                     api.call({
                         run: (methods) =>
                             methods.operationsControllerRunConstructPromptV1V1({
@@ -40,63 +20,21 @@ const operations = (options: ClientSDKOptions) => {
                     }),
             },
             generate: {
-                v1: (props: {
-                    input: {
-                        category: string;
-                        garmentImage: string;
-                        height: number;
-                        poseImage: string;
-                        prompt: string;
-                        seed: number;
-                        width: number;
-                    };
-                    metadata?: any;
-                }) =>
+                v1: (props: { input: GenerateV3Input; metadata?: any }) =>
                     api.call({
                         run: (methods) =>
                             methods.operationsControllerRunGenerateV3V1({
-                                input: {
-                                    category: props.input.category,
-                                    garmentImage: props.input.garmentImage,
-                                    height: props.input.height,
-                                    poseImage: props.input.poseImage,
-                                    prompt: props.input.prompt,
-                                    seed: props.input.seed,
-                                    width: props.input.width,
-                                },
+                                input: props.input,
                                 metadata: props.metadata,
                             }),
                     }),
             },
             inpaint: {
-                v1: (props: {
-                    input: {
-                        guidanceScale: number;
-                        height: number;
-                        image: string;
-                        mask: string;
-                        numOfInferenceSteps: number;
-                        prompt: string;
-                        seed: number;
-                        strength: number;
-                        width: number;
-                    };
-                    metadata?: any;
-                }) =>
+                v1: (props: { input: InpaintV1Input; metadata?: any }) =>
                     api.call({
                         run: (methods) =>
                             methods.operationsControllerRunInpaintV1V1({
-                                input: {
-                                    guidanceScale: props.input.guidanceScale,
-                                    height: props.input.height,
-                                    image: props.input.image,
-                                    mask: props.input.mask,
-                                    numInferenceSteps: props.input.numOfInferenceSteps,
-                                    prompt: props.input.prompt,
-                                    seed: props.input.seed,
-                                    strength: props.input.strength,
-                                    width: props.input.width,
-                                },
+                                input: props.input,
                                 metadata: props.metadata,
                             }),
                     }),
