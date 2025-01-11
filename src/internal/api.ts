@@ -213,6 +213,25 @@ export interface CollectionEntity {
 /**
  * 
  * @export
+ * @interface ConstructPromptV1ControllerInput
+ */
+export interface ConstructPromptV1ControllerInput {
+    /**
+     * 
+     * @type {object}
+     * @memberof ConstructPromptV1ControllerInput
+     */
+    'metadata'?: object;
+    /**
+     * 
+     * @type {ConstructPromptV1Input}
+     * @memberof ConstructPromptV1ControllerInput
+     */
+    'input'?: ConstructPromptV1Input;
+}
+/**
+ * 
+ * @export
  * @interface ConstructPromptV1Input
  */
 export interface ConstructPromptV1Input {
@@ -448,6 +467,25 @@ export interface DeleteStorageParamsDto {
 /**
  * 
  * @export
+ * @interface GenerateV3ControllerInput
+ */
+export interface GenerateV3ControllerInput {
+    /**
+     * 
+     * @type {object}
+     * @memberof GenerateV3ControllerInput
+     */
+    'metadata'?: object;
+    /**
+     * 
+     * @type {GenerateV3Input}
+     * @memberof GenerateV3ControllerInput
+     */
+    'input'?: GenerateV3Input;
+}
+/**
+ * 
+ * @export
  * @interface GenerateV3Input
  */
 export interface GenerateV3Input {
@@ -656,6 +694,25 @@ export interface InitializeImageUploadResultDto {
      * @memberof InitializeImageUploadResultDto
      */
     'uploadUrl': string;
+}
+/**
+ * 
+ * @export
+ * @interface InpaintV1ControllerInput
+ */
+export interface InpaintV1ControllerInput {
+    /**
+     * 
+     * @type {object}
+     * @memberof InpaintV1ControllerInput
+     */
+    'metadata'?: object;
+    /**
+     * 
+     * @type {InpaintV1Input}
+     * @memberof InpaintV1ControllerInput
+     */
+    'input'?: InpaintV1Input;
 }
 /**
  * 
@@ -3700,13 +3757,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {ConstructPromptV1Input} constructPromptV1Input 
+         * @param {ConstructPromptV1ControllerInput} constructPromptV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunConstructPromptV1V1: async (constructPromptV1Input: ConstructPromptV1Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'constructPromptV1Input' is not null or undefined
-            assertParamExists('operationsControllerRunConstructPromptV1V1', 'constructPromptV1Input', constructPromptV1Input)
+        operationsControllerRunConstructPromptV1V1: async (constructPromptV1ControllerInput: ConstructPromptV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'constructPromptV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunConstructPromptV1V1', 'constructPromptV1ControllerInput', constructPromptV1ControllerInput)
             const localVarPath = `/v1/operations/run/constructPrompt.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3730,7 +3787,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(constructPromptV1Input, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(constructPromptV1ControllerInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3739,13 +3796,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {GenerateV3Input} generateV3Input 
+         * @param {GenerateV3ControllerInput} generateV3ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunGenerateV3V1: async (generateV3Input: GenerateV3Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'generateV3Input' is not null or undefined
-            assertParamExists('operationsControllerRunGenerateV3V1', 'generateV3Input', generateV3Input)
+        operationsControllerRunGenerateV3V1: async (generateV3ControllerInput: GenerateV3ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'generateV3ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunGenerateV3V1', 'generateV3ControllerInput', generateV3ControllerInput)
             const localVarPath = `/v1/operations/run/generate.v3`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3769,7 +3826,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(generateV3Input, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(generateV3ControllerInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3778,13 +3835,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {InpaintV1ControllerInput} inpaintV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunInpaintV1V1: async (inpaintV1Input: InpaintV1Input, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'inpaintV1Input' is not null or undefined
-            assertParamExists('operationsControllerRunInpaintV1V1', 'inpaintV1Input', inpaintV1Input)
+        operationsControllerRunInpaintV1V1: async (inpaintV1ControllerInput: InpaintV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'inpaintV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunInpaintV1V1', 'inpaintV1ControllerInput', inpaintV1ControllerInput)
             const localVarPath = `/v1/operations/run/inpaint.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -3808,7 +3865,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inpaintV1Input, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inpaintV1ControllerInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3908,36 +3965,36 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {ConstructPromptV1Input} constructPromptV1Input 
+         * @param {ConstructPromptV1ControllerInput} constructPromptV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options);
+        async operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput: ConstructPromptV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunConstructPromptV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {GenerateV3Input} generateV3Input 
+         * @param {GenerateV3ControllerInput} generateV3ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGenerateV3V1(generateV3Input, options);
+        async operationsControllerRunGenerateV3V1(generateV3ControllerInput: GenerateV3ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGenerateV3V1(generateV3ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunGenerateV3V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {InpaintV1ControllerInput} inpaintV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintV1V1(inpaintV1Input, options);
+        async operationsControllerRunInpaintV1V1(inpaintV1ControllerInput: InpaintV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintV1V1(inpaintV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunInpaintV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3996,30 +4053,30 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {ConstructPromptV1Input} constructPromptV1Input 
+         * @param {ConstructPromptV1ControllerInput} constructPromptV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
-            return localVarFp.operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options).then((request) => request(axios, basePath));
+        operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput: ConstructPromptV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {GenerateV3Input} generateV3Input 
+         * @param {GenerateV3ControllerInput} generateV3ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
-            return localVarFp.operationsControllerRunGenerateV3V1(generateV3Input, options).then((request) => request(axios, basePath));
+        operationsControllerRunGenerateV3V1(generateV3ControllerInput: GenerateV3ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunGenerateV3V1(generateV3ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {InpaintV1Input} inpaintV1Input 
+         * @param {InpaintV1ControllerInput} inpaintV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
-            return localVarFp.operationsControllerRunInpaintV1V1(inpaintV1Input, options).then((request) => request(axios, basePath));
+        operationsControllerRunInpaintV1V1(inpaintV1ControllerInput: InpaintV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunInpaintV1V1(inpaintV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4078,35 +4135,35 @@ export class OperationsApi extends BaseAPI {
 
     /**
      * 
-     * @param {ConstructPromptV1Input} constructPromptV1Input 
+     * @param {ConstructPromptV1ControllerInput} constructPromptV1ControllerInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunConstructPromptV1V1(constructPromptV1Input: ConstructPromptV1Input, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunConstructPromptV1V1(constructPromptV1Input, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput: ConstructPromptV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunConstructPromptV1V1(constructPromptV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {GenerateV3Input} generateV3Input 
+     * @param {GenerateV3ControllerInput} generateV3ControllerInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunGenerateV3V1(generateV3Input: GenerateV3Input, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunGenerateV3V1(generateV3Input, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunGenerateV3V1(generateV3ControllerInput: GenerateV3ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunGenerateV3V1(generateV3ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {InpaintV1Input} inpaintV1Input 
+     * @param {InpaintV1ControllerInput} inpaintV1ControllerInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunInpaintV1V1(inpaintV1Input: InpaintV1Input, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunInpaintV1V1(inpaintV1Input, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunInpaintV1V1(inpaintV1ControllerInput: InpaintV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunInpaintV1V1(inpaintV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
