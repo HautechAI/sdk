@@ -26,7 +26,8 @@ const images = (options: SDKOptions) => {
     return {
         createFromFile,
         createFromUrl: async (props: { url: string }) => {
-            const file = await axios.get(props.url, { responseType: 'arraybuffer' });
+            const response = await axios.get(props.url, { responseType: 'arraybuffer' });
+            const file = new Blob([response.data], { type: response.headers['content-type'] });
             return createFromFile({ file });
         },
         get: async (props: { id: string }) =>
