@@ -4,7 +4,7 @@ import { ClientSDKOptions } from '../types';
 import collections from './collections';
 import groups from './groups';
 import images from './images';
-import { jwtDecode } from 'jwt-decode';
+import jwt from 'jsonwebtoken';
 import operations from './operations';
 import stacks from './stacks';
 import storage from './storage';
@@ -14,7 +14,7 @@ export const createClientSDK = (options: ClientSDKOptions) => {
     let token: string | undefined = undefined;
     const authToken = async (): Promise<string> => {
         if (token) {
-            const decoded = jwtDecode(token);
+            const decoded = jwt.decode(token) as jwt.JwtPayload;
             const currentTime = Math.floor(Date.now() / 1000);
             if (decoded.exp && decoded.exp > currentTime) return token;
         }

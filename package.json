@@ -15,15 +15,16 @@
         "lint:fix": "nx run-many --all --target=lint --fix",
         "test": "jest"
     },
-    "description": "Hautech client SDK",
+    "description": "Hautech SDK",
     "dependencies": {
         "axios": "1.6.1",
-        "jwt-decode": "4.0.0",
+        "jsonwebtoken": "8.5.1",
         "pusher-js": "8.4.0-rc2"
     },
     "devDependencies": {
         "@openapitools/openapi-generator-cli": "2.15.3",
         "@types/jest": "29.5.12",
+        "@types/jsonwebtoken": "9.0.7",
         "@types/node": "22.5.2",
         "dotenv": "16.4.7",
         "jest": "29.7.0",
