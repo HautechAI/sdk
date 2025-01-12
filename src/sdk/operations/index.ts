@@ -1,7 +1,7 @@
 import { ClientSDKOptions, ListProps } from '../../types';
 import createOperationUpdater from './updater';
 import { ConstructPromptV1Input, GenerateV3Input, InpaintV1Input, OperationsApi } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const operations = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: OperationsApi, options });

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ClientSDKOptions } from '../../types';
 import { ImagesApi } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const images = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: ImagesApi, options });

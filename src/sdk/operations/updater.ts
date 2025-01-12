@@ -1,5 +1,5 @@
 import { ClientSDKOptions } from '../../types';
-import { createWebsocket } from '../../api';
+import { createWebsocket } from '../api';
 import { OperationEntity } from '../../internal';
 
 const createOperationUpdater = (options: ClientSDKOptions) => {

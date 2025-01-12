@@ -4,7 +4,7 @@ import {
     GroupsApi,
     RemoveAccountFromGroupControllerParamsDtoRoleEnum,
 } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const groups = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: GroupsApi, options });

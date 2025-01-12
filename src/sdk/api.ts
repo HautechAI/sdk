@@ -1,7 +1,7 @@
-import axios, { AxiosPromise } from 'axios';
-import { BaseAPI } from './internal/base';
-import { ClientSDKOptions } from './types';
-import { Configuration } from './internal';
+import { AxiosPromise } from 'axios';
+import { BaseAPI } from '../internal/base';
+import { ClientSDKOptions } from '../types';
+import { Configuration, WebsocketApi } from '../internal';
 import Pusher from 'pusher-js';
 
 const getBaseUrl = (options: ClientSDKOptions) => options.endpoint ?? 'https://api.hautech.ai';
@@ -42,40 +42,14 @@ export const useInternalAPI = <T extends BaseAPI>(baseProps: {
     };
 };
 
-export const createAPI = (options: ClientSDKOptions) => {
-    const baseUrl = getBaseUrl(options);
-
-    const getFullUrl = (endpoint: string) => `${baseUrl}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
-    const getHeaders = async () => ({ Authorization: `Bearer ${await options.authToken()}` });
-
-    return {
-        delete: async (endpoint: string, data: any = {}) => {
-            const response = await axios.delete(getFullUrl(endpoint), { data, headers: await getHeaders() });
-            return response.data;
-        },
-        get: async (endpoint: string, params: any = {}) => {
-            const response = await axios.get(getFullUrl(endpoint), { headers: await getHeaders(), params });
-            return response.data;
-        },
-        post: async (endpoint: string, data: any = {}) => {
-            const response = await axios.post(getFullUrl(endpoint), data, { headers: await getHeaders() });
-            return response.data;
-        },
-        put: async (endpoint: string, data: any = {}) => {
-            const response = await axios.put(getFullUrl(endpoint), data, { headers: await getHeaders() });
-            return response.data;
-        },
-    };
-};
-
 export const createWebsocket = async (props: {
     callback: (data: any) => void;
     options: ClientSDKOptions;
     topic: string;
 }) => {
-    const api = createAPI(props.options);
+    const api = useInternalAPI({ API: WebsocketApi, options: props.options });
     const baseUrl = getBaseUrl(props.options);
-    const pusherSettings = await api.get('/websocket/settings');
+    const pusherSettings = (await api.call({ run: (api) => api.websocketControllerGetSettingsV1() })) as any;
 
     const pusher = new Pusher(pusherSettings.key, {
         channelAuthorization: {

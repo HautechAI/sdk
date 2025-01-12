@@ -1,6 +1,6 @@
 import { AccountsApi } from '../../internal';
 import { ClientSDKOptions } from '../../types';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const accounts = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: AccountsApi, options });

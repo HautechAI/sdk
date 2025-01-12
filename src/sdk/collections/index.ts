@@ -1,6 +1,6 @@
 import { ClientSDKOptions, ListProps } from '../../types';
 import { CollectionsApi } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const collections = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: CollectionsApi, options });

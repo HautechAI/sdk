@@ -1,6 +1,6 @@
 import { ClientSDKOptions } from '../../types';
 import { StorageApi } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const storage = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: StorageApi, options });

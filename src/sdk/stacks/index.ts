@@ -1,6 +1,6 @@
 import { ClientSDKOptions, ListProps } from '../../types';
 import { StacksApi } from '../../internal';
-import { useInternalAPI } from '../../api';
+import { useInternalAPI } from '../api';
 
 const stacks = (options: ClientSDKOptions) => {
     const api = useInternalAPI({ API: StacksApi, options });
