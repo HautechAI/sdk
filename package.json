@@ -1,11 +1,11 @@
 {
-    "name": "@hautechai/client",
-    "version": "0.7.0",
+    "name": "@hautechai/sdk",
+    "version": "0.0.1",
     "license": "MIT",
     "keywords": [],
     "repository": {
         "type": "git",
-        "url": "https://github.com/HautechAI/client-sdk"
+        "url": "https://github.com/HautechAI/sdk"
     },
     "main": "dist/index.js",
     "scripts": {

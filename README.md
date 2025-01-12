@@ -1,14 +1,14 @@
-![sdk-server](https://github.com/HautechAI/client-sdk/actions/workflows/main.yml/badge.svg?branch=main)
-![npm version](https://badge.fury.io/js/%40hautechai%2Fclient.svg)
+![sdk-server](https://github.com/HautechAI/sdk/actions/workflows/main.yml/badge.svg?branch=main)
+![npm version](https://badge.fury.io/js/%40hautechai%2Fsdk.svg)
 
 # Hautech SDK
 
 ## Installation
 
 ```bash
-npm install @hautechai/client
+npm install @hautechai/sdk
 # or
-yarn add @hautechai/client
+yarn add @hautechai/sdk
 ```
 
 # Usage
@@ -20,7 +20,7 @@ To use the SDK, first you need to create a token via token signer.
 ```ts
 // THIS CODE SHOULD BE RUN ON SERVER SIDE ONLY!!!
 
-import { createTokenSigner } from '@hautechai/client';
+import { createTokenSigner } from '@hautechai/sdk';
 
 const signer = createTokenSigner({
     appId: process.env.APP_ID!,
@@ -52,7 +52,7 @@ const accountToken = signer.createAccountToken({ accountId: 'ACCOUNT_ID', expire
 To initialize the SDK, you need to pass the function that returns the token to the `createSDK` function.
 
 ```ts
-import { createSDK } from '@hautechai/client';
+import { createSDK } from '@hautechai/sdk';
 
 const sdk = createSDK({ authToken: () => accountToken }); // you should call the server here for getting the token
 ```
