@@ -11,9 +11,9 @@ npm install @hautechai/sdk
 yarn add @hautechai/sdk
 ```
 
-# Usage
+## Usage
 
-## Creating tokens
+### Creating tokens
 
 To use the SDK, first you need to create a token via token signer.
 
@@ -29,7 +29,7 @@ const signer = createTokenSigner({
 });
 ```
 
-### Root token
+#### Root token
 
 For creating token that can be used on server side, you can create a root token.
 
@@ -39,7 +39,7 @@ const rootToken = signer.createRootToken({ expiresInSeconds: 3600 });
 
 It's very not recommended to use root token on client side.
 
-### Account token
+#### Account token
 
 For creating token that can be used on client side by your users, you can create an account token.
 
@@ -47,7 +47,7 @@ For creating token that can be used on client side by your users, you can create
 const accountToken = signer.createAccountToken({ accountId: 'ACCOUNT_ID', expiresInSeconds: 3600 });
 ```
 
-## Initializing SDK
+### Initializing SDK
 
 To initialize the SDK, you need to pass the function that returns the token to the `createSDK` function.
 
@@ -57,6 +57,6 @@ import { createSDK } from '@hautechai/sdk';
 const sdk = createSDK({ authToken: () => accountToken }); // you should call the server here for getting the token
 ```
 
-## Using SDK
+### Using SDK
 
 Docs about how to use the SDK are available [here](https://docs.hautech.ai/)
