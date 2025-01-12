@@ -14,23 +14,4 @@ describe('Stacks', () => {
         const stacks = await sdk.stacks.list();
         expect(stacks).toBeDefined();
     });
-
-    it('should add operations to stacks', async () => {
-        const operation = await sdk.operations.create.constructPrompt.v1({
-            input: {
-                age: 'adult',
-                angle: 'front',
-                background: 'beach',
-                ethnicity: 'asian',
-                gender: 'female',
-                photoType: 'fullbody',
-            },
-        });
-        expect(operation).toBeDefined();
-
-        const stack = await sdk.stacks.create();
-        expect(stack).toBeDefined();
-
-        await sdk.stacks.operations.add({ stackId: stack.id, operationIds: [operation.id] });
-    });
 });

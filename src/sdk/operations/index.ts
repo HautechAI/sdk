@@ -9,16 +9,6 @@ const operations = (options: ClientSDKOptions) => {
 
     return {
         create: {
-            constructPrompt: {
-                v1: (props: { input: ConstructPromptV1Input; metadata?: any }) =>
-                    api.call({
-                        run: (methods) =>
-                            methods.operationsControllerRunConstructPromptV1V1({
-                                input: props.input,
-                                metadata: props.metadata,
-                            }),
-                    }),
-            },
             generate: {
                 v1: (props: { input: GenerateV3Input; metadata?: any }) =>
                     api.call({

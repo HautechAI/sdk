@@ -1,5 +1,9 @@
 import { ClientSDKOptions } from '../../types';
-import { GroupsApi } from '../../internal';
+import {
+    AddAccountToGroupControllerParamsDtoRoleEnum,
+    GroupsApi,
+    RemoveAccountFromGroupControllerParamsDtoRoleEnum,
+} from '../../internal';
 import { useInternalAPI } from '../../api';
 
 const groups = (options: ClientSDKOptions) => {
@@ -9,7 +13,7 @@ const groups = (options: ClientSDKOptions) => {
             add: async (props: {
                 accountId: string;
                 groupId: string;
-                role: 'maintainer' | 'member' | 'owner';
+                role: AddAccountToGroupControllerParamsDtoRoleEnum;
             }): Promise<void> =>
                 api.call({
                     run: (methods) =>
@@ -21,7 +25,7 @@ const groups = (options: ClientSDKOptions) => {
             remove: async (props: {
                 accountId: string;
                 groupId: string;
-                role: 'maintainer' | 'member' | 'owner';
+                role: RemoveAccountFromGroupControllerParamsDtoRoleEnum;
             }): Promise<void> =>
                 api.call({
                     run: (methods) =>
