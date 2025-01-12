@@ -43,7 +43,7 @@ const operations = (options: ClientSDKOptions) => {
                 run: (methods) =>
                     methods.operationsControllerListOperationsV1(props.orderBy, props.limit, props.cursor),
             }),
-        update: async (props: { id: string; metadata?: any }) =>
+        updateMetadata: async (props: { id: string; metadata?: any }) =>
             api.call({
                 run: (methods) => methods.operationsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
             }),

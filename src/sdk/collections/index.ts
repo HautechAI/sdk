@@ -40,7 +40,7 @@ const collections = (options: ClientSDKOptions) => {
                 run: (methods) =>
                     methods.collectionsControllerListCollectionsV1(props.orderBy, props.limit, props.cursor),
             }),
-        update: async (props: { id: string; metadata?: any }) =>
+        updateMetadata: async (props: { id: string; metadata?: any }) =>
             api.call({
                 run: (methods) =>
                     methods.collectionsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),

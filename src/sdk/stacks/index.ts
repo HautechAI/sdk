@@ -32,7 +32,7 @@ const stacks = (options: ClientSDKOptions) => {
                         methods.stacksControllerRemoveOperationV1(props.stackId, { operationIds: props.operationIds }),
                 }),
         },
-        update: async (props: { id: string; metadata?: any }) =>
+        updateMetadata: async (props: { id: string; metadata?: any }) =>
             api.call({
                 run: (methods) => methods.stacksControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
             }),
