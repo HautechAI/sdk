@@ -1,6 +1,6 @@
 import accounts from './accounts';
 import balances from './balances';
-import { ClientSDKOptions } from '../types';
+import { SDKOptions } from '../types';
 import collections from './collections';
 import groups from './groups';
 import images from './images';
@@ -10,7 +10,7 @@ import stacks from './stacks';
 import storage from './storage';
 import utils from './utils';
 
-export const createClientSDK = (options: ClientSDKOptions) => {
+export const createSDK = (options: SDKOptions) => {
     let token: string | undefined = undefined;
     const authToken = async (): Promise<string> => {
         if (token) {
@@ -36,4 +36,4 @@ export const createClientSDK = (options: ClientSDKOptions) => {
         utils: utils(optionsWithTokenRefresher),
     };
 };
-export type ClientSDK = ReturnType<typeof createClientSDK>;
+export type SDK = ReturnType<typeof createSDK>;
