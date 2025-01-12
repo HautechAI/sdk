@@ -29,6 +29,9 @@ jobs:
               run: yarn test
               env:
                   API_CORE_URL: https://api.dev.hautech.ai
+                  APP_ID: ${{ secrets.APP_ID }}
+                  APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
+                  APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
                   SDK_TOKEN: ${{ secrets.SDK_TOKEN }}
 
             - name: Build
