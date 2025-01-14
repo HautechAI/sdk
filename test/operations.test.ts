@@ -2,21 +2,8 @@ import { describe, it, expect } from '@jest/globals';
 import fs from 'fs';
 import { sdk } from './utils';
 
-describe('Stacks', () => {
-    it('should create stack', async () => {
-        const stack = await sdk.stacks.create();
-        expect(stack).toBeDefined();
-
-        const sameStack = await sdk.stacks.get({ id: stack.id });
-        expect(sameStack).toEqual(stack);
-    });
-
-    it('should list stacks', async () => {
-        const stacks = await sdk.stacks.list();
-        expect(stacks).toBeDefined();
-    });
-
-    it('should add and remove operations to stack', async () => {
+describe('Operations', () => {
+    it('should create operation', async () => {
         const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
 
         const image = await sdk.images.createFromFile({ file });
@@ -36,11 +23,15 @@ describe('Stacks', () => {
             },
         });
         expect(operation).toBeDefined();
+        console.log({ operation });
 
-        const stack = await sdk.stacks.create();
-        expect(stack).toBeDefined();
+        const sameOperation = await sdk.operations.get({ id: operation.id });
+        console.log({ sameOperation });
+        expect(sameOperation).toEqual(operation);
+    });
 
-        await sdk.stacks.operations.add({ stackId: stack.id, operationIds: [operation.id] });
-        await sdk.stacks.operations.remove({ stackId: stack.id, operationIds: [operation.id] });
+    it('should list operations', async () => {
+        const operations = await sdk.operations.list();
+        expect(operations).toBeDefined();
     });
 });
