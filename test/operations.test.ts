@@ -23,10 +23,8 @@ describe('Operations', () => {
             },
         });
         expect(operation).toBeDefined();
-        console.log({ operation });
 
         const sameOperation = await sdk.operations.get({ id: operation.id });
-        console.log({ sameOperation });
         expect(sameOperation).toEqual(operation);
     });
 
