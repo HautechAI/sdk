@@ -25,7 +25,7 @@ describe('Collections', () => {
         });
 
         const items = await sdk.collections.items.list({ collectionId: collection.id });
-        expect(items.data.map((item) => item.id)).toEqual([stack.id]);
+        expect(items.map((item) => item.id)).toEqual([stack.id]);
     });
 
     it('should be able to remove items', async () => {
@@ -38,7 +38,7 @@ describe('Collections', () => {
         });
 
         const items = await sdk.collections.items.list({ collectionId: collection.id });
-        expect(items.data.map((item) => item.id)).toEqual([stack.id]);
+        expect(items.map((item) => item.id)).toEqual([stack.id]);
 
         await sdk.collections.items.remove({
             collectionId: collection.id,
@@ -46,6 +46,6 @@ describe('Collections', () => {
         });
 
         const items2 = await sdk.collections.items.list({ collectionId: collection.id });
-        expect(items2.data.map((item) => item.id)).toEqual([]);
+        expect(items2.map((item) => item.id)).toEqual([]);
     });
 });
