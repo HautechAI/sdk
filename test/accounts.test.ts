@@ -14,4 +14,9 @@ describe('Accounts', () => {
         const sameAccountByAlias = await sdk.accounts.getByAlias({ alias });
         expect(sameAccountByAlias).toEqual(account);
     });
+
+    it('should return undefined if account not found', async () => {
+        const account = await sdk.accounts.getByAlias({ alias: 'nonexistent' });
+        expect(account).toBeUndefined();
+    });
 });
