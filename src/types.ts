@@ -9,7 +9,9 @@ export type ListProps = {
     orderBy?: 'createdAt_ASC' | 'createdAt_DESC' | 'updatedAt_ASC' | 'updatedAt_DESC';
 };
 
-export type ListResponse<T> = T[] & { nextCursor: string };
+export class ListResponse<T> extends Array<T> {
+    nextCursor?: string;
+}
 
 // ------------------------------------------------------------
 // METHODS PERMISSIONS START

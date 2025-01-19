@@ -4,7 +4,7 @@ export const transformToListResponse = <T>(response: {
     data: T[];
     pageInfo: { nextCursor: string };
 }): ListResponse<T> => {
-    const array = [...response.data] as ListResponse<T>;
-    array['nextCursor'] = response.pageInfo.nextCursor;
+    const array = new ListResponse<T>(...response.data);
+    array.nextCursor = response.pageInfo.nextCursor;
     return array;
 };
