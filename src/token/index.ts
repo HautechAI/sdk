@@ -1,5 +1,4 @@
 import { defaultPermissions, defaultRootPermissions } from './permissions';
-import jwt from 'jsonwebtoken';
 import { MethodsPermissions } from '../types';
 
 const createPrivateKey = (key: string) => {
@@ -11,7 +10,9 @@ const createPrivateKey = (key: string) => {
     return header + keyBody + footer;
 };
 
+// This function will not work in the browser
 const createToken = (props: { appKeyId: string; appKeySecret: string; expiresInSeconds: number; payload: object }) => {
+    const jwt = require('jsonwebtoken');
     const privateKey = createPrivateKey(props.appKeySecret);
     return jwt.sign(props.payload, privateKey, {
         algorithm: 'RS256',
