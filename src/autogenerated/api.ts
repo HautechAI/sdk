@@ -107,15 +107,15 @@ export interface AddItemsToCollectionControllerParamsDto {
 /**
  * 
  * @export
- * @interface AddOperationsToStackControllerParamsDto
+ * @interface AddItemsToStackControllerParamsDto
  */
-export interface AddOperationsToStackControllerParamsDto {
+export interface AddItemsToStackControllerParamsDto {
     /**
      * 
      * @type {Array<string>}
-     * @memberof AddOperationsToStackControllerParamsDto
+     * @memberof AddItemsToStackControllerParamsDto
      */
-    'operationIds': Array<string>;
+    'itemIds': Array<string>;
 }
 /**
  * 
@@ -1309,19 +1309,6 @@ export interface RemoveItemsFromCollectionControllerParamsDto {
 /**
  * 
  * @export
- * @interface RemoveOperationsFromStackControllerParamsDto
- */
-export interface RemoveOperationsFromStackControllerParamsDto {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RemoveOperationsFromStackControllerParamsDto
-     */
-    'operationIds': Array<string>;
-}
-/**
- * 
- * @export
  * @interface ResourceEntity
  */
 export interface ResourceEntity {
@@ -1420,6 +1407,12 @@ export interface StackEntity {
     'kind': StackEntityKindEnum;
     /**
      * 
+     * @type {Array<StackEntityItemsInner>}
+     * @memberof StackEntity
+     */
+    'items': Array<StackEntityItemsInner>;
+    /**
+     * 
      * @type {string}
      * @memberof StackEntity
      */
@@ -1448,24 +1441,19 @@ export interface StackEntity {
      * @memberof StackEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<OperationEntity>}
-     * @memberof StackEntity
-     */
-    'operations': Array<OperationEntity>;
 }
 
 export const StackEntityKindEnum = {
-    Collection: 'collection',
-    Operation: 'operation',
-    Stack: 'stack',
-    Image: 'image',
-    Pose: 'pose',
-    Storage: 'storage'
+    Stack: 'stack'
 } as const;
 
 export type StackEntityKindEnum = typeof StackEntityKindEnum[keyof typeof StackEntityKindEnum];
+
+/**
+ * @type StackEntityItemsInner
+ * @export
+ */
+export type StackEntityItemsInner = ImageEntity | OperationEntity;
 
 /**
  * 
@@ -5205,16 +5193,16 @@ export const StacksApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @param {string} id 
-         * @param {AddOperationsToStackControllerParamsDto} addOperationsToStackControllerParamsDto 
+         * @param {AddItemsToStackControllerParamsDto} addItemsToStackControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stacksControllerAddOperationsV1: async (id: string, addOperationsToStackControllerParamsDto: AddOperationsToStackControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        stacksControllerAddItemsV1: async (id: string, addItemsToStackControllerParamsDto: AddItemsToStackControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('stacksControllerAddOperationsV1', 'id', id)
-            // verify required parameter 'addOperationsToStackControllerParamsDto' is not null or undefined
-            assertParamExists('stacksControllerAddOperationsV1', 'addOperationsToStackControllerParamsDto', addOperationsToStackControllerParamsDto)
-            const localVarPath = `/v1/stacks/{id}/operations/add`
+            assertParamExists('stacksControllerAddItemsV1', 'id', id)
+            // verify required parameter 'addItemsToStackControllerParamsDto' is not null or undefined
+            assertParamExists('stacksControllerAddItemsV1', 'addItemsToStackControllerParamsDto', addItemsToStackControllerParamsDto)
+            const localVarPath = `/v1/stacks/{id}/items/add`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5238,7 +5226,7 @@ export const StacksApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(addOperationsToStackControllerParamsDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(addItemsToStackControllerParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5372,16 +5360,16 @@ export const StacksApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @param {string} id 
-         * @param {RemoveOperationsFromStackControllerParamsDto} removeOperationsFromStackControllerParamsDto 
+         * @param {RemoveItemsFromCollectionControllerParamsDto} removeItemsFromCollectionControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stacksControllerRemoveOperationV1: async (id: string, removeOperationsFromStackControllerParamsDto: RemoveOperationsFromStackControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        stacksControllerRemoveItemsV1: async (id: string, removeItemsFromCollectionControllerParamsDto: RemoveItemsFromCollectionControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('stacksControllerRemoveOperationV1', 'id', id)
-            // verify required parameter 'removeOperationsFromStackControllerParamsDto' is not null or undefined
-            assertParamExists('stacksControllerRemoveOperationV1', 'removeOperationsFromStackControllerParamsDto', removeOperationsFromStackControllerParamsDto)
-            const localVarPath = `/v1/stacks/{id}/operations/remove`
+            assertParamExists('stacksControllerRemoveItemsV1', 'id', id)
+            // verify required parameter 'removeItemsFromCollectionControllerParamsDto' is not null or undefined
+            assertParamExists('stacksControllerRemoveItemsV1', 'removeItemsFromCollectionControllerParamsDto', removeItemsFromCollectionControllerParamsDto)
+            const localVarPath = `/v1/stacks/{id}/items/remove`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5405,7 +5393,7 @@ export const StacksApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(removeOperationsFromStackControllerParamsDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(removeItemsFromCollectionControllerParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5468,14 +5456,14 @@ export const StacksApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
-         * @param {AddOperationsToStackControllerParamsDto} addOperationsToStackControllerParamsDto 
+         * @param {AddItemsToStackControllerParamsDto} addItemsToStackControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async stacksControllerAddOperationsV1(id: string, addOperationsToStackControllerParamsDto: AddOperationsToStackControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StackEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.stacksControllerAddOperationsV1(id, addOperationsToStackControllerParamsDto, options);
+        async stacksControllerAddItemsV1(id: string, addItemsToStackControllerParamsDto: AddItemsToStackControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StackEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.stacksControllerAddItemsV1(id, addItemsToStackControllerParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StacksApi.stacksControllerAddOperationsV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StacksApi.stacksControllerAddItemsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -5519,14 +5507,14 @@ export const StacksApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
-         * @param {RemoveOperationsFromStackControllerParamsDto} removeOperationsFromStackControllerParamsDto 
+         * @param {RemoveItemsFromCollectionControllerParamsDto} removeItemsFromCollectionControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async stacksControllerRemoveOperationV1(id: string, removeOperationsFromStackControllerParamsDto: RemoveOperationsFromStackControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StackEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.stacksControllerRemoveOperationV1(id, removeOperationsFromStackControllerParamsDto, options);
+        async stacksControllerRemoveItemsV1(id: string, removeItemsFromCollectionControllerParamsDto: RemoveItemsFromCollectionControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StackEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.stacksControllerRemoveItemsV1(id, removeItemsFromCollectionControllerParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['StacksApi.stacksControllerRemoveOperationV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['StacksApi.stacksControllerRemoveItemsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -5555,12 +5543,12 @@ export const StacksApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} id 
-         * @param {AddOperationsToStackControllerParamsDto} addOperationsToStackControllerParamsDto 
+         * @param {AddItemsToStackControllerParamsDto} addItemsToStackControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stacksControllerAddOperationsV1(id: string, addOperationsToStackControllerParamsDto: AddOperationsToStackControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StackEntity> {
-            return localVarFp.stacksControllerAddOperationsV1(id, addOperationsToStackControllerParamsDto, options).then((request) => request(axios, basePath));
+        stacksControllerAddItemsV1(id: string, addItemsToStackControllerParamsDto: AddItemsToStackControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StackEntity> {
+            return localVarFp.stacksControllerAddItemsV1(id, addItemsToStackControllerParamsDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -5594,12 +5582,12 @@ export const StacksApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} id 
-         * @param {RemoveOperationsFromStackControllerParamsDto} removeOperationsFromStackControllerParamsDto 
+         * @param {RemoveItemsFromCollectionControllerParamsDto} removeItemsFromCollectionControllerParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        stacksControllerRemoveOperationV1(id: string, removeOperationsFromStackControllerParamsDto: RemoveOperationsFromStackControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StackEntity> {
-            return localVarFp.stacksControllerRemoveOperationV1(id, removeOperationsFromStackControllerParamsDto, options).then((request) => request(axios, basePath));
+        stacksControllerRemoveItemsV1(id: string, removeItemsFromCollectionControllerParamsDto: RemoveItemsFromCollectionControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StackEntity> {
+            return localVarFp.stacksControllerRemoveItemsV1(id, removeItemsFromCollectionControllerParamsDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -5624,13 +5612,13 @@ export class StacksApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
-     * @param {AddOperationsToStackControllerParamsDto} addOperationsToStackControllerParamsDto 
+     * @param {AddItemsToStackControllerParamsDto} addItemsToStackControllerParamsDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StacksApi
      */
-    public stacksControllerAddOperationsV1(id: string, addOperationsToStackControllerParamsDto: AddOperationsToStackControllerParamsDto, options?: RawAxiosRequestConfig) {
-        return StacksApiFp(this.configuration).stacksControllerAddOperationsV1(id, addOperationsToStackControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
+    public stacksControllerAddItemsV1(id: string, addItemsToStackControllerParamsDto: AddItemsToStackControllerParamsDto, options?: RawAxiosRequestConfig) {
+        return StacksApiFp(this.configuration).stacksControllerAddItemsV1(id, addItemsToStackControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5671,13 +5659,13 @@ export class StacksApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
-     * @param {RemoveOperationsFromStackControllerParamsDto} removeOperationsFromStackControllerParamsDto 
+     * @param {RemoveItemsFromCollectionControllerParamsDto} removeItemsFromCollectionControllerParamsDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof StacksApi
      */
-    public stacksControllerRemoveOperationV1(id: string, removeOperationsFromStackControllerParamsDto: RemoveOperationsFromStackControllerParamsDto, options?: RawAxiosRequestConfig) {
-        return StacksApiFp(this.configuration).stacksControllerRemoveOperationV1(id, removeOperationsFromStackControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
+    public stacksControllerRemoveItemsV1(id: string, removeItemsFromCollectionControllerParamsDto: RemoveItemsFromCollectionControllerParamsDto, options?: RawAxiosRequestConfig) {
+        return StacksApiFp(this.configuration).stacksControllerRemoveItemsV1(id, removeItemsFromCollectionControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

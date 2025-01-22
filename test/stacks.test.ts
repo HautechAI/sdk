@@ -40,7 +40,14 @@ describe('Stacks', () => {
         const stack = await sdk.stacks.create();
         expect(stack).toBeDefined();
 
-        await sdk.stacks.operations.add({ stackId: stack.id, operationIds: [operation.id] });
-        await sdk.stacks.operations.remove({ stackId: stack.id, operationIds: [operation.id] });
+        await sdk.stacks.items.add({ stackId: stack.id, itemIds: [operation.id] });
+
+        const stackWithItem = await sdk.stacks.get({ id: stack.id });
+        expect(stackWithItem?.items?.map((item) => item.id)).toEqual([operation.id]);
+
+        await sdk.stacks.items.remove({ stackId: stack.id, itemIds: [operation.id] });
+
+        const stackWithoutItem = await sdk.stacks.get({ id: stack.id });
+        expect(stackWithoutItem?.items).toEqual([]);
     });
 });

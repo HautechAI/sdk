@@ -22,16 +22,14 @@ const stacks = (options: SDKOptions) => {
                 run: (methods) => methods.stacksControllerListStacksV1(props.orderBy, props.limit, props.cursor),
                 transform: transformToListResponse,
             }),
-        operations: {
-            add: async (props: { operationIds: string[]; stackId: string }): Promise<void> =>
+        items: {
+            add: async (props: { itemIds: string[]; stackId: string }): Promise<void> =>
                 api.call({
-                    run: (methods) =>
-                        methods.stacksControllerAddOperationsV1(props.stackId, { operationIds: props.operationIds }),
+                    run: (methods) => methods.stacksControllerAddItemsV1(props.stackId, { itemIds: props.itemIds }),
                 }),
-            remove: async (props: { operationIds: string[]; stackId: string }): Promise<void> =>
+            remove: async (props: { itemIds: string[]; stackId: string }): Promise<void> =>
                 api.call({
-                    run: (methods) =>
-                        methods.stacksControllerRemoveOperationV1(props.stackId, { operationIds: props.operationIds }),
+                    run: (methods) => methods.stacksControllerRemoveItemsV1(props.stackId, { itemIds: props.itemIds }),
                 }),
         },
         updateMetadata: async (props: { id: string; metadata?: any }): Promise<void> =>

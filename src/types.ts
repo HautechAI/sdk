@@ -53,7 +53,7 @@ export interface MethodsPermissions {
     poses: Create & Read;
     stacks: Create &
         Read & {
-            operations: Add & Remove;
+            items: Add & Remove;
             metadata: Update;
         };
     storage: Create & Delete & Read & Update;

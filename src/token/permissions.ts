@@ -17,7 +17,7 @@ export const defaultPermissions: MethodsPermissions = {
     operations: { create: true, read: true, metadata: { update: true } },
     pipelines: { create: true, read: true, update: true },
     poses: { create: true, read: true },
-    stacks: { create: true, operations: { add: true, remove: true }, read: true, metadata: { update: true } },
+    stacks: { create: true, items: { add: true, remove: true }, read: true, metadata: { update: true } },
     storage: { create: true, delete: true, read: true, update: true },
 };
 
@@ -38,6 +38,6 @@ export const defaultRootPermissions: MethodsPermissions = {
     operations: { create: true, read: true, metadata: { update: true } },
     pipelines: { create: true, read: true, update: true },
     poses: { create: true, read: true },
-    stacks: { create: true, operations: { add: true, remove: true }, read: true, metadata: { update: true } },
+    stacks: { create: true, items: { add: true, remove: true }, read: true, metadata: { update: true } },
     storage: { create: true, delete: true, read: true, update: true },
 };
