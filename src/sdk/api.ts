@@ -54,7 +54,7 @@ export const createWebsocket = async (props: { callback: (data: any) => void; op
 
     const pusher = new Pusher(pusherSettings.key, {
         channelAuthorization: {
-            endpoint: `${baseUrl}/websocket/auth`,
+            endpoint: `${baseUrl}/v1/websocket/auth`,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 Authorization: `Bearer ${await props.options.authToken()}`,
