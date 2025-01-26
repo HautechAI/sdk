@@ -35,9 +35,7 @@ export interface MethodsPermissions {
     collections: Create &
         Read &
         Update & {
-            children: Add & Read & Remove;
-            parents: Add & Read & Remove;
-            stacks: Add & Remove;
+            items: Add & Read & Remove;
         };
     groups: Create &
         Read &
