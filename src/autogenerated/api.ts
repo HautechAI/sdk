@@ -107,6 +107,25 @@ export interface AddItemsToCollectionControllerParamsDto {
 /**
  * 
  * @export
+ * @interface AddItemsToCollectionParamsDto
+ */
+export interface AddItemsToCollectionParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof AddItemsToCollectionParamsDto
+     */
+    'collectionId': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof AddItemsToCollectionParamsDto
+     */
+    'itemIds': Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface AddItemsToStackControllerParamsDto
  */
 export interface AddItemsToStackControllerParamsDto {
@@ -172,6 +191,110 @@ export interface CollectionEntity {
      * @memberof CollectionEntity
      */
     'updatedAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface CompositeElement
+ */
+export interface CompositeElement {
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeElement
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeElement
+     */
+    'left': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeElement
+     */
+    'top': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeElement
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeElement
+     */
+    'height': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeElement
+     */
+    'fit': CompositeElementFitEnum;
+}
+
+export const CompositeElementFitEnum = {
+    Cover: 'cover',
+    Contain: 'contain',
+    Fill: 'fill',
+    Inside: 'inside',
+    Outside: 'outside'
+} as const;
+
+export type CompositeElementFitEnum = typeof CompositeElementFitEnum[keyof typeof CompositeElementFitEnum];
+
+/**
+ * 
+ * @export
+ * @interface CompositeV1ControllerInput
+ */
+export interface CompositeV1ControllerInput {
+    /**
+     * 
+     * @type {CompositeV1Input}
+     * @memberof CompositeV1ControllerInput
+     */
+    'input': CompositeV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof CompositeV1ControllerInput
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface CompositeV1Input
+ */
+export interface CompositeV1Input {
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeV1Input
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CompositeV1Input
+     */
+    'height': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Input
+     */
+    'background': string;
+    /**
+     * 
+     * @type {Array<CompositeElement>}
+     * @memberof CompositeV1Input
+     */
+    'elements': Array<CompositeElement>;
 }
 /**
  * 
@@ -266,6 +389,44 @@ export interface CreateStorageRecordParamsDto {
 /**
  * 
  * @export
+ * @interface CutV1ControllerInput
+ */
+export interface CutV1ControllerInput {
+    /**
+     * 
+     * @type {CutV1Input}
+     * @memberof CutV1ControllerInput
+     */
+    'input': CutV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof CutV1ControllerInput
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface CutV1Input
+ */
+export interface CutV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Input
+     */
+    'maskImageId': string;
+}
+/**
+ * 
+ * @export
  * @interface DeleteStorageParamsDto
  */
 export interface DeleteStorageParamsDto {
@@ -287,7 +448,7 @@ export interface GPTV1ControllerInput {
      * @type {GPTV1Input}
      * @memberof GPTV1ControllerInput
      */
-    'input'?: GPTV1Input;
+    'input': GPTV1Input;
     /**
      * 
      * @type {object}
@@ -338,7 +499,7 @@ export interface GenerateV1ControllerInput {
      * @type {GenerateV1Input}
      * @memberof GenerateV1ControllerInput
      */
-    'input'?: GenerateV1Input;
+    'input': GenerateV1Input;
     /**
      * 
      * @type {object}
@@ -433,7 +594,7 @@ export interface GenerateV3ControllerInput {
      * @type {GenerateV3Input}
      * @memberof GenerateV3ControllerInput
      */
-    'input'?: GenerateV3Input;
+    'input': GenerateV3Input;
     /**
      * 
      * @type {object}
@@ -507,6 +668,19 @@ export interface GenerateV3Input {
      * @memberof GenerateV3Input
      */
     'numInferenceSteps': number;
+}
+/**
+ * 
+ * @export
+ * @interface GetCollectionParamsDto
+ */
+export interface GetCollectionParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCollectionParamsDto
+     */
+    'collectionId': string;
 }
 /**
  * 
@@ -634,7 +808,8 @@ export const ImageEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type ImageEntityKindEnum = typeof ImageEntityKindEnum[keyof typeof ImageEntityKindEnum];
@@ -694,7 +869,7 @@ export interface ImagineV1ControllerInput {
      * @type {ImagineV1Input}
      * @memberof ImagineV1ControllerInput
      */
-    'input'?: ImagineV1Input;
+    'input': ImagineV1Input;
     /**
      * 
      * @type {object}
@@ -766,7 +941,7 @@ export interface InpaintV1ControllerInput {
      * @type {InpaintV1Input}
      * @memberof InpaintV1ControllerInput
      */
-    'input'?: InpaintV1Input;
+    'input': InpaintV1Input;
     /**
      * 
      * @type {object}
@@ -952,6 +1127,41 @@ export interface ListStacksDto {
 /**
  * 
  * @export
+ * @interface ListStacksParamsDto
+ */
+export interface ListStacksParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListStacksParamsDto
+     */
+    'orderBy'?: ListStacksParamsDtoOrderByEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListStacksParamsDto
+     */
+    'limit'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListStacksParamsDto
+     */
+    'cursor'?: string;
+}
+
+export const ListStacksParamsDtoOrderByEnum = {
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC',
+    UpdatedAtAsc: 'updatedAt_ASC',
+    UpdatedAtDesc: 'updatedAt_DESC'
+} as const;
+
+export type ListStacksParamsDtoOrderByEnum = typeof ListStacksParamsDtoOrderByEnum[keyof typeof ListStacksParamsDtoOrderByEnum];
+
+/**
+ * 
+ * @export
  * @interface ObjectDetectionV1ControllerInput
  */
 export interface ObjectDetectionV1ControllerInput {
@@ -960,7 +1170,7 @@ export interface ObjectDetectionV1ControllerInput {
      * @type {ObjectDetectionV1Input}
      * @memberof ObjectDetectionV1ControllerInput
      */
-    'input'?: ObjectDetectionV1Input;
+    'input': ObjectDetectionV1Input;
     /**
      * 
      * @type {object}
@@ -1061,7 +1271,8 @@ export const OperationEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type OperationEntityKindEnum = typeof OperationEntityKindEnum[keyof typeof OperationEntityKindEnum];
@@ -1147,14 +1358,15 @@ export const PipelineEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type PipelineEntityKindEnum = typeof PipelineEntityKindEnum[keyof typeof PipelineEntityKindEnum];
 export const PipelineEntityStatusEnum = {
     Pending: 'pending',
-    Running: 'running',
-    Success: 'success',
+    InProgress: 'in_progress',
+    Completed: 'completed',
     Failed: 'failed'
 } as const;
 
@@ -1228,7 +1440,8 @@ export const PoseEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type PoseEntityKindEnum = typeof PoseEntityKindEnum[keyof typeof PoseEntityKindEnum];
@@ -1244,7 +1457,7 @@ export interface PoseEstimationV1ControllerInput {
      * @type {PoseEstimationV1Input}
      * @memberof PoseEstimationV1ControllerInput
      */
-    'input'?: PoseEstimationV1Input;
+    'input': PoseEstimationV1Input;
     /**
      * 
      * @type {object}
@@ -1356,7 +1569,8 @@ export const ResourceEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof ResourceEntityKindEnum];
@@ -1372,7 +1586,7 @@ export interface SegmentAnythingEmbeddingsV1ControllerInput {
      * @type {SegmentAnythingEmbeddingsV1Input}
      * @memberof SegmentAnythingEmbeddingsV1ControllerInput
      */
-    'input'?: SegmentAnythingEmbeddingsV1Input;
+    'input': SegmentAnythingEmbeddingsV1Input;
     /**
      * 
      * @type {object}
@@ -1392,6 +1606,44 @@ export interface SegmentAnythingEmbeddingsV1Input {
      * @memberof SegmentAnythingEmbeddingsV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface SegmentAnythingMaskV1ControllerInput
+ */
+export interface SegmentAnythingMaskV1ControllerInput {
+    /**
+     * 
+     * @type {SegmentAnythingMaskV1Input}
+     * @memberof SegmentAnythingMaskV1ControllerInput
+     */
+    'input': SegmentAnythingMaskV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingMaskV1ControllerInput
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface SegmentAnythingMaskV1Input
+ */
+export interface SegmentAnythingMaskV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof SegmentAnythingMaskV1Input
+     */
+    'box': Array<number>;
 }
 /**
  * 
@@ -1517,7 +1769,8 @@ export const StorageEntityKindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 
 export type StorageEntityKindEnum = typeof StorageEntityKindEnum[keyof typeof StorageEntityKindEnum];
@@ -1584,7 +1837,7 @@ export interface UpscaleV1ControllerInput {
      * @type {UpscaleV1Input}
      * @memberof UpscaleV1ControllerInput
      */
-    'input'?: UpscaleV1Input;
+    'input': UpscaleV1Input;
     /**
      * 
      * @type {object}
@@ -2172,11 +2425,14 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
+         * @param {CreateCollectionParamsDto} createCollectionParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallMethodV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/v1/call`;
+        callControllerCallCollectionsCreateV1: async (createCollectionParamsDto: CreateCollectionParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createCollectionParamsDto' is not null or undefined
+            assertParamExists('callControllerCallCollectionsCreateV1', 'createCollectionParamsDto', createCollectionParamsDto)
+            const localVarPath = `/v1/call/collections.create`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2194,9 +2450,246 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createCollectionParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {GetCollectionParamsDto} getCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsGetV1: async (getCollectionParamsDto: GetCollectionParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getCollectionParamsDto' is not null or undefined
+            assertParamExists('callControllerCallCollectionsGetV1', 'getCollectionParamsDto', getCollectionParamsDto)
+            const localVarPath = `/v1/call/collections.get`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getCollectionParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsItemsAddV1: async (addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'addItemsToCollectionParamsDto' is not null or undefined
+            assertParamExists('callControllerCallCollectionsItemsAddV1', 'addItemsToCollectionParamsDto', addItemsToCollectionParamsDto)
+            const localVarPath = `/v1/call/collections.items.add`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(addItemsToCollectionParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsItemsRemoveV1: async (addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'addItemsToCollectionParamsDto' is not null or undefined
+            assertParamExists('callControllerCallCollectionsItemsRemoveV1', 'addItemsToCollectionParamsDto', addItemsToCollectionParamsDto)
+            const localVarPath = `/v1/call/collections.items.remove`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(addItemsToCollectionParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallImagesGetUrlsV1: async (getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getUrlsForImagesParamsDto' is not null or undefined
+            assertParamExists('callControllerCallImagesGetUrlsV1', 'getUrlsForImagesParamsDto', getUrlsForImagesParamsDto)
+            const localVarPath = `/v1/call/images.getUrls`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getUrlsForImagesParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CreateStackParamsDto} createStackParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallStacksCreateV1: async (createStackParamsDto: CreateStackParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createStackParamsDto' is not null or undefined
+            assertParamExists('callControllerCallStacksCreateV1', 'createStackParamsDto', createStackParamsDto)
+            const localVarPath = `/v1/call/stacks.create`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createStackParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ListStacksParamsDto} listStacksParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallStacksListV1: async (listStacksParamsDto: ListStacksParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'listStacksParamsDto' is not null or undefined
+            assertParamExists('callControllerCallStacksListV1', 'listStacksParamsDto', listStacksParamsDto)
+            const localVarPath = `/v1/call/stacks.list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(listStacksParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2215,13 +2708,86 @@ export const CallApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {CreateCollectionParamsDto} createCollectionParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallMethodV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallMethodV1(options);
+        async callControllerCallCollectionsCreateV1(createCollectionParamsDto: CreateCollectionParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallCollectionsCreateV1(createCollectionParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallMethodV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallCollectionsCreateV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {GetCollectionParamsDto} getCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallCollectionsGetV1(getCollectionParamsDto: GetCollectionParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallCollectionsGetV1(getCollectionParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallCollectionsGetV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallCollectionsItemsAddV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallCollectionsItemsRemoveV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ImageUrlResponseDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallImagesGetUrlsV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {CreateStackParamsDto} createStackParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallStacksCreateV1(createStackParamsDto: CreateStackParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StackEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallStacksCreateV1(createStackParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallStacksCreateV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {ListStacksParamsDto} listStacksParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallStacksListV1(listStacksParamsDto: ListStacksParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListStacksDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallStacksListV1(listStacksParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallStacksListV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -2236,11 +2802,66 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
+         * @param {CreateCollectionParamsDto} createCollectionParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallMethodV1(options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.callControllerCallMethodV1(options).then((request) => request(axios, basePath));
+        callControllerCallCollectionsCreateV1(createCollectionParamsDto: CreateCollectionParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<CollectionEntity> {
+            return localVarFp.callControllerCallCollectionsCreateV1(createCollectionParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {GetCollectionParamsDto} getCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsGetV1(getCollectionParamsDto: GetCollectionParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<CollectionEntity> {
+            return localVarFp.callControllerCallCollectionsGetV1(getCollectionParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<Array<ImageUrlResponseDto>> {
+            return localVarFp.callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {CreateStackParamsDto} createStackParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallStacksCreateV1(createStackParamsDto: CreateStackParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StackEntity> {
+            return localVarFp.callControllerCallStacksCreateV1(createStackParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ListStacksParamsDto} listStacksParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallStacksListV1(listStacksParamsDto: ListStacksParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<ListStacksDto> {
+            return localVarFp.callControllerCallStacksListV1(listStacksParamsDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2254,12 +2875,79 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
 export class CallApi extends BaseAPI {
     /**
      * 
+     * @param {CreateCollectionParamsDto} createCollectionParamsDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallMethodV1(options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallMethodV1(options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallCollectionsCreateV1(createCollectionParamsDto: CreateCollectionParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallCollectionsCreateV1(createCollectionParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GetCollectionParamsDto} getCollectionParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallCollectionsGetV1(getCollectionParamsDto: GetCollectionParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallCollectionsGetV1(getCollectionParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallCollectionsItemsAddV1(addItemsToCollectionParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AddItemsToCollectionParamsDto} addItemsToCollectionParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto: AddItemsToCollectionParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallCollectionsItemsRemoveV1(addItemsToCollectionParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallImagesGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CreateStackParamsDto} createStackParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallStacksCreateV1(createStackParamsDto: CreateStackParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallStacksCreateV1(createStackParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ListStacksParamsDto} listStacksParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallStacksListV1(listStacksParamsDto: ListStacksParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallStacksListV1(listStacksParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2892,7 +3580,8 @@ export const CollectionsControllerListItemsV1KindEnum = {
     Stack: 'stack',
     Image: 'image',
     Pose: 'pose',
-    Storage: 'storage'
+    Storage: 'storage',
+    Pipeline: 'pipeline'
 } as const;
 export type CollectionsControllerListItemsV1KindEnum = typeof CollectionsControllerListItemsV1KindEnum[keyof typeof CollectionsControllerListItemsV1KindEnum];
 
@@ -3812,6 +4501,84 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCompositeV1V1: async (compositeV1ControllerInput: CompositeV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'compositeV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunCompositeV1V1', 'compositeV1ControllerInput', compositeV1ControllerInput)
+            const localVarPath = `/v1/operations/run/composite.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(compositeV1ControllerInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCutV1V1: async (cutV1ControllerInput: CutV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cutV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunCutV1V1', 'cutV1ControllerInput', cutV1ControllerInput)
+            const localVarPath = `/v1/operations/run/cut.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(cutV1ControllerInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {GenerateV1ControllerInput} generateV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4124,6 +4891,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunSegmentAnythingMaskV1V1: async (segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'segmentAnythingMaskV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunSegmentAnythingMaskV1V1', 'segmentAnythingMaskV1ControllerInput', segmentAnythingMaskV1ControllerInput)
+            const localVarPath = `/v1/operations/run/segmentAnything.mask.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingMaskV1ControllerInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4254,6 +5060,30 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCompositeV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCutV1V1(cutV1ControllerInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCutV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {GenerateV1ControllerInput} generateV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4350,6 +5180,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunSegmentAnythingMaskV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4411,6 +5253,24 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerListOperationsV1(orderBy?: OperationsControllerListOperationsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListOperationsDto> {
             return localVarFp.operationsControllerListOperationsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunCutV1V1(cutV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4486,6 +5346,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+            return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4546,6 +5415,28 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerListOperationsV1(orderBy?: OperationsControllerListOperationsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerListOperationsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CutV1ControllerInput} cutV1ControllerInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunCutV1V1(cutV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4634,6 +5525,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4754,76 +5656,6 @@ export const PipelinesApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pipelinesControllerListPipelinesV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/v1/pipelines`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pipelinesControllerUpdatePipelineV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('pipelinesControllerUpdatePipelineV1', 'id', id)
-            const localVarPath = `/v1/pipelines/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -4858,29 +5690,6 @@ export const PipelinesApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerGetPipelineV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async pipelinesControllerListPipelinesV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerListPipelinesV1(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerListPipelinesV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async pipelinesControllerUpdatePipelineV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerUpdatePipelineV1(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerUpdatePipelineV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
     }
 };
 
@@ -4908,23 +5717,6 @@ export const PipelinesApiFactory = function (configuration?: Configuration, base
          */
         pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.pipelinesControllerGetPipelineV1(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pipelinesControllerListPipelinesV1(options?: RawAxiosRequestConfig): AxiosPromise<Array<object>> {
-            return localVarFp.pipelinesControllerListPipelinesV1(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pipelinesControllerUpdatePipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<object> {
-            return localVarFp.pipelinesControllerUpdatePipelineV1(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4956,27 +5748,6 @@ export class PipelinesApi extends BaseAPI {
      */
     public pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig) {
         return PipelinesApiFp(this.configuration).pipelinesControllerGetPipelineV1(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PipelinesApi
-     */
-    public pipelinesControllerListPipelinesV1(options?: RawAxiosRequestConfig) {
-        return PipelinesApiFp(this.configuration).pipelinesControllerListPipelinesV1(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PipelinesApi
-     */
-    public pipelinesControllerUpdatePipelineV1(id: string, options?: RawAxiosRequestConfig) {
-        return PipelinesApiFp(this.configuration).pipelinesControllerUpdatePipelineV1(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
