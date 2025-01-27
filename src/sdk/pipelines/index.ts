@@ -41,16 +41,16 @@ const pipelines = (options: SDKOptions) => {
             },
         });
 
+    type PipelineType = ReturnType<typeof createPipeline>;
     return {
-        create: async (props: {
-            metadata?: any;
-            tasks: (pipeline: ReturnType<typeof createPipeline>) => ReturnType<typeof createPipeline>;
-        }): Promise<PipelineEntity> =>
+        constructTemplate: (consructPipeline: (pipeline: PipelineType) => PipelineType): PipelineType =>
+            consructPipeline(createPipeline()),
+        create: async (props: { metadata?: any; template: PipelineType }): Promise<PipelineEntity> =>
             api.call({
                 run: (methods) =>
                     methods.pipelinesControllerCreatePipelineV1({
                         metadata: props.metadata,
-                        tasks: props.tasks(createPipeline()).tasks,
+                        tasks: props.template.tasks,
                     }),
             }),
         get: async (props: { id: string }): Promise<PipelineEntity | undefined> =>

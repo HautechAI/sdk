@@ -3,13 +3,13 @@ import { sdk } from './utils';
 
 describe('Pipelines', () => {
     it('should create pipeline', async () => {
-        const pipeline = await sdk.pipelines.create({
-            tasks: (pipe) => {
-                const collection = pipe.defer.collections.create({});
-                const gotCollection = pipe.defer.collections.get({ collectionId: collection.result.id });
-                return pipe;
-            },
+        const pipelineTemplate = sdk.pipelines.constructTemplate((pipeline) => {
+            const collection = pipeline.defer.collections.create({});
+            const gotCollection = pipeline.defer.collections.get({ collectionId: collection.result.id });
+            return pipeline;
         });
+
+        const pipeline = await sdk.pipelines.create({ template: pipelineTemplate });
         expect(pipeline).toBeDefined();
 
         const finishedPipeline = await sdk.pipelines.wait({ id: pipeline.id });
