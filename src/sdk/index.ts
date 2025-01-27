@@ -6,6 +6,7 @@ import groups from './groups';
 import images from './images';
 import { jwtDecode } from 'jwt-decode';
 import operations from './operations';
+import pipelines from './pipelines';
 import stacks from './stacks';
 import storage from './storage';
 import utils from './utils';
@@ -31,6 +32,7 @@ export const createSDK = (options: SDKOptions) => {
         groups: groups(optionsWithTokenRefresher),
         images: images(optionsWithTokenRefresher),
         operations: operations(optionsWithTokenRefresher),
+        pipelines: pipelines(optionsWithTokenRefresher),
         stacks: stacks(optionsWithTokenRefresher),
         storage: storage(optionsWithTokenRefresher),
         utils: utils(optionsWithTokenRefresher),

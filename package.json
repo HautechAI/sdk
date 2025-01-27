@@ -17,6 +17,7 @@
     },
     "description": "Hautech SDK",
     "dependencies": {
+        "@hautechai/pipelines": "0.1.0",
         "axios": "1.6.1",
         "jsonwebtoken": "8.5.1",
         "jwt-decode": "4.0.0",
