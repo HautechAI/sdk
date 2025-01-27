@@ -1,5 +1,4 @@
 import { describe, it, expect } from '@jest/globals';
-import fs from 'fs';
 import { sdk } from './utils';
 
 describe('Pipelines', () => {

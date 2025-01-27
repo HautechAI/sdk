@@ -4,7 +4,7 @@ import { SDKOptions } from '../types';
 import collections from './collections';
 import groups from './groups';
 import images from './images';
-import { jwtDecode } from 'jwt-decode';
+import { decodeJwt } from 'jose';
 import operations from './operations';
 import pipelines from './pipelines';
 import stacks from './stacks';
@@ -15,7 +15,7 @@ export const createSDK = (options: SDKOptions) => {
     let token: string | undefined = undefined;
     const authToken = async (): Promise<string> => {
         if (token) {
-            const decoded = jwtDecode(token);
+            const decoded = decodeJwt(token);
             const currentTime = Math.floor(Date.now() / 1000);
             if (decoded.exp && decoded.exp > currentTime) return token;
         }
