@@ -625,13 +625,13 @@ export interface GenerateV3Input {
      * @type {string}
      * @memberof GenerateV3Input
      */
-    'garmentImage': string;
+    'garmentImageId': string;
     /**
      * 
      * @type {string}
      * @memberof GenerateV3Input
      */
-    'poseImage': string;
+    'poseId': string;
     /**
      * 
      * @type {number}
@@ -720,6 +720,25 @@ export interface GetUrlsForImagesParamsDto {
      * @memberof GetUrlsForImagesParamsDto
      */
     'ids': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface GrantAccessControllerParams
+ */
+export interface GrantAccessControllerParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantAccessControllerParams
+     */
+    'resourceId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantAccessControllerParams
+     */
+    'access': string;
 }
 /**
  * 
@@ -1857,6 +1876,201 @@ export interface UpscaleV1Input {
      */
     'imageId': string;
 }
+
+/**
+ * AccessApi - axios parameter creator
+ * @export
+ */
+export const AccessApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerAccountGrantAccessV1: async (id: string, grantAccessControllerParams: GrantAccessControllerParams, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accessControllerAccountGrantAccessV1', 'id', id)
+            // verify required parameter 'grantAccessControllerParams' is not null or undefined
+            assertParamExists('accessControllerAccountGrantAccessV1', 'grantAccessControllerParams', grantAccessControllerParams)
+            const localVarPath = `/v1/accounts/{id}/grant`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(grantAccessControllerParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerGroupGrantAccessV1: async (id: string, grantAccessControllerParams: GrantAccessControllerParams, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accessControllerGroupGrantAccessV1', 'id', id)
+            // verify required parameter 'grantAccessControllerParams' is not null or undefined
+            assertParamExists('accessControllerGroupGrantAccessV1', 'grantAccessControllerParams', grantAccessControllerParams)
+            const localVarPath = `/v1/groups/{id}/grant`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(grantAccessControllerParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * AccessApi - functional programming interface
+ * @export
+ */
+export const AccessApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AccessApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accessControllerAccountGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerAccountGrantAccessV1(id, grantAccessControllerParams, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerAccountGrantAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accessControllerGroupGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerGroupGrantAccessV1(id, grantAccessControllerParams, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerGroupGrantAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * AccessApi - factory interface
+ * @export
+ */
+export const AccessApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AccessApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerAccountGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accessControllerAccountGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {GrantAccessControllerParams} grantAccessControllerParams 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerGroupGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accessControllerGroupGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * AccessApi - object-oriented interface
+ * @export
+ * @class AccessApi
+ * @extends {BaseAPI}
+ */
+export class AccessApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} id 
+     * @param {GrantAccessControllerParams} grantAccessControllerParams 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessApi
+     */
+    public accessControllerAccountGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig) {
+        return AccessApiFp(this.configuration).accessControllerAccountGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {GrantAccessControllerParams} grantAccessControllerParams 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessApi
+     */
+    public accessControllerGroupGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig) {
+        return AccessApiFp(this.configuration).accessControllerGroupGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
 
 /**
  * AccountsApi - axios parameter creator
