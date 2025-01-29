@@ -57,12 +57,12 @@ const operations = (options: SDKOptions) => {
             haute: {
                 linda: {
                     v1: createOperation<LindaHauteV1Input>((methods, props) =>
-                        methods.operationsControllerRunLindaHauteV1V1(props),
+                        methods.operationsControllerRunHauteLindaV1V1(props),
                     ),
                 },
                 naomi: {
                     v1: createOperation<NaomiHauteV1Input>((methods, props) =>
-                        methods.operationsControllerRunNaomiHauteV1V1(props),
+                        methods.operationsControllerRunHauteNaomiV1V1(props),
                     ),
                 },
             },
@@ -72,14 +72,14 @@ const operations = (options: SDKOptions) => {
             imagine: {
                 kate: {
                     v1: createOperation<KateImagineV1Input>((methods, props) =>
-                        methods.operationsControllerRunKateImagineV1V1(props),
+                        methods.operationsControllerRunImagineKateV1V1(props),
                     ),
                 },
             },
             inpaint: {
                 kate: {
                     v1: createOperation<KateInpaintV1Input>((methods, props) =>
-                        methods.operationsControllerRunKateInpaintV1V1(props),
+                        methods.operationsControllerRunInpaintKateV1V1(props),
                     ),
                 },
             },
