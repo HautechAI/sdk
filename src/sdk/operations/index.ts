@@ -3,11 +3,11 @@ import createOperationUpdater from './updater';
 import {
     CompositeV1Input,
     CutV1Input,
-    GenerateV1Input,
-    GenerateV3Input,
     GPTV1Input,
-    ImagineV1Input,
-    InpaintV1Input,
+    KateImagineV1Input,
+    KateInpaintV1Input,
+    LindaHauteV1Input,
+    NaomiHauteV1Input,
     ObjectDetectionV1Input,
     OperationEntity,
     OperationsApi,
@@ -54,26 +54,34 @@ const operations = (options: SDKOptions) => {
                     methods.operationsControllerRunPoseEstimationV1V1(props),
                 ),
             },
-            generate: {
-                v1: createOperation<GenerateV1Input>((methods, props) =>
-                    methods.operationsControllerRunGenerateV1V1(props),
-                ),
-                v3: createOperation<GenerateV3Input>((methods, props) =>
-                    methods.operationsControllerRunGenerateV3V1(props),
-                ),
+            haute: {
+                linda: {
+                    v1: createOperation<LindaHauteV1Input>((methods, props) =>
+                        methods.operationsControllerRunLindaHauteV1V1(props),
+                    ),
+                },
+                naomi: {
+                    v1: createOperation<NaomiHauteV1Input>((methods, props) =>
+                        methods.operationsControllerRunNaomiHauteV1V1(props),
+                    ),
+                },
             },
             gpt: {
                 v1: createOperation<GPTV1Input>((methods, props) => methods.operationsControllerRunGptV1V1(props)),
             },
             imagine: {
-                v1: createOperation<ImagineV1Input>((methods, props) =>
-                    methods.operationsControllerRunImagineV1V1(props),
-                ),
+                kate: {
+                    v1: createOperation<KateImagineV1Input>((methods, props) =>
+                        methods.operationsControllerRunKateImagineV1V1(props),
+                    ),
+                },
             },
             inpaint: {
-                v1: createOperation<InpaintV1Input>((methods, props) =>
-                    methods.operationsControllerRunInpaintV1V1(props),
-                ),
+                kate: {
+                    v1: createOperation<KateInpaintV1Input>((methods, props) =>
+                        methods.operationsControllerRunKateInpaintV1V1(props),
+                    ),
+                },
             },
             segmentEmbeddings: {
                 v1: createOperation<SegmentAnythingEmbeddingsV1Input>((methods, props) =>

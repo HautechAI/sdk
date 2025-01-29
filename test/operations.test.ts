@@ -9,7 +9,7 @@ describe('Operations', () => {
         const image = await sdk.images.createFromFile({ file });
         expect(image).toBeDefined();
 
-        const operation = await sdk.operations.create.generate.v1({
+        const operation = await sdk.operations.create.haute.linda.v1({
             input: {
                 aspectRatio: '1:1',
                 imageWeight: 0.5,

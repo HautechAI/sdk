@@ -8,6 +8,7 @@ export type MethodsPermissions = {
     accounts: {
         create: boolean;
         read: boolean;
+        list: boolean;
     };
     balances: {
         read: boolean;
@@ -56,6 +57,7 @@ export type MethodsPermissions = {
     poses: {
         create: boolean;
         read: boolean;
+        update: boolean;
     };
     stacks: {
         create: boolean;
