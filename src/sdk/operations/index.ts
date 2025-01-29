@@ -3,6 +3,7 @@ import createOperationUpdater from './updater';
 import {
     CompositeV1Input,
     CutV1Input,
+    GiseleVtonV1Input,
     GPTV1Input,
     KateImagineV1Input,
     KateInpaintV1Input,
@@ -97,6 +98,13 @@ const operations = (options: SDKOptions) => {
                 v1: createOperation<UpscaleV1Input>((methods, props) =>
                     methods.operationsControllerRunUpscaleV1V1(props),
                 ),
+            },
+            vton: {
+                gisele: {
+                    v1: createOperation<GiseleVtonV1Input>((methods, props) =>
+                        methods.operationsControllerRunVtonGiseleV1V1(props),
+                    ),
+                },
             },
         },
         get: (props: { id: string }): Promise<OperationEntity | undefined> =>
