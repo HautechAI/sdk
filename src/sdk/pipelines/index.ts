@@ -17,20 +17,49 @@ const pipelines = (options: SDKOptions) => {
 
     const createPipeline = () =>
         new Pipeline({
+            accounts: {
+                create: callMethod((methods) => methods.callControllerCallAccountsCreateV1),
+                get: callMethod((methods) => methods.callControllerCallAccountsGetV1),
+                list: callMethod((methods) => methods.callControllerCallAccountsListV1),
+            },
+            balances: {
+                add: callMethod((methods) => methods.callControllerCallAccountsBalanceAddV1),
+                get: callMethod((methods) => methods.callControllerCallAccountsBalanceGetV1),
+                getSelf: callMethod((methods) => methods.callControllerCallAccountsBalanceSelfV1),
+            },
             collections: {
                 create: callMethod((methods) => methods.callControllerCallCollectionsCreateV1),
                 items: {
                     add: callMethod((methods) => methods.callControllerCallCollectionsItemsAddV1),
+                    list: callMethod((methods) => methods.callControllerCallCollectionsItemsListV1),
                     remove: callMethod((methods) => methods.callControllerCallCollectionsItemsRemoveV1),
                 },
                 get: callMethod((methods) => methods.callControllerCallCollectionsGetV1),
+                list: callMethod((methods) => methods.callControllerCallCollectionsListV1),
+                updateMetadata: callMethod((methods) => methods.callControllerCallCollectionsMetadataUpdateV1),
+            },
+            groups: {
+                accounts: {
+                    add: callMethod((methods) => methods.callControllerCallGroupsAccountsAddV1),
+                    remove: callMethod((methods) => methods.callControllerCallGroupsAccountsRemoveV1),
+                },
+                create: callMethod((methods) => methods.callControllerCallGroupsCreateV1),
+                delete: callMethod((methods) => methods.callControllerCallGroupsDeleteV1),
+                get: callMethod((methods) => methods.callControllerCallGroupsGetV1),
             },
             images: {
-                getMany: callMethod((methods) => methods.callControllerCallImagesGetManyV1),
+                getUrls: callMethod((methods) => methods.callControllerCallImagesGetManyV1),
+            },
+            operations: {
+                get: callMethod((methods) => methods.callControllerCallOperationsGetV1),
+                list: callMethod((methods) => methods.callControllerCallOperationsListV1),
+                updateMetadata: callMethod((methods) => methods.callControllerCallOperationsMetadataUpdateV1),
             },
             stacks: {
                 create: callMethod((methods) => methods.callControllerCallStacksCreateV1),
+                get: callMethod((methods) => methods.callControllerCallStacksGetV1),
                 list: callMethod((methods) => methods.callControllerCallStacksListV1),
+                updateMetadata: callMethod((methods) => methods.callControllerCallStacksMetadataUpdateV1),
             },
         });
 

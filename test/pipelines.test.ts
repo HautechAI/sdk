@@ -2,10 +2,28 @@ import { describe, it, expect } from '@jest/globals';
 import { sdk } from './utils';
 
 describe('Pipelines', () => {
-    it('should create pipeline', async () => {
+    it('should create collection pipeline', async () => {
         const pipelineTemplate = sdk.pipelines.constructTemplate((pipeline) => {
+            const stack = pipeline.defer.stacks.create({});
+
             const collection = pipeline.defer.collections.create({});
             const gotCollection = pipeline.defer.collections.get({ collectionId: collection.result.id });
+
+            pipeline.defer.collections.items.add({
+                collectionId: gotCollection.result.id,
+                itemIds: [stack.result.id],
+            });
+            pipeline.defer.collections.items.list({
+                collectionId: gotCollection.result.id,
+            });
+            pipeline.defer.collections.items.remove({
+                collectionId: gotCollection.result.id,
+                itemIds: [stack.result.id],
+            });
+            // pipeline.defer.collections.updateMetadata({
+            //     id: gotCollection.result.id,
+            //     update: { overwrite: { name: 'test' } },
+            // });
             return pipeline;
         });
 

@@ -1,10 +1,5 @@
 // This file is auto-generated. Do not edit manually.
 export type MethodsPermissions = {
-    access: {
-        add: boolean;
-        read: boolean;
-        remove: boolean;
-    };
     accounts: {
         create: boolean;
         read: boolean;
@@ -68,6 +63,15 @@ export type MethodsPermissions = {
         };
         metadata: {
             update: boolean;
+        };
+    };
+    resources: {
+        access: {
+            read: boolean;
+            grant: boolean;
+            revoke: boolean;
+            attach: boolean;
+            dettach: boolean;
         };
     };
     storage: {
