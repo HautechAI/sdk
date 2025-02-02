@@ -18,7 +18,7 @@ const groups = (options: SDKOptions) => {
             }): Promise<void> =>
                 api.call({
                     run: (methods) =>
-                        methods.groupsControllerAddAccountsV1(props.groupId, {
+                        methods.groupsControllerAddAccountV1(props.groupId, {
                             accountId: props.accountId,
                             role: props.role,
                         }),
@@ -30,7 +30,7 @@ const groups = (options: SDKOptions) => {
             }): Promise<void> =>
                 api.call({
                     run: (methods) =>
-                        methods.groupsControllerRemoveAccountsV1(props.groupId, {
+                        methods.groupsControllerRemoveAccountV1(props.groupId, {
                             accountId: props.accountId,
                             role: props.role,
                         }),

@@ -1,3 +1,4 @@
+import access from './access';
 import accounts from './accounts';
 import balances from './balances';
 import { SDKOptions } from '../types';
@@ -26,6 +27,7 @@ export const createSDK = (options: SDKOptions) => {
     const optionsWithTokenRefresher = { ...options, authToken };
 
     return {
+        access: access(optionsWithTokenRefresher),
         accounts: accounts(optionsWithTokenRefresher),
         balances: balances(optionsWithTokenRefresher),
         collections: collections(optionsWithTokenRefresher),

@@ -6,13 +6,13 @@ export const defaultPermissions: MethodsPermissions = {
     collections: {
         create: true,
         items: { add: true, read: true, remove: true },
+        metadata: { update: true },
         read: true,
-        update: true,
     },
     groups: { accounts: { add: false, read: true, remove: false }, create: false, delete: false, read: true },
     images: { create: true, read: true },
     operations: { create: true, read: true, metadata: { update: true } },
-    pipelines: { create: true, read: true, update: true },
+    pipelines: { create: true, read: true },
     poses: { create: true, read: true, update: true },
     resources: {
         access: {

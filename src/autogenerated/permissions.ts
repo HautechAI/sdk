@@ -16,11 +16,13 @@ export type MethodsPermissions = {
     collections: {
         create: boolean;
         read: boolean;
-        update: boolean;
         items: {
             add: boolean;
             read: boolean;
             remove: boolean;
+        };
+        metadata: {
+            update: boolean;
         };
     };
     groups: {
@@ -47,7 +49,6 @@ export type MethodsPermissions = {
     pipelines: {
         create: boolean;
         read: boolean;
-        update: boolean;
     };
     poses: {
         create: boolean;
