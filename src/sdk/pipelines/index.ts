@@ -48,6 +48,7 @@ const pipelines = (options: SDKOptions) => {
                 get: callMethod((methods) => methods.callControllerCallGroupsGetV1),
             },
             images: {
+                get: callMethod((methods) => methods.callControllerCallImagesGetV1),
                 getUrls: callMethod((methods) => methods.callControllerCallImagesGetManyV1),
             },
             operations: {
@@ -55,11 +56,21 @@ const pipelines = (options: SDKOptions) => {
                 list: callMethod((methods) => methods.callControllerCallOperationsListV1),
                 updateMetadata: callMethod((methods) => methods.callControllerCallOperationsMetadataUpdateV1),
             },
+            poses: {
+                get: callMethod((methods) => methods.callControllerCallPosesGetV1),
+                list: callMethod((methods) => methods.callControllerCallPosesListV1),
+            },
             stacks: {
                 create: callMethod((methods) => methods.callControllerCallStacksCreateV1),
                 get: callMethod((methods) => methods.callControllerCallStacksGetV1),
                 list: callMethod((methods) => methods.callControllerCallStacksListV1),
                 updateMetadata: callMethod((methods) => methods.callControllerCallStacksMetadataUpdateV1),
+            },
+            storage: {
+                create: callMethod((methods) => methods.callControllerCallStorageCreateV1),
+                delete: callMethod((methods) => methods.callControllerCallStorageDeleteV1),
+                getMany: callMethod((methods) => methods.callControllerCallStorageGetManyV1),
+                update: callMethod((methods) => methods.callControllerCallStorageUpdateV1),
             },
         });
 
