@@ -17,6 +17,10 @@ const pipelines = (options: SDKOptions) => {
 
     const createPipeline = () =>
         new Pipeline({
+            access: {
+                attach: callMethod((methods) => methods.callControllerCallResourceAccessAttachV1),
+                grant: callMethod((methods) => methods.callControllerCallResourceAccessGrantV1),
+            },
             accounts: {
                 create: callMethod((methods) => methods.callControllerCallAccountsCreateV1),
                 get: callMethod((methods) => methods.callControllerCallAccountsGetV1),
