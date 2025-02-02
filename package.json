@@ -1,6 +1,6 @@
 {
     "name": "@hautechai/sdk",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "license": "MIT",
     "keywords": [],
     "repository": {
@@ -19,8 +19,7 @@
     "dependencies": {
         "@hautechai/pipelines": "0.1.0",
         "axios": "1.6.1",
-        "jose": "5.9.6",
-        "pusher-js": "8.4.0-rc2"
+        "jose": "5.9.6"
     },
     "devDependencies": {
         "@openapitools/openapi-generator-cli": "2.15.3",
