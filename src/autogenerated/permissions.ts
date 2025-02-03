@@ -72,7 +72,7 @@ export type MethodsPermissions = {
             grant: boolean;
             revoke: boolean;
             attach: boolean;
-            dettach: boolean;
+            detach: boolean;
         };
     };
     storage: {
