@@ -17,7 +17,7 @@ export const defaultPermissions: MethodsPermissions = {
     resources: {
         access: {
             attach: true,
-            dettach: true,
+            detach: true,
             grant: true,
             read: true,
             revoke: true,
