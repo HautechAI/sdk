@@ -1162,13 +1162,13 @@ export interface KateInpaintV1Input {
      * @type {string}
      * @memberof KateInpaintV1Input
      */
-    'image': string;
+    'imageId': string;
     /**
      * 
      * @type {string}
      * @memberof KateInpaintV1Input
      */
-    'mask': string;
+    'maskImageId'?: string;
     /**
      * 
      * @type {number}
@@ -1198,13 +1198,13 @@ export interface KateInpaintV1Input {
      * @type {number}
      * @memberof KateInpaintV1Input
      */
-    'height': number;
+    'height'?: number;
     /**
      * 
      * @type {number}
      * @memberof KateInpaintV1Input
      */
-    'width': number;
+    'width'?: number;
     /**
      * 
      * @type {number}

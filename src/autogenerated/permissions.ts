@@ -81,4 +81,8 @@ export type MethodsPermissions = {
         read: boolean;
         update: boolean;
     };
+    websocket: {
+        connect: boolean;
+        subscribe: boolean;
+    };
 };
