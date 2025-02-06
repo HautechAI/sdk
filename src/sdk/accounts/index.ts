@@ -17,6 +17,10 @@ const accounts = (options: SDKOptions) => {
             api.callWithReturningUndefinedOn404({
                 run: (methods) => methods.accountsControllerGetAccountByAliasV1(props.alias),
             }),
+        list: async (): Promise<AccountEntity[]> =>
+            api.call({
+                run: (methods) => methods.accountsControllerListAccountsV1(),
+            })
     };
 };
 

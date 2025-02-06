@@ -4165,13 +4165,13 @@ export const AccountsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {AccountsControllerListAccointsV1OrderByEnum} [orderBy] 
+         * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountsControllerListAccointsV1: async (orderBy?: AccountsControllerListAccointsV1OrderByEnum, limit?: number, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        accountsControllerListAccountsV1: async (orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4270,16 +4270,16 @@ export const AccountsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {AccountsControllerListAccointsV1OrderByEnum} [orderBy] 
+         * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountsControllerListAccointsV1(orderBy?: AccountsControllerListAccointsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListAccountsDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerListAccointsV1(orderBy, limit, cursor, options);
+        async accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListAccountsDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerListAccountsV1(orderBy, limit, cursor, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerListAccointsV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerListAccountsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -4329,14 +4329,14 @@ export const AccountsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {AccountsControllerListAccointsV1OrderByEnum} [orderBy] 
+         * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountsControllerListAccointsV1(orderBy?: AccountsControllerListAccointsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccountsDto> {
-            return localVarFp.accountsControllerListAccointsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
+        accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccountsDto> {
+            return localVarFp.accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4393,26 +4393,26 @@ export class AccountsApi extends BaseAPI {
 
     /**
      * 
-     * @param {AccountsControllerListAccointsV1OrderByEnum} [orderBy] 
+     * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
      * @param {number} [limit] 
      * @param {string} [cursor] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountsApi
      */
-    public accountsControllerListAccointsV1(orderBy?: AccountsControllerListAccointsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
-        return AccountsApiFp(this.configuration).accountsControllerListAccointsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    public accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
+        return AccountsApiFp(this.configuration).accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 /**
  * @export
  */
-export const AccountsControllerListAccointsV1OrderByEnum = {
+export const AccountsControllerListAccountsV1OrderByEnum = {
     Asc: 'createdAt_ASC',
     Desc: 'createdAt_DESC'
 } as const;
-export type AccountsControllerListAccointsV1OrderByEnum = typeof AccountsControllerListAccointsV1OrderByEnum[keyof typeof AccountsControllerListAccointsV1OrderByEnum];
+export type AccountsControllerListAccountsV1OrderByEnum = typeof AccountsControllerListAccountsV1OrderByEnum[keyof typeof AccountsControllerListAccountsV1OrderByEnum];
 
 
 /**
