@@ -403,6 +403,87 @@ export interface CompositeV1Input {
 /**
  * 
  * @export
+ * @interface CompositeV1Response
+ */
+export interface CompositeV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'kind': CompositeV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof CompositeV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof CompositeV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'status': CompositeV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CompositeV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
+    'updatedAt': string;
+}
+
+export const CompositeV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type CompositeV1ResponseKindEnum = typeof CompositeV1ResponseKindEnum[keyof typeof CompositeV1ResponseKindEnum];
+export const CompositeV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type CompositeV1ResponseStatusEnum = typeof CompositeV1ResponseStatusEnum[keyof typeof CompositeV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface CreateAccountParamsDto
  */
 export interface CreateAccountParamsDto {
@@ -528,6 +609,87 @@ export interface CutV1Input {
      */
     'maskImageId': string;
 }
+/**
+ * 
+ * @export
+ * @interface CutV1Response
+ */
+export interface CutV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'kind': CutV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof CutV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof CutV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'status': CutV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CutV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'updatedAt': string;
+}
+
+export const CutV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type CutV1ResponseKindEnum = typeof CutV1ResponseKindEnum[keyof typeof CutV1ResponseKindEnum];
+export const CutV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type CutV1ResponseStatusEnum = typeof CutV1ResponseStatusEnum[keyof typeof CutV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -848,6 +1010,87 @@ export type GiseleVtonV1InputCategoryEnum = typeof GiseleVtonV1InputCategoryEnum
 /**
  * 
  * @export
+ * @interface GptV1Response
+ */
+export interface GptV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'kind': GptV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof GptV1Response
+     */
+    'output'?: OperationOutputJSON | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'status': GptV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
+    'updatedAt': string;
+}
+
+export const GptV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type GptV1ResponseKindEnum = typeof GptV1ResponseKindEnum[keyof typeof GptV1ResponseKindEnum];
+export const GptV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type GptV1ResponseStatusEnum = typeof GptV1ResponseStatusEnum[keyof typeof GptV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface GrantAccessControllerParams
  */
 export interface GrantAccessControllerParams {
@@ -936,6 +1179,168 @@ export interface GroupEntity {
      */
     'createdAt': string;
 }
+/**
+ * 
+ * @export
+ * @interface HauteLindaV1Response
+ */
+export interface HauteLindaV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'kind': HauteLindaV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageMultiple}
+     * @memberof HauteLindaV1Response
+     */
+    'output'?: OperationOutputImageMultiple | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteLindaV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'status': HauteLindaV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteLindaV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
+    'updatedAt': string;
+}
+
+export const HauteLindaV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type HauteLindaV1ResponseKindEnum = typeof HauteLindaV1ResponseKindEnum[keyof typeof HauteLindaV1ResponseKindEnum];
+export const HauteLindaV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type HauteLindaV1ResponseStatusEnum = typeof HauteLindaV1ResponseStatusEnum[keyof typeof HauteLindaV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface HauteNaomiV1Response
+ */
+export interface HauteNaomiV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'kind': HauteNaomiV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof HauteNaomiV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteNaomiV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'status': HauteNaomiV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteNaomiV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'updatedAt': string;
+}
+
+export const HauteNaomiV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type HauteNaomiV1ResponseKindEnum = typeof HauteNaomiV1ResponseKindEnum[keyof typeof HauteNaomiV1ResponseKindEnum];
+export const HauteNaomiV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type HauteNaomiV1ResponseStatusEnum = typeof HauteNaomiV1ResponseStatusEnum[keyof typeof HauteNaomiV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -1063,6 +1468,87 @@ export interface ImageUrlResponseDto {
 /**
  * 
  * @export
+ * @interface ImagineKateV1Response
+ */
+export interface ImagineKateV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'kind': ImagineKateV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof ImagineKateV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof ImagineKateV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'status': ImagineKateV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ImagineKateV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
+    'updatedAt': string;
+}
+
+export const ImagineKateV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type ImagineKateV1ResponseKindEnum = typeof ImagineKateV1ResponseKindEnum[keyof typeof ImagineKateV1ResponseKindEnum];
+export const ImagineKateV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type ImagineKateV1ResponseStatusEnum = typeof ImagineKateV1ResponseStatusEnum[keyof typeof ImagineKateV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface InitializeImageUploadResultDto
  */
 export interface InitializeImageUploadResultDto {
@@ -1073,6 +1559,87 @@ export interface InitializeImageUploadResultDto {
      */
     'uploadUrl': string;
 }
+/**
+ * 
+ * @export
+ * @interface InpaintKateV1Response
+ */
+export interface InpaintKateV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'kind': InpaintKateV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof InpaintKateV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof InpaintKateV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'status': InpaintKateV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof InpaintKateV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'updatedAt': string;
+}
+
+export const InpaintKateV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type InpaintKateV1ResponseKindEnum = typeof InpaintKateV1ResponseKindEnum[keyof typeof InpaintKateV1ResponseKindEnum];
+export const InpaintKateV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type InpaintKateV1ResponseStatusEnum = typeof InpaintKateV1ResponseStatusEnum[keyof typeof InpaintKateV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -1777,6 +2344,119 @@ export interface NaomiHauteV1Input {
 /**
  * 
  * @export
+ * @interface NegateImageV1ControllerInput
+ */
+export interface NegateImageV1ControllerInput {
+    /**
+     * 
+     * @type {NegateImageV1Input}
+     * @memberof NegateImageV1ControllerInput
+     */
+    'input': NegateImageV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof NegateImageV1ControllerInput
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface NegateImageV1Input
+ */
+export interface NegateImageV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Input
+     */
+    'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface NegateImageV1Response
+ */
+export interface NegateImageV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'kind': NegateImageV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof NegateImageV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof NegateImageV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'status': NegateImageV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof NegateImageV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
+    'updatedAt': string;
+}
+
+export const NegateImageV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type NegateImageV1ResponseKindEnum = typeof NegateImageV1ResponseKindEnum[keyof typeof NegateImageV1ResponseKindEnum];
+export const NegateImageV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type NegateImageV1ResponseStatusEnum = typeof NegateImageV1ResponseStatusEnum[keyof typeof NegateImageV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface ObjectDetectionV1ControllerInput
  */
 export interface ObjectDetectionV1ControllerInput {
@@ -1815,6 +2495,87 @@ export interface ObjectDetectionV1Input {
 /**
  * 
  * @export
+ * @interface ObjectDetectionV1Response
+ */
+export interface ObjectDetectionV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'kind': ObjectDetectionV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof ObjectDetectionV1Response
+     */
+    'output'?: OperationOutputJSON | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectDetectionV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'status': ObjectDetectionV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectDetectionV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
+    'updatedAt': string;
+}
+
+export const ObjectDetectionV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type ObjectDetectionV1ResponseKindEnum = typeof ObjectDetectionV1ResponseKindEnum[keyof typeof ObjectDetectionV1ResponseKindEnum];
+export const ObjectDetectionV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type ObjectDetectionV1ResponseStatusEnum = typeof ObjectDetectionV1ResponseStatusEnum[keyof typeof ObjectDetectionV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface OperationEntity
  */
 export interface OperationEntity {
@@ -1824,36 +2585,6 @@ export interface OperationEntity {
      * @memberof OperationEntity
      */
     'kind': OperationEntityKindEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof OperationEntity
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OperationEntity
-     */
-    'creatorId': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof OperationEntity
-     */
-    'metadata': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof OperationEntity
-     */
-    'createdAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OperationEntity
-     */
-    'updatedAt': string;
     /**
      * 
      * @type {object}
@@ -1878,16 +2609,40 @@ export interface OperationEntity {
      * @memberof OperationEntity
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationEntity
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationEntity
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof OperationEntity
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationEntity
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationEntity
+     */
+    'updatedAt': string;
 }
 
 export const OperationEntityKindEnum = {
-    Collection: 'collection',
-    Operation: 'operation',
-    Stack: 'stack',
-    Image: 'image',
-    Pose: 'pose',
-    Storage: 'storage',
-    Pipeline: 'pipeline'
+    Operation: 'operation'
 } as const;
 
 export type OperationEntityKindEnum = typeof OperationEntityKindEnum[keyof typeof OperationEntityKindEnum];
@@ -1902,6 +2657,84 @@ export type OperationEntityStatusEnum = typeof OperationEntityStatusEnum[keyof t
 /**
  * 
  * @export
+ * @interface OperationOutputImageMultiple
+ */
+export interface OperationOutputImageMultiple {
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputImageMultiple
+     */
+    'kind': OperationOutputImageMultipleKindEnum;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof OperationOutputImageMultiple
+     */
+    'imageIds': Array<string>;
+}
+
+export const OperationOutputImageMultipleKindEnum = {
+    ImageMultiple: 'image/multiple'
+} as const;
+
+export type OperationOutputImageMultipleKindEnum = typeof OperationOutputImageMultipleKindEnum[keyof typeof OperationOutputImageMultipleKindEnum];
+
+/**
+ * 
+ * @export
+ * @interface OperationOutputImageSingle
+ */
+export interface OperationOutputImageSingle {
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputImageSingle
+     */
+    'kind': OperationOutputImageSingleKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputImageSingle
+     */
+    'imageId': string;
+}
+
+export const OperationOutputImageSingleKindEnum = {
+    ImageSingle: 'image/single'
+} as const;
+
+export type OperationOutputImageSingleKindEnum = typeof OperationOutputImageSingleKindEnum[keyof typeof OperationOutputImageSingleKindEnum];
+
+/**
+ * 
+ * @export
+ * @interface OperationOutputJSON
+ */
+export interface OperationOutputJSON {
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputJSON
+     */
+    'kind': OperationOutputJSONKindEnum;
+    /**
+     * 
+     * @type {object}
+     * @memberof OperationOutputJSON
+     */
+    'data': object;
+}
+
+export const OperationOutputJSONKindEnum = {
+    Json: 'json'
+} as const;
+
+export type OperationOutputJSONKindEnum = typeof OperationOutputJSONKindEnum[keyof typeof OperationOutputJSONKindEnum];
+
+/**
+ * 
+ * @export
  * @interface PipelineEntity
  */
 export interface PipelineEntity {
@@ -1911,6 +2744,30 @@ export interface PipelineEntity {
      * @memberof PipelineEntity
      */
     'kind': PipelineEntityKindEnum;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineEntity
+     */
+    'permissions': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineEntity
+     */
+    'state': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineEntity
+     */
+    'status': PipelineEntityStatusEnum;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineEntity
+     */
+    'tasks': object;
     /**
      * 
      * @type {string}
@@ -1941,39 +2798,9 @@ export interface PipelineEntity {
      * @memberof PipelineEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'permissions': object;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'state': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'status': PipelineEntityStatusEnum;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'tasks': object;
 }
 
 export const PipelineEntityKindEnum = {
-    Collection: 'collection',
-    Operation: 'operation',
-    Stack: 'stack',
-    Image: 'image',
-    Pose: 'pose',
-    Storage: 'storage',
     Pipeline: 'pipeline'
 } as const;
 
@@ -2000,6 +2827,24 @@ export interface PoseEntity {
     'kind': PoseEntityKindEnum;
     /**
      * 
+     * @type {ImageEntity}
+     * @memberof PoseEntity
+     */
+    'sourceImage': ImageEntity;
+    /**
+     * 
+     * @type {ImageEntity}
+     * @memberof PoseEntity
+     */
+    'previewImage'?: ImageEntity;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEntity
+     */
+    'previewImageId'?: string;
+    /**
+     * 
      * @type {string}
      * @memberof PoseEntity
      */
@@ -2028,34 +2873,10 @@ export interface PoseEntity {
      * @memberof PoseEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {ImageEntity}
-     * @memberof PoseEntity
-     */
-    'sourceImage': ImageEntity;
-    /**
-     * 
-     * @type {ImageEntity}
-     * @memberof PoseEntity
-     */
-    'previewImage'?: ImageEntity;
-    /**
-     * 
-     * @type {string}
-     * @memberof PoseEntity
-     */
-    'previewImageId'?: string;
 }
 
 export const PoseEntityKindEnum = {
-    Collection: 'collection',
-    Operation: 'operation',
-    Stack: 'stack',
-    Image: 'image',
-    Pose: 'pose',
-    Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pose: 'pose'
 } as const;
 
 export type PoseEntityKindEnum = typeof PoseEntityKindEnum[keyof typeof PoseEntityKindEnum];
@@ -2092,6 +2913,87 @@ export interface PoseEstimationV1Input {
      */
     'imageId': string;
 }
+/**
+ * 
+ * @export
+ * @interface PoseEstimationV1Response
+ */
+export interface PoseEstimationV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'kind': PoseEstimationV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof PoseEstimationV1Response
+     */
+    'output'?: OperationOutputJSON | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof PoseEstimationV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'status': PoseEstimationV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof PoseEstimationV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
+    'updatedAt': string;
+}
+
+export const PoseEstimationV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type PoseEstimationV1ResponseKindEnum = typeof PoseEstimationV1ResponseKindEnum[keyof typeof PoseEstimationV1ResponseKindEnum];
+export const PoseEstimationV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type PoseEstimationV1ResponseStatusEnum = typeof PoseEstimationV1ResponseStatusEnum[keyof typeof PoseEstimationV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -2296,6 +3198,87 @@ export interface SegmentAnythingEmbeddingsV1Input {
 /**
  * 
  * @export
+ * @interface SegmentAnythingEmbeddingsV1Response
+ */
+export interface SegmentAnythingEmbeddingsV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'kind': SegmentAnythingEmbeddingsV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'output'?: OperationOutputJSON | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'status': SegmentAnythingEmbeddingsV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
+    'updatedAt': string;
+}
+
+export const SegmentAnythingEmbeddingsV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type SegmentAnythingEmbeddingsV1ResponseKindEnum = typeof SegmentAnythingEmbeddingsV1ResponseKindEnum[keyof typeof SegmentAnythingEmbeddingsV1ResponseKindEnum];
+export const SegmentAnythingEmbeddingsV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type SegmentAnythingEmbeddingsV1ResponseStatusEnum = typeof SegmentAnythingEmbeddingsV1ResponseStatusEnum[keyof typeof SegmentAnythingEmbeddingsV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface SegmentAnythingMaskV1ControllerInput
  */
 export interface SegmentAnythingMaskV1ControllerInput {
@@ -2331,6 +3314,87 @@ export interface SegmentAnythingMaskV1Input {
      */
     'box': Array<number>;
 }
+/**
+ * 
+ * @export
+ * @interface SegmentAnythingMaskV1Response
+ */
+export interface SegmentAnythingMaskV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'kind': SegmentAnythingMaskV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'status': SegmentAnythingMaskV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'updatedAt': string;
+}
+
+export const SegmentAnythingMaskV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type SegmentAnythingMaskV1ResponseKindEnum = typeof SegmentAnythingMaskV1ResponseKindEnum[keyof typeof SegmentAnythingMaskV1ResponseKindEnum];
+export const SegmentAnythingMaskV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type SegmentAnythingMaskV1ResponseStatusEnum = typeof SegmentAnythingMaskV1ResponseStatusEnum[keyof typeof SegmentAnythingMaskV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -2442,6 +3506,18 @@ export interface StorageEntity {
      * @type {string}
      * @memberof StorageEntity
      */
+    'key': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof StorageEntity
+     */
+    'value': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof StorageEntity
+     */
     'id': string;
     /**
      * 
@@ -2467,28 +3543,10 @@ export interface StorageEntity {
      * @memberof StorageEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StorageEntity
-     */
-    'key': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof StorageEntity
-     */
-    'value': object;
 }
 
 export const StorageEntityKindEnum = {
-    Collection: 'collection',
-    Operation: 'operation',
-    Stack: 'stack',
-    Image: 'image',
-    Pose: 'pose',
-    Storage: 'storage',
-    Pipeline: 'pipeline'
+    Storage: 'storage'
 } as const;
 
 export type StorageEntityKindEnum = typeof StorageEntityKindEnum[keyof typeof StorageEntityKindEnum];
@@ -2595,6 +3653,168 @@ export interface UpscaleV1Input {
      */
     'imageId': string;
 }
+/**
+ * 
+ * @export
+ * @interface UpscaleV1Response
+ */
+export interface UpscaleV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'kind': UpscaleV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof UpscaleV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpscaleV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'status': UpscaleV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpscaleV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'updatedAt': string;
+}
+
+export const UpscaleV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type UpscaleV1ResponseKindEnum = typeof UpscaleV1ResponseKindEnum[keyof typeof UpscaleV1ResponseKindEnum];
+export const UpscaleV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type UpscaleV1ResponseStatusEnum = typeof UpscaleV1ResponseStatusEnum[keyof typeof UpscaleV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface VtonGiseleV1Response
+ */
+export interface VtonGiseleV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'kind': VtonGiseleV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof VtonGiseleV1Response
+     */
+    'output'?: OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof VtonGiseleV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'status': VtonGiseleV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof VtonGiseleV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'updatedAt': string;
+}
+
+export const VtonGiseleV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type VtonGiseleV1ResponseKindEnum = typeof VtonGiseleV1ResponseKindEnum[keyof typeof VtonGiseleV1ResponseKindEnum];
+export const VtonGiseleV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type VtonGiseleV1ResponseStatusEnum = typeof VtonGiseleV1ResponseStatusEnum[keyof typeof VtonGiseleV1ResponseStatusEnum];
+
 
 /**
  * AccessApi - axios parameter creator
@@ -8214,6 +9434,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunNegateImageV1V1: async (negateImageV1ControllerInput: NegateImageV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'negateImageV1ControllerInput' is not null or undefined
+            assertParamExists('operationsControllerRunNegateImageV1V1', 'negateImageV1ControllerInput', negateImageV1ControllerInput)
+            const localVarPath = `/v1/operations/run/negateImage.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(negateImageV1ControllerInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8543,7 +9802,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompositeV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCompositeV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8555,7 +9814,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CutV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCutV1V1(cutV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCutV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8567,7 +9826,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGptV1V1(gPTV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunGptV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8579,7 +9838,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteLindaV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunHauteLindaV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8591,7 +9850,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteNaomiV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunHauteNaomiV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8603,7 +9862,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImagineKateV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunImagineKateV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8615,10 +9874,22 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InpaintKateV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunInpaintKateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NegateImageV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunNegateImageV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -8627,7 +9898,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectDetectionV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunObjectDetectionV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8639,7 +9910,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoseEstimationV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunPoseEstimationV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8651,7 +9922,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingEmbeddingsV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunSegmentAnythingEmbeddingsV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8663,7 +9934,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingMaskV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunSegmentAnythingMaskV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8675,7 +9946,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpscaleV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunUpscaleV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8687,7 +9958,7 @@ export const OperationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OperationEntity>> {
+        async operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VtonGiseleV1Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunVtonGiseleV1V1']?.[localVarOperationServerIndex]?.url;
@@ -8751,7 +10022,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CompositeV1Response> {
             return localVarFp.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8760,7 +10031,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
             return localVarFp.operationsControllerRunCutV1V1(cutV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8769,7 +10040,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<GptV1Response> {
             return localVarFp.operationsControllerRunGptV1V1(gPTV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8778,7 +10049,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteLindaV1Response> {
             return localVarFp.operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8787,7 +10058,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteNaomiV1Response> {
             return localVarFp.operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8796,7 +10067,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ImagineKateV1Response> {
             return localVarFp.operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8805,8 +10076,17 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
             return localVarFp.operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
+            return localVarFp.operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8814,7 +10094,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
             return localVarFp.operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8823,7 +10103,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
             return localVarFp.operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8832,7 +10112,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingEmbeddingsV1Response> {
             return localVarFp.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8841,7 +10121,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
             return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8850,7 +10130,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<UpscaleV1Response> {
             return localVarFp.operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8859,7 +10139,7 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<OperationEntity> {
+        operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<VtonGiseleV1Response> {
             return localVarFp.operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8992,6 +10272,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
