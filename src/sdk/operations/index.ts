@@ -123,7 +123,7 @@ const operations = (options: SDKOptions) => {
             api.call({
                 run: (methods) => methods.operationsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
             }),
-        wait: async (props: { id: string; timeoutInSeconds?: number }): Promise<OperationEntity> =>
+        wait: async <T extends OperationEntity | { id: string }>(props: T): Promise<T extends OperationEntity ? T : OperationEntity> =>
             new Promise((resolve, reject) => {
                 const initialDelay = 5000;
                 const delay = 2000;
@@ -133,7 +133,7 @@ const operations = (options: SDKOptions) => {
                     const operation = await api.call({
                         run: (methods) => methods.operationsControllerGetOperationV1(props.id),
                     });
-                    if (operation.status !== 'pending') return resolve(operation);
+                    if (operation.status !== 'pending') return resolve(operation as any);
                     timeoutId = setTimeout(poll, delay);
                 };
                 timeoutId = setTimeout(poll, initialDelay);
