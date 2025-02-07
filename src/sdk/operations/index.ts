@@ -37,9 +37,9 @@ import { transformToListResponse } from '../transformers';
 type Waited<T extends OperationEntity> = T &
     (
         // TODO: does not work without extract?
-        { status: typeof OperationEntityStatusEnum.Failed, output: Extract<T['output'], undefined>  } |
-        { status: typeof OperationEntityStatusEnum.Pending, output: Extract<T['output'], undefined>  } |
-        { status: typeof OperationEntityStatusEnum.Finished; output: Exclude<T['output'], undefined> }
+        { status: typeof OperationEntityStatusEnum.Failed, output: null  } |
+        { status: typeof OperationEntityStatusEnum.Pending, output: null  } |
+        { status: typeof OperationEntityStatusEnum.Finished; output: NonNullable<T['output']> }
     );
 
 const operations = (options: SDKOptions) => {
