@@ -45,27 +45,7 @@ const operations = (options: SDKOptions) => {
             api.call({ run: (methods: OperationsApi) => callMethod(methods, props) });
 
     return {
-        create: {
-            composite: {
-                v1: createOperation<CompositeV1Input, CompositeV1Response>((methods, props) =>
-                    methods.operationsControllerRunCompositeV1V1(props),
-                ),
-            },
-            cut: {
-                v1: createOperation<CutV1Input, CutV1Response>((methods, props) =>
-                    methods.operationsControllerRunCutV1V1(props),
-                ),
-            },
-            detect: {
-                v1: createOperation<ObjectDetectionV1Input, ObjectDetectionV1Response>((methods, props) =>
-                    methods.operationsControllerRunObjectDetectionV1V1(props),
-                ),
-            },
-            estimatePose: {
-                v1: createOperation<PoseEstimationV1Input, PoseEstimationV1Response>((methods, props) =>
-                    methods.operationsControllerRunPoseEstimationV1V1(props),
-                ),
-            },
+        run: {
             haute: {
                 linda: {
                     v1: createOperation<LindaHauteV1Input, HauteLindaV1Response>((methods, props) =>
@@ -75,6 +55,13 @@ const operations = (options: SDKOptions) => {
                 naomi: {
                     v1: createOperation<NaomiHauteV1Input, HauteNaomiV1Response>((methods, props) =>
                         methods.operationsControllerRunHauteNaomiV1V1(props),
+                    ),
+                },
+            },
+            inpaint: {
+                kate: {
+                    v1: createOperation<KateInpaintV1Input, ImagineKateV1Response>((methods, props) =>
+                        methods.operationsControllerRunInpaintKateV1V1(props),
                     ),
                 },
             },
@@ -90,26 +77,41 @@ const operations = (options: SDKOptions) => {
                     ),
                 },
             },
-            inpaint: {
-                kate: {
-                    v1: createOperation<KateInpaintV1Input, ImagineKateV1Response>((methods, props) =>
-                        methods.operationsControllerRunInpaintKateV1V1(props),
-                    ),
-                },
-            },
-            segmentEmbeddings: {
-                v1: createOperation<SegmentAnythingEmbeddingsV1Input, SegmentAnythingEmbeddingsV1Response>(
-                    (methods, props) => methods.operationsControllerRunSegmentAnythingEmbeddingsV1V1(props),
-                ),
-            },
-            segmentMask: {
-                v1: createOperation<SegmentAnythingMaskV1Input, SegmentAnythingMaskV1Response>((methods, props) =>
-                    methods.operationsControllerRunSegmentAnythingMaskV1V1(props),
-                ),
-            },
             upscale: {
                 v1: createOperation<UpscaleV1Input, UpscaleV1Response>((methods, props) =>
                     methods.operationsControllerRunUpscaleV1V1(props),
+                ),
+            },
+            objectDetection: {
+                v1: createOperation<ObjectDetectionV1Input, ObjectDetectionV1Response>((methods, props) =>
+                    methods.operationsControllerRunObjectDetectionV1V1(props),
+                ),
+            },
+            segmentAnything: {
+                embeddings: {
+                    v1: createOperation<SegmentAnythingEmbeddingsV1Input, SegmentAnythingEmbeddingsV1Response>(
+                        (methods, props) => methods.operationsControllerRunSegmentAnythingEmbeddingsV1V1(props),
+                    ),
+                },
+                mask: {
+                    v1: createOperation<SegmentAnythingMaskV1Input, SegmentAnythingMaskV1Response>((methods, props) =>
+                        methods.operationsControllerRunSegmentAnythingMaskV1V1(props),
+                    ),
+                },
+            },
+            poseEstimation: {
+                v1: createOperation<PoseEstimationV1Input, PoseEstimationV1Response>((methods, props) =>
+                    methods.operationsControllerRunPoseEstimationV1V1(props),
+                ),
+            },
+            cut: {
+                v1: createOperation<CutV1Input, CutV1Response>((methods, props) =>
+                    methods.operationsControllerRunCutV1V1(props),
+                ),
+            },
+            composite: {
+                v1: createOperation<CompositeV1Input, CompositeV1Response>((methods, props) =>
+                    methods.operationsControllerRunCompositeV1V1(props),
                 ),
             },
             vton: {
