@@ -417,7 +417,7 @@ export interface CompositeV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof CompositeV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -626,7 +626,7 @@ export interface CutV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof CutV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -1024,7 +1024,7 @@ export interface GptV1Response {
      * @type {OperationOutputJSON}
      * @memberof GptV1Response
      */
-    'output'?: OperationOutputJSON | null;
+    'output': OperationOutputJSON | null;
     /**
      * 
      * @type {object}
@@ -1196,7 +1196,7 @@ export interface HauteLindaV1Response {
      * @type {OperationOutputImageMultiple}
      * @memberof HauteLindaV1Response
      */
-    'output'?: OperationOutputImageMultiple | null;
+    'output': OperationOutputImageMultiple | null;
     /**
      * 
      * @type {object}
@@ -1277,7 +1277,7 @@ export interface HauteNaomiV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof HauteNaomiV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -1482,7 +1482,7 @@ export interface ImagineKateV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof ImagineKateV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -1576,7 +1576,7 @@ export interface InpaintKateV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof InpaintKateV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -2390,7 +2390,7 @@ export interface NegateImageV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof NegateImageV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -2509,7 +2509,7 @@ export interface ObjectDetectionV1Response {
      * @type {OperationOutputJSON}
      * @memberof ObjectDetectionV1Response
      */
-    'output'?: OperationOutputJSON | null;
+    'output': OperationOutputJSON | null;
     /**
      * 
      * @type {object}
@@ -2930,7 +2930,7 @@ export interface PoseEstimationV1Response {
      * @type {OperationOutputJSON}
      * @memberof PoseEstimationV1Response
      */
-    'output'?: OperationOutputJSON | null;
+    'output': OperationOutputJSON | null;
     /**
      * 
      * @type {object}
@@ -3212,7 +3212,7 @@ export interface SegmentAnythingEmbeddingsV1Response {
      * @type {OperationOutputJSON}
      * @memberof SegmentAnythingEmbeddingsV1Response
      */
-    'output'?: OperationOutputJSON | null;
+    'output': OperationOutputJSON | null;
     /**
      * 
      * @type {object}
@@ -3331,7 +3331,7 @@ export interface SegmentAnythingMaskV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof SegmentAnythingMaskV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -3670,7 +3670,7 @@ export interface UpscaleV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof UpscaleV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
@@ -3751,7 +3751,7 @@ export interface VtonGiseleV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof VtonGiseleV1Response
      */
-    'output'?: OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle | null;
     /**
      * 
      * @type {object}
