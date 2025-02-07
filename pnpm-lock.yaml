@@ -18,6 +18,9 @@ importers:
         specifier: 5.9.6
         version: 5.9.6
     devDependencies:
+      '@jest/globals':
+        specifier: ^29.7.0
+        version: 29.7.0
       '@openapitools/openapi-generator-cli':
         specifier: 2.15.3
         version: 2.15.3
