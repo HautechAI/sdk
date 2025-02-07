@@ -1,9 +1,10 @@
-name: Publish Package to npmjs
+name: Test
 on:
-  release:
-    types: [published]
+    push:
+        branches:
+        - 'main'
 jobs:
-  build-test-and-publish:
+  test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,13 +28,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Bump version
-        run: pnpm version from-git --no-commit-hooks --no-git-tag-version --allow-same-version
-
-      - name: Build the package
-        run: pnpm build
-
-      - name: Publish the package
-        run: pnpm publish --no-git-checks --access public
+      - name: Test
+        run: pnpm test
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          API_CORE_URL: https://api.dev.hautech.ai
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
+          APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
+          SDK_TOKEN: ${{ secrets.SDK_TOKEN }}
