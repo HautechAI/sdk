@@ -1,8 +1,19 @@
 import { describe, it, expect } from '@jest/globals';
 import fs from 'fs';
-import { sdk } from './utils';
+import { SDK } from '../src';
+import { recreateSdk } from './utils';
 
 describe('Images', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create image from file', async () => {
         const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
 

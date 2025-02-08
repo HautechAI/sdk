@@ -1,8 +1,19 @@
 import { describe, it, expect } from '@jest/globals';
 import fs from 'fs';
-import { sdk } from './utils';
+import { SDK } from '../src';
+import { recreateSdk } from './utils';
 
 describe('Stacks', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create stack', async () => {
         const stack = await sdk.stacks.create();
         expect(stack).toBeDefined();

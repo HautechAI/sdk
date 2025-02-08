@@ -1,7 +1,18 @@
 import { describe, it, expect } from '@jest/globals';
-import { randomString, sdk } from './utils';
+import { randomString, recreateSdk } from './utils';
+import { SDK } from '../src';
 
 describe('Storage', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create record', async () => {
         const key = randomString();
         const value = 'test';

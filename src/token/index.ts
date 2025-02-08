@@ -44,30 +44,42 @@ const serializePermissions = (permissions: Partial<MethodsPermissions>): string[
     return result;
 };
 
-export const createTokenSigner = (options: { appId: string; appKeyId: string; appKeySecret: string }) => ({
-    createAccountToken: async (props: {
-        accountId: string;
-        expiresInSeconds: number;
-        permissions?: Partial<MethodsPermissions>;
-    }) =>
-        createToken({
-            appKeyId: options.appKeyId,
-            appKeySecret: options.appKeySecret,
-            expiresInSeconds: props.expiresInSeconds,
-            payload: {
-                iss: options.appId,
-                permissions: serializePermissions(props.permissions ?? {}),
-                sub: props.accountId,
-            },
-        }),
-    createRootToken: async (props: { expiresInSeconds: number }) =>
-        createToken({
-            appKeyId: options.appKeyId,
-            appKeySecret: options.appKeySecret,
-            expiresInSeconds: props.expiresInSeconds ?? 3600,
-            payload: {
-                iss: options.appId,
-                permissions: ['*'],
-            },
-        }),
-});
+export const createTokenSigner = (options: { appId: string; appKeyId: string; appKeySecret: string }) => {
+    if (!options.appId || options.appId.length === 0) {
+        throw new Error('appId is required');
+    }
+    if (!options.appKeyId || options.appKeyId.length === 0) {
+        throw new Error('appKeyId is required');
+    }
+    if (!options.appKeySecret || options.appKeySecret.length === 0) {
+        throw new Error('appKeySecret is required');
+    }
+
+    return {
+        createAccountToken: async (props: {
+            accountId: string;
+            expiresInSeconds: number;
+            permissions?: Partial<MethodsPermissions>;
+        }) =>
+            createToken({
+                appKeyId: options.appKeyId,
+                appKeySecret: options.appKeySecret,
+                expiresInSeconds: props.expiresInSeconds,
+                payload: {
+                    iss: options.appId,
+                    permissions: serializePermissions(props.permissions ?? {}),
+                    sub: props.accountId,
+                },
+            }),
+        createRootToken: async (props: { expiresInSeconds: number }) =>
+            createToken({
+                appKeyId: options.appKeyId,
+                appKeySecret: options.appKeySecret,
+                expiresInSeconds: props.expiresInSeconds ?? 3600,
+                payload: {
+                    iss: options.appId,
+                    permissions: ['*'],
+                },
+            }),
+    };
+};

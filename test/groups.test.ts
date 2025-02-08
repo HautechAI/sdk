@@ -1,7 +1,18 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './utils';
+import { SDK } from '../src';
+import { recreateSdk } from './utils';
 
 describe('Groups', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create group', async () => {
         const group = await sdk.groups.create();
         expect(group).toBeDefined();

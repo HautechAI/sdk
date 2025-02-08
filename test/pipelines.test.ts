@@ -1,7 +1,18 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './utils';
+import { recreateSdk } from './utils';
+import { SDK } from '../src';
 
 describe('Pipelines', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create collection pipeline', async () => {
         const pipelineTemplate = sdk.pipelines.constructTemplate((pipeline) => {
             const stack = pipeline.defer.stacks.create({});

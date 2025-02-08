@@ -1,7 +1,18 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './utils';
+import { SDK } from '../src';
+import { recreateSdk } from './utils';
 
 describe('Collections', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should create collection', async () => {
         const collection = await sdk.collections.create();
         expect(collection).toBeDefined();

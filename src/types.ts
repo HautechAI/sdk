@@ -1,6 +1,8 @@
 export interface SDKOptions {
     authToken: () => string | Promise<string>;
     endpoint?: string;
+    // default: true
+    useWebsocket?: boolean;
 }
 
 export type ListProps = {

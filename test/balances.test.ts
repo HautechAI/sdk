@@ -1,7 +1,18 @@
 import { describe, it, expect } from '@jest/globals';
-import { sdk } from './utils';
+import { recreateSdk } from './utils';
+import { SDK } from '../src';
 
 describe('Balances', () => {
+    let sdk: SDK;
+
+    beforeAll(() => {
+        sdk = recreateSdk();
+    });
+
+    afterAll(() => {
+        sdk.close();
+    });
+
     it('should return balance on get self', async () => {
         const balance = await sdk.balances.get();
         expect(balance).toBeDefined();

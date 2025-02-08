@@ -21,10 +21,13 @@ const storage = (options: SDKOptions) => {
             api.call({
                 run: (methods) => methods.storageControllerGetRecordsV1({ keys: props.keys }),
                 transform: (response) =>
-                    response.reduce((acc, item) => {
-                        acc[item.key] = item.value;
-                        return acc;
-                    }, {} as Record<string, any>),
+                    response.reduce(
+                        (acc, item) => {
+                            acc[item.key] = item.value;
+                            return acc;
+                        },
+                        {} as Record<string, any>,
+                    ),
             }),
         update: async (props: { key: string; value: any }): Promise<any> =>
             api.call({
