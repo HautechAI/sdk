@@ -49,23 +49,23 @@ describe('Pipelines', () => {
 
     it('should run pipeline with operation', async () => {
         const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
-        const image = await sdk.images.createFromFile({ file })
+        const image = await sdk.images.createFromFile({ file });
 
         const template = sdk.pipelines.constructTemplate((pipeline) => {
             const negateImage = pipeline.defer.operations.wait({
-                    id: pipeline.defer.operations.run.negateImage.v1({
-                        input: {
-                            imageId: image.id,
-                        }
-                    }).result.id
+                id: pipeline.defer.operations.run.negateImage.v1({
+                    input: {
+                        imageId: image.id,
+                    },
+                }).result.id,
             });
 
             const negate2 = pipeline.defer.operations.wait({
                 id: pipeline.defer.operations.run.negateImage.v1({
                     input: {
                         imageId: negateImage.result.id,
-                    }
-                }).result.id
+                    },
+                }).result.id,
             });
 
             return pipeline;
@@ -80,10 +80,9 @@ describe('Pipelines', () => {
         expect(finishedPipeline.status).toBe(PipelineEntityStatusEnum.Completed);
     });
 
-
     it('should return error on semantically incorrect wait', async () => {
         const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
-        const image = await sdk.images.createFromFile({ file })
+        const image = await sdk.images.createFromFile({ file });
 
         const template = sdk.pipelines.constructTemplate((pipeline) => {
             const negateImage = pipeline.defer.operations.wait(
@@ -91,8 +90,8 @@ describe('Pipelines', () => {
                 pipeline.defer.operations.run.negateImage.v1({
                     input: {
                         imageId: image.id,
-                    }
-                })
+                    },
+                }),
             );
             return pipeline;
         });
