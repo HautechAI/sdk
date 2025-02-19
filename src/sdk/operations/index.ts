@@ -156,7 +156,7 @@ const operations = (options: SDKOptions, relevantOperations: OperationsListener)
             api.call({
                 run: (methods) => methods.operationsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
             }),
-        wait: async <T extends OperationEntity | { id: string }, N extends number | undefined>(
+        wait: async <T extends OperationEntity | { id: string }, N extends number | undefined = undefined>(
             props: T,
             timeoutMs?: N,
         ): Promise<Waited<T extends OperationEntity ? T : OperationEntity> | (N extends undefined ? never : null)> => {
