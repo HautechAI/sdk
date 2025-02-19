@@ -156,10 +156,14 @@ const operations = (options: SDKOptions, relevantOperations: OperationsListener)
             api.call({
                 run: (methods) => methods.operationsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
             }),
-        wait: async <T extends OperationEntity | { id: string }>(
+        wait: async <
+            T extends OperationEntity | { id: string },
+            N extends number | undefined
+        >(
             props: T,
-            timeoutMs?: number,
-        ): Promise<Waited<T extends OperationEntity ? T : OperationEntity> | null> => {
+            timeoutMs?: N,
+        ): Promise<Waited<T extends OperationEntity ? T : OperationEntity> |
+            (N extends undefined ? never : null)> => {
             type RT = T extends OperationEntity ? T : OperationEntity;
             const deadline: number | undefined = timeoutMs ? Date.now() + timeoutMs : undefined;
             const delay = 1000;
@@ -176,6 +180,7 @@ const operations = (options: SDKOptions, relevantOperations: OperationsListener)
                 await sleep(delay);
             }
 
+            //@ts-expect-error - can't be reached if timeoutMs is defined.
             return null;
         },
     };

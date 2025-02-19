@@ -59,7 +59,7 @@ describe('Operations', () => {
         });
         expect(operation).toBeDefined();
 
-        const waitedOperation = await sdk.operations.wait(operation);
+        const waitedOperation = await sdk.operations.wait(operation, 1000);
         expect(waitedOperation).toBeDefined();
 
         sdk.close();
