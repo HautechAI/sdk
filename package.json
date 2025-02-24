@@ -18,7 +18,7 @@
     "description": "Hautech SDK",
     "dependencies": {
         "@hautechai/pipelines": "0.3.2",
-        "axios": "1.6.1",
+        "axios": "1.7.9",
         "jose": "5.9.6",
         "websocket": "^1.0.35"
     },
