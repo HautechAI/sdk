@@ -2,6 +2,12 @@ import { describe, it, expect } from '@jest/globals';
 import { SDK } from '../src';
 import { recreateSdk } from './utils';
 
+declare module '../src' {
+    interface CollectionsMetadata {
+        field: string;
+    }
+}
+
 describe('Collections', () => {
     let sdk: SDK;
 

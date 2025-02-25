@@ -6,4 +6,6 @@ const utils = (options: SDKOptions) => {
     };
 };
 
+export type AddMetadata<T extends { metadata: unknown }, M> = Omit<T, 'metadata'> & { metadata: M };
+
 export default utils;
