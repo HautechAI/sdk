@@ -49,12 +49,12 @@ const collections = (options: SDKOptions) => {
                         methods.collectionsControllerRemoveItemsV1(props.collectionId, { itemIds: props.itemIds }),
                 }),
         },
-        list: async (props: ListProps = {}): Promise<ListResponse<CollectionEntityWithMetadata>> =>
+        list: (props: ListProps = {}): Promise<ListResponse<CollectionEntityWithMetadata>> =>
             api.call({
                 run: (methods) =>
                     methods.collectionsControllerListCollectionsV1(props.orderBy, props.limit, props.cursor),
                 transform: transformToListResponse,
-            }),
+            }) as Promise<ListResponse<CollectionEntityWithMetadata>>,
         updateMetadata: async (props: { id: string; metadata?: Partial<CollectionsMetadata> }): Promise<void> =>
             api.call({
                 run: (methods) =>
