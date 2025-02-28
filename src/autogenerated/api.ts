@@ -401,25 +401,6 @@ export type CompositeElementFitEnum = typeof CompositeElementFitEnum[keyof typeo
 /**
  * 
  * @export
- * @interface CompositeV1ControllerInput
- */
-export interface CompositeV1ControllerInput {
-    /**
-     * 
-     * @type {CompositeV1Input}
-     * @memberof CompositeV1ControllerInput
-     */
-    'input': CompositeV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof CompositeV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface CompositeV1Input
  */
 export interface CompositeV1Input {
@@ -447,6 +428,25 @@ export interface CompositeV1Input {
      * @memberof CompositeV1Input
      */
     'elements': Array<CompositeElement>;
+}
+/**
+ * 
+ * @export
+ * @interface CompositeV1Request
+ */
+export interface CompositeV1Request {
+    /**
+     * 
+     * @type {CompositeV1Input}
+     * @memberof CompositeV1Request
+     */
+    'input': CompositeV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof CompositeV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -640,25 +640,6 @@ export interface CreateStorageRecordParamsDto {
 /**
  * 
  * @export
- * @interface CutV1ControllerInput
- */
-export interface CutV1ControllerInput {
-    /**
-     * 
-     * @type {CutV1Input}
-     * @memberof CutV1ControllerInput
-     */
-    'input': CutV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof CutV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface CutV1Input
  */
 export interface CutV1Input {
@@ -674,6 +655,25 @@ export interface CutV1Input {
      * @memberof CutV1Input
      */
     'maskImageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface CutV1Request
+ */
+export interface CutV1Request {
+    /**
+     * 
+     * @type {CutV1Input}
+     * @memberof CutV1Request
+     */
+    'input': CutV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof CutV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -799,25 +799,6 @@ export interface DeleteStorageParamsDto {
      * @memberof DeleteStorageParamsDto
      */
     'key': string;
-}
-/**
- * 
- * @export
- * @interface GPTV1ControllerInput
- */
-export interface GPTV1ControllerInput {
-    /**
-     * 
-     * @type {GPTV1Input}
-     * @memberof GPTV1ControllerInput
-     */
-    'input': GPTV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof GPTV1ControllerInput
-     */
-    'metadata'?: object;
 }
 /**
  * 
@@ -1029,25 +1010,6 @@ export interface GetUrlsForImagesParamsDto {
 /**
  * 
  * @export
- * @interface GiseleVtonV1ControllerInput
- */
-export interface GiseleVtonV1ControllerInput {
-    /**
-     * 
-     * @type {GiseleVtonV1Input}
-     * @memberof GiseleVtonV1ControllerInput
-     */
-    'input': GiseleVtonV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof GiseleVtonV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface GiseleVtonV1Input
  */
 export interface GiseleVtonV1Input {
@@ -1091,6 +1053,25 @@ export const GiseleVtonV1InputCategoryEnum = {
 
 export type GiseleVtonV1InputCategoryEnum = typeof GiseleVtonV1InputCategoryEnum[keyof typeof GiseleVtonV1InputCategoryEnum];
 
+/**
+ * 
+ * @export
+ * @interface GptV1Request
+ */
+export interface GptV1Request {
+    /**
+     * 
+     * @type {GPTV1Input}
+     * @memberof GptV1Request
+     */
+    'input': GPTV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV1Request
+     */
+    'metadata'?: object;
+}
 /**
  * 
  * @export
@@ -1302,6 +1283,25 @@ export interface GroupEntity {
 /**
  * 
  * @export
+ * @interface HauteLindaV1Request
+ */
+export interface HauteLindaV1Request {
+    /**
+     * 
+     * @type {LindaHauteV1Input}
+     * @memberof HauteLindaV1Request
+     */
+    'input': LindaHauteV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteLindaV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
  * @interface HauteLindaV1Response
  */
 export interface HauteLindaV1Response {
@@ -1398,6 +1398,25 @@ export const HauteLindaV1ResponseStatusEnum = {
 
 export type HauteLindaV1ResponseStatusEnum = typeof HauteLindaV1ResponseStatusEnum[keyof typeof HauteLindaV1ResponseStatusEnum];
 
+/**
+ * 
+ * @export
+ * @interface HauteNaomiV1Request
+ */
+export interface HauteNaomiV1Request {
+    /**
+     * 
+     * @type {NaomiHauteV1Input}
+     * @memberof HauteNaomiV1Request
+     */
+    'input': NaomiHauteV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof HauteNaomiV1Request
+     */
+    'metadata'?: object;
+}
 /**
  * 
  * @export
@@ -1648,6 +1667,25 @@ export interface ImageUrlResponseDto {
 /**
  * 
  * @export
+ * @interface ImagineKateV1Request
+ */
+export interface ImagineKateV1Request {
+    /**
+     * 
+     * @type {KateImagineV1Input}
+     * @memberof ImagineKateV1Request
+     */
+    'input': KateImagineV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof ImagineKateV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
  * @interface ImagineKateV1Response
  */
 export interface ImagineKateV1Response {
@@ -1760,6 +1798,25 @@ export interface InitializeImageUploadResultDto {
 /**
  * 
  * @export
+ * @interface InpaintKateV1Request
+ */
+export interface InpaintKateV1Request {
+    /**
+     * 
+     * @type {KateInpaintV1Input}
+     * @memberof InpaintKateV1Request
+     */
+    'input': KateInpaintV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof InpaintKateV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
  * @interface InpaintKateV1Response
  */
 export interface InpaintKateV1Response {
@@ -1859,25 +1916,6 @@ export type InpaintKateV1ResponseStatusEnum = typeof InpaintKateV1ResponseStatus
 /**
  * 
  * @export
- * @interface KateImagineV1ControllerInput
- */
-export interface KateImagineV1ControllerInput {
-    /**
-     * 
-     * @type {KateImagineV1Input}
-     * @memberof KateImagineV1ControllerInput
-     */
-    'input': KateImagineV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof KateImagineV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface KateImagineV1Input
  */
 export interface KateImagineV1Input {
@@ -1915,25 +1953,6 @@ export const KateImagineV1InputAspectRatioEnum = {
 
 export type KateImagineV1InputAspectRatioEnum = typeof KateImagineV1InputAspectRatioEnum[keyof typeof KateImagineV1InputAspectRatioEnum];
 
-/**
- * 
- * @export
- * @interface KateInpaintV1ControllerInput
- */
-export interface KateInpaintV1ControllerInput {
-    /**
-     * 
-     * @type {KateInpaintV1Input}
-     * @memberof KateInpaintV1ControllerInput
-     */
-    'input': KateInpaintV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof KateInpaintV1ControllerInput
-     */
-    'metadata'?: object;
-}
 /**
  * 
  * @export
@@ -2000,25 +2019,6 @@ export interface KateInpaintV1Input {
      * @memberof KateInpaintV1Input
      */
     'guidanceScale'?: number;
-}
-/**
- * 
- * @export
- * @interface LindaHauteV1ControllerInput
- */
-export interface LindaHauteV1ControllerInput {
-    /**
-     * 
-     * @type {LindaHauteV1Input}
-     * @memberof LindaHauteV1ControllerInput
-     */
-    'input': LindaHauteV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof LindaHauteV1ControllerInput
-     */
-    'metadata'?: object;
 }
 /**
  * 
@@ -2474,25 +2474,6 @@ export type ListStacksParamsDtoOrderByEnum = typeof ListStacksParamsDtoOrderByEn
 /**
  * 
  * @export
- * @interface NaomiHauteV1ControllerInput
- */
-export interface NaomiHauteV1ControllerInput {
-    /**
-     * 
-     * @type {NaomiHauteV1Input}
-     * @memberof NaomiHauteV1ControllerInput
-     */
-    'input': NaomiHauteV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof NaomiHauteV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface NaomiHauteV1Input
  */
 export interface NaomiHauteV1Input {
@@ -2560,25 +2541,6 @@ export interface NaomiHauteV1Input {
 /**
  * 
  * @export
- * @interface NegateImageV1ControllerInput
- */
-export interface NegateImageV1ControllerInput {
-    /**
-     * 
-     * @type {NegateImageV1Input}
-     * @memberof NegateImageV1ControllerInput
-     */
-    'input': NegateImageV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof NegateImageV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface NegateImageV1Input
  */
 export interface NegateImageV1Input {
@@ -2588,6 +2550,25 @@ export interface NegateImageV1Input {
      * @memberof NegateImageV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface NegateImageV1Request
+ */
+export interface NegateImageV1Request {
+    /**
+     * 
+     * @type {NegateImageV1Input}
+     * @memberof NegateImageV1Request
+     */
+    'input': NegateImageV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof NegateImageV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -2691,25 +2672,6 @@ export type NegateImageV1ResponseStatusEnum = typeof NegateImageV1ResponseStatus
 /**
  * 
  * @export
- * @interface ObjectDetectionV1ControllerInput
- */
-export interface ObjectDetectionV1ControllerInput {
-    /**
-     * 
-     * @type {ObjectDetectionV1Input}
-     * @memberof ObjectDetectionV1ControllerInput
-     */
-    'input': ObjectDetectionV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof ObjectDetectionV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface ObjectDetectionV1Input
  */
 export interface ObjectDetectionV1Input {
@@ -2725,6 +2687,25 @@ export interface ObjectDetectionV1Input {
      * @memberof ObjectDetectionV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ObjectDetectionV1Request
+ */
+export interface ObjectDetectionV1Request {
+    /**
+     * 
+     * @type {ObjectDetectionV1Input}
+     * @memberof ObjectDetectionV1Request
+     */
+    'input': ObjectDetectionV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof ObjectDetectionV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -3196,25 +3177,6 @@ export type PoseEntityKindEnum = typeof PoseEntityKindEnum[keyof typeof PoseEnti
 /**
  * 
  * @export
- * @interface PoseEstimationV1ControllerInput
- */
-export interface PoseEstimationV1ControllerInput {
-    /**
-     * 
-     * @type {PoseEstimationV1Input}
-     * @memberof PoseEstimationV1ControllerInput
-     */
-    'input': PoseEstimationV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof PoseEstimationV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface PoseEstimationV1Input
  */
 export interface PoseEstimationV1Input {
@@ -3224,6 +3186,25 @@ export interface PoseEstimationV1Input {
      * @memberof PoseEstimationV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface PoseEstimationV1Request
+ */
+export interface PoseEstimationV1Request {
+    /**
+     * 
+     * @type {PoseEstimationV1Input}
+     * @memberof PoseEstimationV1Request
+     */
+    'input': PoseEstimationV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof PoseEstimationV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -3565,25 +3546,6 @@ export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof 
 /**
  * 
  * @export
- * @interface SegmentAnythingEmbeddingsV1ControllerInput
- */
-export interface SegmentAnythingEmbeddingsV1ControllerInput {
-    /**
-     * 
-     * @type {SegmentAnythingEmbeddingsV1Input}
-     * @memberof SegmentAnythingEmbeddingsV1ControllerInput
-     */
-    'input': SegmentAnythingEmbeddingsV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof SegmentAnythingEmbeddingsV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface SegmentAnythingEmbeddingsV1Input
  */
 export interface SegmentAnythingEmbeddingsV1Input {
@@ -3593,6 +3555,25 @@ export interface SegmentAnythingEmbeddingsV1Input {
      * @memberof SegmentAnythingEmbeddingsV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface SegmentAnythingEmbeddingsV1Request
+ */
+export interface SegmentAnythingEmbeddingsV1Request {
+    /**
+     * 
+     * @type {SegmentAnythingEmbeddingsV1Input}
+     * @memberof SegmentAnythingEmbeddingsV1Request
+     */
+    'input': SegmentAnythingEmbeddingsV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingEmbeddingsV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -3696,25 +3677,6 @@ export type SegmentAnythingEmbeddingsV1ResponseStatusEnum = typeof SegmentAnythi
 /**
  * 
  * @export
- * @interface SegmentAnythingMaskV1ControllerInput
- */
-export interface SegmentAnythingMaskV1ControllerInput {
-    /**
-     * 
-     * @type {SegmentAnythingMaskV1Input}
-     * @memberof SegmentAnythingMaskV1ControllerInput
-     */
-    'input': SegmentAnythingMaskV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof SegmentAnythingMaskV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface SegmentAnythingMaskV1Input
  */
 export interface SegmentAnythingMaskV1Input {
@@ -3730,6 +3692,31 @@ export interface SegmentAnythingMaskV1Input {
      * @memberof SegmentAnythingMaskV1Input
      */
     'box': Array<number>;
+    /**
+     * 
+     * @type {number}
+     * @memberof SegmentAnythingMaskV1Input
+     */
+    'smoothness'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SegmentAnythingMaskV1Request
+ */
+export interface SegmentAnythingMaskV1Request {
+    /**
+     * 
+     * @type {SegmentAnythingMaskV1Input}
+     * @memberof SegmentAnythingMaskV1Request
+     */
+    'input': SegmentAnythingMaskV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof SegmentAnythingMaskV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -4101,25 +4088,6 @@ export interface UpdateStorageRecordParamsDto {
 /**
  * 
  * @export
- * @interface UpscaleV1ControllerInput
- */
-export interface UpscaleV1ControllerInput {
-    /**
-     * 
-     * @type {UpscaleV1Input}
-     * @memberof UpscaleV1ControllerInput
-     */
-    'input': UpscaleV1Input;
-    /**
-     * 
-     * @type {object}
-     * @memberof UpscaleV1ControllerInput
-     */
-    'metadata'?: object;
-}
-/**
- * 
- * @export
  * @interface UpscaleV1Input
  */
 export interface UpscaleV1Input {
@@ -4129,6 +4097,25 @@ export interface UpscaleV1Input {
      * @memberof UpscaleV1Input
      */
     'imageId': string;
+}
+/**
+ * 
+ * @export
+ * @interface UpscaleV1Request
+ */
+export interface UpscaleV1Request {
+    /**
+     * 
+     * @type {UpscaleV1Input}
+     * @memberof UpscaleV1Request
+     */
+    'input': UpscaleV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpscaleV1Request
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -4229,6 +4216,25 @@ export const UpscaleV1ResponseStatusEnum = {
 
 export type UpscaleV1ResponseStatusEnum = typeof UpscaleV1ResponseStatusEnum[keyof typeof UpscaleV1ResponseStatusEnum];
 
+/**
+ * 
+ * @export
+ * @interface VtonGiseleV1Request
+ */
+export interface VtonGiseleV1Request {
+    /**
+     * 
+     * @type {GiseleVtonV1Input}
+     * @memberof VtonGiseleV1Request
+     */
+    'input': GiseleVtonV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof VtonGiseleV1Request
+     */
+    'metadata'?: object;
+}
 /**
  * 
  * @export
@@ -6211,13 +6217,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunCompositeV1V1: async (compositeV1ControllerInput: CompositeV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'compositeV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunCompositeV1V1', 'compositeV1ControllerInput', compositeV1ControllerInput)
+        callControllerCallOperationsRunCompositeV1V1: async (compositeV1Request: CompositeV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'compositeV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunCompositeV1V1', 'compositeV1Request', compositeV1Request)
             const localVarPath = `/v1/call/operations.run.composite.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6241,7 +6247,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(compositeV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(compositeV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6250,13 +6256,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunCutV1V1: async (cutV1ControllerInput: CutV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'cutV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunCutV1V1', 'cutV1ControllerInput', cutV1ControllerInput)
+        callControllerCallOperationsRunCutV1V1: async (cutV1Request: CutV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cutV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunCutV1V1', 'cutV1Request', cutV1Request)
             const localVarPath = `/v1/call/operations.run.cut.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6280,7 +6286,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(cutV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(cutV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6289,13 +6295,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunGptV1V1: async (gPTV1ControllerInput: GPTV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'gPTV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunGptV1V1', 'gPTV1ControllerInput', gPTV1ControllerInput)
+        callControllerCallOperationsRunGptV1V1: async (gptV1Request: GptV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gptV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunGptV1V1', 'gptV1Request', gptV1Request)
             const localVarPath = `/v1/call/operations.run.gpt.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6319,7 +6325,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(gPTV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(gptV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6328,13 +6334,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunHauteLindaV1V1: async (lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'lindaHauteV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunHauteLindaV1V1', 'lindaHauteV1ControllerInput', lindaHauteV1ControllerInput)
+        callControllerCallOperationsRunHauteLindaV1V1: async (hauteLindaV1Request: HauteLindaV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'hauteLindaV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunHauteLindaV1V1', 'hauteLindaV1Request', hauteLindaV1Request)
             const localVarPath = `/v1/call/operations.run.haute.linda.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6358,7 +6364,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(lindaHauteV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(hauteLindaV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6367,13 +6373,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunHauteNaomiV1V1: async (naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'naomiHauteV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunHauteNaomiV1V1', 'naomiHauteV1ControllerInput', naomiHauteV1ControllerInput)
+        callControllerCallOperationsRunHauteNaomiV1V1: async (hauteNaomiV1Request: HauteNaomiV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'hauteNaomiV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunHauteNaomiV1V1', 'hauteNaomiV1Request', hauteNaomiV1Request)
             const localVarPath = `/v1/call/operations.run.haute.naomi.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6397,7 +6403,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(naomiHauteV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(hauteNaomiV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6406,13 +6412,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunImagineKateV1V1: async (kateImagineV1ControllerInput: KateImagineV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'kateImagineV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunImagineKateV1V1', 'kateImagineV1ControllerInput', kateImagineV1ControllerInput)
+        callControllerCallOperationsRunImagineKateV1V1: async (imagineKateV1Request: ImagineKateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'imagineKateV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunImagineKateV1V1', 'imagineKateV1Request', imagineKateV1Request)
             const localVarPath = `/v1/call/operations.run.imagine.kate.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6436,7 +6442,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(kateImagineV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(imagineKateV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6445,13 +6451,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunInpaintKateV1V1: async (kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'kateInpaintV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunInpaintKateV1V1', 'kateInpaintV1ControllerInput', kateInpaintV1ControllerInput)
+        callControllerCallOperationsRunInpaintKateV1V1: async (inpaintKateV1Request: InpaintKateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'inpaintKateV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunInpaintKateV1V1', 'inpaintKateV1Request', inpaintKateV1Request)
             const localVarPath = `/v1/call/operations.run.inpaint.kate.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6475,7 +6481,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(kateInpaintV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inpaintKateV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6484,13 +6490,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunNegateImageV1V1: async (negateImageV1ControllerInput: NegateImageV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'negateImageV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunNegateImageV1V1', 'negateImageV1ControllerInput', negateImageV1ControllerInput)
+        callControllerCallOperationsRunNegateImageV1V1: async (negateImageV1Request: NegateImageV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'negateImageV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunNegateImageV1V1', 'negateImageV1Request', negateImageV1Request)
             const localVarPath = `/v1/call/operations.run.negateImage.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6514,7 +6520,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(negateImageV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(negateImageV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6523,13 +6529,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunObjectDetectionV1V1: async (objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'objectDetectionV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunObjectDetectionV1V1', 'objectDetectionV1ControllerInput', objectDetectionV1ControllerInput)
+        callControllerCallOperationsRunObjectDetectionV1V1: async (objectDetectionV1Request: ObjectDetectionV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'objectDetectionV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunObjectDetectionV1V1', 'objectDetectionV1Request', objectDetectionV1Request)
             const localVarPath = `/v1/call/operations.run.objectDetection.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6553,7 +6559,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(objectDetectionV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(objectDetectionV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6562,13 +6568,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunPoseEstimationV1V1: async (poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'poseEstimationV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunPoseEstimationV1V1', 'poseEstimationV1ControllerInput', poseEstimationV1ControllerInput)
+        callControllerCallOperationsRunPoseEstimationV1V1: async (poseEstimationV1Request: PoseEstimationV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'poseEstimationV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunPoseEstimationV1V1', 'poseEstimationV1Request', poseEstimationV1Request)
             const localVarPath = `/v1/call/operations.run.poseEstimation.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6592,7 +6598,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(poseEstimationV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(poseEstimationV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6601,13 +6607,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1: async (segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'segmentAnythingEmbeddingsV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1', 'segmentAnythingEmbeddingsV1ControllerInput', segmentAnythingEmbeddingsV1ControllerInput)
+        callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1: async (segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'segmentAnythingEmbeddingsV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1', 'segmentAnythingEmbeddingsV1Request', segmentAnythingEmbeddingsV1Request)
             const localVarPath = `/v1/call/operations.run.segmentAnything.embeddings.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6631,7 +6637,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingEmbeddingsV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingEmbeddingsV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6640,13 +6646,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunSegmentAnythingMaskV1V1: async (segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'segmentAnythingMaskV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunSegmentAnythingMaskV1V1', 'segmentAnythingMaskV1ControllerInput', segmentAnythingMaskV1ControllerInput)
+        callControllerCallOperationsRunSegmentAnythingMaskV1V1: async (segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'segmentAnythingMaskV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunSegmentAnythingMaskV1V1', 'segmentAnythingMaskV1Request', segmentAnythingMaskV1Request)
             const localVarPath = `/v1/call/operations.run.segmentAnything.mask.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6670,7 +6676,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingMaskV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingMaskV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6679,13 +6685,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunUpscaleV1V1: async (upscaleV1ControllerInput: UpscaleV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'upscaleV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunUpscaleV1V1', 'upscaleV1ControllerInput', upscaleV1ControllerInput)
+        callControllerCallOperationsRunUpscaleV1V1: async (upscaleV1Request: UpscaleV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'upscaleV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunUpscaleV1V1', 'upscaleV1Request', upscaleV1Request)
             const localVarPath = `/v1/call/operations.run.upscale.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6709,7 +6715,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(upscaleV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(upscaleV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6718,13 +6724,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunVtonGiseleV1V1: async (giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'giseleVtonV1ControllerInput' is not null or undefined
-            assertParamExists('callControllerCallOperationsRunVtonGiseleV1V1', 'giseleVtonV1ControllerInput', giseleVtonV1ControllerInput)
+        callControllerCallOperationsRunVtonGiseleV1V1: async (vtonGiseleV1Request: VtonGiseleV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vtonGiseleV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunVtonGiseleV1V1', 'vtonGiseleV1Request', vtonGiseleV1Request)
             const localVarPath = `/v1/call/operations.run.vton.gisele.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6748,7 +6754,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(giseleVtonV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(vtonGiseleV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7703,168 +7709,168 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompositeV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput, options);
+        async callControllerCallOperationsRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompositeV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCompositeV1V1(compositeV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunCompositeV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CutV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCutV1V1(cutV1ControllerInput, options);
+        async callControllerCallOperationsRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CutV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCutV1V1(cutV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunCutV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput, options);
+        async callControllerCallOperationsRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunGptV1V1(gptV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunGptV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteLindaV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput, options);
+        async callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteLindaV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunHauteLindaV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteNaomiV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options);
+        async callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteNaomiV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunHauteNaomiV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImagineKateV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput, options);
+        async callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImagineKateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunImagineKateV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InpaintKateV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput, options);
+        async callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InpaintKateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunInpaintKateV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NegateImageV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput, options);
+        async callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NegateImageV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunNegateImageV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectDetectionV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options);
+        async callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectDetectionV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunObjectDetectionV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoseEstimationV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options);
+        async callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoseEstimationV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunPoseEstimationV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingEmbeddingsV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options);
+        async callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingEmbeddingsV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingMaskV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options);
+        async callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingMaskV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunSegmentAnythingMaskV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpscaleV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput, options);
+        async callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpscaleV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunUpscaleV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VtonGiseleV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options);
+        async callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VtonGiseleV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunVtonGiseleV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -8307,129 +8313,129 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CompositeV1Response> {
-            return localVarFp.callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CompositeV1Response> {
+            return localVarFp.callControllerCallOperationsRunCompositeV1V1(compositeV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
-            return localVarFp.callControllerCallOperationsRunCutV1V1(cutV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
+            return localVarFp.callControllerCallOperationsRunCutV1V1(cutV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<GptV1Response> {
-            return localVarFp.callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GptV1Response> {
+            return localVarFp.callControllerCallOperationsRunGptV1V1(gptV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteLindaV1Response> {
-            return localVarFp.callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<HauteLindaV1Response> {
+            return localVarFp.callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteNaomiV1Response> {
-            return localVarFp.callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig): AxiosPromise<HauteNaomiV1Response> {
+            return localVarFp.callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ImagineKateV1Response> {
-            return localVarFp.callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ImagineKateV1Response> {
+            return localVarFp.callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
-            return localVarFp.callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
+            return localVarFp.callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
-            return localVarFp.callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
+            return localVarFp.callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
-            return localVarFp.callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
+            return localVarFp.callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
-            return localVarFp.callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
+            return localVarFp.callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingEmbeddingsV1Response> {
-            return localVarFp.callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingEmbeddingsV1Response> {
+            return localVarFp.callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
-            return localVarFp.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
+            return localVarFp.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<UpscaleV1Response> {
-            return localVarFp.callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UpscaleV1Response> {
+            return localVarFp.callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<VtonGiseleV1Response> {
-            return localVarFp.callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options).then((request) => request(axios, basePath));
+        callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VtonGiseleV1Response> {
+            return localVarFp.callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8873,156 +8879,156 @@ export class CallApi extends BaseAPI {
 
     /**
      * 
-     * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+     * @param {CompositeV1Request} compositeV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {CutV1ControllerInput} cutV1ControllerInput 
+     * @param {CutV1Request} cutV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunCutV1V1(cutV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunCutV1V1(cutV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+     * @param {GptV1Request} gptV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunGptV1V1(gPTV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunGptV1V1(gptV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+     * @param {HauteLindaV1Request} hauteLindaV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunHauteLindaV1V1(lindaHauteV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunHauteLindaV1V1(hauteLindaV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+     * @param {HauteNaomiV1Request} hauteNaomiV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunHauteNaomiV1V1(hauteNaomiV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+     * @param {ImagineKateV1Request} imagineKateV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunImagineKateV1V1(kateImagineV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunImagineKateV1V1(imagineKateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+     * @param {InpaintKateV1Request} inpaintKateV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+     * @param {NegateImageV1Request} negateImageV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+     * @param {ObjectDetectionV1Request} objectDetectionV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+     * @param {PoseEstimationV1Request} poseEstimationV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+     * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+     * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+     * @param {UpscaleV1Request} upscaleV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunUpscaleV1V1(upscaleV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunUpscaleV1V1(upscaleV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+     * @param {VtonGiseleV1Request} vtonGiseleV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallOperationsRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunVtonGiseleV1V1(vtonGiseleV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10752,13 +10758,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCompositeV1V1: async (compositeV1ControllerInput: CompositeV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'compositeV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunCompositeV1V1', 'compositeV1ControllerInput', compositeV1ControllerInput)
+        operationsControllerRunCompositeV1V1: async (compositeV1Request: CompositeV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'compositeV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunCompositeV1V1', 'compositeV1Request', compositeV1Request)
             const localVarPath = `/v1/operations/run/composite.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10782,7 +10788,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(compositeV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(compositeV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10791,13 +10797,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCutV1V1: async (cutV1ControllerInput: CutV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'cutV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunCutV1V1', 'cutV1ControllerInput', cutV1ControllerInput)
+        operationsControllerRunCutV1V1: async (cutV1Request: CutV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cutV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunCutV1V1', 'cutV1Request', cutV1Request)
             const localVarPath = `/v1/operations/run/cut.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10821,7 +10827,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(cutV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(cutV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10830,13 +10836,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunGptV1V1: async (gPTV1ControllerInput: GPTV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'gPTV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunGptV1V1', 'gPTV1ControllerInput', gPTV1ControllerInput)
+        operationsControllerRunGptV1V1: async (gptV1Request: GptV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gptV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunGptV1V1', 'gptV1Request', gptV1Request)
             const localVarPath = `/v1/operations/run/gpt.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10860,7 +10866,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(gPTV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(gptV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10869,13 +10875,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteLindaV1V1: async (lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'lindaHauteV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunHauteLindaV1V1', 'lindaHauteV1ControllerInput', lindaHauteV1ControllerInput)
+        operationsControllerRunHauteLindaV1V1: async (hauteLindaV1Request: HauteLindaV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'hauteLindaV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunHauteLindaV1V1', 'hauteLindaV1Request', hauteLindaV1Request)
             const localVarPath = `/v1/operations/run/haute.linda.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10899,7 +10905,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(lindaHauteV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(hauteLindaV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10908,13 +10914,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteNaomiV1V1: async (naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'naomiHauteV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunHauteNaomiV1V1', 'naomiHauteV1ControllerInput', naomiHauteV1ControllerInput)
+        operationsControllerRunHauteNaomiV1V1: async (hauteNaomiV1Request: HauteNaomiV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'hauteNaomiV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunHauteNaomiV1V1', 'hauteNaomiV1Request', hauteNaomiV1Request)
             const localVarPath = `/v1/operations/run/haute.naomi.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10938,7 +10944,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(naomiHauteV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(hauteNaomiV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10947,13 +10953,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunImagineKateV1V1: async (kateImagineV1ControllerInput: KateImagineV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'kateImagineV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunImagineKateV1V1', 'kateImagineV1ControllerInput', kateImagineV1ControllerInput)
+        operationsControllerRunImagineKateV1V1: async (imagineKateV1Request: ImagineKateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'imagineKateV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunImagineKateV1V1', 'imagineKateV1Request', imagineKateV1Request)
             const localVarPath = `/v1/operations/run/imagine.kate.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10977,7 +10983,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(kateImagineV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(imagineKateV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10986,13 +10992,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunInpaintKateV1V1: async (kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'kateInpaintV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunInpaintKateV1V1', 'kateInpaintV1ControllerInput', kateInpaintV1ControllerInput)
+        operationsControllerRunInpaintKateV1V1: async (inpaintKateV1Request: InpaintKateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'inpaintKateV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunInpaintKateV1V1', 'inpaintKateV1Request', inpaintKateV1Request)
             const localVarPath = `/v1/operations/run/inpaint.kate.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11016,7 +11022,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(kateInpaintV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inpaintKateV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11025,13 +11031,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunNegateImageV1V1: async (negateImageV1ControllerInput: NegateImageV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'negateImageV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunNegateImageV1V1', 'negateImageV1ControllerInput', negateImageV1ControllerInput)
+        operationsControllerRunNegateImageV1V1: async (negateImageV1Request: NegateImageV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'negateImageV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunNegateImageV1V1', 'negateImageV1Request', negateImageV1Request)
             const localVarPath = `/v1/operations/run/negateImage.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11055,7 +11061,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(negateImageV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(negateImageV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11064,13 +11070,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunObjectDetectionV1V1: async (objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'objectDetectionV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunObjectDetectionV1V1', 'objectDetectionV1ControllerInput', objectDetectionV1ControllerInput)
+        operationsControllerRunObjectDetectionV1V1: async (objectDetectionV1Request: ObjectDetectionV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'objectDetectionV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunObjectDetectionV1V1', 'objectDetectionV1Request', objectDetectionV1Request)
             const localVarPath = `/v1/operations/run/objectDetection.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11094,7 +11100,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(objectDetectionV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(objectDetectionV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11103,13 +11109,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunPoseEstimationV1V1: async (poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'poseEstimationV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunPoseEstimationV1V1', 'poseEstimationV1ControllerInput', poseEstimationV1ControllerInput)
+        operationsControllerRunPoseEstimationV1V1: async (poseEstimationV1Request: PoseEstimationV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'poseEstimationV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunPoseEstimationV1V1', 'poseEstimationV1Request', poseEstimationV1Request)
             const localVarPath = `/v1/operations/run/poseEstimation.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11133,7 +11139,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(poseEstimationV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(poseEstimationV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11142,13 +11148,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingEmbeddingsV1V1: async (segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'segmentAnythingEmbeddingsV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunSegmentAnythingEmbeddingsV1V1', 'segmentAnythingEmbeddingsV1ControllerInput', segmentAnythingEmbeddingsV1ControllerInput)
+        operationsControllerRunSegmentAnythingEmbeddingsV1V1: async (segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'segmentAnythingEmbeddingsV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunSegmentAnythingEmbeddingsV1V1', 'segmentAnythingEmbeddingsV1Request', segmentAnythingEmbeddingsV1Request)
             const localVarPath = `/v1/operations/run/segmentAnything.embeddings.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11172,7 +11178,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingEmbeddingsV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingEmbeddingsV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11181,13 +11187,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingMaskV1V1: async (segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'segmentAnythingMaskV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunSegmentAnythingMaskV1V1', 'segmentAnythingMaskV1ControllerInput', segmentAnythingMaskV1ControllerInput)
+        operationsControllerRunSegmentAnythingMaskV1V1: async (segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'segmentAnythingMaskV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunSegmentAnythingMaskV1V1', 'segmentAnythingMaskV1Request', segmentAnythingMaskV1Request)
             const localVarPath = `/v1/operations/run/segmentAnything.mask.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11211,7 +11217,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingMaskV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(segmentAnythingMaskV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11220,13 +11226,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunUpscaleV1V1: async (upscaleV1ControllerInput: UpscaleV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'upscaleV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunUpscaleV1V1', 'upscaleV1ControllerInput', upscaleV1ControllerInput)
+        operationsControllerRunUpscaleV1V1: async (upscaleV1Request: UpscaleV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'upscaleV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunUpscaleV1V1', 'upscaleV1Request', upscaleV1Request)
             const localVarPath = `/v1/operations/run/upscale.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11250,7 +11256,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(upscaleV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(upscaleV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11259,13 +11265,13 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunVtonGiseleV1V1: async (giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'giseleVtonV1ControllerInput' is not null or undefined
-            assertParamExists('operationsControllerRunVtonGiseleV1V1', 'giseleVtonV1ControllerInput', giseleVtonV1ControllerInput)
+        operationsControllerRunVtonGiseleV1V1: async (vtonGiseleV1Request: VtonGiseleV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'vtonGiseleV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunVtonGiseleV1V1', 'vtonGiseleV1Request', vtonGiseleV1Request)
             const localVarPath = `/v1/operations/run/vton.gisele.v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -11289,7 +11295,7 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(giseleVtonV1ControllerInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(vtonGiseleV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11389,168 +11395,168 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompositeV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options);
+        async operationsControllerRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompositeV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCompositeV1V1(compositeV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCompositeV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CutV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCutV1V1(cutV1ControllerInput, options);
+        async operationsControllerRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CutV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCutV1V1(cutV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCutV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGptV1V1(gPTV1ControllerInput, options);
+        async operationsControllerRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGptV1V1(gptV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunGptV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteLindaV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput, options);
+        async operationsControllerRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteLindaV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteLindaV1V1(hauteLindaV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunHauteLindaV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteNaomiV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options);
+        async operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HauteNaomiV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunHauteNaomiV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImagineKateV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput, options);
+        async operationsControllerRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ImagineKateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunImagineKateV1V1(imagineKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunImagineKateV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InpaintKateV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options);
+        async operationsControllerRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InpaintKateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunInpaintKateV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NegateImageV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options);
+        async operationsControllerRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NegateImageV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunNegateImageV1V1(negateImageV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunNegateImageV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectDetectionV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options);
+        async operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ObjectDetectionV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunObjectDetectionV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoseEstimationV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options);
+        async operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PoseEstimationV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunPoseEstimationV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingEmbeddingsV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options);
+        async operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingEmbeddingsV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunSegmentAnythingEmbeddingsV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingMaskV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options);
+        async operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SegmentAnythingMaskV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunSegmentAnythingMaskV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpscaleV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput, options);
+        async operationsControllerRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpscaleV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunUpscaleV1V1(upscaleV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunUpscaleV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VtonGiseleV1Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options);
+        async operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VtonGiseleV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunVtonGiseleV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -11609,129 +11615,129 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+         * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CompositeV1Response> {
-            return localVarFp.operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CompositeV1Response> {
+            return localVarFp.operationsControllerRunCompositeV1V1(compositeV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {CutV1ControllerInput} cutV1ControllerInput 
+         * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
-            return localVarFp.operationsControllerRunCutV1V1(cutV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
+            return localVarFp.operationsControllerRunCutV1V1(cutV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+         * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<GptV1Response> {
-            return localVarFp.operationsControllerRunGptV1V1(gPTV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig): AxiosPromise<GptV1Response> {
+            return localVarFp.operationsControllerRunGptV1V1(gptV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+         * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteLindaV1Response> {
-            return localVarFp.operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig): AxiosPromise<HauteLindaV1Response> {
+            return localVarFp.operationsControllerRunHauteLindaV1V1(hauteLindaV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+         * @param {HauteNaomiV1Request} hauteNaomiV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<HauteNaomiV1Response> {
-            return localVarFp.operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig): AxiosPromise<HauteNaomiV1Response> {
+            return localVarFp.operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+         * @param {ImagineKateV1Request} imagineKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ImagineKateV1Response> {
-            return localVarFp.operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ImagineKateV1Response> {
+            return localVarFp.operationsControllerRunImagineKateV1V1(imagineKateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+         * @param {InpaintKateV1Request} inpaintKateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
-            return localVarFp.operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
+            return localVarFp.operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+         * @param {NegateImageV1Request} negateImageV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
-            return localVarFp.operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
+            return localVarFp.operationsControllerRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+         * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
-            return localVarFp.operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
+            return localVarFp.operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+         * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
-            return localVarFp.operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
+            return localVarFp.operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+         * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingEmbeddingsV1Response> {
-            return localVarFp.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingEmbeddingsV1Response> {
+            return localVarFp.operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+         * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
-            return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
+            return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+         * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<UpscaleV1Response> {
-            return localVarFp.operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<UpscaleV1Response> {
+            return localVarFp.operationsControllerRunUpscaleV1V1(upscaleV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+         * @param {VtonGiseleV1Request} vtonGiseleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig): AxiosPromise<VtonGiseleV1Response> {
-            return localVarFp.operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options).then((request) => request(axios, basePath));
+        operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig): AxiosPromise<VtonGiseleV1Response> {
+            return localVarFp.operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -11790,156 +11796,156 @@ export class OperationsApi extends BaseAPI {
 
     /**
      * 
-     * @param {CompositeV1ControllerInput} compositeV1ControllerInput 
+     * @param {CompositeV1Request} compositeV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunCompositeV1V1(compositeV1ControllerInput: CompositeV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunCompositeV1V1(compositeV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {CutV1ControllerInput} cutV1ControllerInput 
+     * @param {CutV1Request} cutV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunCutV1V1(cutV1ControllerInput: CutV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunCutV1V1(cutV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunCutV1V1(cutV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {GPTV1ControllerInput} gPTV1ControllerInput 
+     * @param {GptV1Request} gptV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunGptV1V1(gPTV1ControllerInput: GPTV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunGptV1V1(gPTV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunGptV1V1(gptV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {LindaHauteV1ControllerInput} lindaHauteV1ControllerInput 
+     * @param {HauteLindaV1Request} hauteLindaV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput: LindaHauteV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunHauteLindaV1V1(lindaHauteV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunHauteLindaV1V1(hauteLindaV1Request: HauteLindaV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunHauteLindaV1V1(hauteLindaV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {NaomiHauteV1ControllerInput} naomiHauteV1ControllerInput 
+     * @param {HauteNaomiV1Request} hauteNaomiV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput: NaomiHauteV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunHauteNaomiV1V1(naomiHauteV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request: HauteNaomiV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunHauteNaomiV1V1(hauteNaomiV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {KateImagineV1ControllerInput} kateImagineV1ControllerInput 
+     * @param {ImagineKateV1Request} imagineKateV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput: KateImagineV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunImagineKateV1V1(kateImagineV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunImagineKateV1V1(imagineKateV1Request: ImagineKateV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunImagineKateV1V1(imagineKateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {KateInpaintV1ControllerInput} kateInpaintV1ControllerInput 
+     * @param {InpaintKateV1Request} inpaintKateV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput: KateInpaintV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunInpaintKateV1V1(kateInpaintV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {NegateImageV1ControllerInput} negateImageV1ControllerInput 
+     * @param {NegateImageV1Request} negateImageV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput: NegateImageV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunNegateImageV1V1(negateImageV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {ObjectDetectionV1ControllerInput} objectDetectionV1ControllerInput 
+     * @param {ObjectDetectionV1Request} objectDetectionV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput: ObjectDetectionV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunObjectDetectionV1V1(objectDetectionV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {PoseEstimationV1ControllerInput} poseEstimationV1ControllerInput 
+     * @param {PoseEstimationV1Request} poseEstimationV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput: PoseEstimationV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunPoseEstimationV1V1(poseEstimationV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {SegmentAnythingEmbeddingsV1ControllerInput} segmentAnythingEmbeddingsV1ControllerInput 
+     * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput: SegmentAnythingEmbeddingsV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request: SegmentAnythingEmbeddingsV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingEmbeddingsV1V1(segmentAnythingEmbeddingsV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {SegmentAnythingMaskV1ControllerInput} segmentAnythingMaskV1ControllerInput 
+     * @param {SegmentAnythingMaskV1Request} segmentAnythingMaskV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput: SegmentAnythingMaskV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {UpscaleV1ControllerInput} upscaleV1ControllerInput 
+     * @param {UpscaleV1Request} upscaleV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput: UpscaleV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunUpscaleV1V1(upscaleV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunUpscaleV1V1(upscaleV1Request: UpscaleV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunUpscaleV1V1(upscaleV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {GiseleVtonV1ControllerInput} giseleVtonV1ControllerInput 
+     * @param {VtonGiseleV1Request} vtonGiseleV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OperationsApi
      */
-    public operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput: GiseleVtonV1ControllerInput, options?: RawAxiosRequestConfig) {
-        return OperationsApiFp(this.configuration).operationsControllerRunVtonGiseleV1V1(giseleVtonV1ControllerInput, options).then((request) => request(this.axios, this.basePath));
+    public operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request: VtonGiseleV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunVtonGiseleV1V1(vtonGiseleV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
