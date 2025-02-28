@@ -32,6 +32,8 @@ describe('typed metadata', () => {
         const collection = await sdk.collections.create({ metadata: { field: 'test' } });
         const createdCollection = await sdk.collections.get({ id: collection.id });
         expect(createdCollection?.metadata?.field).toEqual('test');
+
+        await sdk.collections.list();
     });
 
     it('operations', async () => {
@@ -51,6 +53,8 @@ describe('typed metadata', () => {
         });
         const createPipeline = await sdk.operations.get({ id: operation.id });
         expect(createPipeline?.metadata?.field).toEqual('test');
+
+        await sdk.operations.list();
     });
 
     it('pipelines', async () => {

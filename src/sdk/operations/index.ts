@@ -154,7 +154,7 @@ const operations = (options: SDKOptions, relevantOperations: OperationsListener)
                 run: (methods) =>
                     methods.operationsControllerListOperationsV1(props.orderBy, props.limit, props.cursor),
                 transform: transformToListResponse,
-            }),
+            }) as Promise<ListResponse<OperationEntityWithMetadata>>,
         updateMetadata: async (props: { id: string; metadata?: any }): Promise<void> =>
             api.call({
                 run: (methods) => methods.operationsControllerUpdateMetadataV1(props.id, { overwrite: props.metadata }),
