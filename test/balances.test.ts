@@ -27,4 +27,20 @@ describe('Balances', () => {
         const balanceAfter = await sdk.balances.getByAccountId({ accountId: account.id });
         expect(balanceAfter).toEqual('100.00000000');
     });
+
+    describe('idempotency key', () => {
+        it('should add balance only once', async () => {
+            const account = await sdk.accounts.create();
+            const balanceBefore = await sdk.balances.getByAccountId({ accountId: account.id });
+            expect(balanceBefore).toEqual('0.00000000');
+
+            await sdk.balances.add({ accountId: account.id, amount: '100' });
+            const balanceAfter = await sdk.balances.getByAccountId({ accountId: account.id });
+            expect(balanceAfter).toEqual('100.00000000');
+
+            await sdk.balances.add({ accountId: account.id, amount: '100' });
+            const balanceAfterSecondAdd = await sdk.balances.getByAccountId({ accountId: account.id });
+            expect(balanceAfterSecondAdd).toEqual('100.00000000');
+        });
+    });
 });
