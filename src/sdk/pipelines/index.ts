@@ -131,6 +131,10 @@ const pipelines = (options: SDKOptions) => {
                 get: callMethod((methods) => methods.callControllerCallStacksGetV1),
                 list: callMethod((methods) => methods.callControllerCallStacksListV1),
                 updateMetadata: callMethod((methods) => methods.callControllerCallStacksMetadataUpdateV1),
+                items: {
+                    add: callMethod((methods) => methods.callControllerCallStacksItemsAddV1),
+                    remove: callMethod((methods) => methods.callControllerCallStacksItemsRemoveV1),
+                },
             },
             storage: {
                 create: callMethod((methods) => methods.callControllerCallStorageCreateV1),
