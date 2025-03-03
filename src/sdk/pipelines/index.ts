@@ -185,7 +185,7 @@ const pipelines = (options: SDKOptions) => {
                 const poll = async () => {
                     const pipeline = (await api.call({
                         run: (methods) => methods.pipelinesControllerGetPipelineV1(props.id),
-                    })) as PipelineEntity;
+                    })) as PipelineEntityWithMetadata;
                     if (pipeline.status === 'completed') return resolve(pipeline);
                     if (pipeline.status === 'failed') return resolve(pipeline);
                     timeoutId = setTimeout(poll, delay);
