@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hautechai/pipelines':
-        specifier: 0.3.2
-        version: 0.3.2(@types/node@22.5.2)
+        specifier: 0.3.4
+        version: 0.3.4(@types/node@22.5.2)
       axios:
         specifier: 1.7.9
         version: 1.7.9
@@ -386,8 +386,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hautechai/pipelines@0.3.2':
-    resolution: {integrity: sha512-5JHEEViovcSb4/VEOOLMMpNS/19WqSovvpZmGN5xEP9030t1aqLoWJzBag/NxyjJigf2NYAi9kVCzquMH5A+BQ==, tarball: https://registry.npmjs.org/@hautechai/pipelines/-/pipelines-0.3.2.tgz}
+  '@hautechai/pipelines@0.3.4':
+    resolution: {integrity: sha512-2u/koNQRsS1Ruup/rx28aQRtdba/XIIaJOLN/2igAmiG4+RRF4T5QurWqY0nU3MM5OSLr3ZftVSNTSujswxH6g==, tarball: https://registry.npmjs.org/@hautechai/pipelines/-/pipelines-0.3.4.tgz}
 
   '@istanbuljs/load-nyc-config@1.1.0':
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==, tarball: https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz}
@@ -2405,7 +2405,7 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@hautechai/pipelines@0.3.2(@types/node@22.5.2)':
+  '@hautechai/pipelines@0.3.4(@types/node@22.5.2)':
     dependencies:
       ts-node: 10.9.2(@types/node@22.5.2)(typescript@5.7.3)
       tsx: 4.19.2
