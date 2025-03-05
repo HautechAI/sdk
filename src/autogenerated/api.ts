@@ -40,30 +40,6 @@ export interface AccountEntity {
      * @type {string}
      * @memberof AccountEntity
      */
-    'applicationId': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof AccountEntity
-     */
-    'balance': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountEntity
-     */
-    'createdAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountEntity
-     */
-    'alias'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountEntity
-     */
     'type': AccountEntityTypeEnum;
 }
 
@@ -291,22 +267,10 @@ export interface CollectionEntity {
     'kind': number;
     /**
      * 
-     * @type {Array<ResourceEntity>}
-     * @memberof CollectionEntity
-     */
-    'items': Array<ResourceEntity>;
-    /**
-     * 
      * @type {string}
      * @memberof CollectionEntity
      */
     'id': string;
-    /**
-     * 
-     * @type {AccountEntity}
-     * @memberof CollectionEntity
-     */
-    'creator': AccountEntity;
     /**
      * 
      * @type {string}
@@ -331,18 +295,6 @@ export interface CollectionEntity {
      * @memberof CollectionEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof CollectionEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof CollectionEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 /**
  * 
@@ -492,12 +444,6 @@ export interface CompositeV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof CompositeV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof CompositeV1Response
      */
@@ -520,18 +466,6 @@ export interface CompositeV1Response {
      * @memberof CompositeV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof CompositeV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof CompositeV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const CompositeV1ResponseKindEnum = {
@@ -719,12 +653,6 @@ export interface CutV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof CutV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof CutV1Response
      */
@@ -747,18 +675,6 @@ export interface CutV1Response {
      * @memberof CutV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof CutV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof CutV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const CutV1ResponseKindEnum = {
@@ -1116,12 +1032,6 @@ export interface GptV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof GptV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof GptV1Response
      */
@@ -1144,18 +1054,6 @@ export interface GptV1Response {
      * @memberof GptV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof GptV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof GptV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const GptV1ResponseKindEnum = {
@@ -1260,24 +1158,6 @@ export interface GroupEntity {
      * @type {string}
      * @memberof GroupEntity
      */
-    'applicationId': string;
-    /**
-     * 
-     * @type {AccountEntity}
-     * @memberof GroupEntity
-     */
-    'creator': AccountEntity;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupEntity
-     */
-    'creatorId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupEntity
-     */
     'createdAt': string;
 }
 /**
@@ -1343,12 +1223,6 @@ export interface HauteLindaV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof HauteLindaV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof HauteLindaV1Response
      */
@@ -1371,18 +1245,6 @@ export interface HauteLindaV1Response {
      * @memberof HauteLindaV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof HauteLindaV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof HauteLindaV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const HauteLindaV1ResponseKindEnum = {
@@ -1461,12 +1323,6 @@ export interface HauteNaomiV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof HauteNaomiV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof HauteNaomiV1Response
      */
@@ -1489,18 +1345,6 @@ export interface HauteNaomiV1Response {
      * @memberof HauteNaomiV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof HauteNaomiV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof HauteNaomiV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const HauteNaomiV1ResponseKindEnum = {
@@ -1536,12 +1380,6 @@ export interface ImageEntity {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof ImageEntity
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof ImageEntity
      */
@@ -1564,24 +1402,6 @@ export interface ImageEntity {
      * @memberof ImageEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof ImageEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof ImageEntity
-     */
-    'representations': Array<RepresentationEntity>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ImageEntity
-     */
-    'uri': string;
     /**
      * 
      * @type {number}
@@ -1727,12 +1547,6 @@ export interface ImagineKateV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof ImagineKateV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof ImagineKateV1Response
      */
@@ -1755,18 +1569,6 @@ export interface ImagineKateV1Response {
      * @memberof ImagineKateV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof ImagineKateV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof ImagineKateV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const ImagineKateV1ResponseKindEnum = {
@@ -1858,12 +1660,6 @@ export interface InpaintKateV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof InpaintKateV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof InpaintKateV1Response
      */
@@ -1886,18 +1682,6 @@ export interface InpaintKateV1Response {
      * @memberof InpaintKateV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof InpaintKateV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof InpaintKateV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const InpaintKateV1ResponseKindEnum = {
@@ -2019,7 +1803,21 @@ export interface KateInpaintV1Input {
      * @memberof KateInpaintV1Input
      */
     'guidanceScale'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof KateInpaintV1Input
+     */
+    'branch'?: KateInpaintV1InputBranchEnum;
 }
+
+export const KateInpaintV1InputBranchEnum = {
+    Stable: 'stable',
+    Nightly: 'nightly'
+} as const;
+
+export type KateInpaintV1InputBranchEnum = typeof KateInpaintV1InputBranchEnum[keyof typeof KateInpaintV1InputBranchEnum];
+
 /**
  * 
  * @export
@@ -2614,12 +2412,6 @@ export interface NegateImageV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof NegateImageV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof NegateImageV1Response
      */
@@ -2642,18 +2434,6 @@ export interface NegateImageV1Response {
      * @memberof NegateImageV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof NegateImageV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof NegateImageV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const NegateImageV1ResponseKindEnum = {
@@ -2751,12 +2531,6 @@ export interface ObjectDetectionV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof ObjectDetectionV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof ObjectDetectionV1Response
      */
@@ -2779,18 +2553,6 @@ export interface ObjectDetectionV1Response {
      * @memberof ObjectDetectionV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof ObjectDetectionV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof ObjectDetectionV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const ObjectDetectionV1ResponseKindEnum = {
@@ -2850,12 +2612,6 @@ export interface OperationEntity {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof OperationEntity
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof OperationEntity
      */
@@ -2878,18 +2634,6 @@ export interface OperationEntity {
      * @memberof OperationEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof OperationEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof OperationEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const OperationEntityKindEnum = {
@@ -3027,12 +2771,6 @@ export interface PipelineEntity {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof PipelineEntity
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof PipelineEntity
      */
@@ -3055,18 +2793,6 @@ export interface PipelineEntity {
      * @memberof PipelineEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof PipelineEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof PipelineEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const PipelineEntityKindEnum = {
@@ -3102,12 +2828,6 @@ export interface PoseEntity {
     'sourceImage': ImageEntity;
     /**
      * 
-     * @type {string}
-     * @memberof PoseEntity
-     */
-    'sourceImageId': string;
-    /**
-     * 
      * @type {ImageEntity}
      * @memberof PoseEntity
      */
@@ -3124,12 +2844,6 @@ export interface PoseEntity {
      * @memberof PoseEntity
      */
     'id': string;
-    /**
-     * 
-     * @type {AccountEntity}
-     * @memberof PoseEntity
-     */
-    'creator': AccountEntity;
     /**
      * 
      * @type {string}
@@ -3154,18 +2868,6 @@ export interface PoseEntity {
      * @memberof PoseEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof PoseEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof PoseEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const PoseEntityKindEnum = {
@@ -3250,12 +2952,6 @@ export interface PoseEstimationV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof PoseEstimationV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof PoseEstimationV1Response
      */
@@ -3278,18 +2974,6 @@ export interface PoseEstimationV1Response {
      * @memberof PoseEstimationV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof PoseEstimationV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof PoseEstimationV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const PoseEstimationV1ResponseKindEnum = {
@@ -3421,57 +3105,6 @@ export interface RemoveItemsFromStackParamsDto {
 /**
  * 
  * @export
- * @interface RepresentationEntity
- */
-export interface RepresentationEntity {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepresentationEntity
-     */
-    'id': string;
-    /**
-     * 
-     * @type {ResourceEntity}
-     * @memberof RepresentationEntity
-     */
-    'resource': ResourceEntity;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepresentationEntity
-     */
-    'resourceId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepresentationEntity
-     */
-    'createdAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepresentationEntity
-     */
-    'type': RepresentationEntityTypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepresentationEntity
-     */
-    'uri': string;
-}
-
-export const RepresentationEntityTypeEnum = {
-    SamV1: 'sam.v1',
-    PoseV1: 'pose.v1'
-} as const;
-
-export type RepresentationEntityTypeEnum = typeof RepresentationEntityTypeEnum[keyof typeof RepresentationEntityTypeEnum];
-
-/**
- * 
- * @export
  * @interface ResourceEntity
  */
 export interface ResourceEntity {
@@ -3487,12 +3120,6 @@ export interface ResourceEntity {
      * @memberof ResourceEntity
      */
     'id': string;
-    /**
-     * 
-     * @type {AccountEntity}
-     * @memberof ResourceEntity
-     */
-    'creator': AccountEntity;
     /**
      * 
      * @type {string}
@@ -3517,18 +3144,6 @@ export interface ResourceEntity {
      * @memberof ResourceEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof ResourceEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof ResourceEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const ResourceEntityKindEnum = {
@@ -3619,12 +3234,6 @@ export interface SegmentAnythingEmbeddingsV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof SegmentAnythingEmbeddingsV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof SegmentAnythingEmbeddingsV1Response
      */
@@ -3647,18 +3256,6 @@ export interface SegmentAnythingEmbeddingsV1Response {
      * @memberof SegmentAnythingEmbeddingsV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof SegmentAnythingEmbeddingsV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof SegmentAnythingEmbeddingsV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const SegmentAnythingEmbeddingsV1ResponseKindEnum = {
@@ -3762,12 +3359,6 @@ export interface SegmentAnythingMaskV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof SegmentAnythingMaskV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof SegmentAnythingMaskV1Response
      */
@@ -3790,18 +3381,6 @@ export interface SegmentAnythingMaskV1Response {
      * @memberof SegmentAnythingMaskV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof SegmentAnythingMaskV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof SegmentAnythingMaskV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const SegmentAnythingMaskV1ResponseKindEnum = {
@@ -3875,12 +3454,6 @@ export interface StackEntity {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof StackEntity
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof StackEntity
      */
@@ -3903,18 +3476,6 @@ export interface StackEntity {
      * @memberof StackEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof StackEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof StackEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const StackEntityKindEnum = {
@@ -3946,12 +3507,6 @@ export interface StorageEntity {
      * @type {string}
      * @memberof StorageEntity
      */
-    'applicationId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StorageEntity
-     */
     'key': string;
     /**
      * 
@@ -3965,12 +3520,6 @@ export interface StorageEntity {
      * @memberof StorageEntity
      */
     'id': string;
-    /**
-     * 
-     * @type {AccountEntity}
-     * @memberof StorageEntity
-     */
-    'creator': AccountEntity;
     /**
      * 
      * @type {string}
@@ -3995,18 +3544,6 @@ export interface StorageEntity {
      * @memberof StorageEntity
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof StorageEntity
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof StorageEntity
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const StorageEntityKindEnum = {
@@ -4161,12 +3698,6 @@ export interface UpscaleV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof UpscaleV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof UpscaleV1Response
      */
@@ -4189,18 +3720,6 @@ export interface UpscaleV1Response {
      * @memberof UpscaleV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof UpscaleV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof UpscaleV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const UpscaleV1ResponseKindEnum = {
@@ -4279,12 +3798,6 @@ export interface VtonGiseleV1Response {
     'id': string;
     /**
      * 
-     * @type {AccountEntity}
-     * @memberof VtonGiseleV1Response
-     */
-    'creator': AccountEntity;
-    /**
-     * 
      * @type {string}
      * @memberof VtonGiseleV1Response
      */
@@ -4307,18 +3820,6 @@ export interface VtonGiseleV1Response {
      * @memberof VtonGiseleV1Response
      */
     'updatedAt': string;
-    /**
-     * 
-     * @type {Array<CollectionEntity>}
-     * @memberof VtonGiseleV1Response
-     */
-    'collections': Array<CollectionEntity>;
-    /**
-     * 
-     * @type {Array<RepresentationEntity>}
-     * @memberof VtonGiseleV1Response
-     */
-    'representations': Array<RepresentationEntity>;
 }
 
 export const VtonGiseleV1ResponseKindEnum = {
@@ -12481,6 +11982,49 @@ export const PosesApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateMetadataDto} updateMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        posesControllerUpdateMetadataV1: async (id: string, updateMetadataDto: UpdateMetadataDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('posesControllerUpdateMetadataV1', 'id', id)
+            // verify required parameter 'updateMetadataDto' is not null or undefined
+            assertParamExists('posesControllerUpdateMetadataV1', 'updateMetadataDto', updateMetadataDto)
+            const localVarPath = `/v1/poses/{id}/metadata`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateMetadataDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -12530,6 +12074,19 @@ export const PosesApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['PosesApi.posesControllerSetPosePreviewV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateMetadataDto} updateMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async posesControllerUpdateMetadataV1(id: string, updateMetadataDto: UpdateMetadataDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResourceEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.posesControllerUpdateMetadataV1(id, updateMetadataDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PosesApi.posesControllerUpdateMetadataV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -12569,6 +12126,16 @@ export const PosesApiFactory = function (configuration?: Configuration, basePath
          */
         posesControllerSetPosePreviewV1(id: string, setPosePreviewControllerParamsDto: SetPosePreviewControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.posesControllerSetPosePreviewV1(id, setPosePreviewControllerParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateMetadataDto} updateMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        posesControllerUpdateMetadataV1(id: string, updateMetadataDto: UpdateMetadataDto, options?: RawAxiosRequestConfig): AxiosPromise<ResourceEntity> {
+            return localVarFp.posesControllerUpdateMetadataV1(id, updateMetadataDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -12614,6 +12181,18 @@ export class PosesApi extends BaseAPI {
      */
     public posesControllerSetPosePreviewV1(id: string, setPosePreviewControllerParamsDto: SetPosePreviewControllerParamsDto, options?: RawAxiosRequestConfig) {
         return PosesApiFp(this.configuration).posesControllerSetPosePreviewV1(id, setPosePreviewControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UpdateMetadataDto} updateMetadataDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PosesApi
+     */
+    public posesControllerUpdateMetadataV1(id: string, updateMetadataDto: UpdateMetadataDto, options?: RawAxiosRequestConfig) {
+        return PosesApiFp(this.configuration).posesControllerUpdateMetadataV1(id, updateMetadataDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

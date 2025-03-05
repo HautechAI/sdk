@@ -54,6 +54,9 @@ export type MethodsPermissions = {
         create: boolean;
         read: boolean;
         update: boolean;
+        metadata: {
+            update: boolean;
+        };
     };
     stacks: {
         create: boolean;
