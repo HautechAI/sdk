@@ -3,16 +3,16 @@ import { SDK } from '../src';
 import { recreateSdk } from './utils';
 
 declare module '../src' {
-    interface CollectionsMetadata {
+    interface CollectionMetadata {
         field: string;
     }
-    interface OperationsMetadata {
+    interface OperationMetadata {
         field: string;
     }
-    interface PipelinesMetadata {
+    interface PipelineMetadata {
         field: string;
     }
-    interface StacksMetadata {
+    interface StackMetadata {
         field: string;
     }
 }
