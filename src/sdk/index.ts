@@ -63,7 +63,8 @@ export const createSDK = (options: SDKOptions) => {
 export type SDK = ReturnType<typeof createSDK>;
 
 // Interfaces for extending the types of metadata.
-export interface CollectionsMetadata {}
-export interface OperationsMetadata {}
-export interface PipelinesMetadata {}
-export interface StacksMetadata {}
+export interface CollectionMetadata {}
+export interface OperationMetadata {}
+export interface PipelineMetadata {}
+export interface StackMetadata {}
+export interface PoseMetadata {}
