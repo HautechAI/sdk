@@ -25,7 +25,7 @@ const stacks = (options: SDKOptions) => {
             api.call({
                 run: (methods) => methods.stacksControllerListStacksV1(props.orderBy, props.limit, props.cursor),
                 transform: transformToListResponse,
-            }),
+            }) as Promise<ListResponse<StackEntityWithMetadata>>,
         items: {
             add: async (props: { itemIds: string[]; stackId: string }): Promise<void> =>
                 api.call({
