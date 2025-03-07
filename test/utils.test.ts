@@ -9,8 +9,8 @@ describe('Utils', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should return seed', () => {

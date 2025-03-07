@@ -10,8 +10,8 @@ describe('Images', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should create image from file', async () => {

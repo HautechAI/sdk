@@ -15,8 +15,8 @@ describe('Collections', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should create collection', async () => {

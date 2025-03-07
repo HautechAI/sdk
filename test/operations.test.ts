@@ -10,8 +10,8 @@ describe('Operations', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should create operation', async () => {
@@ -71,7 +71,7 @@ describe('Operations', () => {
                 sdk = recreateSdk({ allowPollingFallback: false });
             });
             afterAll(async () => {
-                sdk.close();
+                await sdk.close();
             });
             const getSDK = () => sdk;
 
@@ -84,7 +84,7 @@ describe('Operations', () => {
                 sdk = recreateSdk({ useWebsocket: false });
             });
             afterAll(async () => {
-                sdk.close();
+                await sdk.close();
             });
             const getSDK = () => sdk;
 

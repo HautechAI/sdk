@@ -24,8 +24,8 @@ describe('typed metadata', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('collections', async () => {

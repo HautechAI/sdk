@@ -9,8 +9,8 @@ describe('Balances', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should return balance on get self', async () => {

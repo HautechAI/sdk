@@ -10,8 +10,8 @@ describe('Poses', () => {
         sdk = recreateSdk();
     });
 
-    afterAll(() => {
-        sdk.close();
+    afterAll(async () => {
+        await sdk.close();
     });
 
     it('should list the poses', async () => {

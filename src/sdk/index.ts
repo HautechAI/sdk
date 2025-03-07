@@ -63,8 +63,8 @@ export const createSDK = (options: SDKOptions) => {
         storage: storage(optionsWithTokenRefresher),
         utils: utils(optionsWithTokenRefresher),
         poses: poses(optionsWithTokenRefresher),
-        close: () => {
-            operationsListener.close();
+        close: async () => {
+            await operationsListener.close();
         },
     };
 };
