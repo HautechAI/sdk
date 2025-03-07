@@ -40,7 +40,7 @@ export class OperationsListener {
     operationsStore: Record<string, OperationEntity> = {};
 
     async getOperation(id: string): Promise<OperationEntity | null> {
-        const fallbackToPolling = this.allowPollingFallback && !(this.ws?.readyState === WebSocket.OPEN);
+        const fallbackToPolling = this.allowPollingFallback && !(this.ws?.readyState === WebSocketClient.OPEN);
         if (!this.operationsStore[id] || fallbackToPolling) {
             const api = await this.operations();
             const operation = await api.operationsControllerGetOperationV1(id);
