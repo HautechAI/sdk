@@ -13,5 +13,6 @@ export const recreateSdk = () => {
     return createSDK({
         authToken: () => tokenSigner.createRootToken({ expiresInSeconds: 60 * 60 * 24 * 30 }),
         endpoint: process.env.API_CORE_URL!,
+        useWebsocket: true,
     });
 };
