@@ -30,12 +30,13 @@ export const createSDK = (options: SDKOptions) => {
     };
     const optionsWithTokenRefresher = { ...options, authToken };
     const operationsListener = new OperationsListener({
-        ws: options.useWebsocket
-            ? {
-                  endpoint: getBaseUrl(options),
-                  token: authToken,
-              }
-            : null,
+        ws:
+            (options.useWebsocket ?? true)
+                ? {
+                      endpoint: getBaseUrl(options),
+                      token: authToken,
+                  }
+                : null,
         // TODO: Refactor the API initialization
         operations: () => getAPI(OperationsApi, optionsWithTokenRefresher),
     });

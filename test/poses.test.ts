@@ -3,7 +3,7 @@ import fs from 'fs';
 import { SDK } from '../src';
 import { recreateSdk } from './utils';
 
-describe('Images', () => {
+describe('Poses', () => {
     let sdk: SDK;
 
     beforeAll(() => {
