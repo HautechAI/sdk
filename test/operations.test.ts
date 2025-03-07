@@ -44,24 +44,51 @@ describe('Operations', () => {
         expect(operations).toBeDefined();
     });
 
-    it('should wait for the operation to finish', async () => {
-        const sdk = recreateSdk();
+    describe('Waiting', () => {
+        const waitTest = (getSDK: () => SDK) => {
+            it('should wait for the operation to finish', async () => {
+                const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
 
-        const file = new Blob([fs.readFileSync('./test/image.jpeg')], { type: 'image/jpeg' });
+                const image = await getSDK().images.createFromFile({ file });
+                expect(image).toBeDefined();
 
-        const image = await sdk.images.createFromFile({ file });
-        expect(image).toBeDefined();
+                const operation = await getSDK().operations.run.negateImage.v1({
+                    input: {
+                        imageId: image.id,
+                    },
+                });
+                expect(operation).toBeDefined();
 
-        const operation = await sdk.operations.run.negateImage.v1({
-            input: {
-                imageId: image.id,
-            },
+                const waitedOperation = await getSDK().operations.wait(operation);
+                expect(waitedOperation).toBeDefined();
+                expect(waitedOperation.status).toEqual('finished');
+            });
+        };
+
+        describe('WebSocket only', () => {
+            let sdk: SDK;
+            beforeAll(async () => {
+                sdk = recreateSdk({ allowPollingFallback: false });
+            });
+            afterAll(async () => {
+                sdk.close();
+            });
+            const getSDK = () => sdk;
+
+            waitTest(getSDK);
         });
-        expect(operation).toBeDefined();
 
-        const waitedOperation = await sdk.operations.wait(operation);
-        expect(waitedOperation).toBeDefined();
+        describe('Polling only', () => {
+            let sdk: SDK;
+            beforeAll(async () => {
+                sdk = recreateSdk({ useWebsocket: false });
+            });
+            afterAll(async () => {
+                sdk.close();
+            });
+            const getSDK = () => sdk;
 
-        sdk.close();
+            waitTest(getSDK);
+        });
     });
 });

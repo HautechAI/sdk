@@ -3,6 +3,7 @@ export interface SDKOptions {
     endpoint?: string;
     // default: true
     useWebsocket?: boolean;
+    allowPollingFallback?: boolean;
 }
 
 export type ListProps = {

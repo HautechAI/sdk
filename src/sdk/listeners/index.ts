@@ -10,17 +10,22 @@ export class OperationsListener {
     } | null = null;
     ws: WebSocketClient | null = null;
     operations: () => Promise<OperationsApi>;
+    allowPollingFallback: boolean;
 
     constructor({
         ws,
         operations,
+        allowPollingFallback = false,
     }: {
         ws: {
             endpoint: string;
             token: () => string | Promise<string>;
         } | null;
         operations: () => Promise<OperationsApi>;
+        allowPollingFallback: boolean;
     }) {
+        if (!ws) allowPollingFallback = true;
+
         if (ws) {
             this.useWebsocket = {
                 endpoint: ws?.endpoint,
@@ -29,13 +34,14 @@ export class OperationsListener {
         }
 
         this.operations = operations;
+        this.allowPollingFallback = allowPollingFallback;
     }
 
     operationsStore: Record<string, OperationEntity> = {};
 
     async getOperation(id: string): Promise<OperationEntity | null> {
-        const isWsReady = this.ws?.readyState === WebSocket.OPEN;
-        if (!this.operationsStore[id] || !isWsReady) {
+        const fallbackToPolling = this.allowPollingFallback && !(this.ws?.readyState === WebSocket.OPEN);
+        if (!this.operationsStore[id] || fallbackToPolling) {
             const api = await this.operations();
             const operation = await api.operationsControllerGetOperationV1(id);
             if (operation.status == 200) this.updateOperation(id, operation.data);
@@ -53,7 +59,8 @@ export class OperationsListener {
     async subscribe() {
         if (!this.useWebsocket) return;
         try {
-            this.ws = new WebSocketClient(this.useWebsocket.endpoint, ['1', await this.useWebsocket.token()]);
+            const token = await this.useWebsocket.token();
+            this.ws = new WebSocketClient(this.useWebsocket.endpoint, ['1', token]);
 
             this.ws.onopen = () => {
                 this.onOpen();

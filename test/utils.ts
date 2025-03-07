@@ -9,10 +9,10 @@ const tokenSigner = createTokenSigner({
     appKeySecret: process.env.APP_KEY_SECRET!,
 });
 
-export const recreateSdk = () => {
+export const recreateSdk = (options?: { useWebsocket?: boolean; allowPollingFallback?: boolean }) => {
     return createSDK({
         authToken: () => tokenSigner.createRootToken({ expiresInSeconds: 60 * 60 * 24 * 30 }),
         endpoint: process.env.API_CORE_URL!,
-        useWebsocket: true,
+        ...options,
     });
 };

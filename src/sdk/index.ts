@@ -45,6 +45,7 @@ export const createSDK = (options: SDKOptions) => {
                 : null,
         // TODO: Refactor the API initialization
         operations: () => getAPI(OperationsApi, optionsWithTokenRefresher),
+        allowPollingFallback: options.allowPollingFallback ?? true,
     });
 
     operationsListener.subscribe();
