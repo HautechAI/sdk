@@ -719,6 +719,19 @@ export interface DeleteStorageParamsDto {
 /**
  * 
  * @export
+ * @interface DetachAccessControllerParamsDto
+ */
+export interface DetachAccessControllerParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof DetachAccessControllerParamsDto
+     */
+    'parentResourceId': string;
+}
+/**
+ * 
+ * @export
  * @interface GPTV1Input
  */
 export interface GPTV1Input {
@@ -1101,45 +1114,6 @@ export const GrantAccessControllerParamsPrincipalTypeEnum = {
 } as const;
 
 export type GrantAccessControllerParamsPrincipalTypeEnum = typeof GrantAccessControllerParamsPrincipalTypeEnum[keyof typeof GrantAccessControllerParamsPrincipalTypeEnum];
-
-/**
- * 
- * @export
- * @interface GrantAccessParamsDto
- */
-export interface GrantAccessParamsDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantAccessParamsDto
-     */
-    'principalType': GrantAccessParamsDtoPrincipalTypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantAccessParamsDto
-     */
-    'principalId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantAccessParamsDto
-     */
-    'resourceId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantAccessParamsDto
-     */
-    'access': string;
-}
-
-export const GrantAccessParamsDtoPrincipalTypeEnum = {
-    Account: 'account',
-    Group: 'group'
-} as const;
-
-export type GrantAccessParamsDtoPrincipalTypeEnum = typeof GrantAccessParamsDtoPrincipalTypeEnum[keyof typeof GrantAccessParamsDtoPrincipalTypeEnum];
 
 /**
  * 
@@ -1897,6 +1871,86 @@ export type LindaHauteV1InputAspectRatioEnum = typeof LindaHauteV1InputAspectRat
 /**
  * 
  * @export
+ * @interface ListAccessControllerAttachmentsDto
+ */
+export interface ListAccessControllerAttachmentsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAccessControllerAttachmentsDto
+     */
+    'parentResourceId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ListAccessControllerDto
+ */
+export interface ListAccessControllerDto {
+    /**
+     * 
+     * @type {Array<ListAccessControllerAttachmentsDto>}
+     * @memberof ListAccessControllerDto
+     */
+    'attachments': Array<ListAccessControllerAttachmentsDto>;
+    /**
+     * 
+     * @type {Array<ListAccessControllerGrantsDto>}
+     * @memberof ListAccessControllerDto
+     */
+    'grants': Array<ListAccessControllerGrantsDto>;
+}
+/**
+ * 
+ * @export
+ * @interface ListAccessControllerGrantsDto
+ */
+export interface ListAccessControllerGrantsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAccessControllerGrantsDto
+     */
+    'principalId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAccessControllerGrantsDto
+     */
+    'principalType': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAccessControllerGrantsDto
+     */
+    'access': ListAccessControllerGrantsDtoAccessEnum;
+}
+
+export const ListAccessControllerGrantsDtoAccessEnum = {
+    Owner: 'owner',
+    Maintainer: 'maintainer',
+    Writer: 'writer',
+    Reader: 'reader',
+    Member: 'member',
+    CanAssignMembers: 'can_assign_members',
+    CanAssignMaintainers: 'can_assign_maintainers',
+    CanAssignOwners: 'can_assign_owners',
+    CanView: 'can_view',
+    CanWrite: 'can_write',
+    CanEdit: 'can_edit',
+    CanDelete: 'can_delete',
+    CanChangeAccess: 'can_change_access',
+    CanAddItems: 'can_add_items',
+    CanRemoveItems: 'can_remove_items',
+    CanList: 'can_list',
+    Parent: 'parent'
+} as const;
+
+export type ListAccessControllerGrantsDtoAccessEnum = typeof ListAccessControllerGrantsDtoAccessEnum[keyof typeof ListAccessControllerGrantsDtoAccessEnum];
+
+/**
+ * 
+ * @export
  * @interface ListAccountsDto
  */
 export interface ListAccountsDto {
@@ -2272,6 +2326,45 @@ export type ListStacksParamsDtoOrderByEnum = typeof ListStacksParamsDtoOrderByEn
 /**
  * 
  * @export
+ * @interface ModifyAccessParamsDto
+ */
+export interface ModifyAccessParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifyAccessParamsDto
+     */
+    'principalType': ModifyAccessParamsDtoPrincipalTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifyAccessParamsDto
+     */
+    'principalId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifyAccessParamsDto
+     */
+    'resourceId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModifyAccessParamsDto
+     */
+    'access': string;
+}
+
+export const ModifyAccessParamsDtoPrincipalTypeEnum = {
+    Account: 'account',
+    Group: 'group'
+} as const;
+
+export type ModifyAccessParamsDtoPrincipalTypeEnum = typeof ModifyAccessParamsDtoPrincipalTypeEnum[keyof typeof ModifyAccessParamsDtoPrincipalTypeEnum];
+
+/**
+ * 
+ * @export
  * @interface NaomiHauteV1Input
  */
 export interface NaomiHauteV1Input {
@@ -2335,7 +2428,21 @@ export interface NaomiHauteV1Input {
      * @memberof NaomiHauteV1Input
      */
     'numInferenceSteps'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof NaomiHauteV1Input
+     */
+    'mode': NaomiHauteV1InputModeEnum;
 }
+
+export const NaomiHauteV1InputModeEnum = {
+    ApparelToModel: 'apparel_to_model',
+    ModelToModel: 'model_to_model'
+} as const;
+
+export type NaomiHauteV1InputModeEnum = typeof NaomiHauteV1InputModeEnum[keyof typeof NaomiHauteV1InputModeEnum];
+
 /**
  * 
  * @export
@@ -3161,6 +3268,39 @@ export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof 
 /**
  * 
  * @export
+ * @interface RevokeAccessControllerParamsDto
+ */
+export interface RevokeAccessControllerParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof RevokeAccessControllerParamsDto
+     */
+    'principalType': RevokeAccessControllerParamsDtoPrincipalTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof RevokeAccessControllerParamsDto
+     */
+    'principalId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RevokeAccessControllerParamsDto
+     */
+    'access': string;
+}
+
+export const RevokeAccessControllerParamsDtoPrincipalTypeEnum = {
+    Account: 'account',
+    Group: 'group'
+} as const;
+
+export type RevokeAccessControllerParamsDtoPrincipalTypeEnum = typeof RevokeAccessControllerParamsDtoPrincipalTypeEnum[keyof typeof RevokeAccessControllerParamsDtoPrincipalTypeEnum];
+
+/**
+ * 
+ * @export
  * @interface SegmentAnythingEmbeddingsV1Input
  */
 export interface SegmentAnythingEmbeddingsV1Input {
@@ -3857,6 +3997,44 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
+         * @summary UNSTABLE
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerAccessV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accessControllerAccessV1', 'id', id)
+            const localVarPath = `/v1/resources/{id}/access`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {AttachAccessControllerParamsDto} attachAccessControllerParamsDto 
          * @param {*} [options] Override http request option.
@@ -3892,6 +4070,49 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(attachAccessControllerParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {DetachAccessControllerParamsDto} detachAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerDetachAccessV1: async (id: string, detachAccessControllerParamsDto: DetachAccessControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accessControllerDetachAccessV1', 'id', id)
+            // verify required parameter 'detachAccessControllerParamsDto' is not null or undefined
+            assertParamExists('accessControllerDetachAccessV1', 'detachAccessControllerParamsDto', detachAccessControllerParamsDto)
+            const localVarPath = `/v1/resources/{id}/access/detach`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(detachAccessControllerParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3941,6 +4162,49 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {RevokeAccessControllerParamsDto} revokeAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerRevokeAccessV1: async (id: string, revokeAccessControllerParamsDto: RevokeAccessControllerParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accessControllerRevokeAccessV1', 'id', id)
+            // verify required parameter 'revokeAccessControllerParamsDto' is not null or undefined
+            assertParamExists('accessControllerRevokeAccessV1', 'revokeAccessControllerParamsDto', revokeAccessControllerParamsDto)
+            const localVarPath = `/v1/resources/{id}/access/revoke`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(revokeAccessControllerParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -3951,6 +4215,19 @@ export const AccessApiAxiosParamCreator = function (configuration?: Configuratio
 export const AccessApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AccessApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @summary UNSTABLE
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accessControllerAccessV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListAccessControllerDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerAccessV1(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * 
          * @param {string} id 
@@ -3967,6 +4244,19 @@ export const AccessApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
+         * @param {DetachAccessControllerParamsDto} detachAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accessControllerDetachAccessV1(id: string, detachAccessControllerParamsDto: DetachAccessControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerDetachAccessV1(id, detachAccessControllerParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerDetachAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
          * @param {GrantAccessControllerParams} grantAccessControllerParams 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3975,6 +4265,19 @@ export const AccessApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerGrantAccessV1(id, grantAccessControllerParams, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerGrantAccessV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {RevokeAccessControllerParamsDto} revokeAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accessControllerRevokeAccessV1(id: string, revokeAccessControllerParamsDto: RevokeAccessControllerParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accessControllerRevokeAccessV1(id, revokeAccessControllerParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccessApi.accessControllerRevokeAccessV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -3989,6 +4292,16 @@ export const AccessApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
+         * @summary UNSTABLE
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerAccessV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccessControllerDto> {
+            return localVarFp.accessControllerAccessV1(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} id 
          * @param {AttachAccessControllerParamsDto} attachAccessControllerParamsDto 
          * @param {*} [options] Override http request option.
@@ -4000,12 +4313,32 @@ export const AccessApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} id 
+         * @param {DetachAccessControllerParamsDto} detachAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerDetachAccessV1(id: string, detachAccessControllerParamsDto: DetachAccessControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accessControllerDetachAccessV1(id, detachAccessControllerParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
          * @param {GrantAccessControllerParams} grantAccessControllerParams 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         accessControllerGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.accessControllerGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {RevokeAccessControllerParamsDto} revokeAccessControllerParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accessControllerRevokeAccessV1(id: string, revokeAccessControllerParamsDto: RevokeAccessControllerParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.accessControllerRevokeAccessV1(id, revokeAccessControllerParamsDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4017,6 +4350,18 @@ export const AccessApiFactory = function (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export class AccessApi extends BaseAPI {
+    /**
+     * 
+     * @summary UNSTABLE
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessApi
+     */
+    public accessControllerAccessV1(id: string, options?: RawAxiosRequestConfig) {
+        return AccessApiFp(this.configuration).accessControllerAccessV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @param {string} id 
@@ -4032,6 +4377,18 @@ export class AccessApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
+     * @param {DetachAccessControllerParamsDto} detachAccessControllerParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessApi
+     */
+    public accessControllerDetachAccessV1(id: string, detachAccessControllerParamsDto: DetachAccessControllerParamsDto, options?: RawAxiosRequestConfig) {
+        return AccessApiFp(this.configuration).accessControllerDetachAccessV1(id, detachAccessControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
      * @param {GrantAccessControllerParams} grantAccessControllerParams 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4039,6 +4396,18 @@ export class AccessApi extends BaseAPI {
      */
     public accessControllerGrantAccessV1(id: string, grantAccessControllerParams: GrantAccessControllerParams, options?: RawAxiosRequestConfig) {
         return AccessApiFp(this.configuration).accessControllerGrantAccessV1(id, grantAccessControllerParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {RevokeAccessControllerParamsDto} revokeAccessControllerParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccessApi
+     */
+    public accessControllerRevokeAccessV1(id: string, revokeAccessControllerParamsDto: RevokeAccessControllerParamsDto, options?: RawAxiosRequestConfig) {
+        return AccessApiFp(this.configuration).accessControllerRevokeAccessV1(id, revokeAccessControllerParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -6459,13 +6828,13 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {GrantAccessParamsDto} grantAccessParamsDto 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallResourceAccessGrantV1: async (grantAccessParamsDto: GrantAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'grantAccessParamsDto' is not null or undefined
-            assertParamExists('callControllerCallResourceAccessGrantV1', 'grantAccessParamsDto', grantAccessParamsDto)
+        callControllerCallResourceAccessGrantV1: async (modifyAccessParamsDto: ModifyAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'modifyAccessParamsDto' is not null or undefined
+            assertParamExists('callControllerCallResourceAccessGrantV1', 'modifyAccessParamsDto', modifyAccessParamsDto)
             const localVarPath = `/v1/call/resource.access.grant`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6489,7 +6858,7 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(grantAccessParamsDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyAccessParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7438,12 +7807,12 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {GrantAccessParamsDto} grantAccessParamsDto 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallResourceAccessGrantV1(grantAccessParamsDto: GrantAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallResourceAccessGrantV1(grantAccessParamsDto, options);
+        async callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallResourceAccessGrantV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -7985,12 +8354,12 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
-         * @param {GrantAccessParamsDto} grantAccessParamsDto 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallResourceAccessGrantV1(grantAccessParamsDto: GrantAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.callControllerCallResourceAccessGrantV1(grantAccessParamsDto, options).then((request) => request(axios, basePath));
+        callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8589,13 +8958,13 @@ export class CallApi extends BaseAPI {
 
     /**
      * 
-     * @param {GrantAccessParamsDto} grantAccessParamsDto 
+     * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CallApi
      */
-    public callControllerCallResourceAccessGrantV1(grantAccessParamsDto: GrantAccessParamsDto, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallResourceAccessGrantV1(grantAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
+    public callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
