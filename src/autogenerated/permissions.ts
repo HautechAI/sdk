@@ -71,6 +71,7 @@ export type MethodsPermissions = {
     };
     resources: {
         access: {
+            list: boolean;
             read: boolean;
             grant: boolean;
             revoke: boolean;
