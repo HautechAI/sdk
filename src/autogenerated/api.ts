@@ -2433,7 +2433,7 @@ export interface NaomiHauteV1Input {
      * @type {string}
      * @memberof NaomiHauteV1Input
      */
-    'mode': NaomiHauteV1InputModeEnum;
+    'mode'?: NaomiHauteV1InputModeEnum;
 }
 
 export const NaomiHauteV1InputModeEnum = {
