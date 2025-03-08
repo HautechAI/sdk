@@ -2369,6 +2369,12 @@ export type ModifyAccessParamsDtoPrincipalTypeEnum = typeof ModifyAccessParamsDt
  */
 export interface NaomiHauteV1Input {
     /**
+     * UNSTABLE
+     * @type {Array<string>}
+     * @memberof NaomiHauteV1Input
+     */
+    'loraNames'?: Array<string>;
+    /**
      * 
      * @type {string}
      * @memberof NaomiHauteV1Input
