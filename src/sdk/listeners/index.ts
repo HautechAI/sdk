@@ -101,6 +101,10 @@ export class OperationsListener {
         );
     }
 
+    public websocketEnabled() {
+        return this.ws?.readyState === WebSocketClient.OPEN;
+    }
+
     onMessage(msg: string) {
         if (!this.ws) throw new HautechError('Semantics error: this is a bug.');
 

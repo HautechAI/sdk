@@ -168,7 +168,7 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
         > => {
             type RT = T extends OperationEntityWithMetadata ? T : OperationEntityWithMetadata;
             const deadline: number | undefined = timeoutMs ? Date.now() + timeoutMs : undefined;
-            const delay = 1000;
+            const delay = operationsListener.websocketEnabled() ? 50 : 1000;
 
             const poll = async (id: string): Promise<Waited<RT> | null> => {
                 const operation = await operationsListener.getOperation(id);
