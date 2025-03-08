@@ -2373,7 +2373,7 @@ export interface NaomiHauteV1Input {
      * @type {Array<string>}
      * @memberof NaomiHauteV1Input
      */
-    'loraNames'?: Array<string>;
+    'loraIds'?: Array<string>;
     /**
      * 
      * @type {string}
