@@ -2,6 +2,8 @@ import axios, { AxiosResponse } from 'axios';
 import {
     CompositeV1Input,
     CompositeV1Response,
+    CropV1Input,
+    CropV1Response,
     CutV1Input,
     CutV1Response,
     GiseleVtonV1Input,
@@ -121,6 +123,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             cut: {
                 v1: createOperation<CutV1Input, CutV1Response>((methods, props) =>
                     methods.operationsControllerRunCutV1V1(props),
+                ),
+            },
+            crop: {
+                v1: createOperation<CropV1Input, CropV1Response>((methods, props) =>
+                    methods.operationsControllerRunCropV1V1(props),
                 ),
             },
             composite: {
