@@ -574,6 +574,143 @@ export interface CreateStorageRecordParamsDto {
 /**
  * 
  * @export
+ * @interface CropV1Input
+ */
+export interface CropV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CropV1Input
+     */
+    'left': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CropV1Input
+     */
+    'top': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CropV1Input
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CropV1Input
+     */
+    'height': number;
+}
+/**
+ * 
+ * @export
+ * @interface CropV1Request
+ */
+export interface CropV1Request {
+    /**
+     * 
+     * @type {CropV1Input}
+     * @memberof CropV1Request
+     */
+    'input': CropV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof CropV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface CropV1Response
+ */
+export interface CropV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'kind': CropV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof CropV1Response
+     */
+    'output': OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof CropV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'status': CropV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CropV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
+    'updatedAt': string;
+}
+
+export const CropV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type CropV1ResponseKindEnum = typeof CropV1ResponseKindEnum[keyof typeof CropV1ResponseKindEnum];
+export const CropV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type CropV1ResponseStatusEnum = typeof CropV1ResponseStatusEnum[keyof typeof CropV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface CutV1Input
  */
 export interface CutV1Input {
@@ -6132,6 +6269,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunCropV1V1: async (cropV1Request: CropV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cropV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunCropV1V1', 'cropV1Request', cropV1Request)
+            const localVarPath = `/v1/call/operations.run.crop.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(cropV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7597,6 +7773,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CropV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCropV1V1(cropV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunCropV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8198,6 +8386,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CropV1Response> {
+            return localVarFp.callControllerCallOperationsRunCropV1V1(cropV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8762,6 +8959,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CropV1Request} cropV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunCropV1V1(cropV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10673,6 +10881,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCropV1V1: async (cropV1Request: CropV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cropV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunCropV1V1', 'cropV1Request', cropV1Request)
+            const localVarPath = `/v1/operations/run/crop.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(cropV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11283,6 +11530,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CropV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCropV1V1(cropV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCropV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11500,6 +11759,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {CropV1Request} cropV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CropV1Response> {
+            return localVarFp.operationsControllerRunCropV1V1(cropV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CutV1Request} cutV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11679,6 +11947,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {CropV1Request} cropV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunCropV1V1(cropV1Request: CropV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunCropV1V1(cropV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
