@@ -2702,6 +2702,131 @@ export type NegateImageV1ResponseStatusEnum = typeof NegateImageV1ResponseStatus
 /**
  * 
  * @export
+ * @interface NoiseV1Input
+ */
+export interface NoiseV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof NoiseV1Input
+     */
+    'mean'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof NoiseV1Input
+     */
+    'sigma'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface NoiseV1Request
+ */
+export interface NoiseV1Request {
+    /**
+     * 
+     * @type {NoiseV1Input}
+     * @memberof NoiseV1Request
+     */
+    'input': NoiseV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof NoiseV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface NoiseV1Response
+ */
+export interface NoiseV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'kind': NoiseV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof NoiseV1Response
+     */
+    'output': OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof NoiseV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'status': NoiseV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof NoiseV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
+    'updatedAt': string;
+}
+
+export const NoiseV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type NoiseV1ResponseKindEnum = typeof NoiseV1ResponseKindEnum[keyof typeof NoiseV1ResponseKindEnum];
+export const NoiseV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type NoiseV1ResponseStatusEnum = typeof NoiseV1ResponseStatusEnum[keyof typeof NoiseV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface ObjectDetectionV1Input
  */
 export interface ObjectDetectionV1Input {
@@ -5216,6 +5341,84 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
+         * @param {AttachAccessParamsDto} attachAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallAccessAttachV1: async (attachAccessParamsDto: AttachAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'attachAccessParamsDto' is not null or undefined
+            assertParamExists('callControllerCallAccessAttachV1', 'attachAccessParamsDto', attachAccessParamsDto)
+            const localVarPath = `/v1/call/access.attach`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(attachAccessParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallAccessGrantV1: async (modifyAccessParamsDto: ModifyAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'modifyAccessParamsDto' is not null or undefined
+            assertParamExists('callControllerCallAccessGrantV1', 'modifyAccessParamsDto', modifyAccessParamsDto)
+            const localVarPath = `/v1/call/access.grant`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyAccessParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {AddBalanceParamsDto} addBalanceParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6581,6 +6784,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunNoiseV1V1: async (noiseV1Request: NoiseV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'noiseV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunNoiseV1V1', 'noiseV1Request', noiseV1Request)
+            const localVarPath = `/v1/call/operations.run.noise.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(noiseV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6963,84 +7205,6 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(setPosePreviewDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {AttachAccessParamsDto} attachAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callControllerCallResourceAccessAttachV1: async (attachAccessParamsDto: AttachAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'attachAccessParamsDto' is not null or undefined
-            assertParamExists('callControllerCallResourceAccessAttachV1', 'attachAccessParamsDto', attachAccessParamsDto)
-            const localVarPath = `/v1/call/resource.access.attach`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(attachAccessParamsDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callControllerCallResourceAccessGrantV1: async (modifyAccessParamsDto: ModifyAccessParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'modifyAccessParamsDto' is not null or undefined
-            assertParamExists('callControllerCallResourceAccessGrantV1', 'modifyAccessParamsDto', modifyAccessParamsDto)
-            const localVarPath = `/v1/call/resource.access.grant`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(modifyAccessParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7447,6 +7611,30 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
 export const CallApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = CallApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {AttachAccessParamsDto} attachAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallAccessAttachV1(attachAccessParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallAccessAttachV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallAccessGrantV1(modifyAccessParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallAccessGrantV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * 
          * @param {AddBalanceParamsDto} addBalanceParamsDto 
@@ -7869,6 +8057,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoiseV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunNoiseV1V1(noiseV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunNoiseV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7985,30 +8185,6 @@ export const CallApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallPosesPreviewSetV1(setPosePreviewDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallPosesPreviewSetV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {AttachAccessParamsDto} attachAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async callControllerCallResourceAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallResourceAccessAttachV1(attachAccessParamsDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallResourceAccessAttachV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallResourceAccessGrantV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -8141,6 +8317,24 @@ export const CallApiFp = function(configuration?: Configuration) {
 export const CallApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = CallApiFp(configuration)
     return {
+        /**
+         * 
+         * @param {AttachAccessParamsDto} attachAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallAccessAttachV1(attachAccessParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(axios, basePath));
+        },
         /**
          * 
          * @param {AddBalanceParamsDto} addBalanceParamsDto 
@@ -8458,6 +8652,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NoiseV1Response> {
+            return localVarFp.callControllerCallOperationsRunNoiseV1V1(noiseV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8545,24 +8748,6 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallPosesPreviewSetV1(setPosePreviewDto: SetPosePreviewDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.callControllerCallPosesPreviewSetV1(setPosePreviewDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {AttachAccessParamsDto} attachAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callControllerCallResourceAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.callControllerCallResourceAccessAttachV1(attachAccessParamsDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8664,6 +8849,28 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
  * @extends {BaseAPI}
  */
 export class CallApi extends BaseAPI {
+    /**
+     * 
+     * @param {AttachAccessParamsDto} attachAccessParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallAccessAttachV1(attachAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @param {AddBalanceParamsDto} addBalanceParamsDto 
@@ -9051,6 +9258,17 @@ export class CallApi extends BaseAPI {
 
     /**
      * 
+     * @param {NoiseV1Request} noiseV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunNoiseV1V1(noiseV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {ObjectDetectionV1Request} objectDetectionV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -9157,28 +9375,6 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallPosesPreviewSetV1(setPosePreviewDto: SetPosePreviewDto, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallPosesPreviewSetV1(setPosePreviewDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {AttachAccessParamsDto} attachAccessParamsDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CallApi
-     */
-    public callControllerCallResourceAccessAttachV1(attachAccessParamsDto: AttachAccessParamsDto, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallResourceAccessAttachV1(attachAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {ModifyAccessParamsDto} modifyAccessParamsDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof CallApi
-     */
-    public callControllerCallResourceAccessGrantV1(modifyAccessParamsDto: ModifyAccessParamsDto, options?: RawAxiosRequestConfig) {
-        return CallApiFp(this.configuration).callControllerCallResourceAccessGrantV1(modifyAccessParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11193,6 +11389,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunNoiseV1V1: async (noiseV1Request: NoiseV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'noiseV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunNoiseV1V1', 'noiseV1Request', noiseV1Request)
+            const localVarPath = `/v1/operations/run/noise.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(noiseV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11626,6 +11861,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NoiseV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunNoiseV1V1(noiseV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunNoiseV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {ObjectDetectionV1Request} objectDetectionV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11828,6 +12075,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NegateImageV1Response> {
             return localVarFp.operationsControllerRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {NoiseV1Request} noiseV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig): AxiosPromise<NoiseV1Response> {
+            return localVarFp.operationsControllerRunNoiseV1V1(noiseV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12035,6 +12291,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunNegateImageV1V1(negateImageV1Request: NegateImageV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunNegateImageV1V1(negateImageV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {NoiseV1Request} noiseV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunNoiseV1V1(noiseV1Request: NoiseV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunNoiseV1V1(noiseV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -130,6 +130,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                     methods.operationsControllerRunCropV1V1(props),
                 ),
             },
+            noise: {
+                v1: createOperation<CropV1Input, CropV1Response>((methods, props) =>
+                    methods.operationsControllerRunCropV1V1(props),
+                ),
+            },
             composite: {
                 v1: createOperation<CompositeV1Input, CompositeV1Response>((methods, props) =>
                     methods.operationsControllerRunCompositeV1V1(props),

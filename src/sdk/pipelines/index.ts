@@ -114,6 +114,12 @@ const pipelines = (options: SDKOptions) => {
                     cut: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunCutV1V1),
                     },
+                    crop: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunCropV1V1),
+                    },
+                    noise: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunNoiseV1V1),
+                    },
                     composite: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunCompositeV1V1),
                     },
