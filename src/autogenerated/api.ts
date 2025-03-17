@@ -1546,7 +1546,8 @@ export const ImageEntityKindEnum = {
     Image: 'image',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Forbidden: 'forbidden'
 } as const;
 
 export type ImageEntityKindEnum = typeof ImageEntityKindEnum[keyof typeof ImageEntityKindEnum];
@@ -1841,9 +1842,7 @@ export const KateImagineV1InputAspectRatioEnum = {
     _1913: '19:13',
     _1319: '13:19',
     _74: '7:4',
-    _47: '4:7',
-    _125: '12:5',
-    _512: '5:12'
+    _47: '4:7'
 } as const;
 
 export type KateImagineV1InputAspectRatioEnum = typeof KateImagineV1InputAspectRatioEnum[keyof typeof KateImagineV1InputAspectRatioEnum];
@@ -2222,7 +2221,8 @@ export const ListCollectionItemsParamsDtoKindEnum = {
     Image: 'image',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Forbidden: 'forbidden'
 } as const;
 
 export type ListCollectionItemsParamsDtoKindEnum = typeof ListCollectionItemsParamsDtoKindEnum[keyof typeof ListCollectionItemsParamsDtoKindEnum];
@@ -3528,7 +3528,8 @@ export const ResourceEntityKindEnum = {
     Image: 'image',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Forbidden: 'forbidden'
 } as const;
 
 export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof ResourceEntityKindEnum];
@@ -3703,6 +3704,12 @@ export interface SegmentAnythingMaskV1Input {
      * @memberof SegmentAnythingMaskV1Input
      */
     'smoothness'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SegmentAnythingMaskV1Input
+     */
+    'maskThreshold'?: number;
 }
 /**
  * 
@@ -10118,7 +10125,8 @@ export const CollectionsControllerListItemsV1KindEnum = {
     Image: 'image',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Forbidden: 'forbidden'
 } as const;
 export type CollectionsControllerListItemsV1KindEnum = typeof CollectionsControllerListItemsV1KindEnum[keyof typeof CollectionsControllerListItemsV1KindEnum];
 
