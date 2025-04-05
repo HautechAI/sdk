@@ -20,6 +20,8 @@ import {
     NaomiHauteV1Input,
     NegateImageV1Input,
     NegateImageV1Response,
+    NoiseV1Input,
+    NoiseV1Response,
     ObjectDetectionV1Input,
     ObjectDetectionV1Response,
     OperationEntity,
@@ -133,8 +135,8 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 ),
             },
             noise: {
-                v1: createOperation<CropV1Input, CropV1Response>((methods, props) =>
-                    methods.operationsControllerRunCropV1V1(props),
+                v1: createOperation<NoiseV1Input, NoiseV1Response>((methods, props) =>
+                    methods.operationsControllerRunNoiseV1V1(props),
                 ),
             },
             contrast: {
