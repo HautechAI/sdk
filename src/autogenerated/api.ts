@@ -35,21 +35,7 @@ export interface AccountEntity {
      * @memberof AccountEntity
      */
     'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountEntity
-     */
-    'type': AccountEntityTypeEnum;
 }
-
-export const AccountEntityTypeEnum = {
-    Root: 'root',
-    User: 'user'
-} as const;
-
-export type AccountEntityTypeEnum = typeof AccountEntityTypeEnum[keyof typeof AccountEntityTypeEnum];
-
 /**
  * 
  * @export
@@ -261,10 +247,10 @@ export interface BalanceResultDto {
 export interface CollectionEntity {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof CollectionEntity
      */
-    'kind': number;
+    'kind': CollectionEntityKindEnum;
     /**
      * 
      * @type {string}
@@ -296,6 +282,20 @@ export interface CollectionEntity {
      */
     'updatedAt': string;
 }
+
+export const CollectionEntityKindEnum = {
+    Collection: 'collection',
+    Operation: 'operation',
+    Stack: 'stack',
+    Image: 'image',
+    Pose: 'pose',
+    Storage: 'storage',
+    Pipeline: 'pipeline',
+    Forbidden: 'forbidden'
+} as const;
+
+export type CollectionEntityKindEnum = typeof CollectionEntityKindEnum[keyof typeof CollectionEntityKindEnum];
+
 /**
  * 
  * @export
@@ -480,6 +480,125 @@ export const CompositeV1ResponseStatusEnum = {
 } as const;
 
 export type CompositeV1ResponseStatusEnum = typeof CompositeV1ResponseStatusEnum[keyof typeof CompositeV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface ContrastV1Input
+ */
+export interface ContrastV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ContrastV1Input
+     */
+    'contrast': number;
+}
+/**
+ * 
+ * @export
+ * @interface ContrastV1Request
+ */
+export interface ContrastV1Request {
+    /**
+     * 
+     * @type {ContrastV1Input}
+     * @memberof ContrastV1Request
+     */
+    'input': ContrastV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof ContrastV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface ContrastV1Response
+ */
+export interface ContrastV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'kind': ContrastV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof ContrastV1Response
+     */
+    'output': OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof ContrastV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'status': ContrastV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ContrastV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'updatedAt': string;
+}
+
+export const ContrastV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type ContrastV1ResponseKindEnum = typeof ContrastV1ResponseKindEnum[keyof typeof ContrastV1ResponseKindEnum];
+export const ContrastV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type ContrastV1ResponseStatusEnum = typeof ContrastV1ResponseStatusEnum[keyof typeof ContrastV1ResponseStatusEnum];
 
 /**
  * 
@@ -3122,22 +3241,10 @@ export interface PipelineEntity {
     'permissions': object;
     /**
      * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'state': object;
-    /**
-     * 
      * @type {string}
      * @memberof PipelineEntity
      */
     'status': PipelineEntityStatusEnum;
-    /**
-     * 
-     * @type {Array<object>}
-     * @memberof PipelineEntity
-     */
-    'tasks': Array<object>;
     /**
      * 
      * @type {string}
@@ -6479,6 +6586,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunContrastV1V1: async (contrastV1Request: ContrastV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contrastV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunContrastV1V1', 'contrastV1Request', contrastV1Request)
+            const localVarPath = `/v1/call/operations.run.contrast.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(contrastV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7968,6 +8114,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContrastV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunContrastV1V1(contrastV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunContrastV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8587,6 +8745,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ContrastV1Response> {
+            return localVarFp.callControllerCallOperationsRunContrastV1V1(contrastV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9173,6 +9340,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ContrastV1Request} contrastV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunContrastV1V1(contrastV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11085,6 +11263,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunContrastV1V1: async (contrastV1Request: ContrastV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'contrastV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunContrastV1V1', 'contrastV1Request', contrastV1Request)
+            const localVarPath = `/v1/operations/run/contrast.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(contrastV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11773,6 +11990,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContrastV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunContrastV1V1(contrastV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunContrastV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12014,6 +12243,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {ContrastV1Request} contrastV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ContrastV1Response> {
+            return localVarFp.operationsControllerRunContrastV1V1(contrastV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CropV1Request} cropV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12211,6 +12449,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunCompositeV1V1(compositeV1Request: CompositeV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunCompositeV1V1(compositeV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ContrastV1Request} contrastV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunContrastV1V1(contrastV1Request: ContrastV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunContrastV1V1(contrastV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

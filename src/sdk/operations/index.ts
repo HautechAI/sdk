@@ -2,6 +2,8 @@ import axios, { AxiosResponse } from 'axios';
 import {
     CompositeV1Input,
     CompositeV1Response,
+    ContrastV1Input,
+    ContrastV1Response,
     CropV1Input,
     CropV1Response,
     CutV1Input,
@@ -133,6 +135,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             noise: {
                 v1: createOperation<CropV1Input, CropV1Response>((methods, props) =>
                     methods.operationsControllerRunCropV1V1(props),
+                ),
+            },
+            contrast: {
+                v1: createOperation<ContrastV1Input, ContrastV1Response>((methods, props) =>
+                    methods.operationsControllerRunContrastV1V1(props),
                 ),
             },
             composite: {
