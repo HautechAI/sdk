@@ -120,6 +120,9 @@ const pipelines = (options: SDKOptions) => {
                     noise: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunNoiseV1V1),
                     },
+                    contrast: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunContrastV1V1),
+                    },
                     composite: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunCompositeV1V1),
                     },
