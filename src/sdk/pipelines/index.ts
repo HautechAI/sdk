@@ -134,6 +134,9 @@ const pipelines = (options: SDKOptions) => {
                     negateImage: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunNegateImageV1V1),
                     },
+                    resize: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunResizeV1V1),
+                    },
                 },
                 wait: callMethod((methods) => methods.callControllerCallOperationsWaitV1),
             },

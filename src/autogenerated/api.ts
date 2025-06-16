@@ -110,6 +110,12 @@ export interface AddBalanceControllerParamsDto {
      * @memberof AddBalanceControllerParamsDto
      */
     'amount': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AddBalanceControllerParamsDto
+     */
+    'idempotencyKey': string;
 }
 /**
  * 
@@ -129,6 +135,12 @@ export interface AddBalanceParamsDto {
      * @memberof AddBalanceParamsDto
      */
     'accountId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AddBalanceParamsDto
+     */
+    'idempotencyKey': string;
 }
 /**
  * 
@@ -3584,6 +3596,131 @@ export interface RemoveItemsFromStackParamsDto {
      */
     'itemIds': Array<string>;
 }
+/**
+ * 
+ * @export
+ * @interface ResizeV1Input
+ */
+export interface ResizeV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Input
+     */
+    'imageId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResizeV1Input
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ResizeV1Input
+     */
+    'height': number;
+}
+/**
+ * 
+ * @export
+ * @interface ResizeV1Request
+ */
+export interface ResizeV1Request {
+    /**
+     * 
+     * @type {ResizeV1Input}
+     * @memberof ResizeV1Request
+     */
+    'input': ResizeV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof ResizeV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface ResizeV1Response
+ */
+export interface ResizeV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'kind': ResizeV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof ResizeV1Response
+     */
+    'output': OperationOutputImageSingle | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof ResizeV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'status': ResizeV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof ResizeV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'updatedAt': string;
+}
+
+export const ResizeV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type ResizeV1ResponseKindEnum = typeof ResizeV1ResponseKindEnum[keyof typeof ResizeV1ResponseKindEnum];
+export const ResizeV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type ResizeV1ResponseStatusEnum = typeof ResizeV1ResponseStatusEnum[keyof typeof ResizeV1ResponseStatusEnum];
+
 /**
  * 
  * @export
@@ -7054,6 +7191,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunResizeV1V1: async (resizeV1Request: ResizeV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resizeV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunResizeV1V1', 'resizeV1Request', resizeV1Request)
+            const localVarPath = `/v1/call/operations.run.resize.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(resizeV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8258,6 +8434,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResizeV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunResizeV1V1(resizeV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunResizeV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8850,6 +9038,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
             return localVarFp.callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ResizeV1Response> {
+            return localVarFp.callControllerCallOperationsRunResizeV1V1(resizeV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9472,6 +9669,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ResizeV1Request} resizeV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunResizeV1V1(resizeV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11731,6 +11939,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunResizeV1V1: async (resizeV1Request: ResizeV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'resizeV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunResizeV1V1', 'resizeV1Request', resizeV1Request)
+            const localVarPath = `/v1/operations/run/resize.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(resizeV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12134,6 +12381,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResizeV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunResizeV1V1(resizeV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunResizeV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {SegmentAnythingEmbeddingsV1Request} segmentAnythingEmbeddingsV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12348,6 +12607,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PoseEstimationV1Response> {
             return localVarFp.operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ResizeV1Request} resizeV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ResizeV1Response> {
+            return localVarFp.operationsControllerRunResizeV1V1(resizeV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12581,6 +12849,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request: PoseEstimationV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunPoseEstimationV1V1(poseEstimationV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ResizeV1Request} resizeV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunResizeV1V1(resizeV1Request: ResizeV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunResizeV1V1(resizeV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
