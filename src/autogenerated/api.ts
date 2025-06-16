@@ -115,7 +115,7 @@ export interface AddBalanceControllerParamsDto {
      * @type {string}
      * @memberof AddBalanceControllerParamsDto
      */
-    'idempotencyKey': string;
+    'idempotencyKey'?: string;
 }
 /**
  * 
@@ -140,7 +140,7 @@ export interface AddBalanceParamsDto {
      * @type {string}
      * @memberof AddBalanceParamsDto
      */
-    'idempotencyKey': string;
+    'idempotencyKey'?: string;
 }
 /**
  * 
@@ -1024,7 +1024,8 @@ export interface GPTV1Input {
 }
 
 export const GPTV1InputModelEnum = {
-    Gpt4o: 'gpt-4o'
+    _4o: 'gpt-4o',
+    _41Mini: 'gpt-4.1-mini'
 } as const;
 
 export type GPTV1InputModelEnum = typeof GPTV1InputModelEnum[keyof typeof GPTV1InputModelEnum];
@@ -4233,6 +4234,131 @@ export interface StorageRecordsResultDto {
 /**
  * 
  * @export
+ * @interface TranslateV1Input
+ */
+export interface TranslateV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Input
+     */
+    'text': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Input
+     */
+    'from'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Input
+     */
+    'to': string;
+}
+/**
+ * 
+ * @export
+ * @interface TranslateV1Request
+ */
+export interface TranslateV1Request {
+    /**
+     * 
+     * @type {TranslateV1Input}
+     * @memberof TranslateV1Request
+     */
+    'input': TranslateV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof TranslateV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface TranslateV1Response
+ */
+export interface TranslateV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'kind': TranslateV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof TranslateV1Response
+     */
+    'output': OperationOutputJSON | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof TranslateV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'status': TranslateV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof TranslateV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'updatedAt': string;
+}
+
+export const TranslateV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type TranslateV1ResponseKindEnum = typeof TranslateV1ResponseKindEnum[keyof typeof TranslateV1ResponseKindEnum];
+export const TranslateV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type TranslateV1ResponseStatusEnum = typeof TranslateV1ResponseStatusEnum[keyof typeof TranslateV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface UpdateMetadataDto
  */
 export interface UpdateMetadataDto {
@@ -7308,6 +7434,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunTranslateV1V1: async (translateV1Request: TranslateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'translateV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunTranslateV1V1', 'translateV1Request', translateV1Request)
+            const localVarPath = `/v1/call/operations.run.translate.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(translateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8470,6 +8635,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TranslateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunTranslateV1V1(translateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunTranslateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9065,6 +9242,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
             return localVarFp.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TranslateV1Response> {
+            return localVarFp.callControllerCallOperationsRunTranslateV1V1(translateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9702,6 +9888,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {TranslateV1Request} translateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunTranslateV1V1(translateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -12056,6 +12253,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunTranslateV1V1: async (translateV1Request: TranslateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'translateV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunTranslateV1V1', 'translateV1Request', translateV1Request)
+            const localVarPath = `/v1/operations/run/translate.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(translateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12417,6 +12653,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TranslateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunTranslateV1V1(translateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunTranslateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {UpscaleV1Request} upscaleV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12634,6 +12882,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
             return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {TranslateV1Request} translateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<TranslateV1Response> {
+            return localVarFp.operationsControllerRunTranslateV1V1(translateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12882,6 +13139,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {TranslateV1Request} translateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunTranslateV1V1(translateV1Request: TranslateV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunTranslateV1V1(translateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

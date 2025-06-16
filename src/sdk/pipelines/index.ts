@@ -87,6 +87,9 @@ const pipelines = (options: SDKOptions) => {
                     gpt: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunGptV1V1),
                     },
+                    translate: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunTranslateV1V1),
+                    },
                     imagine: {
                         kate: {
                             v1: callMethod((methods) => methods.callControllerCallOperationsRunImagineKateV1V1),

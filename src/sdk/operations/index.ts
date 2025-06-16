@@ -29,10 +29,14 @@ import {
     OperationsApi,
     PoseEstimationV1Input,
     PoseEstimationV1Response,
+    ResizeV1Input,
+    ResizeV1Response,
     SegmentAnythingEmbeddingsV1Input,
     SegmentAnythingEmbeddingsV1Response,
     SegmentAnythingMaskV1Input,
     SegmentAnythingMaskV1Response,
+    TranslateV1Input,
+    TranslateV1Response,
     UpscaleV1Input,
     UpscaleV1Response,
     VtonGiseleV1Response,
@@ -88,6 +92,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             gpt: {
                 v1: createOperation<GPTV1Input, GptV1Response>((methods, props) =>
                     methods.operationsControllerRunGptV1V1(props),
+                ),
+            },
+            translate: {
+                v1: createOperation<TranslateV1Input, TranslateV1Response>((methods, props) =>
+                    methods.operationsControllerRunTranslateV1V1(props),
                 ),
             },
             imagine: {
@@ -159,6 +168,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             negateImage: {
                 v1: createOperation<NegateImageV1Input, NegateImageV1Response>((methods, props) =>
                     methods.operationsControllerRunNegateImageV1V1(props),
+                ),
+            },
+            resize: {
+                v1: createOperation<ResizeV1Input, ResizeV1Response>((methods, props) =>
+                    methods.operationsControllerRunResizeV1V1(props),
                 ),
             },
         },
