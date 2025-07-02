@@ -71,6 +71,11 @@ const pipelines = (options: SDKOptions) => {
                 list: callMethod((methods) => methods.callControllerCallOperationsListV1),
                 updateMetadata: callMethod((methods) => methods.callControllerCallOperationsMetadataUpdateV1),
                 run: {
+                    animate: {
+                        kling_1_6_pro: {
+                            v1: callMethod((methods) => methods.callControllerCallOperationsRunAnimateKling16ProV1V1),
+                        },
+                    },
                     haute: {
                         linda: {
                             v1: callMethod((methods) => methods.callControllerCallOperationsRunHauteLindaV1V1),
