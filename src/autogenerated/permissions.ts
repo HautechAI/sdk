@@ -39,6 +39,9 @@ export type MethodsPermissions = {
         create: boolean;
         read: boolean;
     };
+    videos: {
+        read: boolean;
+    };
     operations: {
         create: boolean;
         read: boolean;

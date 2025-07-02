@@ -209,6 +209,170 @@ export interface AddItemsToStackParamsDto {
 /**
  * 
  * @export
+ * @interface AnimateKling16ProV1Input
+ */
+export interface AnimateKling16ProV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'prompt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'negativePrompt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'aspectRatio'?: AnimateKling16ProV1InputAspectRatioEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'startImageId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'endImageId'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'promptRelevance'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Input
+     */
+    'duration'?: AnimateKling16ProV1InputDurationEnum;
+}
+
+export const AnimateKling16ProV1InputAspectRatioEnum = {
+    _11: '1:1',
+    _916: '9:16',
+    _169: '16:9'
+} as const;
+
+export type AnimateKling16ProV1InputAspectRatioEnum = typeof AnimateKling16ProV1InputAspectRatioEnum[keyof typeof AnimateKling16ProV1InputAspectRatioEnum];
+export const AnimateKling16ProV1InputDurationEnum = {
+    _5: '5',
+    _10: '10'
+} as const;
+
+export type AnimateKling16ProV1InputDurationEnum = typeof AnimateKling16ProV1InputDurationEnum[keyof typeof AnimateKling16ProV1InputDurationEnum];
+
+/**
+ * 
+ * @export
+ * @interface AnimateKling16ProV1Request
+ */
+export interface AnimateKling16ProV1Request {
+    /**
+     * 
+     * @type {AnimateKling16ProV1Input}
+     * @memberof AnimateKling16ProV1Request
+     */
+    'input': AnimateKling16ProV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling16ProV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface AnimateKling16ProV1Response
+ */
+export interface AnimateKling16ProV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'kind': AnimateKling16ProV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputVideoSingle}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'output': OperationOutputVideoSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'status': AnimateKling16ProV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
+    'updatedAt': string;
+}
+
+export const AnimateKling16ProV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type AnimateKling16ProV1ResponseKindEnum = typeof AnimateKling16ProV1ResponseKindEnum[keyof typeof AnimateKling16ProV1ResponseKindEnum];
+export const AnimateKling16ProV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type AnimateKling16ProV1ResponseStatusEnum = typeof AnimateKling16ProV1ResponseStatusEnum[keyof typeof AnimateKling16ProV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface AttachAccessControllerParamsDto
  */
 export interface AttachAccessControllerParamsDto {
@@ -300,10 +464,10 @@ export const CollectionEntityKindEnum = {
     Operation: 'operation',
     Stack: 'stack',
     Image: 'image',
+    Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline',
-    Forbidden: 'forbidden'
+    Pipeline: 'pipeline'
 } as const;
 
 export type CollectionEntityKindEnum = typeof CollectionEntityKindEnum[keyof typeof CollectionEntityKindEnum];
@@ -429,7 +593,7 @@ export interface CompositeV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof CompositeV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -548,7 +712,7 @@ export interface ContrastV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof ContrastV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -775,7 +939,7 @@ export interface CropV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof CropV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -894,7 +1058,7 @@ export interface CutV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof CutV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -1000,6 +1164,119 @@ export interface DetachAccessControllerParamsDto {
 /**
  * 
  * @export
+ * @interface EchoV1Input
+ */
+export interface EchoV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Input
+     */
+    'text': string;
+}
+/**
+ * 
+ * @export
+ * @interface EchoV1Request
+ */
+export interface EchoV1Request {
+    /**
+     * 
+     * @type {EchoV1Input}
+     * @memberof EchoV1Request
+     */
+    'input': EchoV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof EchoV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface EchoV1Response
+ */
+export interface EchoV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'kind': EchoV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputTextSingle}
+     * @memberof EchoV1Response
+     */
+    'output': OperationOutputTextSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof EchoV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'status': EchoV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof EchoV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
+    'updatedAt': string;
+}
+
+export const EchoV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type EchoV1ResponseKindEnum = typeof EchoV1ResponseKindEnum[keyof typeof EchoV1ResponseKindEnum];
+export const EchoV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type EchoV1ResponseStatusEnum = typeof EchoV1ResponseStatusEnum[keyof typeof EchoV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface GPTV1Input
  */
 export interface GPTV1Input {
@@ -1015,6 +1292,12 @@ export interface GPTV1Input {
      * @memberof GPTV1Input
      */
     'prompt': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GPTV1Input
+     */
+    'additionalMessages'?: Array<string>;
     /**
      * 
      * @type {string}
@@ -1287,7 +1570,7 @@ export interface GptV1Response {
      * @type {OperationOutputJSON}
      * @memberof GptV1Response
      */
-    'output': OperationOutputJSON | null;
+    'output': OperationOutputJSON;
     /**
      * 
      * @type {object}
@@ -1439,7 +1722,7 @@ export interface HauteLindaV1Response {
      * @type {OperationOutputImageMultiple}
      * @memberof HauteLindaV1Response
      */
-    'output': OperationOutputImageMultiple | null;
+    'output': OperationOutputImageMultiple;
     /**
      * 
      * @type {object}
@@ -1539,7 +1822,7 @@ export interface HauteNaomiV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof HauteNaomiV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -1676,10 +1959,10 @@ export const ImageEntityKindEnum = {
     Operation: 'operation',
     Stack: 'stack',
     Image: 'image',
+    Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline',
-    Forbidden: 'forbidden'
+    Pipeline: 'pipeline'
 } as const;
 
 export type ImageEntityKindEnum = typeof ImageEntityKindEnum[keyof typeof ImageEntityKindEnum];
@@ -1764,7 +2047,7 @@ export interface ImagineKateV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof ImagineKateV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -1877,7 +2160,7 @@ export interface InpaintKateV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof InpaintKateV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -2351,10 +2634,10 @@ export const ListCollectionItemsParamsDtoKindEnum = {
     Operation: 'operation',
     Stack: 'stack',
     Image: 'image',
+    Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline',
-    Forbidden: 'forbidden'
+    Pipeline: 'pipeline'
 } as const;
 
 export type ListCollectionItemsParamsDtoKindEnum = typeof ListCollectionItemsParamsDtoKindEnum[keyof typeof ListCollectionItemsParamsDtoKindEnum];
@@ -2595,6 +2878,125 @@ export type ListStacksParamsDtoOrderByEnum = typeof ListStacksParamsDtoOrderByEn
 /**
  * 
  * @export
+ * @interface MathV1Input
+ */
+export interface MathV1Input {
+    /**
+     * Mathematical expression or JSON object with expressions to evaluate using mathjs
+     * @type {string}
+     * @memberof MathV1Input
+     */
+    'code': string;
+    /**
+     * Input data for the mathematical expression
+     * @type {object}
+     * @memberof MathV1Input
+     */
+    'input'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface MathV1Request
+ */
+export interface MathV1Request {
+    /**
+     * 
+     * @type {MathV1Input}
+     * @memberof MathV1Request
+     */
+    'input': MathV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof MathV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface MathV1Response
+ */
+export interface MathV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'kind': MathV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof MathV1Response
+     */
+    'output': OperationOutputJSON;
+    /**
+     * 
+     * @type {object}
+     * @memberof MathV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'status': MathV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof MathV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'updatedAt': string;
+}
+
+export const MathV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type MathV1ResponseKindEnum = typeof MathV1ResponseKindEnum[keyof typeof MathV1ResponseKindEnum];
+export const MathV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type MathV1ResponseStatusEnum = typeof MathV1ResponseStatusEnum[keyof typeof MathV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface ModifyAccessParamsDto
  */
 export interface ModifyAccessParamsDto {
@@ -2767,7 +3169,7 @@ export interface NegateImageV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof NegateImageV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -2892,7 +3294,7 @@ export interface NoiseV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof NoiseV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -3011,7 +3413,7 @@ export interface ObjectDetectionV1Response {
      * @type {OperationOutputJSON}
      * @memberof ObjectDetectionV1Response
      */
-    'output': OperationOutputJSON | null;
+    'output': OperationOutputJSON;
     /**
      * 
      * @type {object}
@@ -3098,7 +3500,7 @@ export interface OperationEntity {
      * @type {object}
      * @memberof OperationEntity
      */
-    'output': object | null;
+    'output': object;
     /**
      * 
      * @type {string}
@@ -3237,6 +3639,58 @@ export type OperationOutputJSONKindEnum = typeof OperationOutputJSONKindEnum[key
 /**
  * 
  * @export
+ * @interface OperationOutputTextSingle
+ */
+export interface OperationOutputTextSingle {
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputTextSingle
+     */
+    'kind': OperationOutputTextSingleKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputTextSingle
+     */
+    'text': string;
+}
+
+export const OperationOutputTextSingleKindEnum = {
+    TextSingle: 'text/single'
+} as const;
+
+export type OperationOutputTextSingleKindEnum = typeof OperationOutputTextSingleKindEnum[keyof typeof OperationOutputTextSingleKindEnum];
+
+/**
+ * 
+ * @export
+ * @interface OperationOutputVideoSingle
+ */
+export interface OperationOutputVideoSingle {
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputVideoSingle
+     */
+    'kind': OperationOutputVideoSingleKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationOutputVideoSingle
+     */
+    'videoId': string;
+}
+
+export const OperationOutputVideoSingleKindEnum = {
+    VideoSingle: 'video/single'
+} as const;
+
+export type OperationOutputVideoSingleKindEnum = typeof OperationOutputVideoSingleKindEnum[keyof typeof OperationOutputVideoSingleKindEnum];
+
+/**
+ * 
+ * @export
  * @interface PipelineEntity
  */
 export interface PipelineEntity {
@@ -3302,6 +3756,81 @@ export const PipelineEntityStatusEnum = {
 } as const;
 
 export type PipelineEntityStatusEnum = typeof PipelineEntityStatusEnum[keyof typeof PipelineEntityStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface PipelineWithOutput
+ */
+export interface PipelineWithOutput {
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'kind': PipelineWithOutputKindEnum;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineWithOutput
+     */
+    'output': object | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineWithOutput
+     */
+    'permissions': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'status': PipelineWithOutputStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineWithOutput
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineWithOutput
+     */
+    'updatedAt': string;
+}
+
+export const PipelineWithOutputKindEnum = {
+    Pipeline: 'pipeline'
+} as const;
+
+export type PipelineWithOutputKindEnum = typeof PipelineWithOutputKindEnum[keyof typeof PipelineWithOutputKindEnum];
+export const PipelineWithOutputStatusEnum = {
+    Pending: 'pending',
+    Completed: 'completed',
+    Failed: 'failed'
+} as const;
+
+export type PipelineWithOutputStatusEnum = typeof PipelineWithOutputStatusEnum[keyof typeof PipelineWithOutputStatusEnum];
 
 /**
  * 
@@ -3420,7 +3949,7 @@ export interface PoseEstimationV1Response {
      * @type {OperationOutputJSON}
      * @memberof PoseEstimationV1Response
      */
-    'output': OperationOutputJSON | null;
+    'output': OperationOutputJSON;
     /**
      * 
      * @type {object}
@@ -3658,7 +4187,7 @@ export interface ResizeV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof ResizeV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -3771,10 +4300,10 @@ export const ResourceEntityKindEnum = {
     Operation: 'operation',
     Stack: 'stack',
     Image: 'image',
+    Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline',
-    Forbidden: 'forbidden'
+    Pipeline: 'pipeline'
 } as const;
 
 export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof ResourceEntityKindEnum];
@@ -3812,6 +4341,38 @@ export const RevokeAccessControllerParamsDtoPrincipalTypeEnum = {
 
 export type RevokeAccessControllerParamsDtoPrincipalTypeEnum = typeof RevokeAccessControllerParamsDtoPrincipalTypeEnum[keyof typeof RevokeAccessControllerParamsDtoPrincipalTypeEnum];
 
+/**
+ * 
+ * @export
+ * @interface RunWorkflowParamsDto
+ */
+export interface RunWorkflowParamsDto {
+    /**
+     * 
+     * @type {object}
+     * @memberof RunWorkflowParamsDto
+     */
+    'input': object;
+    /**
+     * 
+     * @type {object}
+     * @memberof RunWorkflowParamsDto
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface RunWorkflowResponseDto
+ */
+export interface RunWorkflowResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof RunWorkflowResponseDto
+     */
+    'pipelineId': string;
+}
 /**
  * 
  * @export
@@ -3861,7 +4422,7 @@ export interface SegmentAnythingEmbeddingsV1Response {
      * @type {OperationOutputJSON}
      * @memberof SegmentAnythingEmbeddingsV1Response
      */
-    'output': OperationOutputJSON | null;
+    'output': OperationOutputJSON;
     /**
      * 
      * @type {object}
@@ -3992,7 +4553,7 @@ export interface SegmentAnythingMaskV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof SegmentAnythingMaskV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -4248,12 +4809,6 @@ export interface TranslateV1Input {
      * @type {string}
      * @memberof TranslateV1Input
      */
-    'from'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TranslateV1Input
-     */
     'to': string;
 }
 /**
@@ -4292,7 +4847,7 @@ export interface TranslateV1Response {
      * @type {OperationOutputJSON}
      * @memberof TranslateV1Response
      */
-    'output': OperationOutputJSON | null;
+    'output': OperationOutputJSON;
     /**
      * 
      * @type {object}
@@ -4456,7 +5011,7 @@ export interface UpscaleV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof UpscaleV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -4523,6 +5078,87 @@ export type UpscaleV1ResponseStatusEnum = typeof UpscaleV1ResponseStatusEnum[key
 /**
  * 
  * @export
+ * @interface VideoEntity
+ */
+export interface VideoEntity {
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'kind': VideoEntityKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof VideoEntity
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'updatedAt': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoEntity
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoEntity
+     */
+    'height': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoEntity
+     */
+    'duration': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'url': string;
+}
+
+export const VideoEntityKindEnum = {
+    Collection: 'collection',
+    Operation: 'operation',
+    Stack: 'stack',
+    Image: 'image',
+    Video: 'video',
+    Pose: 'pose',
+    Storage: 'storage',
+    Pipeline: 'pipeline'
+} as const;
+
+export type VideoEntityKindEnum = typeof VideoEntityKindEnum[keyof typeof VideoEntityKindEnum];
+
+/**
+ * 
+ * @export
  * @interface VtonGiseleV1Request
  */
 export interface VtonGiseleV1Request {
@@ -4556,7 +5192,7 @@ export interface VtonGiseleV1Response {
      * @type {OperationOutputImageSingle}
      * @memberof VtonGiseleV1Response
      */
-    'output': OperationOutputImageSingle | null;
+    'output': OperationOutputImageSingle;
     /**
      * 
      * @type {object}
@@ -6810,6 +7446,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateKling16ProV1V1: async (animateKling16ProV1Request: AnimateKling16ProV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateKling16ProV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunAnimateKling16ProV1V1', 'animateKling16ProV1Request', animateKling16ProV1Request)
+            const localVarPath = `/v1/call/operations.run.animate.kling_1_6_pro.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateKling16ProV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6958,6 +7633,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(cutV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunEchoV1V1: async (echoV1Request: EchoV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'echoV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunEchoV1V1', 'echoV1Request', echoV1Request)
+            const localVarPath = `/v1/call/operations.run.echo.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(echoV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7153,6 +7867,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(inpaintKateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunMathV1V1: async (mathV1Request: MathV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'mathV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunMathV1V1', 'mathV1Request', mathV1Request)
+            const localVarPath = `/v1/call/operations.run.math.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(mathV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7660,6 +8413,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(listPosesParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {UpdateResourceMetadataDto} updateResourceMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallPosesMetadataUpdateV1: async (updateResourceMetadataDto: UpdateResourceMetadataDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateResourceMetadataDto' is not null or undefined
+            assertParamExists('callControllerCallPosesMetadataUpdateV1', 'updateResourceMetadataDto', updateResourceMetadataDto)
+            const localVarPath = `/v1/call/poses.metadata.update`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateResourceMetadataDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -8443,6 +9235,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateKling16ProV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunAnimateKling16ProV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8487,6 +9291,18 @@ export const CallApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunCutV1V1(cutV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunCutV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EchoV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunEchoV1V1(echoV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunEchoV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -8547,6 +9363,18 @@ export const CallApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunInpaintKateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MathV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunMathV1V1(mathV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunMathV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -8703,6 +9531,18 @@ export const CallApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallPosesListV1(listPosesParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallPosesListV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {UpdateResourceMetadataDto} updateResourceMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto: UpdateResourceMetadataDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallPosesMetadataUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9101,6 +9941,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateKling16ProV1Response> {
+            return localVarFp.callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9134,6 +9983,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
             return localVarFp.callControllerCallOperationsRunCutV1V1(cutV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<EchoV1Response> {
+            return localVarFp.callControllerCallOperationsRunEchoV1V1(echoV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9179,6 +10037,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
             return localVarFp.callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MathV1Response> {
+            return localVarFp.callControllerCallOperationsRunMathV1V1(mathV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9296,6 +10163,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallPosesListV1(listPosesParamsDto: ListPosesParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<ListPosesDto> {
             return localVarFp.callControllerCallPosesListV1(listPosesParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {UpdateResourceMetadataDto} updateResourceMetadataDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto: UpdateResourceMetadataDto, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9716,6 +10592,17 @@ export class CallApi extends BaseAPI {
 
     /**
      * 
+     * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {CompositeV1Request} compositeV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -9756,6 +10643,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunCutV1V1(cutV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {EchoV1Request} echoV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunEchoV1V1(echoV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -9811,6 +10709,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {MathV1Request} mathV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunMathV1V1(mathV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -9954,6 +10863,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallPosesListV1(listPosesParamsDto: ListPosesParamsDto, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallPosesListV1(listPosesParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {UpdateResourceMetadataDto} updateResourceMetadataDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto: UpdateResourceMetadataDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallPosesMetadataUpdateV1(updateResourceMetadataDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10706,10 +11626,10 @@ export const CollectionsControllerListItemsV1KindEnum = {
     Operation: 'operation',
     Stack: 'stack',
     Image: 'image',
+    Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline',
-    Forbidden: 'forbidden'
+    Pipeline: 'pipeline'
 } as const;
 export type CollectionsControllerListItemsV1KindEnum = typeof CollectionsControllerListItemsV1KindEnum[keyof typeof CollectionsControllerListItemsV1KindEnum];
 
@@ -11629,6 +12549,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateKling16ProV1V1: async (animateKling16ProV1Request: AnimateKling16ProV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateKling16ProV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunAnimateKling16ProV1V1', 'animateKling16ProV1Request', animateKling16ProV1Request)
+            const localVarPath = `/v1/operations/run/animate.kling_1_6_pro.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateKling16ProV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11777,6 +12736,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(cutV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunEchoV1V1: async (echoV1Request: EchoV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'echoV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunEchoV1V1', 'echoV1Request', echoV1Request)
+            const localVarPath = `/v1/operations/run/echo.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(echoV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -11972,6 +12970,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(inpaintKateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunMathV1V1: async (mathV1Request: MathV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'mathV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunMathV1V1', 'mathV1Request', mathV1Request)
+            const localVarPath = `/v1/operations/run/math.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(mathV1Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12461,6 +13498,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateKling16ProV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunAnimateKling16ProV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12505,6 +13554,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunCutV1V1(cutV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunCutV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EchoV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunEchoV1V1(echoV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunEchoV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12565,6 +13626,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunInpaintKateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MathV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunMathV1V1(mathV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunMathV1V1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12741,6 +13814,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateKling16ProV1Response> {
+            return localVarFp.operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12774,6 +13856,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig): AxiosPromise<CutV1Response> {
             return localVarFp.operationsControllerRunCutV1V1(cutV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {EchoV1Request} echoV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig): AxiosPromise<EchoV1Response> {
+            return localVarFp.operationsControllerRunEchoV1V1(echoV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12819,6 +13910,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<InpaintKateV1Response> {
             return localVarFp.operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {MathV1Request} mathV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig): AxiosPromise<MathV1Response> {
+            return localVarFp.operationsControllerRunMathV1V1(mathV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12967,6 +14067,17 @@ export class OperationsApi extends BaseAPI {
 
     /**
      * 
+     * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {CompositeV1Request} compositeV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13007,6 +14118,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunCutV1V1(cutV1Request: CutV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunCutV1V1(cutV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {EchoV1Request} echoV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunEchoV1V1(echoV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13062,6 +14184,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunInpaintKateV1V1(inpaintKateV1Request: InpaintKateV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunInpaintKateV1V1(inpaintKateV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {MathV1Request} mathV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunMathV1V1(mathV1Request: MathV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunMathV1V1(mathV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13458,7 +14591,7 @@ export const PipelinesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineEntity>> {
+        async pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineWithOutput>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerGetPipelineV1(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerGetPipelineV1']?.[localVarOperationServerIndex]?.url;
@@ -13503,7 +14636,7 @@ export const PipelinesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PipelineEntity> {
+        pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PipelineWithOutput> {
             return localVarFp.pipelinesControllerGetPipelineV1(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14764,6 +15897,185 @@ export class StorageApi extends BaseAPI {
 
 
 /**
+ * VideosApi - axios parameter creator
+ * @export
+ */
+export const VideosApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetUrlsV1: async (getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getUrlsForImagesParamsDto' is not null or undefined
+            assertParamExists('videosControllerGetUrlsV1', 'getUrlsForImagesParamsDto', getUrlsForImagesParamsDto)
+            const localVarPath = `/v1/videos/many`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getUrlsForImagesParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetVideoV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('videosControllerGetVideoV1', 'id', id)
+            const localVarPath = `/v1/videos/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * VideosApi - functional programming interface
+ * @export
+ */
+export const VideosApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = VideosApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VideoEntity>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetUrlsV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetVideoV1(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetVideoV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * VideosApi - factory interface
+ * @export
+ */
+export const VideosApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = VideosApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoEntity>> {
+            return localVarFp.videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
+            return localVarFp.videosControllerGetVideoV1(id, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * VideosApi - object-oriented interface
+ * @export
+ * @class VideosApi
+ * @extends {BaseAPI}
+ */
+export class VideosApi extends BaseAPI {
+    /**
+     * 
+     * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VideosApi
+     */
+    public videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VideosApi
+     */
+    public videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerGetVideoV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * WebsocketApi - axios parameter creator
  * @export
  */
@@ -14921,6 +16233,123 @@ export class WebsocketApi extends BaseAPI {
      */
     public websocketControllerRegisterWebsocketV1(options?: RawAxiosRequestConfig) {
         return WebsocketApiFp(this.configuration).websocketControllerRegisterWebsocketV1(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * WorkflowsApi - axios parameter creator
+ * @export
+ */
+export const WorkflowsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} workflowId 
+         * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerRunWorkflowV1: async (workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowId' is not null or undefined
+            assertParamExists('workflowsControllerRunWorkflowV1', 'workflowId', workflowId)
+            // verify required parameter 'runWorkflowParamsDto' is not null or undefined
+            assertParamExists('workflowsControllerRunWorkflowV1', 'runWorkflowParamsDto', runWorkflowParamsDto)
+            const localVarPath = `/v1/workflows/run/{workflowId}`
+                .replace(`{${"workflowId"}}`, encodeURIComponent(String(workflowId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(runWorkflowParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * WorkflowsApi - functional programming interface
+ * @export
+ */
+export const WorkflowsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WorkflowsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {string} workflowId 
+         * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerRunWorkflowV1(workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RunWorkflowResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerRunWorkflowV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * WorkflowsApi - factory interface
+ * @export
+ */
+export const WorkflowsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WorkflowsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {string} workflowId 
+         * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerRunWorkflowV1(workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<RunWorkflowResponseDto> {
+            return localVarFp.workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * WorkflowsApi - object-oriented interface
+ * @export
+ * @class WorkflowsApi
+ * @extends {BaseAPI}
+ */
+export class WorkflowsApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} workflowId 
+     * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerRunWorkflowV1(workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
