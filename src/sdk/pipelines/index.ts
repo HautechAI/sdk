@@ -66,6 +66,10 @@ const pipelines = (options: SDKOptions) => {
                 get: callMethod((methods) => methods.callControllerCallImagesGetV1),
                 getUrls: callMethod((methods) => methods.callControllerCallImagesGetManyV1),
             },
+            videos: {
+                get: callMethod((methods) => methods.callControllerCallVideosGetV1),
+                getUrls: callMethod((methods) => methods.callControllerCallVideosGetManyV1),
+            },
             operations: {
                 get: callMethod((methods) => methods.callControllerCallOperationsGetV1),
                 list: callMethod((methods) => methods.callControllerCallOperationsListV1),

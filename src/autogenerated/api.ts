@@ -1491,6 +1491,32 @@ export interface GetUrlsForImagesParamsDto {
 /**
  * 
  * @export
+ * @interface GetVideoParamsDto
+ */
+export interface GetVideoParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GetVideoParamsDto
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetVideosParamsDto
+ */
+export interface GetVideosParamsDto {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetVideosParamsDto
+     */
+    'ids': Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface GiseleVtonV1Input
  */
 export interface GiseleVtonV1Input {
@@ -5156,6 +5182,25 @@ export const VideoEntityKindEnum = {
 
 export type VideoEntityKindEnum = typeof VideoEntityKindEnum[keyof typeof VideoEntityKindEnum];
 
+/**
+ * 
+ * @export
+ * @interface VideoUrlResponseDto
+ */
+export interface VideoUrlResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoUrlResponseDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoUrlResponseDto
+     */
+    'url': string;
+}
 /**
  * 
  * @export
@@ -8887,6 +8932,84 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {GetVideosParamsDto} getVideosParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallVideosGetManyV1: async (getVideosParamsDto: GetVideosParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getVideosParamsDto' is not null or undefined
+            assertParamExists('callControllerCallVideosGetManyV1', 'getVideosParamsDto', getVideosParamsDto)
+            const localVarPath = `/v1/call/videos.getMany`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getVideosParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {GetVideoParamsDto} getVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallVideosGetV1: async (getVideoParamsDto: GetVideoParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'getVideoParamsDto' is not null or undefined
+            assertParamExists('callControllerCallVideosGetV1', 'getVideoParamsDto', getVideoParamsDto)
+            const localVarPath = `/v1/call/videos.get`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(getVideoParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -9677,6 +9800,30 @@ export const CallApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallStorageUpdateV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {GetVideosParamsDto} getVideosParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallVideosGetManyV1(getVideosParamsDto: GetVideosParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VideoUrlResponseDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallVideosGetManyV1(getVideosParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallVideosGetManyV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {GetVideoParamsDto} getVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallVideosGetV1(getVideoParamsDto: GetVideoParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallVideosGetV1(getVideoParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallVideosGetV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -10271,6 +10418,24 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallStorageUpdateV1(updateStorageRecordParamsDto: UpdateStorageRecordParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<StorageEntity> {
             return localVarFp.callControllerCallStorageUpdateV1(updateStorageRecordParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {GetVideosParamsDto} getVideosParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallVideosGetManyV1(getVideosParamsDto: GetVideosParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoUrlResponseDto>> {
+            return localVarFp.callControllerCallVideosGetManyV1(getVideosParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {GetVideoParamsDto} getVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallVideosGetV1(getVideoParamsDto: GetVideoParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
+            return localVarFp.callControllerCallVideosGetV1(getVideoParamsDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10995,6 +11160,28 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallStorageUpdateV1(updateStorageRecordParamsDto: UpdateStorageRecordParamsDto, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallStorageUpdateV1(updateStorageRecordParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GetVideosParamsDto} getVideosParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallVideosGetManyV1(getVideosParamsDto: GetVideosParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallVideosGetManyV1(getVideosParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GetVideoParamsDto} getVideoParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallVideosGetV1(getVideoParamsDto: GetVideoParamsDto, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallVideosGetV1(getVideoParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
