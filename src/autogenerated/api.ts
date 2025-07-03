@@ -3066,6 +3066,18 @@ export type ModifyAccessParamsDtoPrincipalTypeEnum = typeof ModifyAccessParamsDt
  */
 export interface NaomiHauteV1Input {
     /**
+     * The category of the second garment
+     * @type {string}
+     * @memberof NaomiHauteV1Input
+     */
+    'secondaryCategory'?: string;
+    /**
+     * The image of the second garment
+     * @type {string}
+     * @memberof NaomiHauteV1Input
+     */
+    'secondaryGarmentImageId'?: string;
+    /**
      * UNSTABLE
      * @type {Array<string>}
      * @memberof NaomiHauteV1Input
