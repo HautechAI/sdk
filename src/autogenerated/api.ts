@@ -4735,7 +4735,7 @@ export type StackEntityKindEnum = typeof StackEntityKindEnum[keyof typeof StackE
  * @type StackEntityItemsInner
  * @export
  */
-export type StackEntityItemsInner = ImageEntity | OperationEntity;
+export type StackEntityItemsInner = ImageEntity | OperationEntity | VideoEntity;
 
 /**
  * 
@@ -5161,6 +5161,18 @@ export interface VideoEntity {
      * @memberof VideoEntity
      */
     'duration': number;
+    /**
+     * 
+     * @type {ImageEntity}
+     * @memberof VideoEntity
+     */
+    'previewImage'?: ImageEntity;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoEntity
+     */
+    'previewImageId'?: string;
     /**
      * 
      * @type {string}
