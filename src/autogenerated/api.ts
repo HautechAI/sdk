@@ -3747,6 +3747,12 @@ export type OperationOutputVideoSingleKindEnum = typeof OperationOutputVideoSing
  */
 export interface PipelineDto {
     /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'kind': PipelineDtoKindEnum;
+    /**
      * State of the pipeline tasks
      * @type {{ [key: string]: PipelineDtoStateValue; }}
      * @memberof PipelineDto
@@ -3808,6 +3814,11 @@ export interface PipelineDto {
     'status': PipelineDtoStatusEnum;
 }
 
+export const PipelineDtoKindEnum = {
+    Pipeline: 'pipeline'
+} as const;
+
+export type PipelineDtoKindEnum = typeof PipelineDtoKindEnum[keyof typeof PipelineDtoKindEnum];
 export const PipelineDtoStatusEnum = {
     Pending: 'pending',
     Completed: 'completed',
@@ -3918,6 +3929,12 @@ export interface PipelinePreviewDto {
      * @type {string}
      * @memberof PipelinePreviewDto
      */
+    'kind': PipelinePreviewDtoKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelinePreviewDto
+     */
     'id': string;
     /**
      * 
@@ -3957,6 +3974,11 @@ export interface PipelinePreviewDto {
     'status': PipelinePreviewDtoStatusEnum;
 }
 
+export const PipelinePreviewDtoKindEnum = {
+    Pipeline: 'pipeline'
+} as const;
+
+export type PipelinePreviewDtoKindEnum = typeof PipelinePreviewDtoKindEnum[keyof typeof PipelinePreviewDtoKindEnum];
 export const PipelinePreviewDtoStatusEnum = {
     Pending: 'pending',
     Completed: 'completed',
