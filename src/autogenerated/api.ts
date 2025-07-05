@@ -4887,6 +4887,125 @@ export interface StorageRecordsResultDto {
 /**
  * 
  * @export
+ * @interface StringsTemplateV1Input
+ */
+export interface StringsTemplateV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Input
+     */
+    'template': string;
+    /**
+     * 
+     * @type {Array<VariableDto>}
+     * @memberof StringsTemplateV1Input
+     */
+    'variables': Array<VariableDto>;
+}
+/**
+ * 
+ * @export
+ * @interface StringsTemplateV1Request
+ */
+export interface StringsTemplateV1Request {
+    /**
+     * 
+     * @type {StringsTemplateV1Input}
+     * @memberof StringsTemplateV1Request
+     */
+    'input': StringsTemplateV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof StringsTemplateV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface StringsTemplateV1Response
+ */
+export interface StringsTemplateV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'kind': StringsTemplateV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputTextSingle}
+     * @memberof StringsTemplateV1Response
+     */
+    'output': OperationOutputTextSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof StringsTemplateV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'status': StringsTemplateV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof StringsTemplateV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
+    'updatedAt': string;
+}
+
+export const StringsTemplateV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type StringsTemplateV1ResponseKindEnum = typeof StringsTemplateV1ResponseKindEnum[keyof typeof StringsTemplateV1ResponseKindEnum];
+export const StringsTemplateV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type StringsTemplateV1ResponseStatusEnum = typeof StringsTemplateV1ResponseStatusEnum[keyof typeof StringsTemplateV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface TaskDto
  */
 export interface TaskDto {
@@ -5198,6 +5317,25 @@ export const UpscaleV1ResponseStatusEnum = {
 
 export type UpscaleV1ResponseStatusEnum = typeof UpscaleV1ResponseStatusEnum[keyof typeof UpscaleV1ResponseStatusEnum];
 
+/**
+ * 
+ * @export
+ * @interface VariableDto
+ */
+export interface VariableDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableDto
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableDto
+     */
+    'value': string;
+}
 /**
  * 
  * @export
@@ -8341,6 +8479,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunStringsTemplateV1V1: async (stringsTemplateV1Request: StringsTemplateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'stringsTemplateV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunStringsTemplateV1V1', 'stringsTemplateV1Request', stringsTemplateV1Request)
+            const localVarPath = `/v1/call/operations.run.strings.template.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(stringsTemplateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {TranslateV1Request} translateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9695,6 +9872,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StringsTemplateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunStringsTemplateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {TranslateV1Request} translateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10365,6 +10554,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
             return localVarFp.callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<StringsTemplateV1Response> {
+            return localVarFp.callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -11071,6 +11269,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunStringsTemplateV1V1(stringsTemplateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13586,6 +13795,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunStringsTemplateV1V1: async (stringsTemplateV1Request: StringsTemplateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'stringsTemplateV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunStringsTemplateV1V1', 'stringsTemplateV1Request', stringsTemplateV1Request)
+            const localVarPath = `/v1/operations/run/strings.template.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(stringsTemplateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {TranslateV1Request} translateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14022,6 +14270,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StringsTemplateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunStringsTemplateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {TranslateV1Request} translateV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14278,6 +14538,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig): AxiosPromise<SegmentAnythingMaskV1Response> {
             return localVarFp.operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<StringsTemplateV1Response> {
+            return localVarFp.operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -14568,6 +14837,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request: SegmentAnythingMaskV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunSegmentAnythingMaskV1V1(segmentAnythingMaskV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {StringsTemplateV1Request} stringsTemplateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request: StringsTemplateV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunStringsTemplateV1V1(stringsTemplateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

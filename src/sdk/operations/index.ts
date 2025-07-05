@@ -37,6 +37,8 @@ import {
     SegmentAnythingEmbeddingsV1Response,
     SegmentAnythingMaskV1Input,
     SegmentAnythingMaskV1Response,
+    StringsTemplateV1Input,
+    StringsTemplateV1Response,
     TranslateV1Input,
     TranslateV1Response,
     UpscaleV1Input,
@@ -183,6 +185,13 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 v1: createOperation<ResizeV1Input, ResizeV1Response>((methods, props) =>
                     methods.operationsControllerRunResizeV1V1(props),
                 ),
+            },
+            strings: {
+                template: {
+                    v1: createOperation<StringsTemplateV1Input, StringsTemplateV1Response>((methods, props) =>
+                        methods.operationsControllerRunStringsTemplateV1V1(props),
+                    ),
+                },
             },
         },
         get: (props: { id: string }): Promise<OperationEntityWithMetadata | undefined> =>
