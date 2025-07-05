@@ -3858,69 +3858,6 @@ export type PipelineDtoStateValueStatusEnum = typeof PipelineDtoStateValueStatus
 /**
  * 
  * @export
- * @interface PipelineEntity
- */
-export interface PipelineEntity {
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'kind': PipelineEntityKindEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'status': PipelineEntityStatusEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'creatorId': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'metadata': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'createdAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineEntity
-     */
-    'updatedAt': string;
-}
-
-export const PipelineEntityKindEnum = {
-    Pipeline: 'pipeline'
-} as const;
-
-export type PipelineEntityKindEnum = typeof PipelineEntityKindEnum[keyof typeof PipelineEntityKindEnum];
-export const PipelineEntityStatusEnum = {
-    Pending: 'pending',
-    Completed: 'completed',
-    Failed: 'failed'
-} as const;
-
-export type PipelineEntityStatusEnum = typeof PipelineEntityStatusEnum[keyof typeof PipelineEntityStatusEnum];
-
-/**
- * 
- * @export
  * @interface PipelinePreviewDto
  */
 export interface PipelinePreviewDto {
@@ -14938,7 +14875,7 @@ export const PipelinesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pipelinesControllerCreatePipelineV1(createPipelineParamsDto: CreatePipelineParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineEntity>> {
+        async pipelinesControllerCreatePipelineV1(createPipelineParamsDto: CreatePipelineParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerCreatePipelineV1(createPipelineParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerCreatePipelineV1']?.[localVarOperationServerIndex]?.url;
@@ -14986,7 +14923,7 @@ export const PipelinesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pipelinesControllerCreatePipelineV1(createPipelineParamsDto: CreatePipelineParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<PipelineEntity> {
+        pipelinesControllerCreatePipelineV1(createPipelineParamsDto: CreatePipelineParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<PipelineDto> {
             return localVarFp.pipelinesControllerCreatePipelineV1(createPipelineParamsDto, options).then((request) => request(axios, basePath));
         },
         /**
