@@ -479,6 +479,12 @@ export type CollectionEntityKindEnum = typeof CollectionEntityKindEnum[keyof typ
  */
 export interface CompositeElement {
     /**
+     * libvips blending mode
+     * @type {string}
+     * @memberof CompositeElement
+     */
+    'blend': CompositeElementBlendEnum;
+    /**
      * 
      * @type {string}
      * @memberof CompositeElement
@@ -516,6 +522,14 @@ export interface CompositeElement {
     'fit': CompositeElementFitEnum;
 }
 
+export const CompositeElementBlendEnum = {
+    Over: 'over',
+    Screen: 'screen',
+    Difference: 'difference',
+    Multiply: 'multiply'
+} as const;
+
+export type CompositeElementBlendEnum = typeof CompositeElementBlendEnum[keyof typeof CompositeElementBlendEnum];
 export const CompositeElementFitEnum = {
     Cover: 'cover',
     Contain: 'contain',
@@ -2784,10 +2798,10 @@ export type ListOperationsParamsDtoOrderByEnum = typeof ListOperationsParamsDtoO
 export interface ListPipelinesDto {
     /**
      * 
-     * @type {Array<PipelineEntity>}
+     * @type {Array<PipelinePreviewDto>}
      * @memberof ListPipelinesDto
      */
-    'data': Array<PipelineEntity>;
+    'data': Array<PipelinePreviewDto>;
     /**
      * 
      * @type {ListAccountsDtoPageInfo}
@@ -3065,6 +3079,18 @@ export type ModifyAccessParamsDtoPrincipalTypeEnum = typeof ModifyAccessParamsDt
  * @interface NaomiHauteV1Input
  */
 export interface NaomiHauteV1Input {
+    /**
+     * The category of the second garment
+     * @type {string}
+     * @memberof NaomiHauteV1Input
+     */
+    'secondaryCategory'?: string;
+    /**
+     * The image of the second garment
+     * @type {string}
+     * @memberof NaomiHauteV1Input
+     */
+    'secondaryGarmentImageId'?: string;
     /**
      * UNSTABLE
      * @type {Array<string>}
@@ -3717,6 +3743,110 @@ export type OperationOutputVideoSingleKindEnum = typeof OperationOutputVideoSing
 /**
  * 
  * @export
+ * @interface PipelineDto
+ */
+export interface PipelineDto {
+    /**
+     * State of the pipeline tasks
+     * @type {{ [key: string]: PipelineDtoStateValue; }}
+     * @memberof PipelineDto
+     */
+    'state': { [key: string]: PipelineDtoStateValue; };
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineDto
+     */
+    'output'?: object;
+    /**
+     * 
+     * @type {Array<TaskDto>}
+     * @memberof PipelineDto
+     */
+    'tasks': Array<TaskDto>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PipelineDto
+     */
+    'tasksAmount': number;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineDto
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'updatedAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'status': PipelineDtoStatusEnum;
+}
+
+export const PipelineDtoStatusEnum = {
+    Pending: 'pending',
+    Completed: 'completed',
+    Failed: 'failed'
+} as const;
+
+export type PipelineDtoStatusEnum = typeof PipelineDtoStatusEnum[keyof typeof PipelineDtoStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface PipelineDtoStateValue
+ */
+export interface PipelineDtoStateValue {
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineDtoStateValue
+     */
+    'status'?: PipelineDtoStateValueStatusEnum;
+    /**
+     * Output of the task
+     * @type {object}
+     * @memberof PipelineDtoStateValue
+     */
+    'output'?: object;
+}
+
+export const PipelineDtoStateValueStatusEnum = {
+    Pending: 'pending',
+    Completed: 'completed',
+    Failed: 'failed'
+} as const;
+
+export type PipelineDtoStateValueStatusEnum = typeof PipelineDtoStateValueStatusEnum[keyof typeof PipelineDtoStateValueStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface PipelineEntity
  */
 export interface PipelineEntity {
@@ -3726,12 +3856,6 @@ export interface PipelineEntity {
      * @memberof PipelineEntity
      */
     'kind': PipelineEntityKindEnum;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineEntity
-     */
-    'permissions': object;
     /**
      * 
      * @type {string}
@@ -3786,77 +3910,60 @@ export type PipelineEntityStatusEnum = typeof PipelineEntityStatusEnum[keyof typ
 /**
  * 
  * @export
- * @interface PipelineWithOutput
+ * @interface PipelinePreviewDto
  */
-export interface PipelineWithOutput {
+export interface PipelinePreviewDto {
     /**
      * 
      * @type {string}
-     * @memberof PipelineWithOutput
-     */
-    'kind': PipelineWithOutputKindEnum;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineWithOutput
-     */
-    'output': object | null;
-    /**
-     * 
-     * @type {object}
-     * @memberof PipelineWithOutput
-     */
-    'permissions': object;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineWithOutput
-     */
-    'status': PipelineWithOutputStatusEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof PipelineWithOutput
+     * @memberof PipelinePreviewDto
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof PipelineWithOutput
+     * @memberof PipelinePreviewDto
      */
     'creatorId': string;
     /**
      * 
+     * @type {number}
+     * @memberof PipelinePreviewDto
+     */
+    'tasksAmount': number;
+    /**
+     * 
      * @type {object}
-     * @memberof PipelineWithOutput
+     * @memberof PipelinePreviewDto
      */
     'metadata': object;
     /**
      * 
      * @type {string}
-     * @memberof PipelineWithOutput
+     * @memberof PipelinePreviewDto
      */
     'createdAt': string;
     /**
      * 
      * @type {string}
-     * @memberof PipelineWithOutput
+     * @memberof PipelinePreviewDto
      */
     'updatedAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelinePreviewDto
+     */
+    'status': PipelinePreviewDtoStatusEnum;
 }
 
-export const PipelineWithOutputKindEnum = {
-    Pipeline: 'pipeline'
-} as const;
-
-export type PipelineWithOutputKindEnum = typeof PipelineWithOutputKindEnum[keyof typeof PipelineWithOutputKindEnum];
-export const PipelineWithOutputStatusEnum = {
+export const PipelinePreviewDtoStatusEnum = {
     Pending: 'pending',
     Completed: 'completed',
     Failed: 'failed'
 } as const;
 
-export type PipelineWithOutputStatusEnum = typeof PipelineWithOutputStatusEnum[keyof typeof PipelineWithOutputStatusEnum];
+export type PipelinePreviewDtoStatusEnum = typeof PipelinePreviewDtoStatusEnum[keyof typeof PipelinePreviewDtoStatusEnum];
 
 /**
  * 
@@ -4817,6 +4924,37 @@ export interface StorageRecordsResultDto {
      * @memberof StorageRecordsResultDto
      */
     'value': object;
+}
+/**
+ * 
+ * @export
+ * @interface TaskDto
+ */
+export interface TaskDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof TaskDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TaskDto
+     */
+    'method': Array<string>;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof TaskDto
+     */
+    'args': Array<object>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TaskDto
+     */
+    'dependencies': Array<string>;
 }
 /**
  * 
@@ -14790,7 +14928,7 @@ export const PipelinesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineWithOutput>> {
+        async pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerGetPipelineV1(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerGetPipelineV1']?.[localVarOperationServerIndex]?.url;
@@ -14835,7 +14973,7 @@ export const PipelinesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PipelineWithOutput> {
+        pipelinesControllerGetPipelineV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<PipelineDto> {
             return localVarFp.pipelinesControllerGetPipelineV1(id, options).then((request) => request(axios, basePath));
         },
         /**
