@@ -40,7 +40,10 @@ export const createSDK = (options: SDKOptions) => {
         ws:
             (options.useWebsocket ?? true)
                 ? {
-                      endpoint: replaceProtocol(getBaseUrl(options), 'wss'),
+                      endpoint: (() => {
+                          const baseUrl = getBaseUrl(options);
+                          return replaceProtocol(baseUrl, baseUrl.startsWith('https')  ? 'wss' : 'ws');
+                      })(),
                       token: authToken,
                   }
                 : null,
