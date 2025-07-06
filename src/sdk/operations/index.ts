@@ -2,6 +2,8 @@ import { AxiosResponse } from 'axios';
 import {
     AnimateKling16ProV1Input,
     AnimateKling16ProV1Response,
+    AnimateKling21V1Input,
+    AnimateKling21V1Response,
     CompositeV1Input,
     CompositeV1Response,
     ContrastV1Input,
@@ -78,6 +80,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 kling_1_6_pro: {
                     v1: createOperation<AnimateKling16ProV1Input, AnimateKling16ProV1Response>((methods, props) =>
                         methods.operationsControllerRunAnimateKling16ProV1V1(props),
+                    ),
+                },
+                kling_2_1: {
+                    v1: createOperation<AnimateKling21V1Input, AnimateKling21V1Response>((methods, props) =>
+                        methods.operationsControllerRunAnimateKling21V1V1(props),
                     ),
                 },
             },

@@ -373,6 +373,145 @@ export type AnimateKling16ProV1ResponseStatusEnum = typeof AnimateKling16ProV1Re
 /**
  * 
  * @export
+ * @interface AnimateKling21V1Input
+ */
+export interface AnimateKling21V1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Input
+     */
+    'prompt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Input
+     */
+    'negativePrompt'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Input
+     */
+    'startImageId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Input
+     */
+    'duration'?: AnimateKling21V1InputDurationEnum;
+}
+
+export const AnimateKling21V1InputDurationEnum = {
+    _5: '5',
+    _10: '10'
+} as const;
+
+export type AnimateKling21V1InputDurationEnum = typeof AnimateKling21V1InputDurationEnum[keyof typeof AnimateKling21V1InputDurationEnum];
+
+/**
+ * 
+ * @export
+ * @interface AnimateKling21V1Request
+ */
+export interface AnimateKling21V1Request {
+    /**
+     * 
+     * @type {AnimateKling21V1Input}
+     * @memberof AnimateKling21V1Request
+     */
+    'input': AnimateKling21V1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling21V1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface AnimateKling21V1Response
+ */
+export interface AnimateKling21V1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'kind': AnimateKling21V1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputVideoSingle}
+     * @memberof AnimateKling21V1Response
+     */
+    'output': OperationOutputVideoSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling21V1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'status': AnimateKling21V1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateKling21V1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'updatedAt': string;
+}
+
+export const AnimateKling21V1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type AnimateKling21V1ResponseKindEnum = typeof AnimateKling21V1ResponseKindEnum[keyof typeof AnimateKling21V1ResponseKindEnum];
+export const AnimateKling21V1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type AnimateKling21V1ResponseStatusEnum = typeof AnimateKling21V1ResponseStatusEnum[keyof typeof AnimateKling21V1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface AttachAccessControllerParamsDto
  */
 export interface AttachAccessControllerParamsDto {
@@ -7777,6 +7916,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateKling21V1V1: async (animateKling21V1Request: AnimateKling21V1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateKling21V1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunAnimateKling21V1V1', 'animateKling21V1Request', animateKling21V1Request)
+            const localVarPath = `/v1/call/operations.run.animate.kling_2_1.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateKling21V1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9656,6 +9834,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateKling21V1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunAnimateKling21V1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10395,6 +10585,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateKling21V1Response> {
+            return localVarFp.callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11071,6 +11270,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AnimateKling21V1Request} animateKling21V1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunAnimateKling21V1V1(animateKling21V1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13093,6 +13303,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateKling21V1V1: async (animateKling21V1Request: AnimateKling21V1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateKling21V1Request' is not null or undefined
+            assertParamExists('operationsControllerRunAnimateKling21V1V1', 'animateKling21V1Request', animateKling21V1Request)
+            const localVarPath = `/v1/operations/run/animate.kling_2_1.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateKling21V1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14054,6 +14303,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateKling21V1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunAnimateKling21V1V1(animateKling21V1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunAnimateKling21V1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14379,6 +14640,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {AnimateKling21V1Request} animateKling21V1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateKling21V1Response> {
+            return localVarFp.operationsControllerRunAnimateKling21V1V1(animateKling21V1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {CompositeV1Request} compositeV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14639,6 +14909,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request: AnimateKling16ProV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunAnimateKling16ProV1V1(animateKling16ProV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AnimateKling21V1Request} animateKling21V1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunAnimateKling21V1V1(animateKling21V1Request: AnimateKling21V1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunAnimateKling21V1V1(animateKling21V1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

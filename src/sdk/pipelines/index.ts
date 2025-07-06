@@ -81,6 +81,9 @@ const pipelines = (options: SDKOptions) => {
                         kling_1_6_pro: {
                             v1: callMethod((methods) => methods.callControllerCallOperationsRunAnimateKling16ProV1V1),
                         },
+                        kling_2_1: {
+                            v1: callMethod((methods) => methods.callControllerCallOperationsRunAnimateKling21V1V1),
+                        },
                     },
                     haute: {
                         linda: {
