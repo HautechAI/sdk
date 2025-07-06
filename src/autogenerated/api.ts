@@ -622,7 +622,7 @@ export interface CompositeElement {
      * @type {string}
      * @memberof CompositeElement
      */
-    'blend': CompositeElementBlendEnum;
+    'blend'?: CompositeElementBlendEnum;
     /**
      * 
      * @type {string}
