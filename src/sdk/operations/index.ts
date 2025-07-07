@@ -12,6 +12,8 @@ import {
     CropV1Response,
     CutV1Input,
     CutV1Response,
+    EditFluxKontextDevV1Input,
+    EditFluxKontextDevV1Response,
     GiseleVtonV1Input,
     GPTV1Input,
     GptV1Response,
@@ -85,6 +87,13 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 kling_2_1: {
                     v1: createOperation<AnimateKling21V1Input, AnimateKling21V1Response>((methods, props) =>
                         methods.operationsControllerRunAnimateKling21V1V1(props),
+                    ),
+                },
+            },
+            edit: {
+                flux_kontext_dev: {
+                    v1: createOperation<EditFluxKontextDevV1Input, EditFluxKontextDevV1Response>((methods, props) =>
+                        methods.operationsControllerRunEditFluxKontextDevV1V1(props),
                     ),
                 },
             },

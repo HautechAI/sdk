@@ -982,10 +982,16 @@ export interface CreatePipelineParamsDto {
     'metadata'?: object;
     /**
      * 
+     * @type {Array<TaskDto>}
+     * @memberof CreatePipelineParamsDto
+     */
+    'tasks': Array<TaskDto>;
+    /**
+     * 
      * @type {object}
      * @memberof CreatePipelineParamsDto
      */
-    'tasks': object;
+    'state'?: object;
 }
 /**
  * 
@@ -1426,6 +1432,125 @@ export const EchoV1ResponseStatusEnum = {
 } as const;
 
 export type EchoV1ResponseStatusEnum = typeof EchoV1ResponseStatusEnum[keyof typeof EchoV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface EditFluxKontextDevV1Input
+ */
+export interface EditFluxKontextDevV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Input
+     */
+    'prompt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Input
+     */
+    'imageId'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface EditFluxKontextDevV1Request
+ */
+export interface EditFluxKontextDevV1Request {
+    /**
+     * 
+     * @type {EditFluxKontextDevV1Input}
+     * @memberof EditFluxKontextDevV1Request
+     */
+    'input': EditFluxKontextDevV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof EditFluxKontextDevV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface EditFluxKontextDevV1Response
+ */
+export interface EditFluxKontextDevV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'kind': EditFluxKontextDevV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputImageSingle}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'output': OperationOutputImageSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'status': EditFluxKontextDevV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'updatedAt': string;
+}
+
+export const EditFluxKontextDevV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type EditFluxKontextDevV1ResponseKindEnum = typeof EditFluxKontextDevV1ResponseKindEnum[keyof typeof EditFluxKontextDevV1ResponseKindEnum];
+export const EditFluxKontextDevV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type EditFluxKontextDevV1ResponseStatusEnum = typeof EditFluxKontextDevV1ResponseStatusEnum[keyof typeof EditFluxKontextDevV1ResponseStatusEnum];
 
 /**
  * 
@@ -8150,6 +8275,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunEditFluxKontextDevV1V1: async (editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'editFluxKontextDevV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunEditFluxKontextDevV1V1', 'editFluxKontextDevV1Request', editFluxKontextDevV1Request)
+            const localVarPath = `/v1/call/operations.run.edit.flux_kontext_dev.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(editFluxKontextDevV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9906,6 +10070,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EditFluxKontextDevV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunEditFluxKontextDevV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10639,6 +10815,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig): AxiosPromise<EditFluxKontextDevV1Response> {
+            return localVarFp.callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11336,6 +11521,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunEchoV1V1(echoV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13537,6 +13733,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunEditFluxKontextDevV1V1: async (editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'editFluxKontextDevV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunEditFluxKontextDevV1V1', 'editFluxKontextDevV1Request', editFluxKontextDevV1Request)
+            const localVarPath = `/v1/operations/run/edit.flux_kontext_dev.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(editFluxKontextDevV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14375,6 +14610,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EditFluxKontextDevV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunEditFluxKontextDevV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14694,6 +14941,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig): AxiosPromise<EditFluxKontextDevV1Response> {
+            return localVarFp.operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {GptV1Request} gptV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14975,6 +15231,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunEchoV1V1(echoV1Request: EchoV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunEchoV1V1(echoV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {EditFluxKontextDevV1Request} editFluxKontextDevV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request: EditFluxKontextDevV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunEditFluxKontextDevV1V1(editFluxKontextDevV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
