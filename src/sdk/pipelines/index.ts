@@ -196,14 +196,15 @@ const pipelines = (options: SDKOptions) => {
             consructPipeline(createPipeline()),
         create: async (props: {
             metadata?: PipelineMetadata;
-            template: PipelineType;
+            template?: PipelineType;
+            tasks?: any[];
             state?: Record<string, any>;
         }): Promise<PipelineDtoWithMetadata> =>
             api.call({
                 run: (methods) =>
                     methods.pipelinesControllerCreatePipelineV1({
                         metadata: props.metadata,
-                        tasks: props.template.tasks as TaskDto[],
+                        tasks: (props.template?.tasks ?? props.tasks) as TaskDto[],
                         state: props.state,
                     }),
             }),
