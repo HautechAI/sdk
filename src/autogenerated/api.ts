@@ -4023,6 +4023,18 @@ export interface PipelineDto {
      */
     'state': { [key: string]: PipelineDtoStateValue; };
     /**
+     * Total price of all tasks in the pipeline as a decimal string
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'totalExecutionPrice': string;
+    /**
+     * Total price of all successfully completed tasks in the pipeline as a decimal string
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'currentExecutionPrice': string;
+    /**
      * 
      * @type {object}
      * @memberof PipelineDto
@@ -4046,12 +4058,6 @@ export interface PipelineDto {
      * @memberof PipelineDto
      */
     'creatorId': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PipelineDto
-     */
-    'tasksAmount': number;
     /**
      * 
      * @type {object}
@@ -4143,12 +4149,6 @@ export interface PipelinePreviewDto {
      * @memberof PipelinePreviewDto
      */
     'creatorId': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PipelinePreviewDto
-     */
-    'tasksAmount': number;
     /**
      * 
      * @type {object}
@@ -5297,6 +5297,12 @@ export interface TaskDto {
      * @memberof TaskDto
      */
     'dependencies': Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TaskDto
+     */
+    'price': string;
 }
 /**
  * 
