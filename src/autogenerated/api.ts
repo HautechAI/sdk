@@ -4027,7 +4027,7 @@ export interface PipelineDto {
      * @type {string}
      * @memberof PipelineDto
      */
-    'totalExecutionPrice': string;
+    'consumedCredits': string;
     /**
      * Total price of all successfully completed tasks in the pipeline as a decimal string
      * @type {string}
