@@ -1451,6 +1451,18 @@ export interface EditFluxKontextDevV1Input {
      * @memberof EditFluxKontextDevV1Input
      */
     'imageId'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditFluxKontextDevV1Input
+     */
+    'numberOfSteps'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditFluxKontextDevV1Input
+     */
+    'guidance'?: number;
 }
 /**
  * 
