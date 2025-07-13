@@ -107,6 +107,9 @@ const pipelines = (options: SDKOptions) => {
                     gpt: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunGptV1V1),
                     },
+                    math: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunMathV1V1),
+                    },
                     translate: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunTranslateV1V1),
                     },

@@ -23,6 +23,8 @@ import {
     KateImagineV1Input,
     KateInpaintV1Input,
     LindaHauteV1Input,
+    MathV1Input,
+    MathV1Response,
     NaomiHauteV1Input,
     NegateImageV1Input,
     NegateImageV1Response,
@@ -119,6 +121,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             gpt: {
                 v1: createOperation<GPTV1Input, GptV1Response>((methods, props) =>
                     methods.operationsControllerRunGptV1V1(props),
+                ),
+            },
+            math: {
+                v1: createOperation<MathV1Input, MathV1Response>((methods, props) =>
+                    methods.operationsControllerRunMathV1V1(props),
                 ),
             },
             translate: {
