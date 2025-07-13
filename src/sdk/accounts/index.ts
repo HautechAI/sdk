@@ -14,6 +14,10 @@ const accounts = (options: SDKOptions) => {
             api.callWithReturningUndefinedOn404({
                 run: (methods) => methods.accountsControllerGetAccountV1(props.id),
             }),
+        self: async (): Promise<AccountEntity | undefined> =>
+            api.callWithReturningUndefinedOn404({
+                run: (methods) => methods.accountsControllerGetSelfV1(),
+            }),
         getByAlias: async (props: { alias: string }): Promise<AccountEntity | undefined> =>
             api.callWithReturningUndefinedOn404({
                 run: (methods) => methods.accountsControllerGetAccountByAliasV1(props.alias),
