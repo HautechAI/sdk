@@ -1463,6 +1463,12 @@ export interface EditFluxKontextDevV1Input {
      * @memberof EditFluxKontextDevV1Input
      */
     'guidance'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof EditFluxKontextDevV1Input
+     */
+    'seed'?: number;
 }
 /**
  * 
@@ -4035,17 +4041,17 @@ export interface PipelineDto {
      */
     'state': { [key: string]: PipelineDtoStateValue; };
     /**
-     * Total price of all tasks in the pipeline as a decimal string
+     * Total credits of all tasks in the pipeline as a decimal string
+     * @type {string}
+     * @memberof PipelineDto
+     */
+    'totalCredits': string;
+    /**
+     * Consumed credits of all successfully completed tasks in the pipeline as a decimal string
      * @type {string}
      * @memberof PipelineDto
      */
     'consumedCredits': string;
-    /**
-     * Total price of all successfully completed tasks in the pipeline as a decimal string
-     * @type {string}
-     * @memberof PipelineDto
-     */
-    'currentExecutionPrice': string;
     /**
      * 
      * @type {object}
