@@ -4035,12 +4035,6 @@ export interface PipelineDto {
      */
     'kind': PipelineDtoKindEnum;
     /**
-     * State of the pipeline tasks
-     * @type {{ [key: string]: PipelineDtoStateValue; }}
-     * @memberof PipelineDto
-     */
-    'state': { [key: string]: PipelineDtoStateValue; };
-    /**
      * Total credits of all tasks in the pipeline as a decimal string
      * @type {string}
      * @memberof PipelineDto
@@ -4052,6 +4046,12 @@ export interface PipelineDto {
      * @memberof PipelineDto
      */
     'consumedCredits': string;
+    /**
+     * State of the pipeline tasks
+     * @type {{ [key: string]: PipelineDtoStateValue; }}
+     * @memberof PipelineDto
+     */
+    'state': { [key: string]: PipelineDtoStateValue; };
     /**
      * 
      * @type {object}
@@ -4155,6 +4155,18 @@ export interface PipelinePreviewDto {
      * @memberof PipelinePreviewDto
      */
     'kind': PipelinePreviewDtoKindEnum;
+    /**
+     * Total credits of all tasks in the pipeline as a decimal string
+     * @type {string}
+     * @memberof PipelinePreviewDto
+     */
+    'totalCredits': string;
+    /**
+     * Consumed credits of all successfully completed tasks in the pipeline as a decimal string
+     * @type {string}
+     * @memberof PipelinePreviewDto
+     */
+    'consumedCredits': string;
     /**
      * 
      * @type {string}
