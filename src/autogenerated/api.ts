@@ -1656,6 +1656,38 @@ export type GPTV2AssistantMessageDtoRoleEnum = typeof GPTV2AssistantMessageDtoRo
 /**
  * 
  * @export
+ * @interface GPTV2DeveloperMessageDto
+ */
+export interface GPTV2DeveloperMessageDto {
+    /**
+     * The content of the developer message.
+     * @type {string}
+     * @memberof GPTV2DeveloperMessageDto
+     */
+    'content': string;
+    /**
+     * The role of the message sender.
+     * @type {string}
+     * @memberof GPTV2DeveloperMessageDto
+     */
+    'role': GPTV2DeveloperMessageDtoRoleEnum;
+    /**
+     * The name of the sender, if applicable.
+     * @type {string}
+     * @memberof GPTV2DeveloperMessageDto
+     */
+    'name'?: string;
+}
+
+export const GPTV2DeveloperMessageDtoRoleEnum = {
+    Developer: 'developer'
+} as const;
+
+export type GPTV2DeveloperMessageDtoRoleEnum = typeof GPTV2DeveloperMessageDtoRoleEnum[keyof typeof GPTV2DeveloperMessageDtoRoleEnum];
+
+/**
+ * 
+ * @export
  * @interface GPTV2Input
  */
 export interface GPTV2Input {
@@ -1666,7 +1698,7 @@ export interface GPTV2Input {
      */
     'model'?: GPTV2InputModelEnum;
     /**
-     * A list of messages comprising the conversation so far. Each message must be one of: system, user, assistant, or tool message DTO.
+     * A list of messages comprising the conversation so far. Each message must be one of: system, user, assistant, tool, or developer message DTO.
      * @type {Array<GPTV2InputMessagesInner>}
      * @memberof GPTV2Input
      */
@@ -1710,8 +1742,12 @@ export interface GPTV2Input {
 }
 
 export const GPTV2InputModelEnum = {
-    _4o: 'gpt-4o',
-    _41Mini: 'gpt-4.1-mini'
+    Gpt4o: 'gpt-4o',
+    O3: 'o3',
+    O3Mini: 'o3-mini',
+    Gpt41: 'gpt-4.1',
+    Gpt41Mini: 'gpt-4.1-mini',
+    Gpt41Nano: 'gpt-4.1-nano'
 } as const;
 
 export type GPTV2InputModelEnum = typeof GPTV2InputModelEnum[keyof typeof GPTV2InputModelEnum];
@@ -1720,7 +1756,7 @@ export type GPTV2InputModelEnum = typeof GPTV2InputModelEnum[keyof typeof GPTV2I
  * @type GPTV2InputMessagesInner
  * @export
  */
-export type GPTV2InputMessagesInner = GPTV2AssistantMessageDto | GPTV2SystemMessageDto | GPTV2ToolMessageDto | GPTV2UserMessageDto;
+export type GPTV2InputMessagesInner = GPTV2AssistantMessageDto | GPTV2DeveloperMessageDto | GPTV2SystemMessageDto | GPTV2ToolMessageDto | GPTV2UserMessageDto;
 
 /**
  * @type GPTV2InputResponseFormat
