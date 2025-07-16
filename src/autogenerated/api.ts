@@ -1612,6 +1612,431 @@ export type GPTV1InputModelEnum = typeof GPTV1InputModelEnum[keyof typeof GPTV1I
 /**
  * 
  * @export
+ * @interface GPTV2AssistantMessageDto
+ */
+export interface GPTV2AssistantMessageDto {
+    /**
+     * The content of the assistant message.
+     * @type {string}
+     * @memberof GPTV2AssistantMessageDto
+     */
+    'content'?: string;
+    /**
+     * The role of the message sender.
+     * @type {string}
+     * @memberof GPTV2AssistantMessageDto
+     */
+    'role': GPTV2AssistantMessageDtoRoleEnum;
+    /**
+     * The name of the sender, if applicable.
+     * @type {string}
+     * @memberof GPTV2AssistantMessageDto
+     */
+    'name'?: string;
+    /**
+     * The refusal message, if applicable.
+     * @type {string}
+     * @memberof GPTV2AssistantMessageDto
+     */
+    'refusal'?: string;
+    /**
+     * The tool calls made by the assistant, if any.
+     * @type {Array<GPTV2MessageToolCallDto>}
+     * @memberof GPTV2AssistantMessageDto
+     */
+    'tool_calls'?: Array<GPTV2MessageToolCallDto>;
+}
+
+export const GPTV2AssistantMessageDtoRoleEnum = {
+    Assistant: 'assistant'
+} as const;
+
+export type GPTV2AssistantMessageDtoRoleEnum = typeof GPTV2AssistantMessageDtoRoleEnum[keyof typeof GPTV2AssistantMessageDtoRoleEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2Input
+ */
+export interface GPTV2Input {
+    /**
+     * ID of the model to use. See OpenAI docs for model endpoint compatibility.
+     * @type {string}
+     * @memberof GPTV2Input
+     */
+    'model'?: GPTV2InputModelEnum;
+    /**
+     * A list of messages comprising the conversation so far. Each message must be one of: system, user, assistant, or tool message DTO.
+     * @type {Array<GPTV2InputMessagesInner>}
+     * @memberof GPTV2Input
+     */
+    'messages': Array<GPTV2InputMessagesInner>;
+    /**
+     * 
+     * @type {GPTV2InputResponseFormat}
+     * @memberof GPTV2Input
+     */
+    'response_format'?: GPTV2InputResponseFormat;
+    /**
+     * This feature is in Beta. If specified, OpenAI will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result.
+     * @type {number}
+     * @memberof GPTV2Input
+     */
+    'seed'?: number;
+    /**
+     * A list of tools the model may call. Currently, only functions are supported as a tool.
+     * @type {Array<GPTV2ToolDto>}
+     * @memberof GPTV2Input
+     */
+    'tools'?: Array<GPTV2ToolDto>;
+    /**
+     * Controls which (if any) tool is called by the model. \'none\', \'auto\', \'required\', or a specific function tool.
+     * @type {GPTV2ToolChoiceDto}
+     * @memberof GPTV2Input
+     */
+    'tool_choice'?: GPTV2ToolChoiceDto;
+    /**
+     * 
+     * @type {GPTV2ResponseFormatTextOrObjectDto}
+     * @memberof GPTV2Input
+     */
+    'response_format_text_or_object'?: GPTV2ResponseFormatTextOrObjectDto;
+    /**
+     * 
+     * @type {number}
+     * @memberof GPTV2Input
+     */
+    'max_completion_tokens'?: number;
+}
+
+export const GPTV2InputModelEnum = {
+    _4o: 'gpt-4o',
+    _41Mini: 'gpt-4.1-mini'
+} as const;
+
+export type GPTV2InputModelEnum = typeof GPTV2InputModelEnum[keyof typeof GPTV2InputModelEnum];
+
+/**
+ * @type GPTV2InputMessagesInner
+ * @export
+ */
+export type GPTV2InputMessagesInner = GPTV2AssistantMessageDto | GPTV2SystemMessageDto | GPTV2ToolMessageDto | GPTV2UserMessageDto;
+
+/**
+ * @type GPTV2InputResponseFormat
+ * The response format for the model output. See OpenAI docs for details.
+ * @export
+ */
+export type GPTV2InputResponseFormat = GPTV2ResponseFormatJsonSchemaDto | GPTV2ResponseFormatTextOrObjectDto;
+
+/**
+ * 
+ * @export
+ * @interface GPTV2MessageToolCallDto
+ */
+export interface GPTV2MessageToolCallDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof GPTV2MessageToolCallDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GPTV2MessageToolCallDto
+     */
+    'function': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GPTV2MessageToolCallDto
+     */
+    'type': GPTV2MessageToolCallDtoTypeEnum;
+}
+
+export const GPTV2MessageToolCallDtoTypeEnum = {
+    Function: 'function'
+} as const;
+
+export type GPTV2MessageToolCallDtoTypeEnum = typeof GPTV2MessageToolCallDtoTypeEnum[keyof typeof GPTV2MessageToolCallDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2ResponseFormatJsonSchemaDetailsDto
+ */
+export interface GPTV2ResponseFormatJsonSchemaDetailsDto {
+    /**
+     * The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+     * @type {string}
+     * @memberof GPTV2ResponseFormatJsonSchemaDetailsDto
+     */
+    'name': string;
+    /**
+     * A description of what the response format is for, used by the model to determine how to respond in the format.
+     * @type {string}
+     * @memberof GPTV2ResponseFormatJsonSchemaDetailsDto
+     */
+    'description'?: string;
+    /**
+     * The schema for the response format, described as a JSON Schema object.
+     * @type {object}
+     * @memberof GPTV2ResponseFormatJsonSchemaDetailsDto
+     */
+    'schema'?: object;
+    /**
+     * Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the `schema` field. Only a subset of JSON Schema is supported when `strict` is `true`.
+     * @type {boolean}
+     * @memberof GPTV2ResponseFormatJsonSchemaDetailsDto
+     */
+    'strict'?: boolean | null;
+}
+/**
+ * 
+ * @export
+ * @interface GPTV2ResponseFormatJsonSchemaDto
+ */
+export interface GPTV2ResponseFormatJsonSchemaDto {
+    /**
+     * The type of response format being defined: json_schema.
+     * @type {string}
+     * @memberof GPTV2ResponseFormatJsonSchemaDto
+     */
+    'type': GPTV2ResponseFormatJsonSchemaDtoTypeEnum;
+    /**
+     * The JSON schema definition for the response format. Required for type json_schema.
+     * @type {GPTV2ResponseFormatJsonSchemaDetailsDto}
+     * @memberof GPTV2ResponseFormatJsonSchemaDto
+     */
+    'json_schema': GPTV2ResponseFormatJsonSchemaDetailsDto;
+}
+
+export const GPTV2ResponseFormatJsonSchemaDtoTypeEnum = {
+    JsonSchema: 'json_schema'
+} as const;
+
+export type GPTV2ResponseFormatJsonSchemaDtoTypeEnum = typeof GPTV2ResponseFormatJsonSchemaDtoTypeEnum[keyof typeof GPTV2ResponseFormatJsonSchemaDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2ResponseFormatTextOrObjectDto
+ */
+export interface GPTV2ResponseFormatTextOrObjectDto {
+    /**
+     * The type of response format being defined: \'text\' or \'json_object\'.
+     * @type {object}
+     * @memberof GPTV2ResponseFormatTextOrObjectDto
+     */
+    'type': GPTV2ResponseFormatTextOrObjectDtoTypeEnum;
+}
+
+export const GPTV2ResponseFormatTextOrObjectDtoTypeEnum = {
+    Text: 'text',
+    JsonObject: 'json_object'
+} as const;
+
+export type GPTV2ResponseFormatTextOrObjectDtoTypeEnum = typeof GPTV2ResponseFormatTextOrObjectDtoTypeEnum[keyof typeof GPTV2ResponseFormatTextOrObjectDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2SystemMessageDto
+ */
+export interface GPTV2SystemMessageDto {
+    /**
+     * The content of the system message.
+     * @type {string}
+     * @memberof GPTV2SystemMessageDto
+     */
+    'content': string;
+    /**
+     * The role of the message sender.
+     * @type {string}
+     * @memberof GPTV2SystemMessageDto
+     */
+    'role': GPTV2SystemMessageDtoRoleEnum;
+    /**
+     * The name of the sender, if applicable.
+     * @type {string}
+     * @memberof GPTV2SystemMessageDto
+     */
+    'name'?: string;
+}
+
+export const GPTV2SystemMessageDtoRoleEnum = {
+    System: 'system'
+} as const;
+
+export type GPTV2SystemMessageDtoRoleEnum = typeof GPTV2SystemMessageDtoRoleEnum[keyof typeof GPTV2SystemMessageDtoRoleEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2ToolChoiceDto
+ */
+export interface GPTV2ToolChoiceDto {
+    /**
+     * Controls which (if any) tool is called by the model. \'none\', \'auto\', \'required\', or a specific function tool.
+     * @type {object}
+     * @memberof GPTV2ToolChoiceDto
+     */
+    'type': GPTV2ToolChoiceDtoTypeEnum;
+    /**
+     * The function to call, if type is `function`.
+     * @type {GPTV2ToolChoiceFunctionDto}
+     * @memberof GPTV2ToolChoiceDto
+     */
+    'function'?: GPTV2ToolChoiceFunctionDto;
+}
+
+export const GPTV2ToolChoiceDtoTypeEnum = {
+    None: 'none',
+    Auto: 'auto',
+    Required: 'required',
+    Function: 'function'
+} as const;
+
+export type GPTV2ToolChoiceDtoTypeEnum = typeof GPTV2ToolChoiceDtoTypeEnum[keyof typeof GPTV2ToolChoiceDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2ToolChoiceFunctionDto
+ */
+export interface GPTV2ToolChoiceFunctionDto {
+    /**
+     * The name of the function to call.
+     * @type {string}
+     * @memberof GPTV2ToolChoiceFunctionDto
+     */
+    'name': string;
+}
+/**
+ * 
+ * @export
+ * @interface GPTV2ToolDto
+ */
+export interface GPTV2ToolDto {
+    /**
+     * The function definition for the tool. Currently, only functions are supported.
+     * @type {GPTV2ToolFunctionDto}
+     * @memberof GPTV2ToolDto
+     */
+    'function': GPTV2ToolFunctionDto;
+    /**
+     * The type of the tool. Currently, only \'function\' is supported.
+     * @type {string}
+     * @memberof GPTV2ToolDto
+     */
+    'type': GPTV2ToolDtoTypeEnum;
+}
+
+export const GPTV2ToolDtoTypeEnum = {
+    Function: 'function'
+} as const;
+
+export type GPTV2ToolDtoTypeEnum = typeof GPTV2ToolDtoTypeEnum[keyof typeof GPTV2ToolDtoTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2ToolFunctionDto
+ */
+export interface GPTV2ToolFunctionDto {
+    /**
+     * The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+     * @type {string}
+     * @memberof GPTV2ToolFunctionDto
+     */
+    'name': string;
+    /**
+     * A description of what the function does, used by the model to choose when and how to call the function.
+     * @type {string}
+     * @memberof GPTV2ToolFunctionDto
+     */
+    'description'?: string;
+    /**
+     * The parameters the functions accepts, described as a JSON Schema object.
+     * @type {object}
+     * @memberof GPTV2ToolFunctionDto
+     */
+    'parameters'?: object;
+    /**
+     * Whether to enable strict schema adherence when generating the function call.
+     * @type {boolean}
+     * @memberof GPTV2ToolFunctionDto
+     */
+    'strict'?: boolean | null;
+}
+/**
+ * 
+ * @export
+ * @interface GPTV2ToolMessageDto
+ */
+export interface GPTV2ToolMessageDto {
+    /**
+     * The content of the tool message.
+     * @type {string}
+     * @memberof GPTV2ToolMessageDto
+     */
+    'content': string;
+    /**
+     * The role of the message sender.
+     * @type {string}
+     * @memberof GPTV2ToolMessageDto
+     */
+    'role': GPTV2ToolMessageDtoRoleEnum;
+    /**
+     * The ID of the tool call.
+     * @type {string}
+     * @memberof GPTV2ToolMessageDto
+     */
+    'tool_call_id': string;
+}
+
+export const GPTV2ToolMessageDtoRoleEnum = {
+    Tool: 'tool'
+} as const;
+
+export type GPTV2ToolMessageDtoRoleEnum = typeof GPTV2ToolMessageDtoRoleEnum[keyof typeof GPTV2ToolMessageDtoRoleEnum];
+
+/**
+ * 
+ * @export
+ * @interface GPTV2UserMessageDto
+ */
+export interface GPTV2UserMessageDto {
+    /**
+     * The content of the user message.
+     * @type {string}
+     * @memberof GPTV2UserMessageDto
+     */
+    'content': string;
+    /**
+     * The role of the message sender.
+     * @type {string}
+     * @memberof GPTV2UserMessageDto
+     */
+    'role': GPTV2UserMessageDtoRoleEnum;
+    /**
+     * The name of the sender, if applicable.
+     * @type {string}
+     * @memberof GPTV2UserMessageDto
+     */
+    'name'?: string;
+}
+
+export const GPTV2UserMessageDtoRoleEnum = {
+    User: 'user'
+} as const;
+
+export type GPTV2UserMessageDtoRoleEnum = typeof GPTV2UserMessageDtoRoleEnum[keyof typeof GPTV2UserMessageDtoRoleEnum];
+
+/**
+ * 
+ * @export
  * @interface GetAccountParamsDto
  */
 export interface GetAccountParamsDto {
@@ -1955,6 +2380,106 @@ export const GptV1ResponseStatusEnum = {
 } as const;
 
 export type GptV1ResponseStatusEnum = typeof GptV1ResponseStatusEnum[keyof typeof GptV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface GptV2Request
+ */
+export interface GptV2Request {
+    /**
+     * 
+     * @type {GPTV2Input}
+     * @memberof GptV2Request
+     */
+    'input': GPTV2Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV2Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface GptV2Response
+ */
+export interface GptV2Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'kind': GptV2ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof GptV2Response
+     */
+    'output': OperationOutputJSON;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV2Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'status': GptV2ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof GptV2Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'updatedAt': string;
+}
+
+export const GptV2ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type GptV2ResponseKindEnum = typeof GptV2ResponseKindEnum[keyof typeof GptV2ResponseKindEnum];
+export const GptV2ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type GptV2ResponseStatusEnum = typeof GptV2ResponseStatusEnum[keyof typeof GptV2ResponseStatusEnum];
 
 /**
  * 
@@ -8389,6 +8914,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunGptV2V1: async (gptV2Request: GptV2Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gptV2Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunGptV2V1', 'gptV2Request', gptV2Request)
+            const localVarPath = `/v1/call/operations.run.gpt.v2`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(gptV2Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10130,6 +10694,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV2Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunGptV2V1(gptV2Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunGptV2V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10869,6 +11445,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig): AxiosPromise<GptV2Response> {
+            return localVarFp.callControllerCallOperationsRunGptV2V1(gptV2Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11579,6 +12164,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunGptV1V1(gptV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GptV2Request} gptV2Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunGptV2V1(gptV2Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13847,6 +14443,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunGptV2V1: async (gptV2Request: GptV2Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'gptV2Request' is not null or undefined
+            assertParamExists('operationsControllerRunGptV2V1', 'gptV2Request', gptV2Request)
+            const localVarPath = `/v1/operations/run/gpt.v2`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(gptV2Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14670,6 +15305,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GptV2Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunGptV2V1(gptV2Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunGptV2V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -14995,6 +15642,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {GptV2Request} gptV2Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig): AxiosPromise<GptV2Response> {
+            return localVarFp.operationsControllerRunGptV2V1(gptV2Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {HauteLindaV1Request} hauteLindaV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15289,6 +15945,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunGptV1V1(gptV1Request: GptV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunGptV1V1(gptV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {GptV2Request} gptV2Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunGptV2V1(gptV2Request: GptV2Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunGptV2V1(gptV2Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

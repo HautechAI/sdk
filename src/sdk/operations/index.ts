@@ -17,6 +17,8 @@ import {
     GiseleVtonV1Input,
     GPTV1Input,
     GptV1Response,
+    GPTV2Input,
+    GptV2Response,
     HauteLindaV1Response,
     HauteNaomiV1Response,
     ImagineKateV1Response,
@@ -121,6 +123,9 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
             gpt: {
                 v1: createOperation<GPTV1Input, GptV1Response>((methods, props) =>
                     methods.operationsControllerRunGptV1V1(props),
+                ),
+                v2: createOperation<GPTV2Input, GptV2Response>((methods, props) =>
+                    methods.operationsControllerRunGptV2V1(props),
                 ),
             },
             math: {
