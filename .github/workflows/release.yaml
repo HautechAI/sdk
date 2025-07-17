@@ -98,14 +98,21 @@ jobs:
       - name: up version
         id: semantic
         run: |
-          OUTPUT=$(pnpm run up-versions)
-
-          echo $OUTPUT
-
-          if echo "$OUTPUT" | grep -q "no new version is released"; then
+          set +e
+          OUTPUT=$(pnpm run up-versions 2>&1)
+          STATUS=$?
+          set -e
+          
+          echo "$OUTPUT"
+          
+          if [[ $STATUS -ne 0 ]]; then
             echo "release_created=false" >> $GITHUB_OUTPUT
           else
-            echo "release_created=true" >> $GITHUB_OUTPUT
+            if echo "$OUTPUT" | grep -q "no new version is released"; then
+              echo "release_created=false" >> $GITHUB_OUTPUT
+            else
+              echo "release_created=true" >> $GITHUB_OUTPUT
+            fi
           fi
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
