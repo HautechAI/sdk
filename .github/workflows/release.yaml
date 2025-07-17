@@ -96,6 +96,9 @@ jobs:
           git config user.email "admin@hautech.ai"
           git config user.name "Hautech Bot"
 
+      - name: Build the package
+        run: pnpm build
+        
       - name: up version
         id: semantic
         run: pnpm run up-versions
