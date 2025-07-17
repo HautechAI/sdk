@@ -60,7 +60,7 @@ jobs:
   release:
     runs-on: ubuntu-22.04
     needs: [test]
-    name: Version packages
+    name: Release
 #    outputs:
 #      release_created: ${{ steps.semantic.outputs.release_created }}
     steps:
@@ -101,7 +101,7 @@ jobs:
         run: pnpm run up-versions
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 #  publish:
 #    runs-on: ubuntu-22.04
