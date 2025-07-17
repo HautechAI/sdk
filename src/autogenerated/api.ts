@@ -330,6 +330,12 @@ export interface AnimateKling16ProV1Response {
      * @type {string}
      * @memberof AnimateKling16ProV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling16ProV1Response
+     */
     'id': string;
     /**
      * 
@@ -464,6 +470,12 @@ export interface AnimateKling21V1Response {
      * @memberof AnimateKling21V1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateKling21V1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -770,6 +782,12 @@ export interface CompositeV1Response {
      * @type {string}
      * @memberof CompositeV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CompositeV1Response
+     */
     'id': string;
     /**
      * 
@@ -884,6 +902,12 @@ export interface ContrastV1Response {
      * @memberof ContrastV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContrastV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -1122,6 +1146,12 @@ export interface CropV1Response {
      * @type {string}
      * @memberof CropV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CropV1Response
+     */
     'id': string;
     /**
      * 
@@ -1236,6 +1266,12 @@ export interface CutV1Response {
      * @memberof CutV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CutV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -1393,6 +1429,12 @@ export interface EchoV1Response {
      * @type {string}
      * @memberof EchoV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EchoV1Response
+     */
     'id': string;
     /**
      * 
@@ -1525,6 +1567,12 @@ export interface EditFluxKontextDevV1Response {
      * @memberof EditFluxKontextDevV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditFluxKontextDevV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -2377,6 +2425,12 @@ export interface GptV1Response {
      * @type {string}
      * @memberof GptV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV1Response
+     */
     'id': string;
     /**
      * 
@@ -2472,6 +2526,12 @@ export interface GptV2Response {
      * @memberof GptV2Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GptV2Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -2629,6 +2689,12 @@ export interface HauteLindaV1Response {
      * @type {string}
      * @memberof HauteLindaV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteLindaV1Response
+     */
     'id': string;
     /**
      * 
@@ -2724,6 +2790,12 @@ export interface HauteNaomiV1Response {
      * @memberof HauteNaomiV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HauteNaomiV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -2954,6 +3026,12 @@ export interface ImagineKateV1Response {
      * @type {string}
      * @memberof ImagineKateV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ImagineKateV1Response
+     */
     'id': string;
     /**
      * 
@@ -3062,6 +3140,12 @@ export interface InpaintKateV1Response {
      * @memberof InpaintKateV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InpaintKateV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -3647,10 +3731,23 @@ export interface ListPipelinesDto {
     'data': Array<PipelinePreviewDto>;
     /**
      * 
-     * @type {ListAccountsDtoPageInfo}
+     * @type {ListPipelinesDtoPageInfo}
      * @memberof ListPipelinesDto
      */
-    'pageInfo': ListAccountsDtoPageInfo;
+    'pageInfo': ListPipelinesDtoPageInfo;
+}
+/**
+ * 
+ * @export
+ * @interface ListPipelinesDtoPageInfo
+ */
+export interface ListPipelinesDtoPageInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPipelinesDtoPageInfo
+     */
+    'nextCursor'?: string;
 }
 /**
  * 
@@ -3832,6 +3929,12 @@ export interface MathV1Response {
      * @memberof MathV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MathV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -4088,6 +4191,12 @@ export interface NegateImageV1Response {
      * @type {string}
      * @memberof NegateImageV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NegateImageV1Response
+     */
     'id': string;
     /**
      * 
@@ -4213,6 +4322,12 @@ export interface NoiseV1Response {
      * @type {string}
      * @memberof NoiseV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NoiseV1Response
+     */
     'id': string;
     /**
      * 
@@ -4332,6 +4447,12 @@ export interface ObjectDetectionV1Response {
      * @type {string}
      * @memberof ObjectDetectionV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectDetectionV1Response
+     */
     'id': string;
     /**
      * 
@@ -4408,6 +4529,12 @@ export interface OperationEntity {
      * @memberof OperationEntity
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OperationEntity
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -4920,6 +5047,12 @@ export interface PoseEstimationV1Response {
      * @type {string}
      * @memberof PoseEstimationV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PoseEstimationV1Response
+     */
     'id': string;
     /**
      * 
@@ -5153,6 +5286,12 @@ export interface ResizeV1Response {
      * @memberof ResizeV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResizeV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -5393,6 +5532,12 @@ export interface SegmentAnythingEmbeddingsV1Response {
      * @type {string}
      * @memberof SegmentAnythingEmbeddingsV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingEmbeddingsV1Response
+     */
     'id': string;
     /**
      * 
@@ -5519,6 +5664,12 @@ export interface SegmentAnythingMaskV1Response {
      * @memberof SegmentAnythingMaskV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SegmentAnythingMaskV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -5818,6 +5969,12 @@ export interface StringsTemplateV1Response {
      * @type {string}
      * @memberof StringsTemplateV1Response
      */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StringsTemplateV1Response
+     */
     'id': string;
     /**
      * 
@@ -5893,7 +6050,7 @@ export interface TaskDto {
      * @type {string}
      * @memberof TaskDto
      */
-    'price': string;
+    'estimatedPrice': string;
 }
 /**
  * 
@@ -5969,6 +6126,12 @@ export interface TranslateV1Response {
      * @memberof TranslateV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TranslateV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -6133,6 +6296,12 @@ export interface UpscaleV1Response {
      * @memberof UpscaleV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpscaleV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
@@ -6364,6 +6533,12 @@ export interface VtonGiseleV1Response {
      * @memberof VtonGiseleV1Response
      */
     'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VtonGiseleV1Response
+     */
+    'price'?: string;
     /**
      * 
      * @type {string}
