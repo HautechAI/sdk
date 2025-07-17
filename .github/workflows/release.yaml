@@ -117,10 +117,25 @@ jobs:
     if: (!contains(needs.version.result, 'failure') && needs.version.outputs.release_created == 'true' && always())
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.2.2
         with:
-          ref: ${{ github.sha }}
-          fetch-depth: "0"
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          HUSKY: 0
 
       - name: Get version
         id: version
