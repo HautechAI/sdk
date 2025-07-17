@@ -19,8 +19,46 @@ permissions:
   contents: write
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    environment: main
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          HUSKY: 0
+
+      - name: Test
+        run: pnpm test
+        env:
+          API_CORE_URL: https://api.dev.hautech.ai
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
+          APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
+          SDK_TOKEN: ${{ secrets.SDK_TOKEN }}
+
   version:
     runs-on: ubuntu-22.04
+    needs: [test]
     name: Version packages
     outputs:
       release_created: ${{ steps.semantic.outputs.release_created }}
