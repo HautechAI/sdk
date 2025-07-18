@@ -4723,11 +4723,11 @@ export interface PipelineDto {
      */
     'kind': PipelineDtoKindEnum;
     /**
-     * Total credits of all tasks in the pipeline as a decimal string
+     * Total estimated credits of all tasks in the pipeline as a decimal string
      * @type {string}
      * @memberof PipelineDto
      */
-    'totalCredits': string;
+    'estimatedCredits': string;
     /**
      * Consumed credits of all successfully completed tasks in the pipeline as a decimal string
      * @type {string}
@@ -4844,11 +4844,11 @@ export interface PipelinePreviewDto {
      */
     'kind': PipelinePreviewDtoKindEnum;
     /**
-     * Total credits of all tasks in the pipeline as a decimal string
+     * Total estimated credits of all tasks in the pipeline as a decimal string
      * @type {string}
      * @memberof PipelinePreviewDto
      */
-    'totalCredits': string;
+    'estimatedCredits': string;
     /**
      * Consumed credits of all successfully completed tasks in the pipeline as a decimal string
      * @type {string}
