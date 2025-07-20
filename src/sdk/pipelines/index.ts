@@ -85,6 +85,9 @@ const pipelines = (options: SDKOptions) => {
                         kling_2_1: {
                             v1: callMethod((methods) => methods.callControllerCallOperationsRunAnimateKling21V1V1),
                         },
+                        creatomate: {
+                            v1: callMethod((methods) => methods.callControllerCallOperationsRunAnimateCreatomateV1V1),
+                        },
                     },
                     edit: {
                         flux_kontext_dev: {

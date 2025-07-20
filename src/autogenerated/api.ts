@@ -209,6 +209,125 @@ export interface AddItemsToStackParamsDto {
 /**
  * 
  * @export
+ * @interface AnimateCreatomateV1Input
+ */
+export interface AnimateCreatomateV1Input {
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateCreatomateV1Input
+     */
+    'template': object;
+}
+/**
+ * 
+ * @export
+ * @interface AnimateCreatomateV1Request
+ */
+export interface AnimateCreatomateV1Request {
+    /**
+     * 
+     * @type {AnimateCreatomateV1Input}
+     * @memberof AnimateCreatomateV1Request
+     */
+    'input': AnimateCreatomateV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateCreatomateV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface AnimateCreatomateV1Response
+ */
+export interface AnimateCreatomateV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'kind': AnimateCreatomateV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputVideoSingle}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'output': OperationOutputVideoSingle;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'status': AnimateCreatomateV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnimateCreatomateV1Response
+     */
+    'updatedAt': string;
+}
+
+export const AnimateCreatomateV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type AnimateCreatomateV1ResponseKindEnum = typeof AnimateCreatomateV1ResponseKindEnum[keyof typeof AnimateCreatomateV1ResponseKindEnum];
+export const AnimateCreatomateV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type AnimateCreatomateV1ResponseStatusEnum = typeof AnimateCreatomateV1ResponseStatusEnum[keyof typeof AnimateCreatomateV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
  * @interface AnimateKling16ProV1Input
  */
 export interface AnimateKling16ProV1Input {
@@ -8774,6 +8893,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateCreatomateV1V1: async (animateCreatomateV1Request: AnimateCreatomateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateCreatomateV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunAnimateCreatomateV1V1', 'animateCreatomateV1Request', animateCreatomateV1Request)
+            const localVarPath = `/v1/call/operations.run.animate.creatomate.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateCreatomateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -10797,6 +10955,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateCreatomateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunAnimateCreatomateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11575,6 +11745,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateCreatomateV1Response> {
+            return localVarFp.callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12276,6 +12455,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsMetadataUpdateV1(updateResourceMetadataDto: UpdateResourceMetadataDto, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsMetadataUpdateV1(updateResourceMetadataDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunAnimateCreatomateV1V1(animateCreatomateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14303,6 +14493,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateCreatomateV1V1: async (animateCreatomateV1Request: AnimateCreatomateV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'animateCreatomateV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunAnimateCreatomateV1V1', 'animateCreatomateV1Request', animateCreatomateV1Request)
+            const localVarPath = `/v1/operations/run/animate.creatomate.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(animateCreatomateV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15408,6 +15637,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AnimateCreatomateV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunAnimateCreatomateV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15772,6 +16013,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig): AxiosPromise<AnimateCreatomateV1Response> {
+            return localVarFp.operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {AnimateKling16ProV1Request} animateKling16ProV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16057,6 +16307,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerListOperationsV1(orderBy?: OperationsControllerListOperationsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerListOperationsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {AnimateCreatomateV1Request} animateCreatomateV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request: AnimateCreatomateV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunAnimateCreatomateV1V1(animateCreatomateV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

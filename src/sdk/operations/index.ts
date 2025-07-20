@@ -1,5 +1,7 @@
 import { AxiosResponse } from 'axios';
 import {
+    AnimateCreatomateV1Input,
+    AnimateCreatomateV1Response,
     AnimateKling16ProV1Input,
     AnimateKling16ProV1Response,
     AnimateKling21V1Input,
@@ -91,6 +93,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 kling_2_1: {
                     v1: createOperation<AnimateKling21V1Input, AnimateKling21V1Response>((methods, props) =>
                         methods.operationsControllerRunAnimateKling21V1V1(props),
+                    ),
+                },
+                creatomate: {
+                    v1: createOperation<AnimateCreatomateV1Input, AnimateCreatomateV1Response>((methods, props) =>
+                        methods.operationsControllerRunAnimateCreatomateV1V1(props),
                     ),
                 },
             },
