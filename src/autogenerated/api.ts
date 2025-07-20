@@ -214,11 +214,17 @@ export interface AddItemsToStackParamsDto {
 export interface AnimateCreatomateV1Input {
     /**
      * 
-     * @type {object}
+     * @type {AnimateCreatomateV1InputTemplate}
      * @memberof AnimateCreatomateV1Input
      */
-    'template': object;
+    'template': AnimateCreatomateV1InputTemplate;
 }
+/**
+ * @type AnimateCreatomateV1InputTemplate
+ * @export
+ */
+export type AnimateCreatomateV1InputTemplate = object | string;
+
 /**
  * 
  * @export
