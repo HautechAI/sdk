@@ -743,7 +743,8 @@ export const CollectionEntityKindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 
 export type CollectionEntityKindEnum = typeof CollectionEntityKindEnum[keyof typeof CollectionEntityKindEnum];
@@ -1173,6 +1174,31 @@ export interface CreateStorageRecordParamsDto {
      * @memberof CreateStorageRecordParamsDto
      */
     'value': object;
+}
+/**
+ * 
+ * @export
+ * @interface CreateWorkflowParamsDto
+ */
+export interface CreateWorkflowParamsDto {
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateWorkflowParamsDto
+     */
+    'data': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorkflowParamsDto
+     */
+    'version': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreateWorkflowParamsDto
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -3042,7 +3068,8 @@ export const ImageEntityKindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 
 export type ImageEntityKindEnum = typeof ImageEntityKindEnum[keyof typeof ImageEntityKindEnum];
@@ -3729,7 +3756,8 @@ export const ListCollectionItemsParamsDtoKindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 
 export type ListCollectionItemsParamsDtoKindEnum = typeof ListCollectionItemsParamsDtoKindEnum[keyof typeof ListCollectionItemsParamsDtoKindEnum];
@@ -3980,6 +4008,56 @@ export const ListStacksParamsDtoOrderByEnum = {
 
 export type ListStacksParamsDtoOrderByEnum = typeof ListStacksParamsDtoOrderByEnum[keyof typeof ListStacksParamsDtoOrderByEnum];
 
+/**
+ * 
+ * @export
+ * @interface ListWorkflowsDto
+ */
+export interface ListWorkflowsDto {
+    /**
+     * 
+     * @type {Array<WorkflowDto>}
+     * @memberof ListWorkflowsDto
+     */
+    'data': Array<WorkflowDto>;
+    /**
+     * 
+     * @type {ListWorkflowsDtoPageInfo}
+     * @memberof ListWorkflowsDto
+     */
+    'pageInfo': ListWorkflowsDtoPageInfo;
+}
+/**
+ * 
+ * @export
+ * @interface ListWorkflowsDtoPageInfo
+ */
+export interface ListWorkflowsDtoPageInfo {
+    /**
+     * 
+     * @type {number}
+     * @memberof ListWorkflowsDtoPageInfo
+     */
+    'total': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListWorkflowsDtoPageInfo
+     */
+    'limit': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListWorkflowsDtoPageInfo
+     */
+    'offset': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListWorkflowsDtoPageInfo
+     */
+    'hasMore': boolean;
+}
 /**
  * 
  * @export
@@ -4617,6 +4695,151 @@ export const ObjectDetectionV1ResponseStatusEnum = {
 } as const;
 
 export type ObjectDetectionV1ResponseStatusEnum = typeof ObjectDetectionV1ResponseStatusEnum[keyof typeof ObjectDetectionV1ResponseStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface OneCompilerV1Input
+ */
+export interface OneCompilerV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof OneCompilerV1Input
+     */
+    'code': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof OneCompilerV1Input
+     */
+    'input'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof OneCompilerV1Input
+     */
+    'language'?: OneCompilerV1InputLanguageEnum;
+    /**
+     * 
+     * @type {Array<SupportFile>}
+     * @memberof OneCompilerV1Input
+     */
+    'supportFiles'?: Array<SupportFile>;
+}
+
+export const OneCompilerV1InputLanguageEnum = {
+    Typescript: 'typescript',
+    Python: 'python'
+} as const;
+
+export type OneCompilerV1InputLanguageEnum = typeof OneCompilerV1InputLanguageEnum[keyof typeof OneCompilerV1InputLanguageEnum];
+
+/**
+ * 
+ * @export
+ * @interface OnecompilerV1Request
+ */
+export interface OnecompilerV1Request {
+    /**
+     * 
+     * @type {OneCompilerV1Input}
+     * @memberof OnecompilerV1Request
+     */
+    'input': OneCompilerV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof OnecompilerV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface OnecompilerV1Response
+ */
+export interface OnecompilerV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'kind': OnecompilerV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof OnecompilerV1Response
+     */
+    'output': OperationOutputJSON;
+    /**
+     * 
+     * @type {object}
+     * @memberof OnecompilerV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'status': OnecompilerV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof OnecompilerV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OnecompilerV1Response
+     */
+    'updatedAt': string;
+}
+
+export const OnecompilerV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type OnecompilerV1ResponseKindEnum = typeof OnecompilerV1ResponseKindEnum[keyof typeof OnecompilerV1ResponseKindEnum];
+export const OnecompilerV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type OnecompilerV1ResponseStatusEnum = typeof OnecompilerV1ResponseStatusEnum[keyof typeof OnecompilerV1ResponseStatusEnum];
 
 /**
  * 
@@ -5514,7 +5737,8 @@ export const ResourceEntityKindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 
 export type ResourceEntityKindEnum = typeof ResourceEntityKindEnum[keyof typeof ResourceEntityKindEnum];
@@ -6143,6 +6367,25 @@ export type StringsTemplateV1ResponseStatusEnum = typeof StringsTemplateV1Respon
 /**
  * 
  * @export
+ * @interface SupportFile
+ */
+export interface SupportFile {
+    /**
+     * 
+     * @type {string}
+     * @memberof SupportFile
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SupportFile
+     */
+    'content': string;
+}
+/**
+ * 
+ * @export
  * @interface TaskDto
  */
 export interface TaskDto {
@@ -6579,7 +6822,8 @@ export const VideoEntityKindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 
 export type VideoEntityKindEnum = typeof VideoEntityKindEnum[keyof typeof VideoEntityKindEnum];
@@ -6721,6 +6965,55 @@ export interface WaitOperationParamsDto {
      * @memberof WaitOperationParamsDto
      */
     'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface WorkflowDto
+ */
+export interface WorkflowDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowDto
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof WorkflowDto
+     */
+    'data': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowDto
+     */
+    'version': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof WorkflowDto
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowDto
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowDto
+     */
+    'updatedAt': string;
 }
 
 /**
@@ -9640,6 +9933,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunOnecompilerV1V1: async (onecompilerV1Request: OnecompilerV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'onecompilerV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunOnecompilerV1V1', 'onecompilerV1Request', onecompilerV1Request)
+            const localVarPath = `/v1/call/operations.run.onecompiler.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(onecompilerV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11189,6 +11521,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OnecompilerV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunOnecompilerV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11919,6 +12263,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
             return localVarFp.callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<OnecompilerV1Response> {
+            return localVarFp.callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -12670,6 +13023,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {OnecompilerV1Request} onecompilerV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13579,7 +13943,8 @@ export const CollectionsControllerListItemsV1KindEnum = {
     Video: 'video',
     Pose: 'pose',
     Storage: 'storage',
-    Pipeline: 'pipeline'
+    Pipeline: 'pipeline',
+    Workflow: 'workflow'
 } as const;
 export type CollectionsControllerListItemsV1KindEnum = typeof CollectionsControllerListItemsV1KindEnum[keyof typeof CollectionsControllerListItemsV1KindEnum];
 
@@ -15240,6 +15605,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunOnecompilerV1V1: async (onecompilerV1Request: OnecompilerV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'onecompilerV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunOnecompilerV1V1', 'onecompilerV1Request', onecompilerV1Request)
+            const localVarPath = `/v1/operations/run/onecompiler.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(onecompilerV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15871,6 +16275,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OnecompilerV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunOnecompilerV1V1(onecompilerV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunOnecompilerV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16187,6 +16603,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig): AxiosPromise<ObjectDetectionV1Response> {
             return localVarFp.operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {OnecompilerV1Request} onecompilerV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<OnecompilerV1Response> {
+            return localVarFp.operationsControllerRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16522,6 +16947,17 @@ export class OperationsApi extends BaseAPI {
      */
     public operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request: ObjectDetectionV1Request, options?: RawAxiosRequestConfig) {
         return OperationsApiFp(this.configuration).operationsControllerRunObjectDetectionV1V1(objectDetectionV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {OnecompilerV1Request} onecompilerV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -18551,6 +18987,162 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
     return {
         /**
          * 
+         * @param {CreateWorkflowParamsDto} createWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerCreateWorkflowV1: async (createWorkflowParamsDto: CreateWorkflowParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createWorkflowParamsDto' is not null or undefined
+            assertParamExists('workflowsControllerCreateWorkflowV1', 'createWorkflowParamsDto', createWorkflowParamsDto)
+            const localVarPath = `/v1/workflows`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createWorkflowParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerDeleteWorkflowV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('workflowsControllerDeleteWorkflowV1', 'id', id)
+            const localVarPath = `/v1/workflows/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerGetWorkflowV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('workflowsControllerGetWorkflowV1', 'id', id)
+            const localVarPath = `/v1/workflows/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} [limit] 
+         * @param {number} [offset] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerListWorkflowsV1: async (limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1/workflows`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {string} workflowId 
          * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
          * @param {*} [options] Override http request option.
@@ -18592,6 +19184,43 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerUpdateWorkflowV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('workflowsControllerUpdateWorkflowV1', 'id', id)
+            const localVarPath = `/v1/workflows/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -18604,6 +19233,55 @@ export const WorkflowsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {CreateWorkflowParamsDto} createWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerCreateWorkflowV1(createWorkflowParamsDto: CreateWorkflowParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerCreateWorkflowV1(createWorkflowParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerCreateWorkflowV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerDeleteWorkflowV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerDeleteWorkflowV1(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerDeleteWorkflowV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerGetWorkflowV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerGetWorkflowV1(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerGetWorkflowV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {number} [limit] 
+         * @param {number} [offset] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListWorkflowsDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerListWorkflowsV1(limit, offset, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerListWorkflowsV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {string} workflowId 
          * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
          * @param {*} [options] Override http request option.
@@ -18613,6 +19291,18 @@ export const WorkflowsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerRunWorkflowV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerUpdateWorkflowV1(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerUpdateWorkflowV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -18627,6 +19317,43 @@ export const WorkflowsApiFactory = function (configuration?: Configuration, base
     return {
         /**
          * 
+         * @param {CreateWorkflowParamsDto} createWorkflowParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerCreateWorkflowV1(createWorkflowParamsDto: CreateWorkflowParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowDto> {
+            return localVarFp.workflowsControllerCreateWorkflowV1(createWorkflowParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerDeleteWorkflowV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.workflowsControllerDeleteWorkflowV1(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerGetWorkflowV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowDto> {
+            return localVarFp.workflowsControllerGetWorkflowV1(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} [limit] 
+         * @param {number} [offset] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<ListWorkflowsDto> {
+            return localVarFp.workflowsControllerListWorkflowsV1(limit, offset, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} workflowId 
          * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
          * @param {*} [options] Override http request option.
@@ -18634,6 +19361,15 @@ export const WorkflowsApiFactory = function (configuration?: Configuration, base
          */
         workflowsControllerRunWorkflowV1(workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<RunWorkflowResponseDto> {
             return localVarFp.workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowDto> {
+            return localVarFp.workflowsControllerUpdateWorkflowV1(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -18647,6 +19383,51 @@ export const WorkflowsApiFactory = function (configuration?: Configuration, base
 export class WorkflowsApi extends BaseAPI {
     /**
      * 
+     * @param {CreateWorkflowParamsDto} createWorkflowParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerCreateWorkflowV1(createWorkflowParamsDto: CreateWorkflowParamsDto, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerCreateWorkflowV1(createWorkflowParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerDeleteWorkflowV1(id: string, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerDeleteWorkflowV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerGetWorkflowV1(id: string, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerGetWorkflowV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {number} [limit] 
+     * @param {number} [offset] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerListWorkflowsV1(limit, offset, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {string} workflowId 
      * @param {RunWorkflowParamsDto} runWorkflowParamsDto 
      * @param {*} [options] Override http request option.
@@ -18655,6 +19436,17 @@ export class WorkflowsApi extends BaseAPI {
      */
     public workflowsControllerRunWorkflowV1(workflowId: string, runWorkflowParamsDto: RunWorkflowParamsDto, options?: RawAxiosRequestConfig) {
         return WorkflowsApiFp(this.configuration).workflowsControllerRunWorkflowV1(workflowId, runWorkflowParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WorkflowsApi
+     */
+    public workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerUpdateWorkflowV1(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

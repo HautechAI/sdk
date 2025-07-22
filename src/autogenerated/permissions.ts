@@ -53,6 +53,12 @@ export type MethodsPermissions = {
         create: boolean;
         read: boolean;
     };
+    workflows: {
+        create: boolean;
+        read: boolean;
+        update: boolean;
+        delete: boolean;
+    };
     poses: {
         create: boolean;
         read: boolean;
