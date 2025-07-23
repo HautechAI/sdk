@@ -172,6 +172,9 @@ const pipelines = (options: SDKOptions) => {
                             v1: callMethod((methods) => methods.callControllerCallOperationsRunStringsTemplateV1V1),
                         },
                     },
+                    onecompiler: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunOnecompilerV1V1),
+                    },
                 },
                 wait: callMethod((methods) => methods.callControllerCallOperationsWaitV1),
             },

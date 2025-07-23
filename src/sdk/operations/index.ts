@@ -36,6 +36,8 @@ import {
     NoiseV1Response,
     ObjectDetectionV1Input,
     ObjectDetectionV1Response,
+    OneCompilerV1Input,
+    OnecompilerV1Response,
     OperationEntity,
     OperationEntityStatusEnum,
     OperationsApi,
@@ -227,6 +229,11 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                         methods.operationsControllerRunStringsTemplateV1V1(props),
                     ),
                 },
+            },
+            onecompiler: {
+                v1: createOperation<OneCompilerV1Input, OnecompilerV1Response>((methods, props) =>
+                    methods.operationsControllerRunOnecompilerV1V1(props),
+                ),
             },
         },
         get: (props: { id: string }): Promise<OperationEntityWithMetadata | undefined> =>
