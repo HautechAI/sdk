@@ -7,9 +7,14 @@
         "type": "git",
         "url": "https://github.com/HautechAI/sdk"
     },
+    "module": "dist/index.mjs",
     "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
         "generate": "./scripts/generate.sh",
         "lint": "nx run-many --all --target=lint",
         "lint:fix": "nx run-many --all --target=lint --fix",
@@ -44,6 +49,7 @@
         "ts-jest": "29.2.5",
         "ts-node": "10.9.2",
         "tslib": "2.7.0",
+        "tsup": "^8.5.0",
         "typescript": "5.5.4"
     },
     "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417"
