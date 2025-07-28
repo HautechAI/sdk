@@ -4078,41 +4078,10 @@ export interface ListWorkflowsDto {
     'data': Array<WorkflowDto>;
     /**
      * 
-     * @type {ListWorkflowsDtoPageInfo}
+     * @type {ListPipelinesDtoPageInfo}
      * @memberof ListWorkflowsDto
      */
-    'pageInfo': ListWorkflowsDtoPageInfo;
-}
-/**
- * 
- * @export
- * @interface ListWorkflowsDtoPageInfo
- */
-export interface ListWorkflowsDtoPageInfo {
-    /**
-     * 
-     * @type {number}
-     * @memberof ListWorkflowsDtoPageInfo
-     */
-    'total': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListWorkflowsDtoPageInfo
-     */
-    'limit': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListWorkflowsDtoPageInfo
-     */
-    'offset': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListWorkflowsDtoPageInfo
-     */
-    'hasMore': boolean;
+    'pageInfo': ListPipelinesDtoPageInfo;
 }
 /**
  * 
@@ -19576,12 +19545,13 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @param {WorkflowsControllerListWorkflowsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
-         * @param {number} [offset] 
+         * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        workflowsControllerListWorkflowsV1: async (limit?: number, offset?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        workflowsControllerListWorkflowsV1: async (orderBy?: WorkflowsControllerListWorkflowsV1OrderByEnum, limit?: number, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/workflows`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -19598,12 +19568,16 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
+            if (orderBy !== undefined) {
+                localVarQueryParameter['orderBy'] = orderBy;
+            }
+
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
 
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
             }
 
 
@@ -19745,13 +19719,14 @@ export const WorkflowsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {WorkflowsControllerListWorkflowsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
-         * @param {number} [offset] 
+         * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListWorkflowsDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerListWorkflowsV1(limit, offset, options);
+        async workflowsControllerListWorkflowsV1(orderBy?: WorkflowsControllerListWorkflowsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListWorkflowsDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerListWorkflowsV1(orderBy, limit, cursor, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerListWorkflowsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -19820,13 +19795,14 @@ export const WorkflowsApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @param {WorkflowsControllerListWorkflowsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
-         * @param {number} [offset] 
+         * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig): AxiosPromise<ListWorkflowsDto> {
-            return localVarFp.workflowsControllerListWorkflowsV1(limit, offset, options).then((request) => request(axios, basePath));
+        workflowsControllerListWorkflowsV1(orderBy?: WorkflowsControllerListWorkflowsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListWorkflowsDto> {
+            return localVarFp.workflowsControllerListWorkflowsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19892,14 +19868,15 @@ export class WorkflowsApi extends BaseAPI {
 
     /**
      * 
+     * @param {WorkflowsControllerListWorkflowsV1OrderByEnum} [orderBy] 
      * @param {number} [limit] 
-     * @param {number} [offset] 
+     * @param {string} [cursor] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowsApi
      */
-    public workflowsControllerListWorkflowsV1(limit?: number, offset?: number, options?: RawAxiosRequestConfig) {
-        return WorkflowsApiFp(this.configuration).workflowsControllerListWorkflowsV1(limit, offset, options).then((request) => request(this.axios, this.basePath));
+    public workflowsControllerListWorkflowsV1(orderBy?: WorkflowsControllerListWorkflowsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerListWorkflowsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19926,5 +19903,15 @@ export class WorkflowsApi extends BaseAPI {
     }
 }
 
+/**
+ * @export
+ */
+export const WorkflowsControllerListWorkflowsV1OrderByEnum = {
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC',
+    UpdatedAtAsc: 'updatedAt_ASC',
+    UpdatedAtDesc: 'updatedAt_DESC'
+} as const;
+export type WorkflowsControllerListWorkflowsV1OrderByEnum = typeof WorkflowsControllerListWorkflowsV1OrderByEnum[keyof typeof WorkflowsControllerListWorkflowsV1OrderByEnum];
 
 
