@@ -2,7 +2,7 @@ import { Pipeline } from '@hautechai/pipelines';
 import { AxiosPromise } from 'axios';
 import {
     CallApi,
-    PipelineDto,
+    PipelineDto, PipelineMapV1Input,
     PipelinePreviewDto,
     PipelinesApi,
     PipelinesControllerListPipelinesV1OrderByEnum,
@@ -175,6 +175,31 @@ const pipelines = (options: SDKOptions) => {
                     onecompiler: {
                         v1: callMethod((methods) => methods.callControllerCallOperationsRunOnecompilerV1V1),
                     },
+                    pipelineMap: {
+                        v1: callMethod((methods) => methods.callControllerCallOperationsRunPipelineMapV1V1),
+
+                    //     v1: (params: {
+                    //         template: { tasks: any; outputRef: any };
+                    //         input: Omit<PipelineMapV1Input, 'pipeline'> & { input: any };
+                    //         metadata?: any;
+                    //     }) => {
+                    //         console.log(1111, params.template.tasks)
+                    //         return callAPI.call({
+                    //             run: (methods: CallApi) =>
+                    //                 methods.callControllerCallOperationsRunPipelineMapV1V1({
+                    //                     input: {
+                    //                         pipeline: JSON.stringify({
+                    //                             tasks: params.template.tasks,
+                    //                             outputRef: params.template.outputRef,
+                    //                         }),
+                    //                         ...params.input
+                    //                     },
+                    //                     metadata: params.metadata,
+                    //                 })
+                    //         });
+                    //     },
+                    // },
+                    },
                 },
                 wait: callMethod((methods) => methods.callControllerCallOperationsWaitV1),
             },
@@ -202,8 +227,8 @@ const pipelines = (options: SDKOptions) => {
 
     type PipelineType = ReturnType<typeof createPipeline>;
     return {
-        constructTemplate: (consructPipeline: (pipeline: PipelineType) => PipelineType): PipelineType =>
-            consructPipeline(createPipeline()),
+        constructTemplate: (constructPipeline: (pipeline: PipelineType) => PipelineType): PipelineType =>
+            constructPipeline(createPipeline()),
         create: async (props: {
             metadata?: PipelineMetadata;
             template?: PipelineType;
@@ -211,22 +236,25 @@ const pipelines = (options: SDKOptions) => {
             state?: Record<string, any>;
         }): Promise<PipelineDtoWithMetadata> =>
             api.call({
-                run: (methods) =>
-                    methods.pipelinesControllerCreatePipelineV1({
+                run: (methods) => {
+                    return  methods.pipelinesControllerCreatePipelineV1({
                         metadata: props.metadata,
                         tasks: (props.template?.tasks ?? props.tasks) as TaskDto[],
                         state: props.state,
-                    }),
+                        pipelineInput: props.template?.inputRef,
+                        outputRef: props.template?.outputRef,
+                    });
+                },
             }),
         get: async (props: { id: string }): Promise<PipelineDtoWithMetadata | undefined> =>
             api.callWithReturningUndefinedOn404({
                 run: (methods) => methods.pipelinesControllerGetPipelineV1(props.id),
             }),
         list: (
-            props: { orderBy?: PipelinesControllerListPipelinesV1OrderByEnum; limit?: number; cursor?: string } = {},
+            props: { orderBy?: PipelinesControllerListPipelinesV1OrderByEnum; limit?: number; cursor?: string, parentOperationId?: string } = {},
         ): Promise<ListResponse<PipelinePreviewDtoWithMetadata>> =>
             api.call({
-                run: (methods) => methods.pipelinesControllerListPipelinesV1(props.orderBy, props.limit, props.cursor),
+                run: (methods) => methods.pipelinesControllerListPipelinesV1(props.orderBy, props.limit, props.parentOperationId, props.cursor),
                 transform: transformToListResponse,
             }) as Promise<ListResponse<PipelinePreviewDtoWithMetadata>>,
         wait: async (props: { id: string; timeoutInSeconds?: number }): Promise<PipelineDtoWithMetadata> =>

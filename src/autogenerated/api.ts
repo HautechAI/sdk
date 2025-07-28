@@ -1132,16 +1132,59 @@ export interface CreatePipelineParamsDto {
     'metadata'?: object;
     /**
      * 
-     * @type {Array<TaskDto>}
+     * @type {object}
      * @memberof CreatePipelineParamsDto
      */
-    'tasks': Array<TaskDto>;
+    'pipelineInput'?: object;
+    /**
+     * 
+     * @type {Array<CreatePipelineTaskDto>}
+     * @memberof CreatePipelineParamsDto
+     */
+    'tasks': Array<CreatePipelineTaskDto>;
+    /**
+     * 
+     * @type {object}
+     * @memberof CreatePipelineParamsDto
+     */
+    'outputRef'?: object;
     /**
      * 
      * @type {object}
      * @memberof CreatePipelineParamsDto
      */
     'state'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface CreatePipelineTaskDto
+ */
+export interface CreatePipelineTaskDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePipelineTaskDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreatePipelineTaskDto
+     */
+    'dependencies': Array<string>;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof CreatePipelineTaskDto
+     */
+    'args': Array<object>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreatePipelineTaskDto
+     */
+    'method': Array<string>;
 }
 /**
  * 
@@ -1174,6 +1217,19 @@ export interface CreateStorageRecordParamsDto {
      * @memberof CreateStorageRecordParamsDto
      */
     'value': object;
+}
+/**
+ * 
+ * @export
+ * @interface CreateVideoParamsDto
+ */
+export interface CreateVideoParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateVideoParamsDto
+     */
+    'fileToken'?: string;
 }
 /**
  * 
@@ -5096,6 +5152,12 @@ export interface PipelineDto {
     'output'?: object;
     /**
      * 
+     * @type {object}
+     * @memberof PipelineDto
+     */
+    'input'?: object;
+    /**
+     * 
      * @type {Array<TaskDto>}
      * @memberof PipelineDto
      */
@@ -5178,6 +5240,137 @@ export const PipelineDtoStateValueStatusEnum = {
 } as const;
 
 export type PipelineDtoStateValueStatusEnum = typeof PipelineDtoStateValueStatusEnum[keyof typeof PipelineDtoStateValueStatusEnum];
+
+/**
+ * 
+ * @export
+ * @interface PipelineMapV1Input
+ */
+export interface PipelineMapV1Input {
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Input
+     */
+    'pipeline': string;
+    /**
+     * 
+     * @type {Array<object>}
+     * @memberof PipelineMapV1Input
+     */
+    'input': Array<object>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PipelineMapV1Input
+     */
+    'failOnError'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface PipelineMapV1Request
+ */
+export interface PipelineMapV1Request {
+    /**
+     * 
+     * @type {PipelineMapV1Input}
+     * @memberof PipelineMapV1Request
+     */
+    'input': PipelineMapV1Input;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineMapV1Request
+     */
+    'metadata'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface PipelineMapV1Response
+ */
+export interface PipelineMapV1Response {
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'kind': PipelineMapV1ResponseKindEnum;
+    /**
+     * 
+     * @type {OperationOutputJSON}
+     * @memberof PipelineMapV1Response
+     */
+    'output': OperationOutputJSON;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineMapV1Response
+     */
+    'input': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'status': PipelineMapV1ResponseStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'price'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'creatorId': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof PipelineMapV1Response
+     */
+    'metadata': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PipelineMapV1Response
+     */
+    'updatedAt': string;
+}
+
+export const PipelineMapV1ResponseKindEnum = {
+    Operation: 'operation'
+} as const;
+
+export type PipelineMapV1ResponseKindEnum = typeof PipelineMapV1ResponseKindEnum[keyof typeof PipelineMapV1ResponseKindEnum];
+export const PipelineMapV1ResponseStatusEnum = {
+    Pending: 'pending',
+    Finished: 'finished',
+    Failed: 'failed'
+} as const;
+
+export type PipelineMapV1ResponseStatusEnum = typeof PipelineMapV1ResponseStatusEnum[keyof typeof PipelineMapV1ResponseStatusEnum];
 
 /**
  * 
@@ -9972,6 +10165,45 @@ export const CallApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunPipelineMapV1V1: async (pipelineMapV1Request: PipelineMapV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'pipelineMapV1Request' is not null or undefined
+            assertParamExists('callControllerCallOperationsRunPipelineMapV1V1', 'pipelineMapV1Request', pipelineMapV1Request)
+            const localVarPath = `/v1/call/operations.run.pipelineMap.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(pipelineMapV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -11533,6 +11765,18 @@ export const CallApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineMapV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallOperationsRunPipelineMapV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12272,6 +12516,15 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          */
         callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<OnecompilerV1Response> {
             return localVarFp.callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PipelineMapV1Response> {
+            return localVarFp.callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13034,6 +13287,17 @@ export class CallApi extends BaseAPI {
      */
     public callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig) {
         return CallApiFp(this.configuration).callControllerCallOperationsRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {PipelineMapV1Request} pipelineMapV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CallApi
+     */
+    public callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig) {
+        return CallApiFp(this.configuration).callControllerCallOperationsRunPipelineMapV1V1(pipelineMapV1Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15644,6 +15908,45 @@ export const OperationsApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunPipelineMapV1V1: async (pipelineMapV1Request: PipelineMapV1Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'pipelineMapV1Request' is not null or undefined
+            assertParamExists('operationsControllerRunPipelineMapV1V1', 'pipelineMapV1Request', pipelineMapV1Request)
+            const localVarPath = `/v1/operations/run/pipelineMap.v1`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(pipelineMapV1Request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16287,6 +16590,18 @@ export const OperationsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async operationsControllerRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PipelineMapV1Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.operationsControllerRunPipelineMapV1V1(pipelineMapV1Request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['OperationsApi.operationsControllerRunPipelineMapV1V1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {PoseEstimationV1Request} poseEstimationV1Request 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16612,6 +16927,15 @@ export const OperationsApiFactory = function (configuration?: Configuration, bas
          */
         operationsControllerRunOnecompilerV1V1(onecompilerV1Request: OnecompilerV1Request, options?: RawAxiosRequestConfig): AxiosPromise<OnecompilerV1Response> {
             return localVarFp.operationsControllerRunOnecompilerV1V1(onecompilerV1Request, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {PipelineMapV1Request} pipelineMapV1Request 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        operationsControllerRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig): AxiosPromise<PipelineMapV1Response> {
+            return localVarFp.operationsControllerRunPipelineMapV1V1(pipelineMapV1Request, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -16962,6 +17286,17 @@ export class OperationsApi extends BaseAPI {
 
     /**
      * 
+     * @param {PipelineMapV1Request} pipelineMapV1Request 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OperationsApi
+     */
+    public operationsControllerRunPipelineMapV1V1(pipelineMapV1Request: PipelineMapV1Request, options?: RawAxiosRequestConfig) {
+        return OperationsApiFp(this.configuration).operationsControllerRunPipelineMapV1V1(pipelineMapV1Request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {PoseEstimationV1Request} poseEstimationV1Request 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17260,11 +17595,12 @@ export const PipelinesApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @param {PipelinesControllerListPipelinesV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {string} [parentOperationId] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pipelinesControllerListPipelinesV1: async (orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pipelinesControllerListPipelinesV1: async (orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, parentOperationId?: string, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/pipelines`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -17287,6 +17623,10 @@ export const PipelinesApiAxiosParamCreator = function (configuration?: Configura
 
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
+            }
+
+            if (parentOperationId !== undefined) {
+                localVarQueryParameter['parentOperationId'] = parentOperationId;
             }
 
             if (cursor !== undefined) {
@@ -17342,12 +17682,13 @@ export const PipelinesApiFp = function(configuration?: Configuration) {
          * 
          * @param {PipelinesControllerListPipelinesV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {string} [parentOperationId] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListPipelinesDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerListPipelinesV1(orderBy, limit, cursor, options);
+        async pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, parentOperationId?: string, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListPipelinesDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pipelinesControllerListPipelinesV1(orderBy, limit, parentOperationId, cursor, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PipelinesApi.pipelinesControllerListPipelinesV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -17384,12 +17725,13 @@ export const PipelinesApiFactory = function (configuration?: Configuration, base
          * 
          * @param {PipelinesControllerListPipelinesV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {string} [parentOperationId] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListPipelinesDto> {
-            return localVarFp.pipelinesControllerListPipelinesV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
+        pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, parentOperationId?: string, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListPipelinesDto> {
+            return localVarFp.pipelinesControllerListPipelinesV1(orderBy, limit, parentOperationId, cursor, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -17427,13 +17769,14 @@ export class PipelinesApi extends BaseAPI {
      * 
      * @param {PipelinesControllerListPipelinesV1OrderByEnum} [orderBy] 
      * @param {number} [limit] 
+     * @param {string} [parentOperationId] 
      * @param {string} [cursor] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PipelinesApi
      */
-    public pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
-        return PipelinesApiFp(this.configuration).pipelinesControllerListPipelinesV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    public pipelinesControllerListPipelinesV1(orderBy?: PipelinesControllerListPipelinesV1OrderByEnum, limit?: number, parentOperationId?: string, cursor?: string, options?: RawAxiosRequestConfig) {
+        return PipelinesApiFp(this.configuration).pipelinesControllerListPipelinesV1(orderBy, limit, parentOperationId, cursor, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18645,6 +18988,45 @@ export const VideosApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
+         * @param {CreateVideoParamsDto} createVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerFinalizeUploadV1: async (createVideoParamsDto: CreateVideoParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createVideoParamsDto' is not null or undefined
+            assertParamExists('videosControllerFinalizeUploadV1', 'createVideoParamsDto', createVideoParamsDto)
+            const localVarPath = `/v1/videos/upload/finalize`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createVideoParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18719,6 +19101,39 @@ export const VideosApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerStartUploadV1: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1/videos/upload/initialize`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -18729,6 +19144,18 @@ export const VideosApiAxiosParamCreator = function (configuration?: Configuratio
 export const VideosApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = VideosApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 
+         * @param {CreateVideoParamsDto} createVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async videosControllerFinalizeUploadV1(createVideoParamsDto: CreateVideoParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerFinalizeUploadV1(createVideoParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerFinalizeUploadV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
         /**
          * 
          * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
@@ -18753,6 +19180,17 @@ export const VideosApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetVideoV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async videosControllerStartUploadV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InitializeImageUploadResultDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerStartUploadV1(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerStartUploadV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -18763,6 +19201,15 @@ export const VideosApiFp = function(configuration?: Configuration) {
 export const VideosApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = VideosApiFp(configuration)
     return {
+        /**
+         * 
+         * @param {CreateVideoParamsDto} createVideoParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerFinalizeUploadV1(createVideoParamsDto: CreateVideoParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
+            return localVarFp.videosControllerFinalizeUploadV1(createVideoParamsDto, options).then((request) => request(axios, basePath));
+        },
         /**
          * 
          * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
@@ -18781,6 +19228,14 @@ export const VideosApiFactory = function (configuration?: Configuration, basePat
         videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
             return localVarFp.videosControllerGetVideoV1(id, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerStartUploadV1(options?: RawAxiosRequestConfig): AxiosPromise<InitializeImageUploadResultDto> {
+            return localVarFp.videosControllerStartUploadV1(options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -18791,6 +19246,17 @@ export const VideosApiFactory = function (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export class VideosApi extends BaseAPI {
+    /**
+     * 
+     * @param {CreateVideoParamsDto} createVideoParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VideosApi
+     */
+    public videosControllerFinalizeUploadV1(createVideoParamsDto: CreateVideoParamsDto, options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerFinalizeUploadV1(createVideoParamsDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
@@ -18811,6 +19277,16 @@ export class VideosApi extends BaseAPI {
      */
     public videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig) {
         return VideosApiFp(this.configuration).videosControllerGetVideoV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VideosApi
+     */
+    public videosControllerStartUploadV1(options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerStartUploadV1(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

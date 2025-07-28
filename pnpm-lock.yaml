@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hautechai/pipelines':
-        specifier: 0.5.0
-        version: 0.5.0(@types/node@22.5.2)
+        specifier: ^1.2.0
+        version: 1.2.0(@types/node@22.5.2)
       axios:
         specifier: 1.7.9
         version: 1.7.9
@@ -567,8 +567,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hautechai/pipelines@0.5.0':
-    resolution: {integrity: sha512-9XwwahVpK6VO5HP7d81qcCXYFWVeypH1FEOhdC1yXuk2BOuXC3RBQNt3184rxc/HctNiyqZFGoZeNIiJxAqkLw==}
+  '@hautechai/pipelines@1.2.0':
+    resolution: {integrity: sha512-QAe7Y895uy48DV2uv5VOS492BJ9DhYhwh9QZkQk7YeZKBE8+0ABhGliHxPcPH2NQ0zPSFi1unWRHedFKxrFnRQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -3885,7 +3885,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.8':
     optional: true
 
-  '@hautechai/pipelines@0.5.0(@types/node@22.5.2)':
+  '@hautechai/pipelines@1.2.0(@types/node@22.5.2)':
     dependencies:
       ts-node: 10.9.2(@types/node@22.5.2)(typescript@5.7.3)
       tsx: 4.19.2

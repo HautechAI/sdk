@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { Pipeline } from '@hautechai/pipelines';
 import {
     AnimateCreatomateV1Input,
     AnimateCreatomateV1Response,
@@ -40,7 +41,7 @@ import {
     OnecompilerV1Response,
     OperationEntity,
     OperationEntityStatusEnum,
-    OperationsApi,
+    OperationsApi, PipelineMapV1Input, PipelineMapV1Response,
     PoseEstimationV1Input,
     PoseEstimationV1Response,
     ResizeV1Input,
@@ -234,6 +235,9 @@ const operations = (options: SDKOptions, operationsListener: OperationsListener)
                 v1: createOperation<OneCompilerV1Input, OnecompilerV1Response>((methods, props) =>
                     methods.operationsControllerRunOnecompilerV1V1(props),
                 ),
+            },
+            pipelineMap: {
+                v1: createOperation<PipelineMapV1Input, PipelineMapV1Response>((methods, props) => methods.operationsControllerRunPipelineMapV1V1(props)),
             },
         },
         get: (props: { id: string }): Promise<OperationEntityWithMetadata | undefined> =>
