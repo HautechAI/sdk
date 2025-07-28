@@ -241,7 +241,7 @@ const pipelines = (options: SDKOptions) => {
                         metadata: props.metadata,
                         tasks: (props.template?.tasks ?? props.tasks) as TaskDto[],
                         state: props.state,
-                        pipelineInput: props.template?.inputRef,
+                        pipelineInput: props.template?.input,
                         outputRef: props.template?.outputRef,
                     });
                 },
