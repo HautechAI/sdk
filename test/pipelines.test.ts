@@ -63,7 +63,7 @@ describe('Pipelines', () => {
             const negate2 = pipeline.defer.operations.wait({
                 id: pipeline.defer.operations.run.negateImage.v1({
                     input: {
-                        imageId: negateImage.result.id,
+                        imageId: (<any>negateImage.result.output).imageId,
                     },
                 }).result.id,
             });
