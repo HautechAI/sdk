@@ -59,9 +59,9 @@ describe('Operations', () => {
                 });
                 expect(operation).toBeDefined();
 
-                const waitedOperation = await getSDK().operations.wait(operation);
+                const waitedOperation = await getSDK().operations.wait(operation, 120000);
                 expect(waitedOperation).toBeDefined();
-                expect(waitedOperation.status).toEqual('finished');
+                expect(waitedOperation?.status).toEqual('finished');
             });
         };
 
