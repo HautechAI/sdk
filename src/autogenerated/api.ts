@@ -1890,8 +1890,8 @@ export interface GPTV1Input {
 }
 
 export const GPTV1InputModelEnum = {
-    _4o: 'gpt-4o',
-    _41Mini: 'gpt-4.1-mini'
+    Gpt4o: 'gpt-4o',
+    Gpt41Mini: 'gpt-4.1-mini'
 } as const;
 
 export type GPTV1InputModelEnum = typeof GPTV1InputModelEnum[keyof typeof GPTV1InputModelEnum];
@@ -3777,8 +3777,8 @@ export interface ListAccountsParamsDto {
 }
 
 export const ListAccountsParamsDtoOrderByEnum = {
-    Asc: 'createdAt_ASC',
-    Desc: 'createdAt_DESC'
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC'
 } as const;
 
 export type ListAccountsParamsDtoOrderByEnum = typeof ListAccountsParamsDtoOrderByEnum[keyof typeof ListAccountsParamsDtoOrderByEnum];
@@ -4048,8 +4048,8 @@ export interface ListPosesParamsDto {
 }
 
 export const ListPosesParamsDtoOrderByEnum = {
-    Asc: 'createdAt_ASC',
-    Desc: 'createdAt_DESC'
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC'
 } as const;
 
 export type ListPosesParamsDtoOrderByEnum = typeof ListPosesParamsDtoOrderByEnum[keyof typeof ListPosesParamsDtoOrderByEnum];
@@ -8215,8 +8215,8 @@ export class AccountsApi extends BaseAPI {
  * @export
  */
 export const AccountsControllerListAccountsV1OrderByEnum = {
-    Asc: 'createdAt_ASC',
-    Desc: 'createdAt_DESC'
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC'
 } as const;
 export type AccountsControllerListAccountsV1OrderByEnum = typeof AccountsControllerListAccountsV1OrderByEnum[keyof typeof AccountsControllerListAccountsV1OrderByEnum];
 
@@ -17968,8 +17968,8 @@ export class PipelinesApi extends BaseAPI {
  * @export
  */
 export const PipelinesControllerListPipelinesV1OrderByEnum = {
-    Asc: 'createdAt_ASC',
-    Desc: 'createdAt_DESC'
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC'
 } as const;
 export type PipelinesControllerListPipelinesV1OrderByEnum = typeof PipelinesControllerListPipelinesV1OrderByEnum[keyof typeof PipelinesControllerListPipelinesV1OrderByEnum];
 
@@ -18326,8 +18326,8 @@ export class PosesApi extends BaseAPI {
  * @export
  */
 export const PosesControllerListPosesV1OrderByEnum = {
-    Asc: 'createdAt_ASC',
-    Desc: 'createdAt_DESC'
+    CreatedAtAsc: 'createdAt_ASC',
+    CreatedAtDesc: 'createdAt_DESC'
 } as const;
 export type PosesControllerListPosesV1OrderByEnum = typeof PosesControllerListPosesV1OrderByEnum[keyof typeof PosesControllerListPosesV1OrderByEnum];
 
