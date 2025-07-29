@@ -8,11 +8,11 @@ const videos = (options: SDKOptions) => {
     return {
         get: async (props: { id: string }): Promise<VideoEntity | undefined> =>
             api.callWithReturningUndefinedOn404({
-                run: (methods) => methods.videosControllerGetVideoV1(props.id),
+                run: (methods) => methods.videosControllerGetVideoByIdV1(props.id),
             }),
         getUrls: async (props: { ids: string[] }): Promise<Record<string, string>> =>
             api.call({
-                run: (methods) => methods.videosControllerGetUrlsV1({ ids: props.ids }),
+                run: (methods) => methods.videosControllerGetVideosV1(props.ids),
                 transform: (data) => data.reduce((acc, { id, url }) => ({ ...acc, [id]: url }), {}),
             }),
     };
