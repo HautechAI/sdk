@@ -1,10 +1,11 @@
-import { CoreApi } from '../../api';
+import { api, wrapApiCall } from '../../api';
+import { Config } from '../../config';
 
-export const useVideos = (api: CoreApi) => {
+export const useVideos = (config: Config) => {
     return {
-        get: api.videos.videosControllerGetVideoByIdV1,
-        list: api.videos.videosControllerGetVideosV1,
-        startUpload: api.videos.videosControllerStartUploadV1,
-        finalizeUpload: api.videos.videosControllerFinalizeUploadV1,
+        get: wrapApiCall(api.videosControllerGetVideoByIdV1, config),
+        list: wrapApiCall(api.videosControllerGetVideosV1, config),
+        startUpload: wrapApiCall(api.videosControllerStartUploadV1, config),
+        finalizeUpload: wrapApiCall(api.videosControllerFinalizeUploadV1, config),
     };
 };

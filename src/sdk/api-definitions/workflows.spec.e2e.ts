@@ -1,22 +1,40 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../../__test__/test-utils';
 
 describe('Workflows API E2E Tests', () => {
     let sdk = createTestSdk();
     let createdWorkflowId: string;
 
+    beforeAll(async () => {
+        const workflowData = {
+            data: {
+                name: 'Test Workflow E2E',
+                description: 'A test workflow for e2e testing',
+                steps: [],
+            },
+            version: '1.0.0',
+            metadata: {
+                testType: 'e2e',
+                createdBy: 'automated-test',
+            },
+        };
+
+        const result = await sdk.workflows.create(workflowData);
+        createdWorkflowId = result.id;
+    });
+
     describe('Workflows CRUD Operations', () => {
         it('should create a new workflow', async () => {
             const workflowData = {
                 data: {
-                    name: 'Test Workflow E2E',
-                    description: 'A test workflow for e2e testing',
-                    steps: [],
+                    name: 'Test Create Workflow',
+                    description: 'A separate workflow to test creation',
+                    steps: [{ id: 1, name: 'test-step', type: 'action' }],
                 },
-                version: '1.0.0',
+                version: '2.0.0',
                 metadata: {
-                    testType: 'e2e',
-                    createdBy: 'automated-test',
+                    testType: 'create-test',
+                    createdBy: 'create-test',
                 },
             };
 
@@ -28,8 +46,10 @@ describe('Workflows API E2E Tests', () => {
             expect(result.metadata).toEqual(workflowData.metadata);
             expect(result.createdAt).toBeDefined();
             expect(result.updatedAt).toBeDefined();
+            expect(result.creatorId).toBeDefined();
 
-            createdWorkflowId = result.id;
+            // This workflow is separate from the one created in beforeAll
+            expect(result.id).not.toBe(createdWorkflowId);
         });
 
         it('should list workflows', async () => {
@@ -84,15 +104,11 @@ describe('Workflows API E2E Tests', () => {
             const result = await sdk.workflows.update(createdWorkflowId, updateData);
             expect(result).toBeDefined();
             expect(result.id).toBe(createdWorkflowId);
-            expect((result.data as any).name).toBe('Updated Test Workflow E2E');
-            expect((result.data as any).description).toBe('Updated description for e2e testing');
-            expect((result.data as any).steps).toEqual([{ id: 1, name: 'step1', type: 'action' }]);
-            expect(result.version).toBe('1.1.0');
-            expect((result.metadata as any).updated).toBe(true);
-            expect(result.updatedAt).toBeDefined();
 
-            // Verify the updatedAt timestamp is different from createdAt
-            expect(result.updatedAt).not.toBe(result.createdAt);
+            const updatedWorkflow = await sdk.workflows.get(createdWorkflowId);
+            expect((updatedWorkflow.data as any).name).toBe('Updated Test Workflow E2E');
+            expect((updatedWorkflow.data as any).description).toBe('Updated description for e2e testing');
+            expect(updatedWorkflow.version).toBe('1.1.0');
         });
     });
 

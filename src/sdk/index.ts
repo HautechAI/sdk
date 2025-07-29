@@ -1,7 +1,6 @@
 import { SDKOptions } from '../types';
 import { decodeJwt } from 'jose';
 import { getConfig } from '../config';
-import { useApi } from '../api';
 import { useWorkflows } from './api-definitions/workflows';
 import { useVideos } from './api-definitions/videos';
 
@@ -9,6 +8,7 @@ export const createSDK = (options: SDKOptions) => {
     let token: string | undefined = undefined;
     const config = getConfig(options);
 
+    const authToken = config.authToken;
     const getAuthToken = async (): Promise<string> => {
         if (token) {
             const decoded = decodeJwt(token);
@@ -16,18 +16,15 @@ export const createSDK = (options: SDKOptions) => {
             if (decoded.exp && decoded.exp > currentTime) return token;
         }
 
-        token = await config.authToken();
+        token = await authToken();
         return token;
     };
 
-    const api = useApi({
-        baseUrl: config.baseUrl,
-        accessToken: getAuthToken(),
-    });
+    config.authToken = getAuthToken;
 
     return {
-        workflows: useWorkflows(api),
-        videos: useVideos(api),
+        workflows: useWorkflows(config),
+        videos: useVideos(config),
     };
 };
 

@@ -1,6 +1,12 @@
 import { SDKOptions } from './types';
 
-export const getConfig = (options: SDKOptions) => ({
+export interface Config {
+    baseUrl: string;
+    baseWsUrl: string;
+    authToken: () => string | Promise<string>;
+}
+
+export const getConfig = (options: SDKOptions): Config => ({
     baseUrl: options.baseUrl ?? 'https://api.hautech.ai',
     baseWsUrl: options.baseWsUrl ?? 'wss://api.hautech.ai',
     authToken: options.authToken,
