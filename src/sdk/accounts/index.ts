@@ -16,7 +16,7 @@ const accounts = (options: SDKOptions) => {
             api.call({
                 run: (methods) => methods.accountsControllerCreateAccountV1({ alias: props.alias }),
             }),
-        edit: async (props: { id: string, alias?: string }): Promise<AccountEntity> =>
+        edit: async (props: { id: string; alias?: string }): Promise<AccountEntity> =>
             api.call({
                 run: (methods) => methods.accountsControllerUpdateAccountV1(props.id, { alias: props.alias }),
             }),
@@ -34,7 +34,14 @@ const accounts = (options: SDKOptions) => {
             }),
         list: async (props: ListAccountsParamsDto = {}): Promise<ListResponse<AccountEntity>> =>
             api.call({
-                run: (methods) => methods.accountsControllerListAccountsV1(props.orderBy, props.limit, props.cursor),
+                run: (methods) =>
+                    methods.accountsControllerListAccountsV1(
+                        props.orderBy,
+                        props.limit,
+                        props.ids,
+                        props.aliases,
+                        props.cursor,
+                    ),
                 transform: transformToListResponse,
             }),
     };
