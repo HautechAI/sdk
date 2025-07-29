@@ -4,6 +4,7 @@ export type MethodsPermissions = {
         create: boolean;
         read: boolean;
         list: boolean;
+        update: boolean;
     };
     balances: {
         read: boolean;

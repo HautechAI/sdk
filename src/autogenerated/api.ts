@@ -35,7 +35,39 @@ export interface AccountEntity {
      * @memberof AccountEntity
      */
     'id': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AccountEntity
+     */
+    'balance': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountEntity
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountEntity
+     */
+    'alias'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountEntity
+     */
+    'type': AccountEntityTypeEnum;
 }
+
+export const AccountEntityTypeEnum = {
+    Root: 'root',
+    User: 'user'
+} as const;
+
+export type AccountEntityTypeEnum = typeof AccountEntityTypeEnum[keyof typeof AccountEntityTypeEnum];
+
 /**
  * 
  * @export
@@ -6229,6 +6261,57 @@ export type SegmentAnythingMaskV1ResponseStatusEnum = typeof SegmentAnythingMask
 /**
  * 
  * @export
+ * @interface SelfAccountDto
+ */
+export interface SelfAccountDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof SelfAccountDto
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SelfAccountDto
+     */
+    'alias'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof SelfAccountDto
+     */
+    'permissions': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof SelfAccountDto
+     */
+    'balance': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SelfAccountDto
+     */
+    'type': SelfAccountDtoTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof SelfAccountDto
+     */
+    'createdAt': string;
+}
+
+export const SelfAccountDtoTypeEnum = {
+    Root: 'root',
+    User: 'user'
+} as const;
+
+export type SelfAccountDtoTypeEnum = typeof SelfAccountDtoTypeEnum[keyof typeof SelfAccountDtoTypeEnum];
+
+/**
+ * 
+ * @export
  * @interface SetPosePreviewControllerParamsDto
  */
 export interface SetPosePreviewControllerParamsDto {
@@ -6707,6 +6790,19 @@ export const TranslateV1ResponseStatusEnum = {
 
 export type TranslateV1ResponseStatusEnum = typeof TranslateV1ResponseStatusEnum[keyof typeof TranslateV1ResponseStatusEnum];
 
+/**
+ * 
+ * @export
+ * @interface UpdateAccountParamsDto
+ */
+export interface UpdateAccountParamsDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateAccountParamsDto
+     */
+    'alias'?: string;
+}
 /**
  * 
  * @export
@@ -7802,6 +7898,49 @@ export const AccountsApiAxiosParamCreator = function (configuration?: Configurat
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateAccountParamsDto} updateAccountParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accountsControllerUpdateAccountV1: async (id: string, updateAccountParamsDto: UpdateAccountParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('accountsControllerUpdateAccountV1', 'id', id)
+            // verify required parameter 'updateAccountParamsDto' is not null or undefined
+            assertParamExists('accountsControllerUpdateAccountV1', 'updateAccountParamsDto', updateAccountParamsDto)
+            const localVarPath = `/v1/accounts/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateAccountParamsDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -7853,7 +7992,7 @@ export const AccountsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountsControllerGetSelfV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountEntity>> {
+        async accountsControllerGetSelfV1(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SelfAccountDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerGetSelfV1(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerGetSelfV1']?.[localVarOperationServerIndex]?.url;
@@ -7871,6 +8010,19 @@ export const AccountsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerListAccountsV1(orderBy, limit, cursor, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerListAccountsV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateAccountParamsDto} updateAccountParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async accountsControllerUpdateAccountV1(id: string, updateAccountParamsDto: UpdateAccountParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerUpdateAccountV1(id, updateAccountParamsDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerUpdateAccountV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -7915,7 +8067,7 @@ export const AccountsApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountsControllerGetSelfV1(options?: RawAxiosRequestConfig): AxiosPromise<AccountEntity> {
+        accountsControllerGetSelfV1(options?: RawAxiosRequestConfig): AxiosPromise<SelfAccountDto> {
             return localVarFp.accountsControllerGetSelfV1(options).then((request) => request(axios, basePath));
         },
         /**
@@ -7928,6 +8080,16 @@ export const AccountsApiFactory = function (configuration?: Configuration, baseP
          */
         accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccountsDto> {
             return localVarFp.accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} id 
+         * @param {UpdateAccountParamsDto} updateAccountParamsDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        accountsControllerUpdateAccountV1(id: string, updateAccountParamsDto: UpdateAccountParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<AccountEntity> {
+            return localVarFp.accountsControllerUpdateAccountV1(id, updateAccountParamsDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -7993,6 +8155,18 @@ export class AccountsApi extends BaseAPI {
      */
     public accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} id 
+     * @param {UpdateAccountParamsDto} updateAccountParamsDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApi
+     */
+    public accountsControllerUpdateAccountV1(id: string, updateAccountParamsDto: UpdateAccountParamsDto, options?: RawAxiosRequestConfig) {
+        return AccountsApiFp(this.configuration).accountsControllerUpdateAccountV1(id, updateAccountParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -11258,7 +11432,7 @@ export const CallApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async callControllerCallAccountsSelfV1(body: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountEntity>> {
+        async callControllerCallAccountsSelfV1(body: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SelfAccountDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.callControllerCallAccountsSelfV1(body, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CallApi.callControllerCallAccountsSelfV1']?.[localVarOperationServerIndex]?.url;
@@ -12132,7 +12306,7 @@ export const CallApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        callControllerCallAccountsSelfV1(body: string, options?: RawAxiosRequestConfig): AxiosPromise<AccountEntity> {
+        callControllerCallAccountsSelfV1(body: string, options?: RawAxiosRequestConfig): AxiosPromise<SelfAccountDto> {
             return localVarFp.callControllerCallAccountsSelfV1(body, options).then((request) => request(axios, basePath));
         },
         /**
