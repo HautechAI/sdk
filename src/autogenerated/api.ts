@@ -3758,6 +3758,18 @@ export interface ListAccountsParamsDto {
     'limit'?: number;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof ListAccountsParamsDto
+     */
+    'ids'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListAccountsParamsDto
+     */
+    'aliases'?: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof ListAccountsParamsDto
      */
@@ -7854,11 +7866,13 @@ export const AccountsApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {Array<string>} [ids] 
+         * @param {Array<string>} [aliases] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountsControllerListAccountsV1: async (orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        accountsControllerListAccountsV1: async (orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, ids?: Array<string>, aliases?: Array<string>, cursor?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/v1/accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -7881,6 +7895,14 @@ export const AccountsApiAxiosParamCreator = function (configuration?: Configurat
 
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
+            }
+
+            if (ids) {
+                localVarQueryParameter['ids'] = ids;
+            }
+
+            if (aliases) {
+                localVarQueryParameter['aliases'] = aliases;
             }
 
             if (cursor !== undefined) {
@@ -8002,12 +8024,14 @@ export const AccountsApiFp = function(configuration?: Configuration) {
          * 
          * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {Array<string>} [ids] 
+         * @param {Array<string>} [aliases] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListAccountsDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerListAccountsV1(orderBy, limit, cursor, options);
+        async accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, ids?: Array<string>, aliases?: Array<string>, cursor?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListAccountsDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.accountsControllerListAccountsV1(orderBy, limit, ids, aliases, cursor, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountsApi.accountsControllerListAccountsV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -8074,12 +8098,14 @@ export const AccountsApiFactory = function (configuration?: Configuration, baseP
          * 
          * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
          * @param {number} [limit] 
+         * @param {Array<string>} [ids] 
+         * @param {Array<string>} [aliases] 
          * @param {string} [cursor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccountsDto> {
-            return localVarFp.accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(axios, basePath));
+        accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, ids?: Array<string>, aliases?: Array<string>, cursor?: string, options?: RawAxiosRequestConfig): AxiosPromise<ListAccountsDto> {
+            return localVarFp.accountsControllerListAccountsV1(orderBy, limit, ids, aliases, cursor, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -8148,13 +8174,15 @@ export class AccountsApi extends BaseAPI {
      * 
      * @param {AccountsControllerListAccountsV1OrderByEnum} [orderBy] 
      * @param {number} [limit] 
+     * @param {Array<string>} [ids] 
+     * @param {Array<string>} [aliases] 
      * @param {string} [cursor] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AccountsApi
      */
-    public accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, cursor?: string, options?: RawAxiosRequestConfig) {
-        return AccountsApiFp(this.configuration).accountsControllerListAccountsV1(orderBy, limit, cursor, options).then((request) => request(this.axios, this.basePath));
+    public accountsControllerListAccountsV1(orderBy?: AccountsControllerListAccountsV1OrderByEnum, limit?: number, ids?: Array<string>, aliases?: Array<string>, cursor?: string, options?: RawAxiosRequestConfig) {
+        return AccountsApiFp(this.configuration).accountsControllerListAccountsV1(orderBy, limit, ids, aliases, cursor, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19170,52 +19198,13 @@ export const VideosApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        videosControllerGetUrlsV1: async (getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'getUrlsForImagesParamsDto' is not null or undefined
-            assertParamExists('videosControllerGetUrlsV1', 'getUrlsForImagesParamsDto', getUrlsForImagesParamsDto)
-            const localVarPath = `/v1/videos/many`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(getUrlsForImagesParamsDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videosControllerGetVideoV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        videosControllerGetVideoByIdV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('videosControllerGetVideoV1', 'id', id)
+            assertParamExists('videosControllerGetVideoByIdV1', 'id', id)
             const localVarPath = `/v1/videos/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19232,6 +19221,46 @@ export const VideosApiAxiosParamCreator = function (configuration?: Configuratio
             // authentication bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {Array<string>} ids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetVideosV1: async (ids: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ids' is not null or undefined
+            assertParamExists('videosControllerGetVideosV1', 'ids', ids)
+            const localVarPath = `/v1/videos/many`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (ids) {
+                localVarQueryParameter['ids'] = ids;
+            }
 
 
     
@@ -19301,26 +19330,26 @@ export const VideosApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VideoEntity>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetUrlsV1']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetVideoV1(id, options);
+        async videosControllerGetVideoByIdV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VideoEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetVideoByIdV1(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetVideoV1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetVideoByIdV1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {Array<string>} ids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async videosControllerGetVideosV1(ids: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VideoEntity>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.videosControllerGetVideosV1(ids, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['VideosApi.videosControllerGetVideosV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19355,21 +19384,21 @@ export const VideosApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
-         * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoEntity>> {
-            return localVarFp.videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
-            return localVarFp.videosControllerGetVideoV1(id, options).then((request) => request(axios, basePath));
+        videosControllerGetVideoByIdV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<VideoEntity> {
+            return localVarFp.videosControllerGetVideoByIdV1(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {Array<string>} ids 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        videosControllerGetVideosV1(ids: Array<string>, options?: RawAxiosRequestConfig): AxiosPromise<Array<VideoEntity>> {
+            return localVarFp.videosControllerGetVideosV1(ids, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19402,24 +19431,24 @@ export class VideosApi extends BaseAPI {
 
     /**
      * 
-     * @param {GetUrlsForImagesParamsDto} getUrlsForImagesParamsDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VideosApi
-     */
-    public videosControllerGetUrlsV1(getUrlsForImagesParamsDto: GetUrlsForImagesParamsDto, options?: RawAxiosRequestConfig) {
-        return VideosApiFp(this.configuration).videosControllerGetUrlsV1(getUrlsForImagesParamsDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VideosApi
      */
-    public videosControllerGetVideoV1(id: string, options?: RawAxiosRequestConfig) {
-        return VideosApiFp(this.configuration).videosControllerGetVideoV1(id, options).then((request) => request(this.axios, this.basePath));
+    public videosControllerGetVideoByIdV1(id: string, options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerGetVideoByIdV1(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {Array<string>} ids 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VideosApi
+     */
+    public videosControllerGetVideosV1(ids: Array<string>, options?: RawAxiosRequestConfig) {
+        return VideosApiFp(this.configuration).videosControllerGetVideosV1(ids, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
