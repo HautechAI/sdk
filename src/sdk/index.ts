@@ -1,8 +1,8 @@
 import { SDKOptions } from '../types';
 import { decodeJwt } from 'jose';
 import { getConfig } from '../config';
-import { useWorkflows } from './api-definitions/workflows';
-import { useVideos } from './api-definitions/videos';
+import { wrapApiCallDeep } from '../api';
+import { apiDefinitions } from './api-definitions';
 
 export const createSDK = (options: SDKOptions) => {
     let token: string | undefined = undefined;
@@ -22,10 +22,7 @@ export const createSDK = (options: SDKOptions) => {
 
     config.authToken = getAuthToken;
 
-    return {
-        workflows: useWorkflows(config),
-        videos: useVideos(config),
-    };
+    return wrapApiCallDeep(apiDefinitions, config);
 };
 
 export type SDK = ReturnType<typeof createSDK>;
