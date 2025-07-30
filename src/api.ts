@@ -5,6 +5,18 @@ import { Config } from './config';
 export type CoreApi = ReturnType<typeof getHautechAPI>;
 export const api = getHautechAPI();
 
+type WrappedApiFn<F> = F extends (...args: infer A) => Promise<AxiosResponse<infer R>>
+    ? (...args: A) => Promise<R>
+    : never;
+
+type DeepWrap<T> = {
+    [K in keyof T]: T[K] extends (...args: any[]) => Promise<AxiosResponse<any>>
+        ? WrappedApiFn<T[K]>
+        : T[K] extends object
+          ? DeepWrap<T[K]>
+          : T[K];
+};
+
 export const wrapApiCall = <Fn extends (...args: any[]) => Promise<AxiosResponse<any>>>(
     fn: Fn,
     config: Config,
@@ -44,6 +56,21 @@ export const wrapApiCall = <Fn extends (...args: any[]) => Promise<AxiosResponse
         const res = await fn(...finalArgs);
         return res.data;
     };
+};
+
+export const wrapApiCallDeep = <T>(obj: T, config: Config): DeepWrap<T> => {
+    const isAxiosApiFn = (fn: any): fn is (...args: any[]) => Promise<AxiosResponse<any>> => typeof fn === 'function';
+
+    if (isAxiosApiFn(obj)) {
+        return wrapApiCall(obj, config) as any;
+    }
+
+    if (typeof obj === 'object' && obj !== null) {
+        const entries = Object.entries(obj).map(([k, v]) => [k, wrapApiCallDeep(v, config)]);
+        return Object.fromEntries(entries) as any;
+    }
+
+    return obj as any;
 };
 
 export const axiosMutator: <R>(

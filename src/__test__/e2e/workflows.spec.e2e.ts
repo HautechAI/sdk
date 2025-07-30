@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { createTestSdk } from '../../__test__/test-utils';
+import { createTestSdk } from '../test-utils';
 
 describe('Workflows API E2E Tests', () => {
     let sdk = createTestSdk();
