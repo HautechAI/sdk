@@ -5140,6 +5140,12 @@ export interface PipelineDto {
      */
     'kind': PipelineDtoKindEnum;
     /**
+     * State of the pipeline tasks
+     * @type {{ [key: string]: PipelineDtoStateValue; }}
+     * @memberof PipelineDto
+     */
+    'state': { [key: string]: PipelineDtoStateValue; };
+    /**
      * Total estimated credits of all tasks in the pipeline as a decimal string
      * @type {string}
      * @memberof PipelineDto
@@ -5151,12 +5157,6 @@ export interface PipelineDto {
      * @memberof PipelineDto
      */
     'consumedCredits': string;
-    /**
-     * State of the pipeline tasks
-     * @type {{ [key: string]: PipelineDtoStateValue; }}
-     * @memberof PipelineDto
-     */
-    'state': { [key: string]: PipelineDtoStateValue; };
     /**
      * 
      * @type {object}
@@ -5397,18 +5397,6 @@ export interface PipelinePreviewDto {
      * @memberof PipelinePreviewDto
      */
     'kind': PipelinePreviewDtoKindEnum;
-    /**
-     * Total estimated credits of all tasks in the pipeline as a decimal string
-     * @type {string}
-     * @memberof PipelinePreviewDto
-     */
-    'estimatedCredits': string;
-    /**
-     * Consumed credits of all successfully completed tasks in the pipeline as a decimal string
-     * @type {string}
-     * @memberof PipelinePreviewDto
-     */
-    'consumedCredits': string;
     /**
      * 
      * @type {string}
@@ -6865,6 +6853,31 @@ export interface UpdateStorageRecordParamsDto {
      * @memberof UpdateStorageRecordParamsDto
      */
     'value': object;
+}
+/**
+ * 
+ * @export
+ * @interface UpdateWorkflowParamsDto
+ */
+export interface UpdateWorkflowParamsDto {
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateWorkflowParamsDto
+     */
+    'data'?: object;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateWorkflowParamsDto
+     */
+    'version'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof UpdateWorkflowParamsDto
+     */
+    'metadata'?: object;
 }
 /**
  * 
@@ -19840,12 +19853,15 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @param {string} id 
+         * @param {UpdateWorkflowParamsDto} updateWorkflowParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        workflowsControllerUpdateWorkflowV1: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        workflowsControllerUpdateWorkflowV1: async (id: string, updateWorkflowParamsDto: UpdateWorkflowParamsDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('workflowsControllerUpdateWorkflowV1', 'id', id)
+            // verify required parameter 'updateWorkflowParamsDto' is not null or undefined
+            assertParamExists('workflowsControllerUpdateWorkflowV1', 'updateWorkflowParamsDto', updateWorkflowParamsDto)
             const localVarPath = `/v1/workflows/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -19865,9 +19881,12 @@ export const WorkflowsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updateWorkflowParamsDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19950,11 +19969,12 @@ export const WorkflowsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
+         * @param {UpdateWorkflowParamsDto} updateWorkflowParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerUpdateWorkflowV1(id, options);
+        async workflowsControllerUpdateWorkflowV1(id: string, updateWorkflowParamsDto: UpdateWorkflowParamsDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflowsControllerUpdateWorkflowV1(id, updateWorkflowParamsDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WorkflowsApi.workflowsControllerUpdateWorkflowV1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -20020,11 +20040,12 @@ export const WorkflowsApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @param {string} id 
+         * @param {UpdateWorkflowParamsDto} updateWorkflowParamsDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowDto> {
-            return localVarFp.workflowsControllerUpdateWorkflowV1(id, options).then((request) => request(axios, basePath));
+        workflowsControllerUpdateWorkflowV1(id: string, updateWorkflowParamsDto: UpdateWorkflowParamsDto, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowDto> {
+            return localVarFp.workflowsControllerUpdateWorkflowV1(id, updateWorkflowParamsDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -20097,12 +20118,13 @@ export class WorkflowsApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
+     * @param {UpdateWorkflowParamsDto} updateWorkflowParamsDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WorkflowsApi
      */
-    public workflowsControllerUpdateWorkflowV1(id: string, options?: RawAxiosRequestConfig) {
-        return WorkflowsApiFp(this.configuration).workflowsControllerUpdateWorkflowV1(id, options).then((request) => request(this.axios, this.basePath));
+    public workflowsControllerUpdateWorkflowV1(id: string, updateWorkflowParamsDto: UpdateWorkflowParamsDto, options?: RawAxiosRequestConfig) {
+        return WorkflowsApiFp(this.configuration).workflowsControllerUpdateWorkflowV1(id, updateWorkflowParamsDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
