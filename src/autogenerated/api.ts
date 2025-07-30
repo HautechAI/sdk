@@ -4350,13 +4350,13 @@ export interface NaomiHauteV1Input {
      * @type {number}
      * @memberof NaomiHauteV1Input
      */
-    'width': number;
+    'width'?: number;
     /**
      * 
      * @type {number}
      * @memberof NaomiHauteV1Input
      */
-    'height': number;
+    'height'?: number;
     /**
      * 
      * @type {number}
