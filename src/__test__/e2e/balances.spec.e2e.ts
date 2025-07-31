@@ -247,7 +247,6 @@ describe('Balances API E2E Tests', () => {
         it('should handle large balance amounts', async () => {
             const largeAmount = '999999.99';
 
-            // The add method returns void, so we just check it completes successfully
             await sdk.balances.add(selfAccountId, {
                 amount: largeAmount,
                 idempotencyKey: v4(),

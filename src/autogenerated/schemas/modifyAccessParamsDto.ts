@@ -5,10 +5,11 @@
  * OpenAPI spec version: 1.0
  */
 import type { ModifyAccessParamsDtoPrincipalType } from './modifyAccessParamsDtoPrincipalType';
+import type { ModifyAccessParamsDtoAccess } from './modifyAccessParamsDtoAccess';
 
 export interface ModifyAccessParamsDto {
   principalType: ModifyAccessParamsDtoPrincipalType;
   principalId: string;
   resourceId: string;
-  access: string;
+  access: ModifyAccessParamsDtoAccess;
 }

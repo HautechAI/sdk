@@ -5,9 +5,10 @@
  * OpenAPI spec version: 1.0
  */
 import type { GrantAccessControllerParamsPrincipalType } from './grantAccessControllerParamsPrincipalType';
+import type { GrantAccessControllerParamsAccess } from './grantAccessControllerParamsAccess';
 
 export interface GrantAccessControllerParams {
   principalType: GrantAccessControllerParamsPrincipalType;
   principalId: string;
-  access: string;
+  access: GrantAccessControllerParamsAccess;
 }
