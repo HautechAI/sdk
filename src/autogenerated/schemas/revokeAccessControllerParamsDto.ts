@@ -5,9 +5,10 @@
  * OpenAPI spec version: 1.0
  */
 import type { RevokeAccessControllerParamsDtoPrincipalType } from './revokeAccessControllerParamsDtoPrincipalType';
+import type { RevokeAccessControllerParamsDtoAccess } from './revokeAccessControllerParamsDtoAccess';
 
 export interface RevokeAccessControllerParamsDto {
   principalType: RevokeAccessControllerParamsDtoPrincipalType;
   principalId: string;
-  access: string;
+  access: RevokeAccessControllerParamsDtoAccess;
 }
