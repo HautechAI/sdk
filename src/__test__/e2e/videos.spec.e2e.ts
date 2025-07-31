@@ -1,9 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../test-utils';
-import * as fs from 'fs';
 import * as path from 'path';
-import axios from 'axios';
-import FormData from 'form-data';
 
 describe('Videos API E2E Tests', () => {
     let sdk = createTestSdk();
@@ -12,35 +9,7 @@ describe('Videos API E2E Tests', () => {
     beforeAll(async () => {
         const videoPath = path.join(__dirname, 'assets', 'video.mp4');
 
-        if (!fs.existsSync(videoPath)) {
-            throw new Error(`Video file not found at ${videoPath}`);
-        }
-
-        const uploadResult = await sdk.videos.startUpload();
-        expect(uploadResult).toBeDefined();
-        expect(uploadResult.uploadUrl).toBeDefined();
-        expect(typeof uploadResult.uploadUrl).toBe('string');
-
-        const formData = new FormData();
-        formData.append('file', fs.createReadStream(videoPath));
-
-        const uploadResponse = await axios.put(uploadResult.uploadUrl, formData, {
-            headers: {
-                ...formData.getHeaders(),
-            },
-            maxBodyLength: Infinity,
-            timeout: 10000,
-        });
-
-        const fileToken = uploadResponse.data.fileToken;
-
-        const finalizeResult = await sdk.videos.finalizeUpload({
-            fileToken: fileToken,
-        });
-
-        if (finalizeResult && finalizeResult.id) {
-            uploadedVideoId = finalizeResult.id;
-        }
+        uploadedVideoId = await sdk.videos.createFromFile(videoPath);
     });
 
     describe('Video Upload Workflow', () => {
@@ -51,6 +20,42 @@ describe('Videos API E2E Tests', () => {
             expect(result.uploadUrl).toBeDefined();
             expect(typeof result.uploadUrl).toBe('string');
             expect(result.uploadUrl.length).toBeGreaterThan(0);
+        });
+
+        it('should create video from file using createFromFile method', async () => {
+            const videoPath = path.join(__dirname, 'assets', 'video.mp4');
+
+            const videoId = await sdk.videos.createFromFile(videoPath);
+
+            expect(videoId).toBeDefined();
+            expect(typeof videoId).toBe('string');
+            expect(videoId.length).toBeGreaterThan(0);
+
+            const video = await sdk.videos.get(videoId);
+            expect(video).toBeDefined();
+            expect(video.id).toBe(videoId);
+            expect(video.url).toBeDefined();
+            expect(typeof video.width).toBe('number');
+            expect(typeof video.height).toBe('number');
+            expect(typeof video.duration).toBe('string');
+        });
+
+        it('should create video from URL using createFromUrl method', async () => {
+            const url = 'https://www.sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4';
+
+            const videoId = await sdk.videos.createFromUrl(url);
+
+            expect(videoId).toBeDefined();
+            expect(typeof videoId).toBe('string');
+            expect(videoId.length).toBeGreaterThan(0);
+
+            const video = await sdk.videos.get(videoId);
+            expect(video).toBeDefined();
+            expect(video.id).toBe(videoId);
+            expect(video.url).toBeDefined();
+            expect(typeof video.width).toBe('number');
+            expect(typeof video.height).toBe('number');
+            expect(typeof video.duration).toBe('string');
         });
     });
 
@@ -85,23 +90,6 @@ describe('Videos API E2E Tests', () => {
             expect(typeof result.duration).toBe('string');
             expect(result.metadata).toBeDefined();
             expect(result.kind).toBeDefined();
-        });
-    });
-
-    describe('SDK Integration', () => {
-        it('should have videos available in SDK', () => {
-            expect(sdk.videos).toBeDefined();
-            expect(sdk.videos.get).toBeDefined();
-            expect(sdk.videos.list).toBeDefined();
-            expect(sdk.videos.startUpload).toBeDefined();
-            expect(sdk.videos.finalizeUpload).toBeDefined();
-        });
-
-        it('should have all video methods as functions', () => {
-            expect(typeof sdk.videos.get).toBe('function');
-            expect(typeof sdk.videos.list).toBe('function');
-            expect(typeof sdk.videos.startUpload).toBe('function');
-            expect(typeof sdk.videos.finalizeUpload).toBe('function');
         });
     });
 

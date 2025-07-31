@@ -2,8 +2,6 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../test-utils';
 import * as fs from 'fs';
 import * as path from 'path';
-import axios from 'axios';
-import FormData from 'form-data';
 import { v4 } from 'uuid';
 
 describe('Stacks API E2E Tests', () => {
@@ -14,32 +12,7 @@ describe('Stacks API E2E Tests', () => {
     beforeAll(async () => {
         const videoPath = path.join(__dirname, 'assets', 'video.mp4');
 
-        if (fs.existsSync(videoPath)) {
-            try {
-                const uploadResult = await sdk.videos.startUpload();
-                const formData = new FormData();
-                formData.append('file', fs.createReadStream(videoPath));
-
-                const uploadResponse = await axios.put(uploadResult.uploadUrl, formData, {
-                    headers: {
-                        ...formData.getHeaders(),
-                    },
-                    maxBodyLength: Infinity,
-                    timeout: 10000,
-                });
-
-                const fileToken = uploadResponse.data.fileToken;
-                const finalizeResult = await sdk.videos.finalizeUpload({
-                    fileToken: fileToken,
-                });
-
-                if (finalizeResult && finalizeResult.id) {
-                    uploadedVideoId = finalizeResult.id;
-                }
-            } catch (error) {
-                console.warn('Failed to upload video for stack tests, will skip item operations');
-            }
-        }
+        uploadedVideoId = await sdk.videos.createFromFile(videoPath);
 
         const result = await sdk.stacks.create({
             metadata: {
@@ -77,11 +50,9 @@ describe('Stacks API E2E Tests', () => {
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.pageInfo).toBeDefined();
 
-            if (testStackId) {
-                const createdStack = result.data.find((stack) => stack.id === testStackId);
-                expect(createdStack).toBeDefined();
-                expect((createdStack?.metadata as any)?.name).toBe('Test Stack E2E');
-            }
+            const createdStack = result.data.find((stack) => stack.id === testStackId);
+            expect(createdStack).toBeDefined();
+            expect((createdStack?.metadata as any)?.name).toBe('Test Stack E2E');
         });
 
         it('should get a specific stack', async () => {
@@ -126,22 +97,12 @@ describe('Stacks API E2E Tests', () => {
         it('should add items to stack', async () => {
             expect(testStackId).toBeDefined();
 
-            if (!uploadedVideoId) {
-                console.warn('Skipping add items test - no uploaded video available');
-                return;
-            }
-
             const itemIds = [uploadedVideoId];
             await expect(sdk.stacks.items.add(testStackId, { itemIds })).resolves.not.toThrow();
         });
 
         it('should remove items from stack', async () => {
             expect(testStackId).toBeDefined();
-
-            if (!uploadedVideoId) {
-                console.warn('Skipping remove items test - no uploaded video available');
-                return;
-            }
 
             const itemIds = [uploadedVideoId];
             await expect(sdk.stacks.items.remove(testStackId, { itemIds })).resolves.not.toThrow();
@@ -176,10 +137,8 @@ describe('Stacks API E2E Tests', () => {
 
             try {
                 await sdk.stacks.items.add(invalidStackId, { itemIds });
-                // If we reach here, the API didn't throw an error as expected
-                expect(true).toBe(false); // Force test failure
+                expect(true).toBe(false);
             } catch (error) {
-                // Expect an error to be thrown for invalid stack ID
                 expect(error).toBeDefined();
             }
         });
