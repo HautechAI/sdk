@@ -5,20 +5,20 @@
  * OpenAPI spec version: 1.0
  */
 import type { VideoEntityKind } from './videoEntityKind';
-import type { VideoEntityMetadata } from './videoEntityMetadata';
 import type { ImageEntity } from './imageEntity';
+import type { VideoEntityMetadata } from './videoEntityMetadata';
 
 export interface VideoEntity {
+  duration: string;
   kind: VideoEntityKind;
+  width: number;
+  height: number;
+  previewImage?: ImageEntity;
+  previewImageId?: string;
+  url: string;
   id: string;
   creatorId: string;
   metadata: VideoEntityMetadata;
   createdAt: string;
   updatedAt: string;
-  width: number;
-  height: number;
-  duration: number;
-  previewImage?: ImageEntity;
-  previewImageId?: string;
-  url: string;
 }

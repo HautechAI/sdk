@@ -18,8 +18,8 @@ export interface NaomiHauteV1Input {
   garmentImageId: string;
   poseId: string;
   seed: number;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   /**
    * @minimum 0
    * @maximum 10

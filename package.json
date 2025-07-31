@@ -29,6 +29,7 @@
         "@hautechai/pipelines": "1.4.0",
         "axios": "1.7.9",
         "jose": "5.9.6",
+        "qs": "^6.14.0",
         "websocket": "^1.0.35"
     },
     "devDependencies": {
@@ -39,10 +40,12 @@
         "@semantic-release/npm": "^12.0.2",
         "@semantic-release/release-notes-generator": "^14.0.3",
         "@types/node": "22.5.2",
+        "@types/qs": "^6.14.0",
         "@types/websocket": "^1.0.10",
         "@types/ws": "^8.5.14",
         "@vitest/coverage-v8": "3.2.4",
         "dotenv": "16.4.7",
+        "form-data": "^4.0.4",
         "orval": "^7.10.0",
         "prettier": "^3.5.1",
         "semantic-release": "^24.2.7",
@@ -51,6 +54,7 @@
         "tsup": "^8.5.0",
         "typescript": "5.5.4",
         "unplugin-swc": "^1.5.4",
+        "uuid": "^11.1.0",
         "vite-tsconfig-paths": "^5.1.4",
         "vitest": "^3.2.4"
     },
