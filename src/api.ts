@@ -6,7 +6,6 @@ import { DeepWrap, SDK } from './types';
 import vitestConfig from '../vitest.e2e.config';
 
 export type CoreApi = ReturnType<typeof getHautechAPI>;
-export const api = getHautechAPI();
 
 const looksLikeAxiosRequestOptions = (arg: unknown): arg is AxiosRequestConfig =>
     typeof arg === 'object' && arg !== null && ('headers' in arg || 'baseURL' in arg || 'timeout' in arg);

@@ -2,7 +2,7 @@ import { SDK, SDKOptions } from '../types';
 import { decodeJwt } from 'jose';
 import { getConfig } from '../config';
 import { wrapApiCallDeep } from '../api';
-import { apiDefinitions } from './api-definitions';
+import apiDefinitions from './api-definitions';
 
 export const createSDK = (options: SDKOptions): SDK => {
     let token: string | undefined = undefined;
