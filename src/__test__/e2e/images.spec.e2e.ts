@@ -39,7 +39,6 @@ describe('Images API E2E Tests', () => {
                     ...formData.getHeaders(),
                 },
                 maxBodyLength: Infinity,
-                timeout: 10000,
             });
 
             const fileToken = uploadResponse.data.fileToken;
