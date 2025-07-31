@@ -14,12 +14,12 @@ import type { PipelineDtoStatus } from './pipelineDtoStatus';
 
 export interface PipelineDto {
   kind: PipelineDtoKind;
+  /** State of the pipeline tasks */
+  state: PipelineDtoState;
   /** Total estimated credits of all tasks in the pipeline as a decimal string */
   estimatedCredits: string;
   /** Consumed credits of all successfully completed tasks in the pipeline as a decimal string */
   consumedCredits: string;
-  /** State of the pipeline tasks */
-  state: PipelineDtoState;
   output?: PipelineDtoOutput;
   input?: PipelineDtoInput;
   tasks: TaskDto[];

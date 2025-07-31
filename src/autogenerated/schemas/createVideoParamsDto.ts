@@ -6,5 +6,5 @@
  */
 
 export interface CreateVideoParamsDto {
-  fileToken?: string;
+  fileToken: string;
 }

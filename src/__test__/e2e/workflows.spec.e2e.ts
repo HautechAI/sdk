@@ -48,7 +48,6 @@ describe('Workflows API E2E Tests', () => {
             expect(result.updatedAt).toBeDefined();
             expect(result.creatorId).toBeDefined();
 
-            // This workflow is separate from the one created in beforeAll
             expect(result.id).not.toBe(createdWorkflowId);
         });
 
@@ -59,7 +58,6 @@ describe('Workflows API E2E Tests', () => {
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.pageInfo).toBeDefined();
 
-            // Verify that our created workflow is in the list
             if (createdWorkflowId) {
                 const createdWorkflow = result.data.find((workflow) => workflow.id === createdWorkflowId);
                 expect(createdWorkflow).toBeDefined();
@@ -112,62 +110,29 @@ describe('Workflows API E2E Tests', () => {
         });
     });
 
-    describe('SDK Integration', () => {
-        it('should have workflows available in SDK', () => {
-            expect(sdk.workflows).toBeDefined();
-            expect(sdk.workflows.create).toBeDefined();
-            expect(sdk.workflows.get).toBeDefined();
-            expect(sdk.workflows.list).toBeDefined();
-            expect(sdk.workflows.update).toBeDefined();
-        });
-
-        it('should have all workflow methods as functions', () => {
-            expect(typeof sdk.workflows.create).toBe('function');
-            expect(typeof sdk.workflows.get).toBe('function');
-            expect(typeof sdk.workflows.list).toBe('function');
-            expect(typeof sdk.workflows.update).toBe('function');
-        });
-    });
-
     describe('Error Handling', () => {
         it('should handle invalid workflow ID gracefully', async () => {
             const invalidId = 'non-existent-workflow-id';
 
             try {
                 await sdk.workflows.get(invalidId);
-                // If we reach here, the API didn't throw an error as expected
-                expect(true).toBe(false); // Force test failure
+                expect(true).toBe(false);
             } catch (error) {
-                // Expect an error to be thrown for invalid ID
                 expect(error).toBeDefined();
             }
         });
 
         it('should handle invalid workflow data gracefully', async () => {
             const invalidWorkflowData = {
-                // Missing required fields
                 data: null,
                 version: null,
             };
 
             try {
                 await sdk.workflows.create(invalidWorkflowData as any);
-                // If we reach here, the API didn't throw an error as expected
-                expect(true).toBe(false); // Force test failure
+                expect(true).toBe(false);
             } catch (error) {
-                // Expect an error to be thrown for invalid data
                 expect(error).toBeDefined();
-            }
-        });
-    });
-
-    describe('Cleanup', () => {
-        it('should clean up created test workflows', async () => {
-            // Note: Delete method is not available in the SDK wrapper
-            // Workflows will need to be cleaned up manually or via direct API calls
-            if (createdWorkflowId) {
-                console.log('ℹ️  Test workflow created with ID:', createdWorkflowId);
-                console.log('ℹ️  Delete method not available in SDK. Manual cleanup may be needed.');
             }
         });
     });

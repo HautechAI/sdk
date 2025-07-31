@@ -10,10 +10,6 @@ import type { PipelinePreviewDtoStatus } from './pipelinePreviewDtoStatus';
 
 export interface PipelinePreviewDto {
   kind: PipelinePreviewDtoKind;
-  /** Total estimated credits of all tasks in the pipeline as a decimal string */
-  estimatedCredits: string;
-  /** Consumed credits of all successfully completed tasks in the pipeline as a decimal string */
-  consumedCredits: string;
   id: string;
   creatorId: string;
   metadata: PipelinePreviewDtoMetadata;
