@@ -1,10 +1,10 @@
-import { SDKOptions } from '../types';
+import { SDK, SDKOptions } from '../types';
 import { decodeJwt } from 'jose';
 import { getConfig } from '../config';
 import { wrapApiCallDeep } from '../api';
 import { apiDefinitions } from './api-definitions';
 
-export const createSDK = (options: SDKOptions) => {
+export const createSDK = (options: SDKOptions): SDK => {
     let token: string | undefined = undefined;
     const config = getConfig(options);
 
@@ -22,7 +22,8 @@ export const createSDK = (options: SDKOptions) => {
 
     config.authToken = getAuthToken;
 
-    return wrapApiCallDeep(apiDefinitions, config);
+    const sdk: Partial<SDK> = {};
+    const fullSdk = wrapApiCallDeep(apiDefinitions, config, sdk);
+    Object.assign(sdk, fullSdk);
+    return sdk as SDK;
 };
-
-export type SDK = ReturnType<typeof createSDK>;

@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../test-utils';
+import { v4 } from 'uuid';
 
 describe('Workflows API E2E Tests', () => {
     let sdk = createTestSdk();
@@ -58,12 +59,10 @@ describe('Workflows API E2E Tests', () => {
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.pageInfo).toBeDefined();
 
-            if (createdWorkflowId) {
-                const createdWorkflow = result.data.find((workflow) => workflow.id === createdWorkflowId);
-                expect(createdWorkflow).toBeDefined();
-                expect((createdWorkflow?.data as any)?.name).toBe('Test Workflow E2E');
-                expect(createdWorkflow?.version).toBe('1.0.0');
-            }
+            const createdWorkflow = result.data.find((workflow) => workflow.id === createdWorkflowId);
+            expect(createdWorkflow).toBeDefined();
+            expect((createdWorkflow?.data as any)?.name).toBe('Test Workflow E2E');
+            expect(createdWorkflow?.version).toBe('1.0.0');
         });
 
         it('should get a specific workflow', async () => {
@@ -71,15 +70,22 @@ describe('Workflows API E2E Tests', () => {
 
             const result = await sdk.workflows.get(createdWorkflowId);
             expect(result).toBeDefined();
-            expect(result.id).toBe(createdWorkflowId);
-            expect((result.data as any).name).toBe('Test Workflow E2E');
-            expect((result.data as any).description).toBe('A test workflow for e2e testing');
-            expect(result.version).toBe('1.0.0');
-            expect((result.metadata as any).testType).toBe('e2e');
-            expect((result.metadata as any).createdBy).toBe('automated-test');
-            expect(result.createdAt).toBeDefined();
-            expect(result.updatedAt).toBeDefined();
-            expect(result.creatorId).toBeDefined();
+            expect(result!.id).toBe(createdWorkflowId);
+            expect((result!.data as any).name).toBe('Test Workflow E2E');
+            expect((result!.data as any).description).toBe('A test workflow for e2e testing');
+            expect(result!.version).toBe('1.0.0');
+            expect((result!.metadata as any).testType).toBe('e2e');
+            expect((result!.metadata as any).createdBy).toBe('automated-test');
+            expect(result!.createdAt).toBeDefined();
+            expect(result!.updatedAt).toBeDefined();
+            expect(result!.creatorId).toBeDefined();
+        });
+
+        it('should get a not exist workflow', async () => {
+            expect(createdWorkflowId).toBeDefined();
+
+            const result = await sdk.workflows.get(v4());
+            expect(result).toEqual(null);
         });
 
         it('should update a workflow', async () => {
@@ -104,9 +110,9 @@ describe('Workflows API E2E Tests', () => {
             expect(result.id).toBe(createdWorkflowId);
 
             const updatedWorkflow = await sdk.workflows.get(createdWorkflowId);
-            expect((updatedWorkflow.data as any).name).toBe('Updated Test Workflow E2E');
-            expect((updatedWorkflow.data as any).description).toBe('Updated description for e2e testing');
-            expect(updatedWorkflow.version).toBe('1.1.0');
+            expect((updatedWorkflow!.data as any).name).toBe('Updated Test Workflow E2E');
+            expect((updatedWorkflow!.data as any).description).toBe('Updated description for e2e testing');
+            expect(updatedWorkflow!.version).toBe('1.1.0');
         });
     });
 
