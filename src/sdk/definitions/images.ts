@@ -45,7 +45,6 @@ export const useImagesApi = (hautechApi: CoreApi) => ({
                 ...formData.getHeaders(),
             },
             maxBodyLength: Infinity,
-            timeout: 10000,
         });
 
         const fileToken = uploadResponse.data.fileToken;
@@ -65,11 +64,11 @@ export const useImagesApi = (hautechApi: CoreApi) => ({
         const isBrowser = typeof window !== 'undefined' && typeof Blob !== 'undefined';
 
         if (isBrowser) {
-            const response = await axios.get(fileUrl, { responseType: 'blob' });
+            const response = await axios.get(fileUrl, { responseType: 'blob', timeout: 30000 });
             const blob = new Blob([response.data], { type: response.headers['content-type'] });
             return sdk.images.createFromFile(blob);
         } else {
-            const response = await axios.get(fileUrl, { responseType: 'stream' });
+            const response = await axios.get(fileUrl, { responseType: 'stream', timeout: 30000 });
             return sdk.images.createFromFile({
                 stream: response.data,
                 filename: fileUrl.split('/').pop()!,

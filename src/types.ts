@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import api from './sdk/api-definitions';
+import api from './sdk/definitions';
 
 export interface SDKOptions {
     authToken: () => string | Promise<string>;
