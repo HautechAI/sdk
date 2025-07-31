@@ -1,0 +1,11 @@
+import { wrapApiCallNullable } from '../../api';
+import { CoreApi } from '../../api';
+
+export const useAccountsApi = (hautechApi: CoreApi) => ({
+    create: hautechApi.accountsControllerCreateAccountV1,
+    get: wrapApiCallNullable(hautechApi.accountsControllerGetAccountV1),
+    self: hautechApi.accountsControllerGetSelfV1,
+    edit: hautechApi.accountsControllerUpdateAccountV1,
+    getByAlias: wrapApiCallNullable(hautechApi.accountsControllerGetAccountByAliasV1),
+    list: hautechApi.accountsControllerListAccountsV1,
+});
