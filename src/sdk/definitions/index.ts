@@ -11,6 +11,7 @@ import { useAccountsApi } from './accounts';
 import { useCollectionsApi } from './collections';
 import { useBalancesApi } from './balances';
 import { useAccessApi } from './access';
+import { usePipelinesApi } from './pipelines';
 
 export const hautechApi = getHautechAPI();
 
@@ -27,4 +28,5 @@ export default {
     collections: useCollectionsApi(hautechApi),
     balances: useBalancesApi(hautechApi),
     access: useAccessApi(hautechApi),
+    pipelines: usePipelinesApi(hautechApi),
 };

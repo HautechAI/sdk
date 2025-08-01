@@ -18,8 +18,8 @@ describe('Poses API E2E Tests', () => {
                 imageId: uploadedImageId,
             },
         });
-
         const estimationResponseData = await sdk.operations.wait(estimationResponse);
+
         testPoseId = String(estimationResponseData.output.data?.poseId);
     });
 
