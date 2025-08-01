@@ -9,12 +9,18 @@ export type CoreApi = ReturnType<typeof getHautechAPI>;
 const looksLikeAxiosRequestOptions = (arg: unknown): arg is AxiosRequestConfig =>
     typeof arg === 'object' && arg !== null && ('headers' in arg || 'baseURL' in arg || 'timeout' in arg);
 
+const isWrappedFn = (fn: any): fn is (...args: any[]) => Promise<AxiosResponse<any>> & { __isWrapped: true } => {
+    return typeof fn === 'function' && fn.__isWrapped === true;
+};
+
+const isCustomWrappedFn = (
+    fn: any,
+): fn is ((...args: any[]) => Promise<AxiosResponse<any>>) & { __customMethodWrapper: true } => {
+    return typeof fn === 'function' && fn.__customMethodWrapper === true;
+};
+
 export const wrapApiCall = <Fn extends (...args: any[]) => Promise<AxiosResponse<any>>>(fn: Fn, config: Config) => {
     const wrapped = async function (this: SDK, ...args: Parameters<Fn>) {
-        if ((fn as any).__customMethodWrapper) {
-            return fn.call(this, ...args);
-        }
-
         const token = await config.authToken();
         const baseOptions: AxiosRequestConfig = {
             baseURL: config.baseUrl,
@@ -89,18 +95,14 @@ export const wrapApiCallNullable = <Fn extends (...args: any[]) => Promise<Axios
     return wrapped;
 };
 
-export const wrapCustomMethod = <Fn extends (...args: any[]) => Promise<any>>(fn: Fn): Fn => {
+export const wrapCustomMethod = <Fn extends (...args: any[]) => any | Promise<any>>(fn: Fn): Fn => {
     (fn as any).__customMethodWrapper = true;
     return fn;
 };
 
-const isRawAxiosFn = (fn: any): fn is (...args: any[]) => Promise<AxiosResponse<any>> => {
-    return typeof fn === 'function' && fn.__isWrapped !== true;
-};
-
 export const wrapApiCallDeep = <T>(obj: T, config: Config, sdkContext?: Partial<SDK>): DeepWrap<T> => {
-    if (isRawAxiosFn(obj)) {
-        const wrapped: any = wrapApiCall(obj, config);
+    if (!isWrappedFn(obj) && !isCustomWrappedFn(obj) && typeof obj === 'function') {
+        const wrapped: any = wrapApiCall(obj as any, config);
         return sdkContext ? wrapped.bind(sdkContext) : wrapped;
     }
 
