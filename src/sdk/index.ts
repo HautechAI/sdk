@@ -1,8 +1,8 @@
 import { SDK, SDKOptions } from '../types';
 import { decodeJwt } from 'jose';
 import { getConfig } from '../config';
-import { wrapApiCallDeep } from '../api';
-import apiDefinitions from './definitions';
+import { wrapApiCallDeep } from '../api-utils';
+import { apiDefinitions, getWsClientDefinitions } from './api';
 
 export const createSDK = (options: SDKOptions): SDK => {
     let token: string | undefined = undefined;
@@ -23,7 +23,12 @@ export const createSDK = (options: SDKOptions): SDK => {
     config.authToken = getAuthToken;
 
     const sdk: Partial<SDK> = {};
+
     const fullSdk = wrapApiCallDeep(apiDefinitions, config, sdk);
     Object.assign(sdk, fullSdk);
+
+    const wsSdk = getWsClientDefinitions(config);
+    Object.assign(sdk, wsSdk);
+
     return sdk as SDK;
 };

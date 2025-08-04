@@ -1,5 +1,5 @@
-import { wrapApiCallNullable } from '../../api';
-import { CoreApi } from '../../api';
+import { wrapApiCallNullable } from '../../api-utils';
+import { CoreApi } from '../../api-utils';
 
 export const useGroupsApi = (hautechApi: CoreApi) => ({
     create: hautechApi.groupsControllerCreateGroupV1,

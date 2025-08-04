@@ -175,7 +175,6 @@ describe('Pipelines API E2E Tests', () => {
 
                 const awaitedEcho = pipeline.defer.operations.wait<EchoV1Response>(echoTask.result);
 
-                // Set the output to reference the echo task result
                 pipeline.output = awaitedEcho.result.output;
 
                 return pipeline;

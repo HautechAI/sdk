@@ -161,7 +161,7 @@ import type {
   WorkflowsControllerListWorkflowsV1Params
 } from './schemas';
 
-import { axiosMutator } from '../api';
+import { axiosMutator } from '../api-utils';
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 

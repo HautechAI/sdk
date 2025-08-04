@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import api from './sdk/definitions';
+import { apiDefinitions, getWsClientDefinitions } from './sdk/api';
 
 export interface SDKOptions {
     authToken: () => string | Promise<string>;
@@ -17,4 +17,4 @@ export type DeepWrap<T> = {
             : T[K];
 };
 
-export type SDK = DeepWrap<typeof api>;
+export type SDK = DeepWrap<typeof apiDefinitions & ReturnType<typeof getWsClientDefinitions>>;

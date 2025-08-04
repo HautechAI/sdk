@@ -1,4 +1,4 @@
-import { CoreApi } from '../../api';
+import { CoreApi } from '../../api-utils';
 
 export const useStorageApi = (hautechApi: CoreApi) => ({
     create: hautechApi.storageControllerCreateRecordV1,

@@ -2,7 +2,7 @@ import { SDK } from '../../types';
 import FormData from 'form-data';
 import fs from 'fs';
 import axios from 'axios';
-import { CoreApi } from '../../api';
+import { CoreApi } from '../../api-utils';
 
 export const useVideosApi = (hautechApi: CoreApi) => ({
     get: hautechApi.videosControllerGetVideoByIdV1,

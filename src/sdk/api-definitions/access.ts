@@ -1,4 +1,4 @@
-import { CoreApi } from '../../api';
+import { CoreApi } from '../../api-utils';
 
 export const useAccessApi = (hautechApi: CoreApi) => ({
     attach: hautechApi.accessControllerAttachAccessV1,
