@@ -15,7 +15,7 @@ export default defineConfig({
                 transformer: (output) => output,
                 mutator: {
                     name: 'axiosMutator',
-                    path: './src/api.ts',
+                    path: './src/api-utils.ts',
                 },
             },
         },
