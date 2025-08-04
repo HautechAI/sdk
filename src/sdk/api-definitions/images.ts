@@ -1,9 +1,9 @@
 import { wrapApiCallNullable } from '../../api-utils';
 import { CoreApi } from '../../api-utils';
 import { SDK } from '../../types';
-import FormData from 'form-data';
 import fs from 'fs';
 import axios from 'axios';
+import FormDataNode from 'form-data';
 
 export const useImagesApi = (hautechApi: CoreApi) => ({
     startUpload: hautechApi.imagesControllerStartUploadV1,
@@ -25,9 +25,19 @@ export const useImagesApi = (hautechApi: CoreApi) => ({
         const sdk: SDK = this;
         const uploadResult = await sdk.images.startUpload();
 
-        const formData = new FormData();
+        const isBrowser = typeof window !== 'undefined';
+
+        let formData: any;
+
+        if (isBrowser) {
+            formData = new FormData();
+        } else {
+            const FormDataNode = require('form-data');
+            formData = new FormDataNode();
+        }
 
         if (typeof file === 'string') {
+            if (isBrowser) throw new Error('Cannot use file path in browser');
             formData.append('file', fs.createReadStream(file));
         } else if ((global as any).Blob && file instanceof Blob) {
             formData.append('file', file);

@@ -55,4 +55,24 @@ export class WsClient {
             cb(err);
         });
     }
+
+    public unsubscribe<T extends keyof WsEventMap>(topic: T, cb?: (data: WsEventMap[T]) => void): void;
+    public unsubscribe<T>(topic: string, cb?: (data: T) => void): void;
+    public unsubscribe<T>(topic: string, cb?: (data: T) => void): void {
+        if (cb) {
+            this.getSocket().off(topic, cb);
+        } else {
+            this.getSocket().off(topic);
+        }
+    }
+
+    public offError(cb?: (error: Error) => void): void {
+        if (cb) {
+            this.getSocket().off('connect_error', cb);
+            this.getSocket().off('server_error', cb);
+        } else {
+            this.getSocket().off('connect_error');
+            this.getSocket().off('server_error');
+        }
+    }
 }

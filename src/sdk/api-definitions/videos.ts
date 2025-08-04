@@ -1,6 +1,4 @@
 import { SDK } from '../../types';
-import FormData from 'form-data';
-import fs from 'fs';
 import axios from 'axios';
 import { CoreApi } from '../../api-utils';
 
@@ -23,13 +21,24 @@ export const useVideosApi = (hautechApi: CoreApi) => ({
         const sdk: SDK = this;
         const uploadResult = await sdk.videos.startUpload();
 
-        const formData = new FormData();
+        const isBrowser = typeof window !== 'undefined';
+
+        let formData: any;
+
+        if (isBrowser) {
+            formData = new FormData();
+        } else {
+            const FormDataNode = require('form-data');
+            formData = new FormDataNode();
+        }
 
         if (typeof file === 'string') {
+            if (isBrowser) throw new Error('Cannot use file path in browser');
+            const fs = require('fs');
             formData.append('file', fs.createReadStream(file));
-        } else if ((global as any).Blob && file instanceof Blob) {
+        } else if (isBrowser && file instanceof Blob) {
             formData.append('file', file);
-        } else if (typeof file === 'object' && 'filename' in file) {
+        } else if (!(file instanceof Blob) && typeof file === 'object' && 'stream' in file) {
             formData.append('file', file.stream, {
                 filename: file.filename,
                 contentType: file.contentType,
@@ -38,17 +47,15 @@ export const useVideosApi = (hautechApi: CoreApi) => ({
             throw new Error('Unsupported file type');
         }
 
+        const headers = isBrowser ? {} : formData.getHeaders();
+
         const uploadResponse = await axios.put(uploadResult.uploadUrl, formData, {
-            headers: {
-                ...formData.getHeaders(),
-            },
+            headers,
             maxBodyLength: Infinity,
         });
 
         const fileToken = uploadResponse.data.fileToken;
-        const finalizeResult = await sdk.videos.finalizeUpload({
-            fileToken: fileToken,
-        });
+        const finalizeResult = await sdk.videos.finalizeUpload({ fileToken });
 
         if (!finalizeResult?.id) {
             throw new Error('Failed to finalize video upload');

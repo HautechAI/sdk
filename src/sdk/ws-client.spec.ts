@@ -2,9 +2,8 @@ import { describe, it, expect, vi, beforeEach, Mock } from 'vitest';
 import { WsClient, useWsClient } from './ws-client';
 import { Config } from '../config';
 import { io } from 'socket.io-client';
-import { OperationEvent, BaseWsEvent } from './ws-events';
+import { OperationEvent } from './ws-events';
 
-// Mock socket.io-client
 vi.mock('socket.io-client', () => ({
     io: vi.fn(),
 }));
@@ -21,6 +20,7 @@ describe('WsClient', () => {
         // Create mock socket
         mockSocket = {
             on: vi.fn(),
+            off: vi.fn(),
             emit: vi.fn(),
             disconnect: vi.fn(),
             connected: false,
@@ -55,9 +55,7 @@ describe('WsClient', () => {
             wsClient.onConnect(async () => {});
 
             expect(io).toHaveBeenCalledWith(mockConfig.baseWsUrl, {
-                auth: {
-                    token: expect.any(Function),
-                },
+                auth: expect.any(Function),
             });
         });
 
@@ -75,10 +73,10 @@ describe('WsClient', () => {
             wsClient.onConnect(async () => {});
 
             const authConfig = (io as Mock).mock.calls[0][1];
-            const tokenCallback = authConfig.auth.token;
+            const authCallback = authConfig.auth;
 
             const mockCb = vi.fn();
-            await tokenCallback(mockCb);
+            await authCallback(mockCb);
 
             expect(mockConfig.authToken).toHaveBeenCalled();
             expect(mockCb).toHaveBeenCalledWith({
@@ -162,27 +160,15 @@ describe('WsClient', () => {
             wsClient.onError(errorCallback);
             wsClient.subscribe('test-topic', subscribeCallback);
 
-            expect(mockSocket.on).toHaveBeenCalledTimes(3);
+            expect(mockSocket.on).toHaveBeenCalledTimes(4);
             expect(mockSocket.on).toHaveBeenCalledWith('connect', expect.any(Function));
             expect(mockSocket.on).toHaveBeenCalledWith('connect_error', expect.any(Function));
+            expect(mockSocket.on).toHaveBeenCalledWith('server_error', expect.any(Function));
             expect(mockSocket.on).toHaveBeenCalledWith('test-topic', subscribeCallback);
         });
     });
 
     describe('error scenarios', () => {
-        it('should handle authToken rejection', async () => {
-            const authError = new Error('Auth failed');
-            mockConfig.authToken = vi.fn().mockRejectedValue(authError);
-
-            wsClient.onConnect(async () => {});
-
-            const authConfig = (io as Mock).mock.calls[0][1];
-            const tokenCallback = authConfig.auth.token;
-            const mockCb = vi.fn();
-
-            await expect(tokenCallback(mockCb)).rejects.toThrow('Auth failed');
-        });
-
         it('should handle socket creation with different config values', () => {
             const customConfig: Config = {
                 baseUrl: 'https://custom.api.com',
@@ -194,9 +180,7 @@ describe('WsClient', () => {
             customWsClient.onConnect(async () => {});
 
             expect(io).toHaveBeenCalledWith('wss://custom.ws.com', {
-                auth: {
-                    token: expect.any(Function),
-                },
+                auth: expect.any(Function),
             });
         });
     });
@@ -282,6 +266,46 @@ describe('WsClient', () => {
             registeredCallback(mockEvent);
 
             expect(callback).toHaveBeenCalledWith(mockEvent);
+        });
+    });
+
+    describe('listener removal', () => {
+        it('should remove specific subscription listener', () => {
+            const subscribeCallback = vi.fn();
+            
+            wsClient.unsubscribe('test-topic', subscribeCallback);
+            
+            expect(mockSocket.off).toHaveBeenCalledWith('test-topic', subscribeCallback);
+        });
+
+        it('should remove all listeners for a topic when no callback provided', () => {
+            wsClient.unsubscribe('test-topic');
+            
+            expect(mockSocket.off).toHaveBeenCalledWith('test-topic');
+        });
+
+        it('should remove typed subscription listeners', () => {
+            const callback = vi.fn<(data: OperationEvent) => void>();
+            
+            wsClient.unsubscribe('operation:created', callback);
+            
+            expect(mockSocket.off).toHaveBeenCalledWith('operation:created', callback);
+        });
+
+        it('should remove specific error listener', () => {
+            const errorCallback = vi.fn();
+            
+            wsClient.offError(errorCallback);
+            
+            expect(mockSocket.off).toHaveBeenCalledWith('connect_error', errorCallback);
+            expect(mockSocket.off).toHaveBeenCalledWith('server_error', errorCallback);
+        });
+
+        it('should remove all error listeners when no callback provided', () => {
+            wsClient.offError();
+            
+            expect(mockSocket.off).toHaveBeenCalledWith('connect_error');
+            expect(mockSocket.off).toHaveBeenCalledWith('server_error');
         });
     });
 });
