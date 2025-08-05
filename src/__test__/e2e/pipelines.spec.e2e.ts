@@ -175,7 +175,15 @@ describe('Pipelines API E2E Tests', () => {
 
                 const awaitedEcho = pipeline.defer.operations.wait(echoTask.result);
 
-                pipeline.output = awaitedEcho.result.output;
+                const echoTask2 = pipeline.defer.operations.run.echo.v1({
+                    input: {
+                        text: awaitedEcho.result.output.text,
+                    },
+                });
+
+                const awaitedEcho2 = pipeline.defer.operations.wait(echoTask2.result);
+
+                pipeline.output = awaitedEcho2.result.output;
 
                 return pipeline;
             });

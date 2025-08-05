@@ -14,6 +14,7 @@ import { Methods, Pipeline } from '@hautechai/pipelines';
 import {
     ChangeMethodSignaturesInObject,
     TaskOutput,
+    UnwrapRef,
     WrapRef,
     WrapRefOrValue,
 } from '@hautechai/pipelines/dist/pipeline';
@@ -28,7 +29,7 @@ export type PipelineTyped<TSdk extends SDK, O = any, I = any> = Omit<Pipeline<TS
             wait: <T extends WrapRefOrValue<OperationEntity>>(
                 pipeline: WrapRefOrValue<T>,
                 timeoutMs?: number,
-            ) => TaskOutput<WrapRef<T>>;
+            ) => TaskOutput<WrapRef<UnwrapRef<T>>>;
         };
     };
 };
