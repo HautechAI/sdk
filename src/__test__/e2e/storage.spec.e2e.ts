@@ -87,6 +87,95 @@ describe('Storage API E2E Tests', () => {
         });
     });
 
+    describe('Storage getManyMap Operations', () => {
+        it('should get multiple records as a map', async () => {
+            const key1 = `map-test-1-${Date.now()}`;
+            const key2 = `map-test-2-${Date.now()}`;
+            const value1 = { map: 1, data: 'first' };
+            const value2 = { map: 2, data: 'second' };
+
+            await sdk.storage.create({ key: key1, value: value1 });
+            await sdk.storage.create({ key: key2, value: value2 });
+
+            const result = await sdk.storage.getManyMap({ keys: [key1, key2] });
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('object');
+            expect(result[key1]).toEqual(value1);
+            expect(result[key2]).toEqual(value2);
+            expect(Object.keys(result)).toHaveLength(2);
+        });
+
+        it('should get single record as a map', async () => {
+            const key = `single-map-test-${Date.now()}`;
+            const value = { single: true, message: 'test' };
+
+            await sdk.storage.create({ key, value });
+
+            const result = await sdk.storage.getManyMap({ keys: [key] });
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('object');
+            expect(result[key]).toEqual(value);
+            expect(Object.keys(result)).toHaveLength(1);
+        });
+
+        it('should return empty map for non-existent keys', async () => {
+            const nonExistentKey1 = `non-existent-map-1-${Date.now()}`;
+            const nonExistentKey2 = `non-existent-map-2-${Date.now()}`;
+
+            const result = await sdk.storage.getManyMap({ keys: [nonExistentKey1, nonExistentKey2] });
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('object');
+            expect(Object.keys(result)).toHaveLength(0);
+        });
+
+        it('should handle mixed existing and non-existent keys', async () => {
+            const existingKey = `existing-map-test-${Date.now()}`;
+            const nonExistentKey = `non-existent-map-test-${Date.now()}`;
+            const value = { mixed: true, test: 'data' };
+
+            await sdk.storage.create({ key: existingKey, value });
+
+            const result = await sdk.storage.getManyMap({ keys: [existingKey, nonExistentKey] });
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('object');
+            expect(result[existingKey]).toEqual(value);
+            expect(result[nonExistentKey]).toBeUndefined();
+            expect(Object.keys(result)).toHaveLength(1);
+        });
+
+        it('should handle empty keys array', async () => {
+            try {
+                await sdk.storage.getManyMap({ keys: [] });
+                expect(true).toBe(false); // Should not reach here
+            } catch (error) {
+                expect(error).toBeDefined();
+            }
+        });
+
+        it('should handle complex nested values in map', async () => {
+            const key = `complex-map-test-${Date.now()}`;
+            const value = {
+                nested: {
+                    deep: {
+                        level: 'test',
+                        array: [1, 2, 3],
+                        boolean: true,
+                        null: null
+                    }
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            await sdk.storage.create({ key, value });
+
+            const result = await sdk.storage.getManyMap({ keys: [key] });
+            expect(result).toBeDefined();
+            expect(result[key]).toEqual(value);
+            expect(result[key].nested.deep.level).toBe('test');
+            expect(result[key].nested.deep.array).toEqual([1, 2, 3]);
+        });
+    });
+
     describe('Error Handling', () => {
         it('should handle invalid key gracefully', async () => {
             try {

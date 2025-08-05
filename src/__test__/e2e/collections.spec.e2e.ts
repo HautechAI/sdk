@@ -20,8 +20,10 @@ describe('Collections API E2E Tests', () => {
         });
         createdCollectionId = collection.id;
 
-        testImageId = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
-        testVideoId = await sdk.videos.createFromFile(path.join(__dirname, 'assets', 'video.mp4'));
+        const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
+        const videoEntity = await sdk.videos.createFromFile(path.join(__dirname, 'assets', 'video.mp4'));
+        testImageId = imageEntity.id;
+        testVideoId = videoEntity.id;
     });
 
     describe('Collections CRUD Operations', () => {

@@ -7,6 +7,6 @@
 import type { CreateStorageRecordParamsDtoValue } from './createStorageRecordParamsDtoValue';
 
 export interface CreateStorageRecordParamsDto {
-  key: string;
   value: CreateStorageRecordParamsDtoValue;
+  key: string;
 }

@@ -13,7 +13,8 @@ describe('Images API E2E Tests', () => {
     beforeAll(async () => {
         const imagePath = path.join(__dirname, 'assets', 'pose.png');
 
-        uploadedImageId = await sdk.images.createFromFile(imagePath);
+        const imageEntity = await sdk.images.createFromFile(imagePath);
+        uploadedImageId = imageEntity.id;
     });
 
     describe('Image Upload Workflow', () => {
@@ -58,36 +59,38 @@ describe('Images API E2E Tests', () => {
         it('should create image from file using createFromFile method', async () => {
             const imagePath = path.join(__dirname, 'assets', 'pose.png');
 
-            const imageId = await sdk.images.createFromFile(imagePath);
+            const imageEntity = await sdk.images.createFromFile(imagePath);
 
-            expect(imageId).toBeDefined();
-            expect(typeof imageId).toBe('string');
-            expect(imageId.length).toBeGreaterThan(0);
+            expect(imageEntity).toBeDefined();
+            expect(imageEntity.id).toBeDefined();
+            expect(typeof imageEntity.id).toBe('string');
+            expect(imageEntity.id.length).toBeGreaterThan(0);
+            expect(imageEntity.url).toBeDefined();
+            expect(typeof imageEntity.width).toBe('number');
+            expect(typeof imageEntity.height).toBe('number');
 
             // Verify the image was actually created by retrieving it
-            const image = await sdk.images.get(imageId);
+            const image = await sdk.images.get(imageEntity.id);
             expect(image).toBeDefined();
-            expect(image!.id).toBe(imageId);
-            expect(image!.url).toBeDefined();
-            expect(typeof image!.width).toBe('number');
-            expect(typeof image!.height).toBe('number');
+            expect(image!.id).toBe(imageEntity.id);
         });
 
         it('should create image from URL using createFromUrl method', async () => {
             const url = 'https://picsum.photos/200/300';
 
-            const imageId = await sdk.images.createFromUrl(url);
+            const imageEntity = await sdk.images.createFromUrl(url);
 
-            expect(imageId).toBeDefined();
-            expect(typeof imageId).toBe('string');
-            expect(imageId.length).toBeGreaterThan(0);
+            expect(imageEntity).toBeDefined();
+            expect(imageEntity.id).toBeDefined();
+            expect(typeof imageEntity.id).toBe('string');
+            expect(imageEntity.id.length).toBeGreaterThan(0);
+            expect(imageEntity.url).toBeDefined();
+            expect(typeof imageEntity.width).toBe('number');
+            expect(typeof imageEntity.height).toBe('number');
 
-            const image = await sdk.images.get(imageId);
+            const image = await sdk.images.get(imageEntity.id);
             expect(image).toBeDefined();
-            expect(image!.id).toBe(imageId);
-            expect(image!.url).toBeDefined();
-            expect(typeof image!.width).toBe('number');
-            expect(typeof image!.height).toBe('number');
+            expect(image!.id).toBe(imageEntity.id);
         });
     });
 

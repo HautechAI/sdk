@@ -4,5 +4,6 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { StorageRecordsResultDtoValueOneOf } from './storageRecordsResultDtoValueOneOf';
 
-export type StorageRecordsResultDtoValue = { [key: string]: unknown };
+export type StorageRecordsResultDtoValue = StorageRecordsResultDtoValueOneOf | boolean | number | string;

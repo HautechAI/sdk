@@ -9,7 +9,8 @@ describe('Videos API E2E Tests', () => {
     beforeAll(async () => {
         const videoPath = path.join(__dirname, 'assets', 'video.mp4');
 
-        uploadedVideoId = await sdk.videos.createFromFile(videoPath);
+        const videoEntity = await sdk.videos.createFromFile(videoPath);
+        uploadedVideoId = videoEntity.id;
     });
 
     describe('Video Upload Workflow', () => {
@@ -25,37 +26,39 @@ describe('Videos API E2E Tests', () => {
         it('should create video from file using createFromFile method', async () => {
             const videoPath = path.join(__dirname, 'assets', 'video.mp4');
 
-            const videoId = await sdk.videos.createFromFile(videoPath);
+            const videoEntity = await sdk.videos.createFromFile(videoPath);
 
-            expect(videoId).toBeDefined();
-            expect(typeof videoId).toBe('string');
-            expect(videoId.length).toBeGreaterThan(0);
+            expect(videoEntity).toBeDefined();
+            expect(videoEntity.id).toBeDefined();
+            expect(typeof videoEntity.id).toBe('string');
+            expect(videoEntity.id.length).toBeGreaterThan(0);
+            expect(videoEntity.url).toBeDefined();
+            expect(typeof videoEntity.width).toBe('number');
+            expect(typeof videoEntity.height).toBe('number');
+            expect(typeof videoEntity.duration).toBe('number');
 
-            const video = await sdk.videos.get(videoId);
+            const video = await sdk.videos.get(videoEntity.id);
             expect(video).toBeDefined();
-            expect(video.id).toBe(videoId);
-            expect(video.url).toBeDefined();
-            expect(typeof video.width).toBe('number');
-            expect(typeof video.height).toBe('number');
-            expect(typeof video.duration).toBe('string');
+            expect(video.id).toBe(videoEntity.id);
         });
 
         it('should create video from URL using createFromUrl method', async () => {
             const url = 'https://www.sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4';
 
-            const videoId = await sdk.videos.createFromUrl(url);
+            const videoEntity = await sdk.videos.createFromUrl(url);
 
-            expect(videoId).toBeDefined();
-            expect(typeof videoId).toBe('string');
-            expect(videoId.length).toBeGreaterThan(0);
+            expect(videoEntity).toBeDefined();
+            expect(videoEntity.id).toBeDefined();
+            expect(typeof videoEntity.id).toBe('string');
+            expect(videoEntity.id.length).toBeGreaterThan(0);
+            expect(videoEntity.url).toBeDefined();
+            expect(typeof videoEntity.width).toBe('number');
+            expect(typeof videoEntity.height).toBe('number');
+            expect(typeof videoEntity.duration).toBe('number');
 
-            const video = await sdk.videos.get(videoId);
+            const video = await sdk.videos.get(videoEntity.id);
             expect(video).toBeDefined();
-            expect(video.id).toBe(videoId);
-            expect(video.url).toBeDefined();
-            expect(typeof video.width).toBe('number');
-            expect(typeof video.height).toBe('number');
-            expect(typeof video.duration).toBe('string');
+            expect(video.id).toBe(videoEntity.id);
         });
     });
 

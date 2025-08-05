@@ -1,6 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../test-utils';
 import { v4 } from 'uuid';
+import Decimal from 'decimal.js';
 
 describe('Balances API E2E Tests', () => {
     let sdk = createTestSdk();
@@ -280,11 +281,11 @@ describe('Balances API E2E Tests', () => {
             expect(typeof updatedBalance!.balance).toBe('string');
 
             // The balance should have increased (assuming positive addition)
-            const initialValue = parseFloat(initialBalance!.balance);
-            const updatedValue = parseFloat(updatedBalance!.balance);
-            const addedValue = parseFloat(addAmount);
+            const initialValue = new Decimal(initialBalance!.balance);
+            const updatedValue = new Decimal(updatedBalance!.balance);
+            const addedValue = new Decimal(addAmount);
 
-            expect(updatedValue).toBe(initialValue + addedValue);
+            expect(updatedValue.eq(initialValue.add(addedValue))).toBe(true);
         });
 
         it('should verify self balance operation', async () => {

@@ -7,6 +7,6 @@
 import type { StorageRecordsResultDtoValue } from './storageRecordsResultDtoValue';
 
 export interface StorageRecordsResultDto {
-  key: string;
   value: StorageRecordsResultDtoValue;
+  key: string;
 }

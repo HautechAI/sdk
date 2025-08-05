@@ -12,7 +12,8 @@ describe('Stacks API E2E Tests', () => {
     beforeAll(async () => {
         const videoPath = path.join(__dirname, 'assets', 'video.mp4');
 
-        uploadedVideoId = await sdk.videos.createFromFile(videoPath);
+        const videoEntity = await sdk.videos.createFromFile(videoPath);
+        uploadedVideoId = videoEntity.id;
 
         const result = await sdk.stacks.create({
             metadata: {

@@ -4,5 +4,6 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { CreateStorageRecordParamsDtoValueOneOf } from './createStorageRecordParamsDtoValueOneOf';
 
-export type CreateStorageRecordParamsDtoValue = { [key: string]: unknown };
+export type CreateStorageRecordParamsDtoValue = CreateStorageRecordParamsDtoValueOneOf | boolean | number | string;

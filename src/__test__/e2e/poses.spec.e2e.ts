@@ -11,7 +11,8 @@ describe('Poses API E2E Tests', () => {
     beforeAll(async () => {
         const imagePath = path.join(__dirname, 'assets', 'pose.png');
 
-        uploadedImageId = await sdk.images.createFromFile(imagePath);
+        const image = await sdk.images.createFromFile(imagePath);
+        uploadedImageId = image.id;
 
         const estimationResponse = await sdk.operations.run.poseEstimation.v1({
             input: {
