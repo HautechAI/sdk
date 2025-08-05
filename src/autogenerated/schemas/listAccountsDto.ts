@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { AccountEntity } from './accountEntity';
-import type { ListAccountsDtoPageInfo } from './listAccountsDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListAccountsDto {
   data: AccountEntity[];
-  pageInfo: ListAccountsDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

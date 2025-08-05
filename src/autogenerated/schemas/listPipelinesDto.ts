@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { PipelinePreviewDto } from './pipelinePreviewDto';
-import type { ListPipelinesDtoPageInfo } from './listPipelinesDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListPipelinesDto {
   data: PipelinePreviewDto[];
-  pageInfo: ListPipelinesDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

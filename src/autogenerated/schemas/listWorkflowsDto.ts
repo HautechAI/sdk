@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { WorkflowDto } from './workflowDto';
-import type { ListWorkflowsDtoPageInfo } from './listWorkflowsDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListWorkflowsDto {
   data: WorkflowDto[];
-  pageInfo: ListWorkflowsDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

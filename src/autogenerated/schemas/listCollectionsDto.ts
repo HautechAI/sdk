@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { CollectionEntity } from './collectionEntity';
-import type { ListCollectionsDtoPageInfo } from './listCollectionsDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListCollectionsDto {
   data: CollectionEntity[];
-  pageInfo: ListCollectionsDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

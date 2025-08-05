@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { StackEntity } from './stackEntity';
-import type { ListStacksDtoPageInfo } from './listStacksDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListStacksDto {
   data: StackEntity[];
-  pageInfo: ListStacksDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

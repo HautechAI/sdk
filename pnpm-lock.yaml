@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hautechai/pipelines':
-        specifier: ^1.4.3
-        version: 1.4.3(@swc/core@1.13.3)(@types/node@22.5.2)
+        specifier: ^1.4.4
+        version: 1.4.4(@swc/core@1.13.3)(@types/node@22.5.2)
       axios:
         specifier: 1.7.9
         version: 1.7.9
@@ -472,8 +472,8 @@ packages:
   '@gerrit0/mini-shiki@3.8.1':
     resolution: {integrity: sha512-HVZW+8pxoOExr5ZMPK15U79jQAZTO/S6i5byQyyZGjtNj+qaYd82cizTncwFzTQgiLo8uUBym6vh+/1tfJklTw==}
 
-  '@hautechai/pipelines@1.4.3':
-    resolution: {integrity: sha512-74vTuXM60B4C673ph1igzc5HZHQMc0lWEUMA0TGwOgaQSVQl3USUMDk46bSGZyfBOLRpXStsCzotqYy0MfmX6Q==}
+  '@hautechai/pipelines@1.4.4':
+    resolution: {integrity: sha512-P6MNKGuzjdXU2SL7BGv39vEitZapC7IAjnSjeGlgIpyioVR/4Gke9oNIZDjAC+dyU0jzDNcwtjKF85lWIkCIzQ==}
 
   '@ibm-cloud/openapi-ruleset-utilities@1.9.0':
     resolution: {integrity: sha512-AoFbSarOqFBYH+1TZ9Ahkm2IWYSi5v0pBk88fpV+5b3qGJukypX8PwvCWADjuyIccKg48/F73a6hTTkBzDQ2UA==}
@@ -4211,7 +4211,7 @@ snapshots:
       '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@hautechai/pipelines@1.4.3(@swc/core@1.13.3)(@types/node@22.5.2)':
+  '@hautechai/pipelines@1.4.4(@swc/core@1.13.3)(@types/node@22.5.2)':
     dependencies:
       ts-node: 10.9.2(@swc/core@1.13.3)(@types/node@22.5.2)(typescript@5.7.3)
       tsx: 4.19.2

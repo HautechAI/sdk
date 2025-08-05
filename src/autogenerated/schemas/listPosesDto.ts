@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { PoseEntity } from './poseEntity';
-import type { ListPosesDtoPageInfo } from './listPosesDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListPosesDto {
   data: PoseEntity[];
-  pageInfo: ListPosesDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

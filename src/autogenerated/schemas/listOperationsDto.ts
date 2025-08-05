@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { OperationEntity } from './operationEntity';
-import type { ListOperationsDtoPageInfo } from './listOperationsDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListOperationsDto {
   data: OperationEntity[];
-  pageInfo: ListOperationsDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

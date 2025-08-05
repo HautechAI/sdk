@@ -350,6 +350,7 @@ export * from './operationOutputVideoSingle';
 export * from './operationOutputVideoSingleKind';
 export * from './operationsControllerListOperationsV1OrderBy';
 export * from './operationsControllerListOperationsV1Params';
+export * from './pageInfoDto';
 export * from './pipelineDto';
 export * from './pipelineDtoInput';
 export * from './pipelineDtoKind';

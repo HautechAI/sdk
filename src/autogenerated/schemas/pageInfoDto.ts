@@ -5,6 +5,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type ListCollectionsDtoPageInfo = {
-  nextCursor?: string;
-};
+export interface PageInfoDto {
+  /** @nullable */
+  nextCursor?: string | null;
+}

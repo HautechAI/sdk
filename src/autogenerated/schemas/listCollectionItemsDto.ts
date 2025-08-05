@@ -5,9 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 import type { ResourceEntity } from './resourceEntity';
-import type { ListCollectionItemsDtoPageInfo } from './listCollectionItemsDtoPageInfo';
+import type { PageInfoDto } from './pageInfoDto';
 
 export interface ListCollectionItemsDto {
   data: ResourceEntity[];
-  pageInfo: ListCollectionItemsDtoPageInfo;
+  pageInfo: PageInfoDto;
 }

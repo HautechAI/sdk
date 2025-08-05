@@ -122,7 +122,7 @@ describe('Pipelines API E2E Tests', () => {
 
             const nextPageResult = await sdk.pipelines.list({
                 limit: 2,
-                cursor: result.pageInfo.nextCursor,
+                cursor: result.pageInfo.nextCursor!,
             });
 
             expect(nextPageResult).toBeDefined();
@@ -173,7 +173,7 @@ describe('Pipelines API E2E Tests', () => {
                     },
                 });
 
-                const awaitedEcho = pipeline.defer.operations.wait<EchoV1Response>(echoTask.result);
+                const awaitedEcho = pipeline.defer.operations.wait(echoTask.result);
 
                 pipeline.output = awaitedEcho.result.output;
 

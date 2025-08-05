@@ -201,6 +201,90 @@ describe('Collections API E2E Tests', () => {
             expect(result.data.length).toBeLessThanOrEqual(5);
             expect(result.pageInfo).toBeDefined();
         });
+
+        it('should list items by kind - video', async () => {
+            expect(createdCollectionId).toBeDefined();
+
+            const result = await sdk.collections.items.listByKind(createdCollectionId, 'video');
+
+            expect(result).toBeDefined();
+            expect(result.data).toBeDefined();
+            expect(Array.isArray(result.data)).toBe(true);
+            expect(result.pageInfo).toBeDefined();
+            
+            // All returned items should be videos
+            result.data.forEach(item => {
+                expect(item.kind).toBe('video');
+            });
+        });
+
+        it('should list items by kind - image', async () => {
+            expect(createdCollectionId).toBeDefined();
+
+            const result = await sdk.collections.items.listByKind(createdCollectionId, 'image');
+
+            expect(result).toBeDefined();
+            expect(result.data).toBeDefined();
+            expect(Array.isArray(result.data)).toBe(true);
+            expect(result.pageInfo).toBeDefined();
+            
+            // All returned items should be images
+            result.data.forEach(item => {
+                expect(item.kind).toBe('image');
+            });
+        });
+
+        it('should list items by kind with additional parameters', async () => {
+            expect(createdCollectionId).toBeDefined();
+
+            const result = await sdk.collections.items.listByKind(createdCollectionId, 'video', {
+                limit: 10,
+                cursor: undefined,
+            });
+
+            expect(result).toBeDefined();
+            expect(result.data).toBeDefined();
+            expect(Array.isArray(result.data)).toBe(true);
+            expect(result.data.length).toBeLessThanOrEqual(10);
+            expect(result.pageInfo).toBeDefined();
+            
+            // All returned items should be videos
+            result.data.forEach(item => {
+                expect(item.kind).toBe('video');
+            });
+        });
+
+        it('should return empty array when no items of specified kind exist', async () => {
+            expect(createdCollectionId).toBeDefined();
+
+            const result = await sdk.collections.items.listByKind(createdCollectionId, 'pipeline');
+
+            expect(result).toBeDefined();
+            expect(result.data).toBeDefined();
+            expect(Array.isArray(result.data)).toBe(true);
+            expect(result.data.length).toBe(0);
+            expect(result.pageInfo).toBeDefined();
+        });
+
+        it('should handle different resource kinds', async () => {
+            expect(createdCollectionId).toBeDefined();
+
+            const kinds = ['collection', 'operation', 'stack', 'pose', 'storage', 'workflow'];
+            
+            for (const kind of kinds) {
+                const result = await sdk.collections.items.listByKind(createdCollectionId, kind as any);
+                
+                expect(result).toBeDefined();
+                expect(result.data).toBeDefined();
+                expect(Array.isArray(result.data)).toBe(true);
+                expect(result.pageInfo).toBeDefined();
+                
+                // All returned items should match the requested kind
+                result.data.forEach(item => {
+                    expect(item.kind).toBe(kind);
+                });
+            }
+        });
     });
 
     describe('Error Handling', () => {
