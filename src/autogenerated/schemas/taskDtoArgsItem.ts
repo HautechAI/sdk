@@ -4,5 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { TaskDtoArgsItemOneOf } from './taskDtoArgsItemOneOf';
 
-export type TaskDtoArgsItem = { [key: string]: unknown };
+/**
+ * @nullable
+ */
+export type TaskDtoArgsItem = TaskDtoArgsItemOneOf | boolean | number | string | null;

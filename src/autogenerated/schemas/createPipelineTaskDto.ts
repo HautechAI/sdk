@@ -7,8 +7,9 @@
 import type { CreatePipelineTaskDtoArgsItem } from './createPipelineTaskDtoArgsItem';
 
 export interface CreatePipelineTaskDto {
+  /** @nullable */
+  args: CreatePipelineTaskDtoArgsItem[] | null;
   id: string;
   dependencies: string[];
-  args: CreatePipelineTaskDtoArgsItem[];
   method: string[];
 }

@@ -4,5 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { CreatePipelineTaskDtoArgsItemOneOf } from './createPipelineTaskDtoArgsItemOneOf';
 
-export type CreatePipelineTaskDtoArgsItem = { [key: string]: unknown };
+/**
+ * @nullable
+ */
+export type CreatePipelineTaskDtoArgsItem = CreatePipelineTaskDtoArgsItemOneOf | boolean | number | string | null;

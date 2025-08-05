@@ -7,9 +7,10 @@
 import type { TaskDtoArgsItem } from './taskDtoArgsItem';
 
 export interface TaskDto {
+  /** @nullable */
+  args: TaskDtoArgsItem[] | null;
   id: string;
   method: string[];
-  args: TaskDtoArgsItem[];
   dependencies: string[];
   estimatedPrice: string;
 }
