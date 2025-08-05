@@ -5,14 +5,14 @@
  * OpenAPI spec version: 1.0
  */
 import type { ObjectDetectionV1ResponseKind } from './objectDetectionV1ResponseKind';
-import type { OperationOutputJSON } from './operationOutputJSON';
+import type { ObjectDetectionV1Output } from './objectDetectionV1Output';
 import type { ObjectDetectionV1ResponseInput } from './objectDetectionV1ResponseInput';
 import type { ObjectDetectionV1ResponseStatus } from './objectDetectionV1ResponseStatus';
 import type { ObjectDetectionV1ResponseMetadata } from './objectDetectionV1ResponseMetadata';
 
 export interface ObjectDetectionV1Response {
   kind: ObjectDetectionV1ResponseKind;
-  output: OperationOutputJSON;
+  output: ObjectDetectionV1Output;
   input: ObjectDetectionV1ResponseInput;
   status: ObjectDetectionV1ResponseStatus;
   type: string;

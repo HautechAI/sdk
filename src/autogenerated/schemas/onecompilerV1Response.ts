@@ -5,14 +5,14 @@
  * OpenAPI spec version: 1.0
  */
 import type { OnecompilerV1ResponseKind } from './onecompilerV1ResponseKind';
-import type { OperationOutputJSON } from './operationOutputJSON';
+import type { OnecompilerV1Output } from './onecompilerV1Output';
 import type { OnecompilerV1ResponseInput } from './onecompilerV1ResponseInput';
 import type { OnecompilerV1ResponseStatus } from './onecompilerV1ResponseStatus';
 import type { OnecompilerV1ResponseMetadata } from './onecompilerV1ResponseMetadata';
 
 export interface OnecompilerV1Response {
   kind: OnecompilerV1ResponseKind;
-  output: OperationOutputJSON;
+  output: OnecompilerV1Output;
   input: OnecompilerV1ResponseInput;
   status: OnecompilerV1ResponseStatus;
   type: string;

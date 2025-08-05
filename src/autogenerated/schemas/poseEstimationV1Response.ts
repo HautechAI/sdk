@@ -5,14 +5,14 @@
  * OpenAPI spec version: 1.0
  */
 import type { PoseEstimationV1ResponseKind } from './poseEstimationV1ResponseKind';
-import type { OperationOutputJSON } from './operationOutputJSON';
+import type { PoseEstimationV1Output } from './poseEstimationV1Output';
 import type { PoseEstimationV1ResponseInput } from './poseEstimationV1ResponseInput';
 import type { PoseEstimationV1ResponseStatus } from './poseEstimationV1ResponseStatus';
 import type { PoseEstimationV1ResponseMetadata } from './poseEstimationV1ResponseMetadata';
 
 export interface PoseEstimationV1Response {
   kind: PoseEstimationV1ResponseKind;
-  output: OperationOutputJSON;
+  output: PoseEstimationV1Output;
   input: PoseEstimationV1ResponseInput;
   status: PoseEstimationV1ResponseStatus;
   type: string;

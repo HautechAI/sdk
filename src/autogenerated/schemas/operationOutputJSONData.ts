@@ -4,5 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { OperationOutputJSONDataOneOf } from './operationOutputJSONDataOneOf';
 
-export type OperationOutputJSONData = { [key: string]: unknown };
+/**
+ * @nullable
+ */
+export type OperationOutputJSONData = OperationOutputJSONDataOneOf | boolean | number | string | null;

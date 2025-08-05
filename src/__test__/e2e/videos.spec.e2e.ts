@@ -39,7 +39,7 @@ describe('Videos API E2E Tests', () => {
 
             const video = await sdk.videos.get(videoEntity.id);
             expect(video).toBeDefined();
-            expect(video.id).toBe(videoEntity.id);
+            expect(video!.id).toBe(videoEntity.id);
         });
 
         it('should create video from URL using createFromUrl method', async () => {
@@ -58,7 +58,7 @@ describe('Videos API E2E Tests', () => {
 
             const video = await sdk.videos.get(videoEntity.id);
             expect(video).toBeDefined();
-            expect(video.id).toBe(videoEntity.id);
+            expect(video!.id).toBe(videoEntity.id);
         });
     });
 
@@ -83,16 +83,16 @@ describe('Videos API E2E Tests', () => {
             const result = await sdk.videos.get(uploadedVideoId);
 
             expect(result).toBeDefined();
-            expect(result.id).toBe(uploadedVideoId);
-            expect(result.creatorId).toBeDefined();
-            expect(result.createdAt).toBeDefined();
-            expect(result.updatedAt).toBeDefined();
-            expect(result.url).toBeDefined();
-            expect(typeof result.width).toBe('number');
-            expect(typeof result.height).toBe('number');
-            expect(typeof result.duration).toBe('string');
-            expect(result.metadata).toBeDefined();
-            expect(result.kind).toBeDefined();
+            expect(result!.id).toBe(uploadedVideoId);
+            expect(result!.creatorId).toBeDefined();
+            expect(result!.createdAt).toBeDefined();
+            expect(result!.updatedAt).toBeDefined();
+            expect(result!.url).toBeDefined();
+            expect(typeof result!.width).toBe('number');
+            expect(typeof result!.height).toBe('number');
+            expect(typeof result!.duration).toBe('string');
+            expect(result!.metadata).toBeDefined();
+            expect(result!.kind).toBeDefined();
         });
     });
 

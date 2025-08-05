@@ -40,7 +40,7 @@ export const useImagesApi = (hautechApi: CoreApi) => ({
             const fs = require('fs');
 
             formData.append('file', fs.createReadStream(file));
-        } else if ((global as any).Blob && file instanceof Blob) {
+        } else if (isBrowser && file instanceof Blob) {
             formData.append('file', file);
         } else if (typeof file === 'object' && 'filename' in file) {
             formData.append('file', file.stream, {
@@ -51,10 +51,10 @@ export const useImagesApi = (hautechApi: CoreApi) => ({
             throw new Error('Unsupported file type');
         }
 
+        const headers = isBrowser ? {} : formData.getHeaders();
+
         const uploadResponse = await axios.put(uploadResult.uploadUrl, formData, {
-            headers: {
-                ...formData.getHeaders(),
-            },
+            headers,
             maxBodyLength: Infinity,
         });
 

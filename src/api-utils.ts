@@ -53,9 +53,19 @@ export const wrapApiCall = <Fn extends (...args: any[]) => Promise<AxiosResponse
             return typeof res === 'object' && 'headers' in res ? res.data : res;
         } catch (err: any) {
             if (axios.isAxiosError(err)) {
-                err.message = `Request error: ${err.message || 'Unknown error'}.\n${
-                    err.response?.data?.message || JSON.stringify(err.response?.data) || ''
-                }`;
+                let responseData: string;
+
+                try {
+                    responseData =
+                        err.response?.data?.message ??
+                        (typeof err.response?.data === 'string'
+                            ? err.response.data
+                            : JSON.stringify(err.response?.data));
+                } catch {
+                    responseData = '[unserializable data]';
+                }
+
+                err.message = `Request error: ${err.message || 'Unknown error'}.\n${responseData}`;
             }
             throw err;
         }

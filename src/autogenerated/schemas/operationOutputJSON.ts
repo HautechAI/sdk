@@ -9,5 +9,6 @@ import type { OperationOutputJSONData } from './operationOutputJSONData';
 
 export interface OperationOutputJSON {
   kind: OperationOutputJSONKind;
+  /** @nullable */
   data: OperationOutputJSONData;
 }
