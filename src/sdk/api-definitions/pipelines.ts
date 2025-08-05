@@ -31,7 +31,7 @@ export type PipelineTyped<TSdk extends SDK, O = any, I = any> = Omit<Pipeline<TS
                 timeoutMs?: number,
             ) => TaskOutput<WrapRef<UnwrapRef<T>>>;
         };
-    };
+    } & ChangeMethodSignaturesInObject<TSdk & Methods>;
 };
 
 export const usePipelinesApi = (hautechApi: CoreApi) => ({
