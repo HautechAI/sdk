@@ -7,6 +7,7 @@
 import type { StorageRecordsResultDtoValue } from './storageRecordsResultDtoValue';
 
 export interface StorageRecordsResultDto {
+  /** @nullable */
   value: StorageRecordsResultDtoValue;
   key: string;
 }

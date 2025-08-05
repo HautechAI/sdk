@@ -6,4 +6,7 @@
  */
 import type { CreateStorageRecordParamsDtoValueOneOf } from './createStorageRecordParamsDtoValueOneOf';
 
-export type CreateStorageRecordParamsDtoValue = CreateStorageRecordParamsDtoValueOneOf | boolean | number | string;
+/**
+ * @nullable
+ */
+export type CreateStorageRecordParamsDtoValue = CreateStorageRecordParamsDtoValueOneOf | boolean | number | string | null;

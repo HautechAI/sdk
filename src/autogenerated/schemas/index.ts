@@ -484,6 +484,7 @@ export * from './updateMetadataDtoOverwrite';
 export * from './updateResourceMetadataDto';
 export * from './updateStorageRecordParamsDto';
 export * from './updateStorageRecordParamsDtoValue';
+export * from './updateStorageRecordParamsDtoValueOneOf';
 export * from './updateWorkflowParamsDto';
 export * from './updateWorkflowParamsDtoData';
 export * from './updateWorkflowParamsDtoMetadata';

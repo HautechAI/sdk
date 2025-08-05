@@ -4,5 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { UpdateStorageRecordParamsDtoValueOneOf } from './updateStorageRecordParamsDtoValueOneOf';
 
-export type UpdateStorageRecordParamsDtoValue = { [key: string]: unknown };
+/**
+ * @nullable
+ */
+export type UpdateStorageRecordParamsDtoValue = UpdateStorageRecordParamsDtoValueOneOf | boolean | number | string | null;

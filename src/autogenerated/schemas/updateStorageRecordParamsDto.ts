@@ -7,6 +7,7 @@
 import type { UpdateStorageRecordParamsDtoValue } from './updateStorageRecordParamsDtoValue';
 
 export interface UpdateStorageRecordParamsDto {
-  key: string;
+  /** @nullable */
   value: UpdateStorageRecordParamsDtoValue;
+  key: string;
 }

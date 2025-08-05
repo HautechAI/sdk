@@ -93,6 +93,70 @@ describe('Balances API E2E Tests', () => {
         });
     });
 
+    describe('getCurrentValue Operations', () => {
+        it('should get current value for self (without accountId)', async () => {
+            const result = await sdk.balances.getCurrentValue();
+
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('string');
+            
+            // Should be a valid numeric string
+            const numericValue = parseFloat(result);
+            expect(isNaN(numericValue)).toBe(false);
+        });
+
+        it('should get current value for specific account (with accountId)', async () => {
+            expect(selfAccountId).toBeDefined();
+
+            const result = await sdk.balances.getCurrentValue(selfAccountId);
+
+            expect(result).toBeDefined();
+            expect(typeof result).toBe('string');
+            
+            // Should be a valid numeric string
+            const numericValue = parseFloat(result);
+            expect(isNaN(numericValue)).toBe(false);
+        });
+
+        it('should return "0" for non-existent account', async () => {
+            const nonExistentAccountId = v4();
+
+            const result = await sdk.balances.getCurrentValue(nonExistentAccountId);
+
+            expect(result).toBeDefined();
+            expect(result).toBe('0');
+        });
+
+        it('should return same value as getByAccountId when account exists', async () => {
+            expect(selfAccountId).toBeDefined();
+
+            const currentValueResult = await sdk.balances.getCurrentValue(selfAccountId);
+            const getByAccountIdResult = await sdk.balances.getByAccountId(selfAccountId);
+
+            expect(currentValueResult).toBeDefined();
+            expect(getByAccountIdResult).toBeDefined();
+            expect(currentValueResult).toBe(getByAccountIdResult!.balance);
+        });
+
+        it('should return same value as get when no accountId provided', async () => {
+            const currentValueResult = await sdk.balances.getCurrentValue();
+            const getResult = await sdk.balances.get();
+
+            expect(currentValueResult).toBeDefined();
+            expect(getResult).toBeDefined();
+            expect(currentValueResult).toBe(getResult.balance);
+        });
+
+        it('should handle undefined/null balance gracefully', async () => {
+            // This test verifies the default '0' return when balance is null/undefined
+            const nonExistentAccountId = v4();
+            
+            const result = await sdk.balances.getCurrentValue(nonExistentAccountId);
+            
+            expect(result).toBe('0');
+        });
+    });
+
     describe('Idempotency Operations', () => {
         it('should handle idempotent balance additions', async () => {
             const balanceAmount = '30.00';

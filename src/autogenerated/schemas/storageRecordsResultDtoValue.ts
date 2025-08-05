@@ -6,4 +6,7 @@
  */
 import type { StorageRecordsResultDtoValueOneOf } from './storageRecordsResultDtoValueOneOf';
 
-export type StorageRecordsResultDtoValue = StorageRecordsResultDtoValueOneOf | boolean | number | string;
+/**
+ * @nullable
+ */
+export type StorageRecordsResultDtoValue = StorageRecordsResultDtoValueOneOf | boolean | number | string | null;
