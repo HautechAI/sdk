@@ -1,6 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { createTestSdk } from '../test-utils';
-import * as fs from 'fs';
 import * as path from 'path';
 import { v4 } from 'uuid';
 

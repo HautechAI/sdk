@@ -160,10 +160,10 @@ describe('Storage API E2E Tests', () => {
                         level: 'test',
                         array: [1, 2, 3],
                         boolean: true,
-                        null: null
-                    }
+                        null: null,
+                    },
                 },
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
             };
 
             await sdk.storage.create({ key, value });
@@ -171,8 +171,10 @@ describe('Storage API E2E Tests', () => {
             const result = await sdk.storage.getManyMap({ keys: [key] });
             expect(result).toBeDefined();
             expect(result[key]).toEqual(value);
-            expect(result[key].nested.deep.level).toBe('test');
-            expect(result[key].nested.deep.array).toEqual([1, 2, 3]);
+
+            const res = result[key] as typeof value;
+            expect(res!.nested.deep.level).toBe('test');
+            expect(res!.nested.deep.array).toEqual([1, 2, 3]);
         });
     });
 
@@ -195,7 +197,6 @@ describe('Storage API E2E Tests', () => {
 
         it('should handle invalid create parameters gracefully', async () => {
             try {
-                // @ts-expect-error
                 await sdk.storage.create({ key: '', value: null });
                 expect(true).toBe(false);
             } catch (error) {

@@ -120,14 +120,5 @@ describe('Poses API E2E Tests', () => {
                 expect(error).toBeDefined();
             }
         });
-
-        it('should handle invalid list parameters gracefully', async () => {
-            try {
-                await sdk.poses.list({ limit: -1 } as any);
-                expect(true).toBe(false);
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
     });
 });

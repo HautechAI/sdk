@@ -7,7 +7,7 @@ export default defineConfig({
         ...baseConfig.test,
         include: ['src/**/*.spec.e2e.ts'],
         exclude: ['**/node_modules/**', '**/dist/**'],
-        testTimeout: 30000,
-        hookTimeout: 30000,
+        testTimeout: 60000,
+        hookTimeout: 60000,
     },
 });

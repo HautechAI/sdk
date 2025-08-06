@@ -1,4 +1,4 @@
-import { wrapApiCallNullable, wrapCustomMethod } from '../../api-utils';
+import { useApi, wrapApiCallNullable, wrapCustomMethod } from '../../api-utils';
 import { CoreApi } from '../../api-utils';
 import {
     CreatePipelineParamsDto,
@@ -34,62 +34,69 @@ export type PipelineTyped<TSdk extends SDK, O = any, I = any> = Omit<Pipeline<TS
     } & ChangeMethodSignaturesInObject<TSdk & Methods>;
 };
 
-export const usePipelinesApi = (hautechApi: CoreApi) => ({
-    create: hautechApi.pipelinesControllerCreatePipelineV1,
-    createFromTemplate: wrapCustomMethod(function <TSdk extends SDK, O = any, I = any>(
-        this: any,
-        template: PipelineTyped<TSdk, O, I>,
-        params?: Partial<CreatePipelineParamsDto>,
-    ) {
-        const sdk: TSdk = this;
+const createFromTemplate = wrapCustomMethod(function <TSdk extends SDK, O = any, I = any>(
+    this: any,
+    template: PipelineTyped<TSdk, O, I>,
+    params?: Partial<CreatePipelineParamsDto>,
+) {
+    const sdk: TSdk = this;
 
-        return sdk.pipelines.create({
-            pipelineInput: template.input as CreatePipelineParamsDtoPipelineInput,
-            tasks: template.tasks as TaskDto[],
-            outputRef: template.outputRef as CreatePipelineParamsDtoOutputRef,
-            state: template.state,
-            ...params,
-        });
-    }),
-    get: wrapApiCallNullable(hautechApi.pipelinesControllerGetPipelineV1),
-    list: hautechApi.pipelinesControllerListPipelinesV1,
-    constructTemplate: wrapCustomMethod(function <TSdk extends SDK, O = any, I = any>(
-        this: any,
-        builder: (pipeline: PipelineTyped<TSdk>) => PipelineTyped<TSdk>,
-    ): PipelineTyped<TSdk> {
-        const sdk: TSdk = this;
-        return builder(buildPipeline<TSdk, O, I>(sdk as TSdk & Methods));
-    }),
-    wait: wrapCustomMethod(async function <T extends PipelineDto>(
-        this: any,
-        pipeline: T,
-        timeoutMs = 60000,
-    ): Promise<T> {
-        const sdk: SDK = this;
+    return sdk.pipelines.create({
+        pipelineInput: template.input as CreatePipelineParamsDtoPipelineInput,
+        tasks: template.tasks as TaskDto[],
+        outputRef: template.outputRef as CreatePipelineParamsDtoOutputRef,
+        state: template.state,
+        ...params,
+    });
+});
 
-        const deadline = Date.now() + timeoutMs;
-        const delay = 1000;
+const constructTemplate = wrapCustomMethod(function <TSdk extends SDK, O = any, I = any>(
+    this: any,
+    builder: (pipeline: PipelineTyped<TSdk>) => PipelineTyped<TSdk>,
+): PipelineTyped<TSdk> {
+    const sdk: TSdk = this;
+    return builder(buildPipeline<TSdk, O, I>(sdk as TSdk & Methods));
+});
 
-        const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const wait = wrapCustomMethod(async function <T extends PipelineDto>(
+    this: any,
+    pipeline: T,
+    timeoutMs = 60000,
+): Promise<T> {
+    const sdk: SDK = this;
 
-        const poll = async (id: string) => {
-            const pipeline = await sdk.pipelines.get(id);
+    const deadline = Date.now() + timeoutMs;
+    const delay = 1000;
 
-            if (!pipeline) {
-                throw new Error('Pipeline not found');
-            }
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-            if (pipeline.status !== PipelineDtoStatus.pending) return pipeline;
+    const poll = async (id: string) => {
+        const pipeline = await sdk.pipelines.get(id);
 
-            return null;
-        };
-
-        while (Date.now() < deadline) {
-            const polled = await poll(pipeline.id);
-            if (polled) return polled as unknown as T;
-            await sleep(delay);
+        if (!pipeline) {
+            throw new Error('Pipeline not found');
         }
 
-        throw new Error('Operation timed out');
-    }),
+        if (pipeline.status !== PipelineDtoStatus.pending) return pipeline;
+
+        return null;
+    };
+
+    while (Date.now() < deadline) {
+        const polled = await poll(pipeline.id);
+        if (polled) return polled as unknown as T;
+        await sleep(delay);
+    }
+
+    throw new Error('Operation timed out');
 });
+
+export const usePipelinesApi = (hautechApi: CoreApi) =>
+    useApi({
+        create: hautechApi.pipelinesControllerCreatePipelineV1,
+        createFromTemplate,
+        get: wrapApiCallNullable(hautechApi.pipelinesControllerGetPipelineV1),
+        list: hautechApi.pipelinesControllerListPipelinesV1,
+        constructTemplate,
+        wait,
+    });

@@ -1,9 +1,10 @@
-import { CoreApi } from '../../api-utils';
+import { CoreApi, useApi } from '../../api-utils';
 
-export const useAccessApi = (hautechApi: CoreApi) => ({
-    attach: hautechApi.accessControllerAttachAccessV1,
-    detach: hautechApi.accessControllerDetachAccessV1,
-    grant: hautechApi.accessControllerGrantAccessV1,
-    revoke: hautechApi.accessControllerRevokeAccessV1,
-    list: hautechApi.accessControllerAccessV1,
-});
+export const useAccessApi = (hautechApi: CoreApi) =>
+    useApi({
+        attach: hautechApi.accessControllerAttachAccessV1,
+        detach: hautechApi.accessControllerDetachAccessV1,
+        grant: hautechApi.accessControllerGrantAccessV1,
+        revoke: hautechApi.accessControllerRevokeAccessV1,
+        list: hautechApi.accessControllerAccessV1,
+    });

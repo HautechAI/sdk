@@ -5,25 +5,33 @@ import Decimal from 'decimal.js';
 
 describe('Balances API E2E Tests', () => {
     let sdk = createTestSdk();
-    let selfAccountId: string;
 
-    beforeAll(async () => {
-        const selfAccount = await sdk.accounts.self();
-        selfAccountId = selfAccount.id;
-    });
+    // Helper function to create a new test account for isolation
+    const createTestAccount = async () => {
+        const testAccount = await sdk.accounts.create({
+            alias: `test-account-${v4()}`,
+        });
+        return testAccount.id;
+    };
 
     describe('Balance Operations', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should add balance to an account', async () => {
             const balanceAmount = '100.50';
             const idempotencyKey = v4();
 
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: balanceAmount,
                 idempotencyKey: idempotencyKey,
             });
 
             // Verify the balance was added by checking the current balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -32,12 +40,12 @@ describe('Balances API E2E Tests', () => {
         it('should add balance without idempotency key', async () => {
             const balanceAmount = '50.25';
 
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: balanceAmount,
             });
 
             // Verify the balance was added by checking the current balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -52,9 +60,9 @@ describe('Balances API E2E Tests', () => {
         });
 
         it('should get balance by account ID', async () => {
-            expect(selfAccountId).toBeDefined();
+            expect(testAccountId).toBeDefined();
 
-            const result = await sdk.balances.getByAccountId(selfAccountId);
+            const result = await sdk.balances.getByAccountId(testAccountId);
 
             expect(result).toBeDefined();
             expect(result!.balance).toBeDefined();
@@ -74,19 +82,19 @@ describe('Balances API E2E Tests', () => {
             const secondAmount = '75.00';
 
             // Add first balance
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: firstAmount,
                 idempotencyKey: v4(),
             });
 
             // Add second balance
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: secondAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the balance has been updated
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
 
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
@@ -94,6 +102,12 @@ describe('Balances API E2E Tests', () => {
     });
 
     describe('getCurrentValue Operations', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should get current value for self (without accountId)', async () => {
             const result = await sdk.balances.getCurrentValue();
 
@@ -106,9 +120,9 @@ describe('Balances API E2E Tests', () => {
         });
 
         it('should get current value for specific account (with accountId)', async () => {
-            expect(selfAccountId).toBeDefined();
+            expect(testAccountId).toBeDefined();
 
-            const result = await sdk.balances.getCurrentValue(selfAccountId);
+            const result = await sdk.balances.getCurrentValue(testAccountId);
 
             expect(result).toBeDefined();
             expect(typeof result).toBe('string');
@@ -128,10 +142,10 @@ describe('Balances API E2E Tests', () => {
         });
 
         it('should return same value as getByAccountId when account exists', async () => {
-            expect(selfAccountId).toBeDefined();
+            expect(testAccountId).toBeDefined();
 
-            const currentValueResult = await sdk.balances.getCurrentValue(selfAccountId);
-            const getByAccountIdResult = await sdk.balances.getByAccountId(selfAccountId);
+            const currentValueResult = await sdk.balances.getCurrentValue(testAccountId);
+            const getByAccountIdResult = await sdk.balances.getByAccountId(testAccountId);
 
             expect(currentValueResult).toBeDefined();
             expect(getByAccountIdResult).toBeDefined();
@@ -158,19 +172,25 @@ describe('Balances API E2E Tests', () => {
     });
 
     describe('Idempotency Operations', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should handle idempotent balance additions', async () => {
             const balanceAmount = '30.00';
             const idempotencyKey = v4();
 
             // First addition
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: balanceAmount,
                 idempotencyKey: idempotencyKey,
             });
 
             // Second addition with same idempotency key should be idempotent
             try {
-                await sdk.balances.add(selfAccountId, {
+                await sdk.balances.add(testAccountId, {
                     amount: balanceAmount,
                     idempotencyKey: idempotencyKey,
                 });
@@ -183,6 +203,12 @@ describe('Balances API E2E Tests', () => {
     });
 
     describe('Error Handling', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should handle invalid account ID for adding balance', async () => {
             const invalidAccountId = 'invalid-account-id';
 
@@ -211,7 +237,7 @@ describe('Balances API E2E Tests', () => {
             const invalidAmount = 'not-a-number';
 
             try {
-                await sdk.balances.add(selfAccountId, {
+                await sdk.balances.add(testAccountId, {
                     amount: invalidAmount,
                 });
                 expect(true).toBe(false); // Should not reach here
@@ -224,7 +250,7 @@ describe('Balances API E2E Tests', () => {
             const negativeAmount = '-50.00';
 
             try {
-                await sdk.balances.add(selfAccountId, {
+                await sdk.balances.add(testAccountId, {
                     amount: negativeAmount,
                 });
                 expect(true).toBe(false); // Should not reach here
@@ -237,7 +263,7 @@ describe('Balances API E2E Tests', () => {
             const emptyAmount = '';
 
             try {
-                await sdk.balances.add(selfAccountId, {
+                await sdk.balances.add(testAccountId, {
                     amount: emptyAmount,
                 });
                 expect(true).toBe(false); // Should not reach here
@@ -261,17 +287,23 @@ describe('Balances API E2E Tests', () => {
     });
 
     describe('Balance Amount Formats', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should handle integer balance amounts', async () => {
             const integerAmount = '150';
 
             // The add method returns void, so we just check it completes successfully
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: integerAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the operation completed by checking the balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -281,13 +313,13 @@ describe('Balances API E2E Tests', () => {
             const decimalAmount = '99.99';
 
             // The add method returns void, so we just check it completes successfully
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: decimalAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the operation completed by checking the balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -297,13 +329,13 @@ describe('Balances API E2E Tests', () => {
             const smallAmount = '0.01';
 
             // The add method returns void, so we just check it completes successfully
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: smallAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the operation completed by checking the balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -312,13 +344,13 @@ describe('Balances API E2E Tests', () => {
         it('should handle large balance amounts', async () => {
             const largeAmount = '999999.99';
 
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: largeAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the operation completed by checking the balance
-            const currentBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const currentBalance = await sdk.balances.getByAccountId(testAccountId);
             expect(currentBalance).toBeDefined();
             expect(currentBalance!.balance).toBeDefined();
             expect(typeof currentBalance!.balance).toBe('string');
@@ -326,19 +358,25 @@ describe('Balances API E2E Tests', () => {
     });
 
     describe('Balance Verification', () => {
+        let testAccountId: string;
+
+        beforeAll(async () => {
+            testAccountId = await createTestAccount();
+        });
+
         it('should verify balance consistency across operations', async () => {
             // Get initial balance
-            const initialBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const initialBalance = await sdk.balances.getByAccountId(testAccountId);
 
             // Add some balance
             const addAmount = '200.00';
-            await sdk.balances.add(selfAccountId, {
+            await sdk.balances.add(testAccountId, {
                 amount: addAmount,
                 idempotencyKey: v4(),
             });
 
             // Verify the balance was added
-            const updatedBalance = await sdk.balances.getByAccountId(selfAccountId);
+            const updatedBalance = await sdk.balances.getByAccountId(testAccountId);
 
             expect(updatedBalance).toBeDefined();
             expect(updatedBalance!.balance).toBeDefined();

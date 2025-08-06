@@ -6,6 +6,5 @@
  */
 
 export interface PageInfoDto {
-  /** @nullable */
-  nextCursor?: string | null;
+  nextCursor?: string;
 }

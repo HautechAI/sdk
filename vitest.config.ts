@@ -14,10 +14,10 @@ export default defineConfig({
         setupFiles: ['./vitest.setup.ts'],
         include: ['src/**/*.spec.ts'],
         exclude: ['src/**/*.spec.e2e.ts', '**/node_modules/**', '**/dist/**'],
-        maxConcurrency: 5,
+        maxConcurrency: 3,
         poolOptions: {
             threads: {
-                maxThreads: 5,
+                maxThreads: 3,
                 useAtomics: true,
             },
         },

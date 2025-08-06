@@ -7,6 +7,10 @@ export interface SDKOptions {
     baseWsUrl?: string;
 }
 
+export type ApiDefinitionTree<T> = {
+    [K in keyof T]: T[K] extends (...args: any[]) => any ? T[K] : T[K] extends object ? ApiDefinitionTree<T[K]> : never;
+};
+
 export type DeepWrap<T> = {
     [K in keyof T]: T[K] extends (...args: infer A) => Promise<AxiosResponse<infer R>>
         ? (...args: A) => Promise<R>
