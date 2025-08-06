@@ -5,6 +5,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface ObjectDetectionV1OutputData {
-  boxes: number[][];
+export interface UpdateAccountControllerParamsDto {
+  alias?: string;
 }

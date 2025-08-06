@@ -6,5 +6,5 @@
  */
 
 export type ListCollectionsDtoPageInfo = {
-  nextCursor?: string;
+  nextCursor: string;
 };

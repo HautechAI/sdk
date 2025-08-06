@@ -6,5 +6,6 @@
  */
 
 export interface UpdateAccountParamsDto {
+  id: string;
   alias?: string;
 }

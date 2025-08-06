@@ -11,6 +11,7 @@ export default defineConfig({
             optionsParamRequired: false,
             allParamsOptional: false,
             urlEncodeParameters: true,
+            mode: 'tags-split',
             override: {
                 transformer: (output) => output,
                 mutator: {
