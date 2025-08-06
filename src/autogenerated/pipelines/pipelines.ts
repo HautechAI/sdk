@@ -5,9 +5,11 @@
  * OpenAPI spec version: 1.0
  */
 import type {
+  CountPipelinesResultDto,
   CreatePipelineParamsDto,
   ListPipelinesDto,
   PipelineDto,
+  PipelinesControllerCountPipelinesV1Params,
   PipelinesControllerListPipelinesV1Params
 } from '.././schemas';
 
@@ -37,6 +39,15 @@ const pipelinesControllerCreatePipelineV1 = (
     },
       options);
     }
+  const pipelinesControllerCountPipelinesV1 = (
+    params?: PipelinesControllerCountPipelinesV1Params,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<CountPipelinesResultDto>(
+      {url: `/v1/pipelines/count`, method: 'GET',
+        params
+    },
+      options);
+    }
   const pipelinesControllerGetPipelineV1 = (
     id: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -45,7 +56,8 @@ const pipelinesControllerCreatePipelineV1 = (
     },
       options);
     }
-  return {pipelinesControllerCreatePipelineV1,pipelinesControllerListPipelinesV1,pipelinesControllerGetPipelineV1}};
+  return {pipelinesControllerCreatePipelineV1,pipelinesControllerListPipelinesV1,pipelinesControllerCountPipelinesV1,pipelinesControllerGetPipelineV1}};
 export type PipelinesControllerCreatePipelineV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerCreatePipelineV1']>>>
 export type PipelinesControllerListPipelinesV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerListPipelinesV1']>>>
+export type PipelinesControllerCountPipelinesV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerCountPipelinesV1']>>>
 export type PipelinesControllerGetPipelineV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerGetPipelineV1']>>>

@@ -5,10 +5,12 @@
  * OpenAPI spec version: 1.0
  */
 import type { PipelinesControllerListPipelinesV1OrderBy } from './pipelinesControllerListPipelinesV1OrderBy';
+import type { PipelinesControllerListPipelinesV1Status } from './pipelinesControllerListPipelinesV1Status';
 
 export type PipelinesControllerListPipelinesV1Params = {
 orderBy?: PipelinesControllerListPipelinesV1OrderBy;
 limit?: number;
 parentOperationId?: string;
+status?: PipelinesControllerListPipelinesV1Status;
 cursor?: string;
 };

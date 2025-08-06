@@ -88,6 +88,13 @@ describe('Pipelines API E2E Tests', () => {
             expect(result!.state).toBeDefined();
         });
 
+        it('should count pipelines', async () => {
+            const result = await sdk.pipelines.count();
+
+            expect(result).toBeDefined();
+            expect(result!.count).toBeDefined();
+        });
+
         it('should get a non-existent pipeline', async () => {
             const result = await sdk.pipelines.get(v4());
             expect(result).toBeNull();

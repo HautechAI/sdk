@@ -61,6 +61,7 @@ export const usePipelinesApi = () => {
             });
         }),
         get: wrapApiCallNullable(hautechApi.pipelinesControllerGetPipelineV1),
+        count: hautechApi.pipelinesControllerCountPipelinesV1,
         list: hautechApi.pipelinesControllerListPipelinesV1,
         constructTemplate: wrapCustomMethod(function <TSdk extends PipelineSDK, O = any, I = any>(
             this: any,
