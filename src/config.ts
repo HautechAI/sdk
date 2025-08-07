@@ -1,12 +1,11 @@
 import { SDKOptions } from './types';
+import { SocketOptions } from 'socket.io-client';
 
 export interface Config {
     baseUrl: string;
     baseWsUrl: string;
     authToken: () => string | Promise<string>;
-    wsConfig?: {
-        transports?: ('polling' | 'websocket' | 'webtransport')[];
-    };
+    wsConfig?: SocketOptions;
 }
 
 export const getConfig = (options: SDKOptions): Config => ({
