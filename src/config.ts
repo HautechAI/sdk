@@ -9,7 +9,7 @@ export interface Config {
 }
 
 export const getConfig = (options: SDKOptions): Config => ({
+    ...options,
     baseUrl: options.baseUrl ?? 'https://api.hautech.ai',
     baseWsUrl: options.baseWsUrl ?? options.baseUrl ?? 'https://api.hautech.ai',
-    authToken: options.authToken,
 });

@@ -1,10 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { apiDefinitions, getWsClientDefinitions, pipelineDefinitions } from './sdk/api';
+import { SocketOptions } from 'socket.io-client';
 
 export interface SDKOptions {
     authToken: () => string | Promise<string>;
     baseUrl?: string;
     baseWsUrl?: string;
+    wsConfig?: SocketOptions;
 }
 
 export type ApiDefinitionTree<T> = {
