@@ -1,11 +1,11 @@
 import { SDKOptions } from './types';
-import { SocketOptions } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 export interface Config {
     baseUrl: string;
     baseWsUrl: string;
     authToken: () => string | Promise<string>;
-    wsConfig?: SocketOptions;
+    wsConfig?: Parameters<typeof io>[1];
 }
 
 export const getConfig = (options: SDKOptions): Config => ({
