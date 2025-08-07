@@ -14,13 +14,6 @@ export default defineConfig({
         setupFiles: ['./vitest.setup.ts'],
         include: ['src/**/*.spec.ts'],
         exclude: ['src/**/*.spec.e2e.ts', '**/node_modules/**', '**/dist/**'],
-        maxConcurrency: 3,
-        poolOptions: {
-            threads: {
-                maxThreads: 3,
-                useAtomics: true,
-            },
-        },
         coverage: {
             enabled: false,
             provider: 'v8',

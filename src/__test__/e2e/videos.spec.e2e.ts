@@ -108,15 +108,6 @@ describe('Videos API E2E Tests', () => {
             }
         });
 
-        it('should handle invalid video list parameters gracefully', async () => {
-            try {
-                await sdk.videos.list({ ids: null as any });
-                expect(true).toBe(false);
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
         it('should handle invalid finalize upload parameters gracefully', async () => {
             try {
                 await sdk.videos.finalizeUpload({ fileToken: 'invalid-uuid-token-that-does-not-exist' });

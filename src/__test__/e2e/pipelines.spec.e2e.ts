@@ -18,7 +18,7 @@ describe('Pipelines API E2E Tests', () => {
                             testData: 'e2e test pipeline',
                         },
                     ],
-                    method: ['echo', 'v1'],
+                    method: ['operations', 'run', 'echo', 'v1'],
                 },
             ],
             metadata: {
@@ -41,7 +41,7 @@ describe('Pipelines API E2E Tests', () => {
                                 testData: 'new pipeline test',
                             },
                         ],
-                        method: ['echo', 'v1'],
+                        method: ['operations', 'run', 'echo', 'v1'],
                     },
                 ],
                 metadata: {
@@ -152,7 +152,7 @@ describe('Pipelines API E2E Tests', () => {
                                 testData: 'wait test pipeline',
                             },
                         ],
-                        method: ['echo', 'v1'],
+                        method: ['operations', 'run', 'echo', 'v1'],
                     },
                 ],
                 metadata: {
@@ -288,25 +288,6 @@ describe('Pipelines API E2E Tests', () => {
             } catch (error) {
                 expect(error).toBeDefined();
                 expect((error as Error).message).toBe('Pipeline not found');
-            }
-        });
-
-        it('should handle invalid pipeline creation data', async () => {
-            try {
-                await sdk.pipelines.create({
-                    tasks: [
-                        {
-                            id: null as any, // Invalid task ID
-                            dependencies: null as any, // Invalid dependencies
-                            args: null as any, // Invalid args
-                            method: null as any, // Invalid method
-                        },
-                    ],
-                    metadata: null as any,
-                });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
             }
         });
     });

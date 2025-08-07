@@ -11,6 +11,9 @@ export const createTestSdk = () => {
     let sdk = createSDK({
         baseUrl: process.env.API_CORE_URL,
         authToken: () => tokenSigner.createRootToken({ expiresInSeconds: 60 * 60 * 24 * 30 }),
+        wsConfig: {
+            transports: ['websocket'],
+        },
     });
 
     return sdk;
