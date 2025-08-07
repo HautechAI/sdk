@@ -57,6 +57,7 @@ describe('WsClient', () => {
 
             expect(io).toHaveBeenCalledWith(mockConfig.baseWsUrl, {
                 auth: expect.any(Function),
+                transports: ['websocket'],
             });
         });
 
@@ -182,6 +183,7 @@ describe('WsClient', () => {
 
             expect(io).toHaveBeenCalledWith('wss://custom.ws.com', {
                 auth: expect.any(Function),
+                transports: ['websocket'],
             });
         });
     });

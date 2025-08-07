@@ -4,6 +4,9 @@ export interface Config {
     baseUrl: string;
     baseWsUrl: string;
     authToken: () => string | Promise<string>;
+    wsConfig?: {
+        transports?: ('polling' | 'websocket' | 'webtransport')[];
+    };
 }
 
 export const getConfig = (options: SDKOptions): Config => ({
