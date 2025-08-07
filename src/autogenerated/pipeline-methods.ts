@@ -174,6 +174,11 @@ export const usePipelineDefinitions = () => {
           v1: api.callControllerCallOperationsRunTopazUpscaleV1V1,
         },
       },
+      ideogram: {
+        character: {
+          v1: api.callControllerCallOperationsRunIdeogramCharacterV1V1,
+        },
+      },
     },
   },
   poses: {

@@ -58,6 +58,11 @@ export const useOperationsApi = () => {
                     v1: hautechApi.operationsControllerRunHauteNaomiV1V1,
                 },
             },
+            ideogram: {
+                character: {
+                    v1: hautechApi.operationsControllerRunIdeogramCharacterV1V1,
+                },
+            },
             inpaint: {
                 kate: {
                     v1: hautechApi.operationsControllerRunInpaintKateV1V1,

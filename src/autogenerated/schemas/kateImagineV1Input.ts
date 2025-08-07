@@ -8,6 +8,6 @@ import type { KateImagineV1InputAspectRatio } from './kateImagineV1InputAspectRa
 
 export interface KateImagineV1Input {
   aspectRatio: KateImagineV1InputAspectRatio;
-  seed: string;
+  seed: number;
   prompt: string;
 }
