@@ -47,7 +47,9 @@ jobs:
           HUSKY: 0
 
       - name: Test
-        run: pnpm test:unit
+        run: |
+          pnpm test:unit
+          pnpm test
         env:
           API_CORE_URL: https://api.dev.hautech.ai
           APP_ID: ${{ secrets.APP_ID }}
