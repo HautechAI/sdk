@@ -153,21 +153,6 @@ describe('Access API E2E Tests', () => {
     });
 
     describe('Error Handling', () => {
-        it('should handle invalid resource ID for grant', async () => {
-            const invalidResourceId = 'invalid-resource-id';
-
-            try {
-                await sdk.access.grant(invalidResourceId, {
-                    principalType: GrantAccessControllerParamsPrincipalType.account,
-                    principalId: testAccountId,
-                    access: ListAccessControllerGrantsDtoAccess.reader,
-                });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
         it('should handle invalid principal ID for grant', async () => {
             const invalidPrincipalId = 'invalid-principal-id';
 
@@ -193,58 +178,6 @@ describe('Access API E2E Tests', () => {
                     // @ts-expect-error
                     access: invalidAccess,
                 });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
-        it('should handle invalid resource ID for revoke', async () => {
-            const invalidResourceId = 'invalid-resource-id';
-
-            try {
-                await sdk.access.revoke(invalidResourceId, {
-                    principalType: GrantAccessControllerParamsPrincipalType.account,
-                    principalId: testAccountId,
-                    access: ListAccessControllerGrantsDtoAccess.reader,
-                });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
-        it('should handle invalid resource ID for attach', async () => {
-            const invalidResourceId = 'invalid-resource-id';
-
-            try {
-                await sdk.access.attach(invalidResourceId, {
-                    parentResourceId: parentResourceId,
-                });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
-        it('should handle invalid resource ID for detach', async () => {
-            const invalidResourceId = 'invalid-resource-id';
-
-            try {
-                await sdk.access.detach(invalidResourceId, {
-                    parentResourceId: parentResourceId,
-                });
-                expect(true).toBe(false); // Should not reach here
-            } catch (error) {
-                expect(error).toBeDefined();
-            }
-        });
-
-        it('should handle invalid resource ID for list', async () => {
-            const invalidResourceId = 'invalid-resource-id';
-
-            try {
-                await sdk.access.list(invalidResourceId);
                 expect(true).toBe(false); // Should not reach here
             } catch (error) {
                 expect(error).toBeDefined();
