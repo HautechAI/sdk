@@ -2,38 +2,39 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 module.exports = {
-  branches: ['main'],
-  plugins: [
-    [
-      '@semantic-release/commit-analyzer',
-      {
-        preset: 'angular',
-        releaseRules: [
-          {
-            type: 'docs',
-            release: 'patch',
-          },
-          {
-            type: 'feat',
-            release: 'minor',
-          },
-          {
-            type: 'chore',
-            release: 'patch',
-          },
-          {
-            message: '**',
-            release: 'patch',
-          },
+    branches: ['main'],
+    plugins: [
+        [
+            '@semantic-release/commit-analyzer',
+            {
+                preset: 'angular',
+                releaseRules: [
+                    { type: 'BREAKING CHANGE', breaking: true, release: 'major' },
+                    {
+                        type: 'docs',
+                        release: 'patch',
+                    },
+                    {
+                        type: 'feat',
+                        release: 'minor',
+                    },
+                    {
+                        type: 'chore',
+                        release: 'patch',
+                    },
+                    {
+                        message: '**',
+                        release: 'patch',
+                    },
+                ],
+                parserOpts: {
+                    noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
+                },
+            },
         ],
-        parserOpts: {
-          noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
-        },
-      },
+        '@semantic-release/release-notes-generator',
+        '@semantic-release/changelog',
+        '@semantic-release/npm',
+        '@semantic-release/github',
     ],
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github"
-  ],
 };
