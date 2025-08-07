@@ -15,7 +15,6 @@ export class WsClient {
         if (!this.socket) {
             this.socket = io(this.config.baseWsUrl, {
                 ...(this.config.wsConfig || {}),
-                transports: ['websocket'],
                 auth: (cb) => {
                     Promise.resolve(this.config.authToken()).then((token) => {
                         cb({
