@@ -9,7 +9,7 @@ module.exports = {
             {
                 preset: 'angular',
                 releaseRules: [
-                    { type: 'BREAKING CHANGE', breaking: true, release: 'major' },
+                    { breaking: true, release: 'major' },
                     {
                         type: 'docs',
                         release: 'patch',
