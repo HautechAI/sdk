@@ -845,7 +845,7 @@ const callControllerCallAccessGrantV1 = (
     flux11ProUltraV1Request: Flux11ProUltraV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
       return axiosMutator<Flux11ProUltraV1Response>(
-      {url: `/v1/call/operations.run.flux-1.1-pro-ultra.v1`, method: 'POST',
+      {url: `/v1/call/operations.run.flux.1_1_pro_ultra.v1`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: flux11ProUltraV1Request
     },

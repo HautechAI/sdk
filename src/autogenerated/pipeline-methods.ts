@@ -191,8 +191,8 @@ export const usePipelineDefinitions = () => {
           v1: api.callControllerCallOperationsRunLumaPhotonV1V1,
         },
       },
-      flux-1: {
-        1-pro-ultra: {
+      flux: {
+        1_1_pro_ultra: {
           v1: api.callControllerCallOperationsRunFlux11ProUltraV1V1,
         },
       },
