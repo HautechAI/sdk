@@ -13,8 +13,5 @@ export type GPTV3FileSearchToolDtoType = typeof GPTV3FileSearchToolDtoType[keyof
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const GPTV3FileSearchToolDtoType = {
-  function: 'function',
   file_search: 'file_search',
-  web_search_preview: 'web_search_preview',
-  image_generation: 'image_generation',
 } as const;

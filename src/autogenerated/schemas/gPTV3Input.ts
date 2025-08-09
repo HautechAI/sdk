@@ -7,7 +7,7 @@
 import type { GPTV3InputModel } from './gPTV3InputModel';
 import type { GPTV3InputInput } from './gPTV3InputInput';
 import type { GPTV3TextConfigDto } from './gPTV3TextConfigDto';
-import type { GPTV3FunctionToolDto } from './gPTV3FunctionToolDto';
+import type { GPTV3InputToolsItem } from './gPTV3InputToolsItem';
 import type { GPTV3ToolChoiceDto } from './gPTV3ToolChoiceDto';
 
 export interface GPTV3Input {
@@ -20,7 +20,7 @@ export interface GPTV3Input {
   /** This feature is in Beta. If specified, OpenAI will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. */
   seed?: number;
   /** A list of tools the model may call. Supports function, file_search, web_search_preview, and image_generation tools. */
-  tools?: GPTV3FunctionToolDto[];
+  tools?: GPTV3InputToolsItem[];
   /** Controls which (if any) tool is called by the model. 'none', 'auto', 'required', or a specific tool type. */
   tool_choice?: GPTV3ToolChoiceDto;
   /** Specifies which additional data to include in the response. For file search, use ["file_search_call.results"] to include search results. */

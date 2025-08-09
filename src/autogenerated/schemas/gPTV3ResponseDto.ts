@@ -6,7 +6,7 @@
  */
 import type { GPTV3ResponseDtoFinishReason } from './gPTV3ResponseDtoFinishReason';
 import type { GPTV3ResponseDtoRole } from './gPTV3ResponseDtoRole';
-import type { GPTV3FileSearchCallDto } from './gPTV3FileSearchCallDto';
+import type { GPTV3ResponseDtoToolCallsItem } from './gPTV3ResponseDtoToolCallsItem';
 import type { GPTV3ResponseDtoContent } from './gPTV3ResponseDtoContent';
 import type { GPTV3FileSearchResultsDto } from './gPTV3FileSearchResultsDto';
 
@@ -16,7 +16,7 @@ export interface GPTV3ResponseDto {
   /** The role of the assistant. */
   role: GPTV3ResponseDtoRole;
   /** The tool calls made by the assistant, if any. */
-  tool_calls?: GPTV3FileSearchCallDto[];
+  tool_calls?: GPTV3ResponseDtoToolCallsItem[];
   /** The content of the response. Can be a string for simple text responses or an array of content with annotations for responses with citations. */
   content?: GPTV3ResponseDtoContent;
   /** The search results from file search operations. */
