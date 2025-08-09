@@ -71,6 +71,7 @@ export const useOperationsApi = () => {
             gpt: {
                 v1: hautechApi.operationsControllerRunGptV1V1,
                 v2: hautechApi.operationsControllerRunGptV2V1,
+                v3: hautechApi.operationsControllerRunGptV3V1,
             },
             math: {
                 v1: hautechApi.operationsControllerRunMathV1V1,

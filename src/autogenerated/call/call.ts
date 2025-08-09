@@ -37,6 +37,8 @@ import type {
   EchoV1Response,
   EditFluxKontextDevV1Request,
   EditFluxKontextDevV1Response,
+  Flux11ProUltraV1Request,
+  Flux11ProUltraV1Response,
   GetAccountParamsDto,
   GetBalanceParamsDto,
   GetCollectionParamsDto,
@@ -55,6 +57,8 @@ import type {
   GptV1Response,
   GptV2Request,
   GptV2Response,
+  GptV3Request,
+  GptV3Response,
   GroupEntity,
   HauteLindaV1Request,
   HauteLindaV1Response,
@@ -83,6 +87,8 @@ import type {
   ListPosesParamsDto,
   ListStacksDto,
   ListStacksParamsDto,
+  LumaPhotonV1Request,
+  LumaPhotonV1Response,
   MathV1Request,
   MathV1Response,
   ModifyAccessParamsDto,
@@ -105,6 +111,8 @@ import type {
   RemoveItemsFromStackParamsDto,
   ResizeV1Request,
   ResizeV1Response,
+  Seedream3V1Request,
+  Seedream3V1Response,
   SegmentAnythingEmbeddingsV1Request,
   SegmentAnythingEmbeddingsV1Response,
   SegmentAnythingMaskV1Request,
@@ -125,6 +133,8 @@ import type {
   UpdateStorageRecordParamsDto,
   UpscaleV1Request,
   UpscaleV1Response,
+  Veo3FastV1Request,
+  Veo3FastV1Response,
   Veo3V1Request,
   Veo3V1Response,
   VideoEntity,
@@ -511,6 +521,16 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
+  const callControllerCallOperationsRunGptV3V1 = (
+    gptV3Request: GptV3Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<GptV3Response>(
+      {url: `/v1/call/operations.run.gpt.v3`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: gptV3Request
+    },
+      options);
+    }
   const callControllerCallOperationsRunTranslateV1V1 = (
     translateV1Request: TranslateV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -751,6 +771,16 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
+  const callControllerCallOperationsRunVeo3FastV1V1 = (
+    veo3FastV1Request: Veo3FastV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Veo3FastV1Response>(
+      {url: `/v1/call/operations.run.veo3.fast.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: veo3FastV1Request
+    },
+      options);
+    }
   const callControllerCallOperationsRunPipelineMapV1V1 = (
     pipelineMapV1Request: PipelineMapV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -788,6 +818,36 @@ const callControllerCallAccessGrantV1 = (
       {url: `/v1/call/operations.run.ideogram.character.v1`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: ideogramCharacterV1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunSeedream3V1V1 = (
+    seedream3V1Request: Seedream3V1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Seedream3V1Response>(
+      {url: `/v1/call/operations.run.seedream3.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: seedream3V1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunLumaPhotonV1V1 = (
+    lumaPhotonV1Request: LumaPhotonV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<LumaPhotonV1Response>(
+      {url: `/v1/call/operations.run.luma.photon.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: lumaPhotonV1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunFlux11ProUltraV1V1 = (
+    flux11ProUltraV1Request: Flux11ProUltraV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Flux11ProUltraV1Response>(
+      {url: `/v1/call/operations.run.flux-1.1-pro-ultra.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: flux11ProUltraV1Request
     },
       options);
     }
@@ -931,7 +991,7 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
-  return {callControllerCallAccessGrantV1,callControllerCallAccessAttachV1,callControllerCallAccountsCreateV1,callControllerCallAccountsGetV1,callControllerCallAccountsSelfV1,callControllerCallAccountsListV1,callControllerCallAccountsUpdateV1,callControllerCallAccountsBalanceAddV1,callControllerCallAccountsBalanceSelfV1,callControllerCallAccountsBalanceGetV1,callControllerCallCollectionsCreateV1,callControllerCallCollectionsGetV1,callControllerCallCollectionsListV1,callControllerCallCollectionsMetadataUpdateV1,callControllerCallCollectionsItemsAddV1,callControllerCallCollectionsItemsListV1,callControllerCallCollectionsItemsRemoveV1,callControllerCallGroupsCreateV1,callControllerCallGroupsGetV1,callControllerCallGroupsDeleteV1,callControllerCallGroupsAccountsAddV1,callControllerCallGroupsAccountsRemoveV1,callControllerCallImagesGetManyV1,callControllerCallImagesGetV1,callControllerCallImagesRepresentationsGetV1,callControllerCallVideosGetManyV1,callControllerCallVideosGetV1,callControllerCallOperationsGetV1,callControllerCallOperationsGetManyV1,callControllerCallOperationsListV1,callControllerCallOperationsMetadataUpdateV1,callControllerCallOperationsWaitV1,callControllerCallOperationsRunHauteLindaV1V1,callControllerCallOperationsRunHauteNaomiV1V1,callControllerCallOperationsRunInpaintKateV1V1,callControllerCallOperationsRunGptV1V1,callControllerCallOperationsRunGptV2V1,callControllerCallOperationsRunTranslateV1V1,callControllerCallOperationsRunStringsTemplateV1V1,callControllerCallOperationsRunImagineKateV1V1,callControllerCallOperationsRunUpscaleV1V1,callControllerCallOperationsRunObjectDetectionV1V1,callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1,callControllerCallOperationsRunSegmentAnythingMaskV1V1,callControllerCallOperationsRunPoseEstimationV1V1,callControllerCallOperationsRunCutV1V1,callControllerCallOperationsRunCropV1V1,callControllerCallOperationsRunNoiseV1V1,callControllerCallOperationsRunResizeV1V1,callControllerCallOperationsRunContrastV1V1,callControllerCallOperationsRunCompositeV1V1,callControllerCallOperationsRunVtonGiseleV1V1,callControllerCallOperationsRunNegateImageV1V1,callControllerCallOperationsRunEchoV1V1,callControllerCallOperationsRunMathV1V1,callControllerCallOperationsRunAnimateKling16ProV1V1,callControllerCallOperationsRunAnimateKling21V1V1,callControllerCallOperationsRunAnimateCreatomateV1V1,callControllerCallOperationsRunOnecompilerV1V1,callControllerCallOperationsRunEditFluxKontextDevV1V1,callControllerCallOperationsRunVeo3V1V1,callControllerCallOperationsRunPipelineMapV1V1,callControllerCallOperationsRunImagen4V1V1,callControllerCallOperationsRunTopazUpscaleV1V1,callControllerCallOperationsRunIdeogramCharacterV1V1,callControllerCallPosesGetV1,callControllerCallPosesListV1,callControllerCallPosesPreviewSetV1,callControllerCallPosesMetadataUpdateV1,callControllerCallStacksCreateV1,callControllerCallStacksGetV1,callControllerCallStacksListV1,callControllerCallStacksMetadataUpdateV1,callControllerCallStacksItemsAddV1,callControllerCallStacksItemsRemoveV1,callControllerCallStorageCreateV1,callControllerCallStorageDeleteV1,callControllerCallStorageGetManyV1,callControllerCallStorageUpdateV1}};
+  return {callControllerCallAccessGrantV1,callControllerCallAccessAttachV1,callControllerCallAccountsCreateV1,callControllerCallAccountsGetV1,callControllerCallAccountsSelfV1,callControllerCallAccountsListV1,callControllerCallAccountsUpdateV1,callControllerCallAccountsBalanceAddV1,callControllerCallAccountsBalanceSelfV1,callControllerCallAccountsBalanceGetV1,callControllerCallCollectionsCreateV1,callControllerCallCollectionsGetV1,callControllerCallCollectionsListV1,callControllerCallCollectionsMetadataUpdateV1,callControllerCallCollectionsItemsAddV1,callControllerCallCollectionsItemsListV1,callControllerCallCollectionsItemsRemoveV1,callControllerCallGroupsCreateV1,callControllerCallGroupsGetV1,callControllerCallGroupsDeleteV1,callControllerCallGroupsAccountsAddV1,callControllerCallGroupsAccountsRemoveV1,callControllerCallImagesGetManyV1,callControllerCallImagesGetV1,callControllerCallImagesRepresentationsGetV1,callControllerCallVideosGetManyV1,callControllerCallVideosGetV1,callControllerCallOperationsGetV1,callControllerCallOperationsGetManyV1,callControllerCallOperationsListV1,callControllerCallOperationsMetadataUpdateV1,callControllerCallOperationsWaitV1,callControllerCallOperationsRunHauteLindaV1V1,callControllerCallOperationsRunHauteNaomiV1V1,callControllerCallOperationsRunInpaintKateV1V1,callControllerCallOperationsRunGptV1V1,callControllerCallOperationsRunGptV2V1,callControllerCallOperationsRunGptV3V1,callControllerCallOperationsRunTranslateV1V1,callControllerCallOperationsRunStringsTemplateV1V1,callControllerCallOperationsRunImagineKateV1V1,callControllerCallOperationsRunUpscaleV1V1,callControllerCallOperationsRunObjectDetectionV1V1,callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1,callControllerCallOperationsRunSegmentAnythingMaskV1V1,callControllerCallOperationsRunPoseEstimationV1V1,callControllerCallOperationsRunCutV1V1,callControllerCallOperationsRunCropV1V1,callControllerCallOperationsRunNoiseV1V1,callControllerCallOperationsRunResizeV1V1,callControllerCallOperationsRunContrastV1V1,callControllerCallOperationsRunCompositeV1V1,callControllerCallOperationsRunVtonGiseleV1V1,callControllerCallOperationsRunNegateImageV1V1,callControllerCallOperationsRunEchoV1V1,callControllerCallOperationsRunMathV1V1,callControllerCallOperationsRunAnimateKling16ProV1V1,callControllerCallOperationsRunAnimateKling21V1V1,callControllerCallOperationsRunAnimateCreatomateV1V1,callControllerCallOperationsRunOnecompilerV1V1,callControllerCallOperationsRunEditFluxKontextDevV1V1,callControllerCallOperationsRunVeo3V1V1,callControllerCallOperationsRunVeo3FastV1V1,callControllerCallOperationsRunPipelineMapV1V1,callControllerCallOperationsRunImagen4V1V1,callControllerCallOperationsRunTopazUpscaleV1V1,callControllerCallOperationsRunIdeogramCharacterV1V1,callControllerCallOperationsRunSeedream3V1V1,callControllerCallOperationsRunLumaPhotonV1V1,callControllerCallOperationsRunFlux11ProUltraV1V1,callControllerCallPosesGetV1,callControllerCallPosesListV1,callControllerCallPosesPreviewSetV1,callControllerCallPosesMetadataUpdateV1,callControllerCallStacksCreateV1,callControllerCallStacksGetV1,callControllerCallStacksListV1,callControllerCallStacksMetadataUpdateV1,callControllerCallStacksItemsAddV1,callControllerCallStacksItemsRemoveV1,callControllerCallStorageCreateV1,callControllerCallStorageDeleteV1,callControllerCallStorageGetManyV1,callControllerCallStorageUpdateV1}};
 export type CallControllerCallAccessGrantV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccessGrantV1']>>>
 export type CallControllerCallAccessAttachV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccessAttachV1']>>>
 export type CallControllerCallAccountsCreateV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccountsCreateV1']>>>
@@ -969,6 +1029,7 @@ export type CallControllerCallOperationsRunHauteNaomiV1V1Result = NonNullable<Aw
 export type CallControllerCallOperationsRunInpaintKateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunInpaintKateV1V1']>>>
 export type CallControllerCallOperationsRunGptV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunGptV1V1']>>>
 export type CallControllerCallOperationsRunGptV2V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunGptV2V1']>>>
+export type CallControllerCallOperationsRunGptV3V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunGptV3V1']>>>
 export type CallControllerCallOperationsRunTranslateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunTranslateV1V1']>>>
 export type CallControllerCallOperationsRunStringsTemplateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunStringsTemplateV1V1']>>>
 export type CallControllerCallOperationsRunImagineKateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunImagineKateV1V1']>>>
@@ -993,10 +1054,14 @@ export type CallControllerCallOperationsRunAnimateCreatomateV1V1Result = NonNull
 export type CallControllerCallOperationsRunOnecompilerV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunOnecompilerV1V1']>>>
 export type CallControllerCallOperationsRunEditFluxKontextDevV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunEditFluxKontextDevV1V1']>>>
 export type CallControllerCallOperationsRunVeo3V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunVeo3V1V1']>>>
+export type CallControllerCallOperationsRunVeo3FastV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunVeo3FastV1V1']>>>
 export type CallControllerCallOperationsRunPipelineMapV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunPipelineMapV1V1']>>>
 export type CallControllerCallOperationsRunImagen4V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunImagen4V1V1']>>>
 export type CallControllerCallOperationsRunTopazUpscaleV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunTopazUpscaleV1V1']>>>
 export type CallControllerCallOperationsRunIdeogramCharacterV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunIdeogramCharacterV1V1']>>>
+export type CallControllerCallOperationsRunSeedream3V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunSeedream3V1V1']>>>
+export type CallControllerCallOperationsRunLumaPhotonV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunLumaPhotonV1V1']>>>
+export type CallControllerCallOperationsRunFlux11ProUltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunFlux11ProUltraV1V1']>>>
 export type CallControllerCallPosesGetV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallPosesGetV1']>>>
 export type CallControllerCallPosesListV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallPosesListV1']>>>
 export type CallControllerCallPosesPreviewSetV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallPosesPreviewSetV1']>>>

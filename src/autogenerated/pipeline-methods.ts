@@ -78,6 +78,7 @@ export const usePipelineDefinitions = () => {
       gpt: {
         v1: api.callControllerCallOperationsRunGptV1V1,
         v2: api.callControllerCallOperationsRunGptV2V1,
+        v3: api.callControllerCallOperationsRunGptV3V1,
       },
       translate: {
         v1: api.callControllerCallOperationsRunTranslateV1V1,
@@ -162,6 +163,9 @@ export const usePipelineDefinitions = () => {
       },
       veo3: {
         v1: api.callControllerCallOperationsRunVeo3V1V1,
+        fast: {
+          v1: api.callControllerCallOperationsRunVeo3FastV1V1,
+        },
       },
       pipelineMap: {
         v1: api.callControllerCallOperationsRunPipelineMapV1V1,
@@ -177,6 +181,19 @@ export const usePipelineDefinitions = () => {
       ideogram: {
         character: {
           v1: api.callControllerCallOperationsRunIdeogramCharacterV1V1,
+        },
+      },
+      seedream3: {
+        v1: api.callControllerCallOperationsRunSeedream3V1V1,
+      },
+      luma: {
+        photon: {
+          v1: api.callControllerCallOperationsRunLumaPhotonV1V1,
+        },
+      },
+      flux-1: {
+        1-pro-ultra: {
+          v1: api.callControllerCallOperationsRunFlux11ProUltraV1V1,
         },
       },
     },
