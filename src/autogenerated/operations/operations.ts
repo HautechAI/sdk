@@ -23,8 +23,6 @@ import type {
   EchoV1Response,
   EditFluxKontextDevV1Request,
   EditFluxKontextDevV1Response,
-  Flux11ProUltraV1Request,
-  Flux11ProUltraV1Response,
   GetOperationsParamsDto,
   GptV1Request,
   GptV1Response,
@@ -40,6 +38,8 @@ import type {
   IdeogramCharacterV1Response,
   Imagen4V1Request,
   Imagen4V1Response,
+  ImagineFlux11ProUltraV1Request,
+  ImagineFlux11ProUltraV1Response,
   ImagineKateV1Request,
   ImagineKateV1Response,
   InpaintKateV1Request,
@@ -504,17 +504,17 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
-  const operationsControllerRunFlux11ProUltraV1V1 = (
-    flux11ProUltraV1Request: Flux11ProUltraV1Request,
+  const operationsControllerRunImagineFlux11ProUltraV1V1 = (
+    imagineFlux11ProUltraV1Request: ImagineFlux11ProUltraV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<Flux11ProUltraV1Response>(
-      {url: `/v1/operations/run/flux.1_1_pro_ultra.v1`, method: 'POST',
+      return axiosMutator<ImagineFlux11ProUltraV1Response>(
+      {url: `/v1/operations/run/imagine.flux_1_1_pro_ultra.v1`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
-      data: flux11ProUltraV1Request
+      data: imagineFlux11ProUltraV1Request
     },
       options);
     }
-  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunFlux11ProUltraV1V1}};
+  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1}};
 export type OperationsControllerGetOperationV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationV1']>>>
 export type OperationsControllerGetOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationsV1']>>>
 export type OperationsControllerListOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerListOperationsV1']>>>
@@ -556,4 +556,4 @@ export type OperationsControllerRunTopazUpscaleV1V1Result = NonNullable<Awaited<
 export type OperationsControllerRunIdeogramCharacterV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunIdeogramCharacterV1V1']>>>
 export type OperationsControllerRunSeedream3V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedream3V1V1']>>>
 export type OperationsControllerRunLumaPhotonV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunLumaPhotonV1V1']>>>
-export type OperationsControllerRunFlux11ProUltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunFlux11ProUltraV1V1']>>>
+export type OperationsControllerRunImagineFlux11ProUltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagineFlux11ProUltraV1V1']>>>

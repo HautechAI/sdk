@@ -92,6 +92,9 @@ export const usePipelineDefinitions = () => {
         kate: {
           v1: api.callControllerCallOperationsRunImagineKateV1V1,
         },
+        flux_1_1_pro_ultra: {
+          v1: api.callControllerCallOperationsRunImagineFlux11ProUltraV1V1,
+        },
       },
       upscale: {
         v1: api.callControllerCallOperationsRunUpscaleV1V1,
@@ -189,11 +192,6 @@ export const usePipelineDefinitions = () => {
       luma: {
         photon: {
           v1: api.callControllerCallOperationsRunLumaPhotonV1V1,
-        },
-      },
-      flux: {
-        1_1_pro_ultra: {
-          v1: api.callControllerCallOperationsRunFlux11ProUltraV1V1,
         },
       },
     },
