@@ -5,26 +5,12 @@
  * OpenAPI spec version: 1.0
  */
 import type { GPTV3FileSearchToolDtoType } from './gPTV3FileSearchToolDtoType';
-import type { GPTV3FileSearchToolDtoFilters } from './gPTV3FileSearchToolDtoFilters';
-import type { GPTV3FileSearchToolDtoRanking } from './gPTV3FileSearchToolDtoRanking';
 
 export interface GPTV3FileSearchToolDto {
   /** The type of the tool. */
   type: GPTV3FileSearchToolDtoType;
   /** The IDs of the vector stores to search. */
   vector_store_ids?: string[];
-  /** The search query used for the file search. */
-  query?: string;
-  /**
-   * A filter to apply to the search.
-   * @nullable
-   */
-  filters?: GPTV3FileSearchToolDtoFilters;
   /** The maximum number of results to return. */
   max_num_results?: number;
-  /**
-   * Ranking options for the search.
-   * @nullable
-   */
-  ranking?: GPTV3FileSearchToolDtoRanking;
 }
