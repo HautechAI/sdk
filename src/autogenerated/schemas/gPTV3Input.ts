@@ -13,7 +13,7 @@ import type { GPTV3ToolChoiceDto } from './gPTV3ToolChoiceDto';
 export interface GPTV3Input {
   /** ID of the model to use. See OpenAI docs for model endpoint compatibility. */
   model?: GPTV3InputModel;
-  /** Text, image, or file inputs to the model, used to generate a response. Can be a simple string or an array of messages with different roles. */
+  /** Text, image, or file inputs to the model, used to generate a response. Can be a simple string, a single message object, or an array of messages with different roles. */
   input?: GPTV3InputInput;
   /** Configuration options for a text response from the model. Can be plain text or structured JSON data. */
   text?: GPTV3TextConfigDto;

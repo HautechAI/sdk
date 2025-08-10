@@ -227,6 +227,7 @@ export * from './gPTV3ImageInputDtoDetail';
 export * from './gPTV3ImageInputDtoType';
 export * from './gPTV3Input';
 export * from './gPTV3InputInput';
+export * from './gPTV3InputInputOneOfItem';
 export * from './gPTV3InputModel';
 export * from './gPTV3InputToolsItem';
 export * from './gPTV3MessageContentDto';
