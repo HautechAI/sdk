@@ -7,4 +7,5 @@
 
 export interface EchoV1Input {
   text: string;
+  delay?: number;
 }

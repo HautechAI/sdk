@@ -165,7 +165,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                 const imagineTask = pipeline.defer.operations.run.imagine.kate.v1({
                     input: {
                         aspectRatio: '1:1',
-                        seed: 'test-seed',
+                        seed: 999,
                         prompt: 'A beautiful landscape',
                     },
                 });

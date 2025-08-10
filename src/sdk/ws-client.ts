@@ -2,7 +2,7 @@ import { io } from 'socket.io-client';
 import { Config } from '../config';
 
 import type { Socket } from 'socket.io-client';
-import { WsEventMap } from './ws-events';
+import { EntityEventKeys, EntityEventPayload, SubscribePayload, WsEventEntity, WsEventMap } from './ws-events.types';
 
 export const useWsClient = (config: Config) => new WsClient(config);
 
@@ -41,10 +41,33 @@ export class WsClient {
         });
     }
 
-    public subscribe<T extends keyof WsEventMap>(topic: T, cb: (data: WsEventMap[T]) => void): void;
-    public subscribe<T>(topic: string, cb: (data: T) => void): void;
-    public subscribe<T>(topic: string, cb: (data: T) => void): void {
-        this.getSocket().on(topic, cb);
+    public subscribe<T extends keyof WsEventMap>(topic: T, cb: (data: WsEventMap[T]) => void): void {
+        this.getSocket().on(topic, cb as any);
+    }
+
+    public subscribeEntityById<T extends WsEventEntity>(
+        entity: T,
+        id: string,
+        cb: (data: EntityEventPayload<T>) => void,
+    ): void {
+        this.getSocket().emit('entity:subscribe', {
+            entity,
+            id,
+        } satisfies SubscribePayload);
+
+        this.subscribe<EntityEventKeys<T>>(`${entity}:${id}` as EntityEventKeys<T>, cb);
+    }
+
+    public unsubscribeEntityById<T extends WsEventEntity>(
+        entity: T,
+        id: string,
+        cb?: (data: EntityEventPayload<T>) => void,
+    ): void {
+        this.getSocket().emit('entity:unsubscribe', {
+            entity,
+            id,
+        } satisfies SubscribePayload);
+        this.unsubscribe<EntityEventKeys<T>>(`${entity}:${id}` as EntityEventKeys<T>, cb as any);
     }
 
     public onError(cb: (error: Error) => void): void {
@@ -57,11 +80,9 @@ export class WsClient {
         });
     }
 
-    public unsubscribe<T extends keyof WsEventMap>(topic: T, cb?: (data: WsEventMap[T]) => void): void;
-    public unsubscribe<T>(topic: string, cb?: (data: T) => void): void;
-    public unsubscribe<T>(topic: string, cb?: (data: T) => void): void {
+    public unsubscribe<T extends keyof WsEventMap>(topic: T, cb?: (data: WsEventMap[T]) => void): void {
         if (cb) {
-            this.getSocket().off(topic, cb);
+            this.getSocket().off(topic, cb as any);
         } else {
             this.getSocket().off(topic);
         }

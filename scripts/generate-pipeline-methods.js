@@ -79,10 +79,10 @@ function generateTypeScriptCode(obj, indent = 0) {
     for (const [key, value] of Object.entries(obj)) {
         if (typeof value === 'string') {
             // This is a method reference
-            code += `${spaces}  ${key}: ${value},\n`;
+            code += `${spaces}  '${key}': ${value},\n`;
         } else {
             // This is a nested object
-            code += `${spaces}  ${key}: ${generateTypeScriptCode(value, indent + 1)},\n`;
+            code += `${spaces}  '${key}': ${generateTypeScriptCode(value, indent + 1)},\n`;
         }
     }
 
