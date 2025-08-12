@@ -1,103 +1,102 @@
 name: Release
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - 'main'
-  workflow_dispatch:
+    push:
+        branches:
+            - 'main'
+    workflow_dispatch:
 
 env:
-  NODE_VERSION: 22
+    NODE_VERSION: 22
 
 permissions:
-  contents: write
-  id-token: write
-  issues: write
-  pull-requests: write
-
+    contents: write
+    id-token: write
+    issues: write
+    pull-requests: write
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    environment: main
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
+    test:
+        runs-on: ubuntu-latest
+        environment: main
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4.2.2
+              with:
+                  fetch-depth: 0
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: false
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
+              with:
+                  run_install: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4.4.0
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        env:
-          HUSKY: 0
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+              env:
+                  HUSKY: 0
 
-      - name: Test
-        run: |
-          pnpm test:unit
-        env:
-          API_CORE_URL: https://api.dev.hautech.ai
-          APP_ID: ${{ secrets.APP_ID }}
-          APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
-          APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
+            - name: Test
+              run: |
+                  pnpm test:unit
+              env:
+                  API_CORE_URL: https://api.dev.hautech.ai
+                  APP_ID: ${{ secrets.APP_ID }}
+                  APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
+                  APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
 
-  release:
-    runs-on: ubuntu-22.04
-    needs: [test]
-    name: Release
-    steps:
-      - uses: tibdex/github-app-token@v2
-        id: generate_token
-        with:
-          app_id: ${{ secrets.BOT_APPLICATION_ID }}
-          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+    release:
+        runs-on: ubuntu-22.04
+        needs: [test]
+        name: Release
+        steps:
+            - uses: tibdex/github-app-token@v2
+              id: generate_token
+              with:
+                  app_id: ${{ secrets.BOT_APPLICATION_ID }}
+                  private_key: ${{ secrets.BOT_PRIVATE_KEY }}
 
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
+            - name: Checkout
+              uses: actions/checkout@v4.2.2
+              with:
+                  fetch-depth: 0
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: false
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
+              with:
+                  run_install: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4.4.0
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+                  cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        env:
-          HUSKY: 0
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+              env:
+                  HUSKY: 0
 
-      - name: Prepare repository
-        run: |
-          git config user.email "admin@hautech.ai"
-          git config user.name "Hautech Bot"
+            - name: Prepare repository
+              run: |
+                  git config user.email "admin@hautech.ai"
+                  git config user.name "Hautech Bot"
 
-      - name: Build the package
-        run: pnpm build
-        
-      - name: up version
-        id: semantic
-        run: pnpm run up-versions
-        env:
-          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Build the package
+              run: pnpm build
+
+            - name: up version
+              id: semantic
+              run: pnpm run up-versions
+              env:
+                  GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

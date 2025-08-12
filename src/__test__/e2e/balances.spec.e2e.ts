@@ -113,7 +113,7 @@ describe('Balances API E2E Tests', () => {
 
             expect(result).toBeDefined();
             expect(typeof result).toBe('string');
-            
+
             // Should be a valid numeric string
             const numericValue = parseFloat(result);
             expect(isNaN(numericValue)).toBe(false);
@@ -126,7 +126,7 @@ describe('Balances API E2E Tests', () => {
 
             expect(result).toBeDefined();
             expect(typeof result).toBe('string');
-            
+
             // Should be a valid numeric string
             const numericValue = parseFloat(result);
             expect(isNaN(numericValue)).toBe(false);
@@ -164,9 +164,9 @@ describe('Balances API E2E Tests', () => {
         it('should handle undefined/null balance gracefully', async () => {
             // This test verifies the default '0' return when balance is null/undefined
             const nonExistentAccountId = v4();
-            
+
             const result = await sdk.balances.getCurrentValue(nonExistentAccountId);
-            
+
             expect(result).toBe('0');
         });
     });

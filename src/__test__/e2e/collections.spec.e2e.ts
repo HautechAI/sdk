@@ -213,9 +213,9 @@ describe('Collections API E2E Tests', () => {
             expect(result.data).toBeDefined();
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.pageInfo).toBeDefined();
-            
+
             // All returned items should be videos
-            result.data.forEach(item => {
+            result.data.forEach((item) => {
                 expect(item.kind).toBe('video');
             });
         });
@@ -229,9 +229,9 @@ describe('Collections API E2E Tests', () => {
             expect(result.data).toBeDefined();
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.pageInfo).toBeDefined();
-            
+
             // All returned items should be images
-            result.data.forEach(item => {
+            result.data.forEach((item) => {
                 expect(item.kind).toBe('image');
             });
         });
@@ -249,9 +249,9 @@ describe('Collections API E2E Tests', () => {
             expect(Array.isArray(result.data)).toBe(true);
             expect(result.data.length).toBeLessThanOrEqual(10);
             expect(result.pageInfo).toBeDefined();
-            
+
             // All returned items should be videos
-            result.data.forEach(item => {
+            result.data.forEach((item) => {
                 expect(item.kind).toBe('video');
             });
         });
@@ -272,17 +272,17 @@ describe('Collections API E2E Tests', () => {
             expect(createdCollectionId).toBeDefined();
 
             const kinds = ['collection', 'operation', 'stack', 'pose', 'storage', 'workflow'];
-            
+
             for (const kind of kinds) {
                 const result = await sdk.collections.items.listByKind(createdCollectionId, kind as any);
-                
+
                 expect(result).toBeDefined();
                 expect(result.data).toBeDefined();
                 expect(Array.isArray(result.data)).toBe(true);
                 expect(result.pageInfo).toBeDefined();
-                
+
                 // All returned items should match the requested kind
-                result.data.forEach(item => {
+                result.data.forEach((item) => {
                     expect(item.kind).toBe(kind);
                 });
             }
