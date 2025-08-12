@@ -3,10 +3,12 @@
 ## Quick Start
 
 **Prerequisites:**
+
 - Node.js 22+, PNPM ^10
 - **Never use npm/yarn - this repository requires PNPM**
 
 **Bootstrap:**
+
 ```bash
 pnpm install --frozen-lockfile
 ```
@@ -28,24 +30,25 @@ pnpm install --frozen-lockfile
 Before proposing, committing, or sending any changes, you must verify the following locally using PNPM:
 
 1. Lint the code and fix issues:
-   ```bash
-   pnpm lint
-   ```
+    ```bash
+    pnpm lint
+    ```
 2. Build the project successfully:
-   ```bash
-   pnpm build
-   ```
+    ```bash
+    pnpm build
+    ```
 3. Run unit tests:
-   ```bash
-   pnpm test:unit
-   ```
-   - Ensure all tests pass locally.
+    ```bash
+    pnpm test:unit
+    ```
+    - Ensure all tests pass locally.
 
 Only proceed to open a PR or finalize the change if all three steps pass without errors.
 
 ## Testing
 
 **Application Testing:**
+
 - **E2E/Integration Tests**: Use `pnpm test` to run the suite
 - **CI Pipeline**: Tests run as separate parallel jobs for faster feedback
 

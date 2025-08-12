@@ -60,3 +60,51 @@ const sdk = createSDK({ authToken: () => accountToken }); // you should call the
 ### Using SDK
 
 Docs about how to use the SDK are available [here](https://docs.hautech.ai/)
+
+## Development
+
+### Prerequisites
+
+- Node.js 22+
+- PNPM 10+
+
+### Installation
+
+```bash
+pnpm install --frozen-lockfile
+```
+
+### Building
+
+```bash
+pnpm build
+```
+
+### Testing
+
+```bash
+# Run all tests (unit + e2e)
+pnpm test
+
+# Run unit tests only
+pnpm test:unit
+
+# Run e2e tests only
+pnpm test:e2e
+
+# Run tests with coverage
+pnpm test:cov
+```
+
+### Linting and Formatting
+
+```bash
+# Check code formatting
+npx prettier --check .
+
+# Fix code formatting
+npx prettier --write .
+
+# Type checking
+npx tsc --noEmit
+```
