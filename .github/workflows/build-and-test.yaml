@@ -1,0 +1,49 @@
+name: Build and test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: main
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          HUSKY: 0
+
+      - name: Build the package
+        run: pnpm build
+
+      - name: Test
+        run: |
+          pnpm test:unit
+        env:
+          API_CORE_URL: https://api.dev.hautech.ai
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_KEY_ID: ${{ secrets.APP_KEY_ID }}
+          APP_KEY_SECRET: ${{ secrets.APP_KEY_SECRET }}
