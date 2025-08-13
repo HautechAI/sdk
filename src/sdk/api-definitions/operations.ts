@@ -44,6 +44,12 @@ export const useOperationsApi = () => {
                 creatomate: {
                     v1: hautechApi.operationsControllerRunAnimateCreatomateV1V1,
                 },
+                veo3: {
+                    v1: hautechApi.operationsControllerRunVeo3V1V1,
+                    fast: {
+                        v1: hautechApi.operationsControllerRunVeo3FastV1V1,
+                    },
+                },
             },
             edit: {
                 flux_kontext_dev: {
@@ -83,9 +89,26 @@ export const useOperationsApi = () => {
                 kate: {
                     v1: hautechApi.operationsControllerRunImagineKateV1V1,
                 },
+                flux_1_1_pro_ultra: {
+                    v1: hautechApi.operationsControllerRunImagineFlux11ProUltraV1V1,
+                },
+                luma: {
+                    photon: {
+                        v1: hautechApi.operationsControllerRunLumaPhotonV1V1,
+                    },
+                },
+                imagen4: {
+                    v1: hautechApi.operationsControllerRunImagen4V1V1,
+                },
+                seedream3: {
+                    v1: hautechApi.operationsControllerRunSeedream3V1V1,
+                },
             },
             upscale: {
                 v1: hautechApi.operationsControllerRunUpscaleV1V1,
+                topaz: {
+                    v1: hautechApi.operationsControllerRunTopazUpscaleV1V1,
+                },
             },
             objectDetection: {
                 v1: hautechApi.operationsControllerRunObjectDetectionV1V1,
