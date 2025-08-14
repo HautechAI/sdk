@@ -17,6 +17,7 @@ export interface AnimateCreatomateV1Response {
   status: AnimateCreatomateV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: AnimateCreatomateV1ResponseMetadata;

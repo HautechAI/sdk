@@ -17,6 +17,7 @@ export interface ResizeV1Response {
   status: ResizeV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: ResizeV1ResponseMetadata;

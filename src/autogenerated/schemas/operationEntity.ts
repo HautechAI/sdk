@@ -17,6 +17,7 @@ export interface OperationEntity {
   status: OperationEntityStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: OperationEntityMetadata;

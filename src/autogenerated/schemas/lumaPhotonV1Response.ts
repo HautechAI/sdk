@@ -17,6 +17,7 @@ export interface LumaPhotonV1Response {
   status: LumaPhotonV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: LumaPhotonV1ResponseMetadata;

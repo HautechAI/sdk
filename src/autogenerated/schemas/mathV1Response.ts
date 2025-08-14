@@ -17,6 +17,7 @@ export interface MathV1Response {
   status: MathV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: MathV1ResponseMetadata;

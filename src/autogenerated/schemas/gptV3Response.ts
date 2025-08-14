@@ -17,6 +17,7 @@ export interface GptV3Response {
   status: GptV3ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: GptV3ResponseMetadata;

@@ -17,6 +17,7 @@ export interface EchoV1Response {
   status: EchoV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: EchoV1ResponseMetadata;

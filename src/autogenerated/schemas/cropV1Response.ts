@@ -17,6 +17,7 @@ export interface CropV1Response {
   status: CropV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: CropV1ResponseMetadata;

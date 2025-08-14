@@ -17,6 +17,7 @@ export interface NoiseV1Response {
   status: NoiseV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: NoiseV1ResponseMetadata;

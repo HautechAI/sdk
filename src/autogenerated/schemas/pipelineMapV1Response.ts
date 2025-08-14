@@ -17,6 +17,7 @@ export interface PipelineMapV1Response {
   status: PipelineMapV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: PipelineMapV1ResponseMetadata;

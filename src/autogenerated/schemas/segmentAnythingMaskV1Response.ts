@@ -17,6 +17,7 @@ export interface SegmentAnythingMaskV1Response {
   status: SegmentAnythingMaskV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: SegmentAnythingMaskV1ResponseMetadata;

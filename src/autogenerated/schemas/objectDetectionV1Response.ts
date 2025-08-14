@@ -17,6 +17,7 @@ export interface ObjectDetectionV1Response {
   status: ObjectDetectionV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: ObjectDetectionV1ResponseMetadata;

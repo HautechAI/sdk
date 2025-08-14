@@ -17,6 +17,7 @@ export interface HauteNaomiV1Response {
   status: HauteNaomiV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: HauteNaomiV1ResponseMetadata;
