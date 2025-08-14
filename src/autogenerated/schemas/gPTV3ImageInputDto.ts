@@ -13,5 +13,5 @@ export interface GPTV3ImageInputDto {
   /** The ID of the image to analyze. */
   imageId: string;
   /** The level of detail to use when processing the image. */
-  detail?: GPTV3ImageInputDtoDetail;
+  detail: GPTV3ImageInputDtoDetail;
 }

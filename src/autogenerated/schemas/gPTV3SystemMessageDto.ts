@@ -4,13 +4,13 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { GPTV3SystemMessageDtoContent } from './gPTV3SystemMessageDtoContent';
+import type { GPTV3SystemMessageDtoContentItemOneOfItem } from './gPTV3SystemMessageDtoContentItemOneOfItem';
 import type { GPTV3SystemMessageDtoRole } from './gPTV3SystemMessageDtoRole';
 import type { GPTV3SystemMessageDtoType } from './gPTV3SystemMessageDtoType';
 
 export interface GPTV3SystemMessageDto {
   /** The content of the system message. Can be a string or an array of text and image inputs. */
-  content: GPTV3SystemMessageDtoContent;
+  content: GPTV3SystemMessageDtoContentItemOneOfItem[][];
   /** The role of the message sender. */
   role: GPTV3SystemMessageDtoRole;
   /** The type of the message input. Always message. */

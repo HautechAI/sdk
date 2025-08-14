@@ -11,10 +11,10 @@ import type { VideoEntityMetadata } from './videoEntityMetadata';
 export interface VideoEntity {
   duration: string;
   kind: VideoEntityKind;
-  width: number;
-  height: number;
   previewImage?: ImageEntity;
   previewImageId?: string;
+  width: number;
+  height: number;
   url: string;
   id: string;
   creatorId: string;

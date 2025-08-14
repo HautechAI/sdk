@@ -14,8 +14,8 @@ export interface GPTV3FunctionToolDto {
   name: string;
   /** A description of what the function does. */
   description?: string;
-  /** The parameters the functions accepts, described as a JSON Schema object. */
-  parameters?: GPTV3FunctionToolDtoParameters;
+  /** The parameters the functions accepts, described satisfies a JSON Schema object. */
+  parameters: GPTV3FunctionToolDtoParameters;
   /** Whether to enable strict schema adherence when generating the function call. */
-  strict?: boolean;
+  strict: boolean;
 }

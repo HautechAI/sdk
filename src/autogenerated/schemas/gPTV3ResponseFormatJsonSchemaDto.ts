@@ -10,7 +10,7 @@ import type { GPTV3ResponseFormatJsonSchemaDtoType } from './gPTV3ResponseFormat
 export interface GPTV3ResponseFormatJsonSchemaDto {
   /** The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64. */
   name: string;
-  /** The schema for the response format, described as a JSON Schema object. */
+  /** The schema for the response format, described satisfies a JSON Schema object. */
   schema: GPTV3ResponseFormatJsonSchemaDtoSchema;
   /** The type of response format being defined: json_schema. */
   type: GPTV3ResponseFormatJsonSchemaDtoType;
