@@ -17,6 +17,7 @@ export interface Veo3V1Response {
   status: Veo3V1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: Veo3V1ResponseMetadata;

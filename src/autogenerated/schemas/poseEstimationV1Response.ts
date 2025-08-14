@@ -17,6 +17,7 @@ export interface PoseEstimationV1Response {
   status: PoseEstimationV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: PoseEstimationV1ResponseMetadata;

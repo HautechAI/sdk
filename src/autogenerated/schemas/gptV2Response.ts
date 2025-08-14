@@ -17,6 +17,7 @@ export interface GptV2Response {
   status: GptV2ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: GptV2ResponseMetadata;

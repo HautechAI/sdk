@@ -6,6 +6,6 @@
  */
 
 /**
- * The parameters the functions accepts, described as a JSON Schema object.
+ * The parameters the functions accepts, described satisfies a JSON Schema object.
  */
 export type GPTV3FunctionToolDtoParameters = { [key: string]: unknown };

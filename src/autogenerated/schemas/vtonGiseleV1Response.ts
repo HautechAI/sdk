@@ -17,6 +17,7 @@ export interface VtonGiseleV1Response {
   status: VtonGiseleV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: VtonGiseleV1ResponseMetadata;

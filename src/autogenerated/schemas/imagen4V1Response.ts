@@ -17,6 +17,7 @@ export interface Imagen4V1Response {
   status: Imagen4V1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: Imagen4V1ResponseMetadata;

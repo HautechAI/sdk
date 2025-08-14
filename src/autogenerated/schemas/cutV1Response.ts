@@ -17,6 +17,7 @@ export interface CutV1Response {
   status: CutV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: CutV1ResponseMetadata;

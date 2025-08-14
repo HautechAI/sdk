@@ -8,7 +8,7 @@ import type { GPTV3InputModel } from './gPTV3InputModel';
 import type { GPTV3InputInput } from './gPTV3InputInput';
 import type { GPTV3TextConfigDto } from './gPTV3TextConfigDto';
 import type { GPTV3InputToolsItem } from './gPTV3InputToolsItem';
-import type { GPTV3ToolChoiceDto } from './gPTV3ToolChoiceDto';
+import type { GPTV3InputToolChoice } from './gPTV3InputToolChoice';
 
 export interface GPTV3Input {
   /** ID of the model to use. See OpenAI docs for model endpoint compatibility. */
@@ -21,9 +21,10 @@ export interface GPTV3Input {
   seed?: number;
   /** A list of tools the model may call. Supports function, file_search, web_search_preview, and image_generation tools. */
   tools?: GPTV3InputToolsItem[];
-  /** Controls which (if any) tool is called by the model. 'none', 'auto', 'required', or a specific tool type. */
-  tool_choice?: GPTV3ToolChoiceDto;
+  /** Controls how the model chooses tools: "none" disables, "auto" lets the model decide, "required" forces a tool call, or specify an explicit tool choice. */
+  tool_choice?: GPTV3InputToolChoice;
+  /** Maximum number of output tokens to generate. */
+  max_output_tokens?: number;
   /** Specifies which additional data to include in the response. For file search, use ["file_search_call.results"] to include search results. */
   include?: string[];
-  max_output_tokens?: number;
 }

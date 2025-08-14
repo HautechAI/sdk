@@ -17,6 +17,7 @@ export interface IdeogramCharacterV1Response {
   status: IdeogramCharacterV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: IdeogramCharacterV1ResponseMetadata;

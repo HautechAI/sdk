@@ -17,6 +17,7 @@ export interface InpaintKateV1Response {
   status: InpaintKateV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: InpaintKateV1ResponseMetadata;

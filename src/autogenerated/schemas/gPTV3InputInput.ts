@@ -4,13 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { GPTV3SystemMessageDto } from './gPTV3SystemMessageDto';
-import type { GPTV3UserMessageDto } from './gPTV3UserMessageDto';
-import type { GPTV3AssistantMessageDto } from './gPTV3AssistantMessageDto';
-import type { GPTV3DeveloperMessageDto } from './gPTV3DeveloperMessageDto';
 import type { GPTV3InputInputOneOfItem } from './gPTV3InputInputOneOfItem';
 
 /**
  * Text, image, or file inputs to the model, used to generate a response. Can be a simple string, a single message object, or an array of messages with different roles.
  */
-export type GPTV3InputInput = string | GPTV3SystemMessageDto | GPTV3UserMessageDto | GPTV3AssistantMessageDto | GPTV3DeveloperMessageDto | GPTV3InputInputOneOfItem[];
+export type GPTV3InputInput = string | GPTV3InputInputOneOfItem[];

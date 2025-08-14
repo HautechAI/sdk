@@ -17,6 +17,7 @@ export interface NegateImageV1Response {
   status: NegateImageV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: NegateImageV1ResponseMetadata;

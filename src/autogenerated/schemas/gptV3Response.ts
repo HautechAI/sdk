@@ -5,18 +5,19 @@
  * OpenAPI spec version: 1.0
  */
 import type { GptV3ResponseKind } from './gptV3ResponseKind';
-import type { OperationOutputJSON } from './operationOutputJSON';
+import type { GPTV3Output } from './gPTV3Output';
 import type { GptV3ResponseInput } from './gptV3ResponseInput';
 import type { GptV3ResponseStatus } from './gptV3ResponseStatus';
 import type { GptV3ResponseMetadata } from './gptV3ResponseMetadata';
 
 export interface GptV3Response {
   kind: GptV3ResponseKind;
-  output: OperationOutputJSON;
+  output: GPTV3Output;
   input: GptV3ResponseInput;
   status: GptV3ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: GptV3ResponseMetadata;

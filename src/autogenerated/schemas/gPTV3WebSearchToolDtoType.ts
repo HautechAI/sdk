@@ -14,4 +14,5 @@ export type GPTV3WebSearchToolDtoType = typeof GPTV3WebSearchToolDtoType[keyof t
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const GPTV3WebSearchToolDtoType = {
   web_search_preview: 'web_search_preview',
+  web_search_preview_2025_03_11: 'web_search_preview_2025_03_11',
 } as const;

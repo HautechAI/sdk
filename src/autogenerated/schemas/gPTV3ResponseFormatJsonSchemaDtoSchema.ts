@@ -6,6 +6,6 @@
  */
 
 /**
- * The schema for the response format, described as a JSON Schema object.
+ * The schema for the response format, described satisfies a JSON Schema object.
  */
 export type GPTV3ResponseFormatJsonSchemaDtoSchema = { [key: string]: unknown };

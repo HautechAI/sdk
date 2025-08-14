@@ -17,6 +17,7 @@ export interface EditFluxKontextDevV1Response {
   status: EditFluxKontextDevV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: EditFluxKontextDevV1ResponseMetadata;

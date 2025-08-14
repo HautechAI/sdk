@@ -17,6 +17,7 @@ export interface UpscaleV1Response {
   status: UpscaleV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: UpscaleV1ResponseMetadata;

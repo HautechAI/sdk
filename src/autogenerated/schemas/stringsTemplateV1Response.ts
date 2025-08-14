@@ -17,6 +17,7 @@ export interface StringsTemplateV1Response {
   status: StringsTemplateV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: StringsTemplateV1ResponseMetadata;

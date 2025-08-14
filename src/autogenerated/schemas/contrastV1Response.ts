@@ -17,6 +17,7 @@ export interface ContrastV1Response {
   status: ContrastV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: ContrastV1ResponseMetadata;

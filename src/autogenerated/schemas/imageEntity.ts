@@ -14,8 +14,8 @@ export interface ImageEntity {
   metadata: ImageEntityMetadata;
   createdAt: string;
   updatedAt: string;
+  format: string;
   width: number;
   height: number;
-  format: string;
   url: string;
 }

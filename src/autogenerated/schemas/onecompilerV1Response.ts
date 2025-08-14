@@ -17,6 +17,7 @@ export interface OnecompilerV1Response {
   status: OnecompilerV1ResponseStatus;
   type: string;
   price?: string;
+  estimatedPrice?: string;
   id: string;
   creatorId: string;
   metadata: OnecompilerV1ResponseMetadata;
