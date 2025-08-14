@@ -4,9 +4,25 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { GPTV3SystemMessageDto } from './gPTV3SystemMessageDto';
-import type { GPTV3UserMessageDto } from './gPTV3UserMessageDto';
-import type { GPTV3AssistantMessageDto } from './gPTV3AssistantMessageDto';
-import type { GPTV3DeveloperMessageDto } from './gPTV3DeveloperMessageDto';
+import type { GPTV3ResponseInputItemMessage } from './gPTV3ResponseInputItemMessage';
+import type { GPTV3ResponseOutputMessageDto } from './gPTV3ResponseOutputMessageDto';
+import type { GPTV3ResponseFileSearchToolCallDto } from './gPTV3ResponseFileSearchToolCallDto';
+import type { GPTV3ResponseComputerToolCallDto } from './gPTV3ResponseComputerToolCallDto';
+import type { GPTV3ResponseInputComputerCallOutputDto } from './gPTV3ResponseInputComputerCallOutputDto';
+import type { GPTV3ResponseFunctionWebSearchDto } from './gPTV3ResponseFunctionWebSearchDto';
+import type { GPTV3ResponseFunctionToolCallDto } from './gPTV3ResponseFunctionToolCallDto';
+import type { GPTV3ResponseInputFunctionCallOutputDto } from './gPTV3ResponseInputFunctionCallOutputDto';
+import type { GPTV3ResponseReasoningItemDto } from './gPTV3ResponseReasoningItemDto';
+import type { GPTV3ResponseInputItemImageGenerationCallDto } from './gPTV3ResponseInputItemImageGenerationCallDto';
+import type { GPTV3ResponseCodeInterpreterToolCallDto } from './gPTV3ResponseCodeInterpreterToolCallDto';
+import type { GPTV3ResponseInputLocalShellCallDto } from './gPTV3ResponseInputLocalShellCallDto';
+import type { GPTV3ResponseInputLocalShellCallOutputDto } from './gPTV3ResponseInputLocalShellCallOutputDto';
+import type { GPTV3ResponseInputMcpListToolsDto } from './gPTV3ResponseInputMcpListToolsDto';
+import type { GPTV3ResponseInputMcpApprovalRequestDto } from './gPTV3ResponseInputMcpApprovalRequestDto';
+import type { GPTV3ResponseInputMcpApprovalResponseDto } from './gPTV3ResponseInputMcpApprovalResponseDto';
+import type { GPTV3ResponseInputMcpCallDto } from './gPTV3ResponseInputMcpCallDto';
+import type { GPTV3ResponseCustomToolCallOutputDto } from './gPTV3ResponseCustomToolCallOutputDto';
+import type { GPTV3ResponseCustomToolCallDto } from './gPTV3ResponseCustomToolCallDto';
+import type { GPTV3ResponseInputItemReferenceDto } from './gPTV3ResponseInputItemReferenceDto';
 
-export type GPTV3InputInputOneOfItem = GPTV3SystemMessageDto | GPTV3UserMessageDto | GPTV3AssistantMessageDto | GPTV3DeveloperMessageDto;
+export type GPTV3InputInputOneOfItem = GPTV3ResponseInputItemMessage | GPTV3ResponseOutputMessageDto | GPTV3ResponseFileSearchToolCallDto | GPTV3ResponseComputerToolCallDto | GPTV3ResponseInputComputerCallOutputDto | GPTV3ResponseFunctionWebSearchDto | GPTV3ResponseFunctionToolCallDto | GPTV3ResponseInputFunctionCallOutputDto | GPTV3ResponseReasoningItemDto | GPTV3ResponseInputItemImageGenerationCallDto | GPTV3ResponseCodeInterpreterToolCallDto | GPTV3ResponseInputLocalShellCallDto | GPTV3ResponseInputLocalShellCallOutputDto | GPTV3ResponseInputMcpListToolsDto | GPTV3ResponseInputMcpApprovalRequestDto | GPTV3ResponseInputMcpApprovalResponseDto | GPTV3ResponseInputMcpCallDto | GPTV3ResponseCustomToolCallOutputDto | GPTV3ResponseCustomToolCallDto | GPTV3ResponseInputItemReferenceDto;
