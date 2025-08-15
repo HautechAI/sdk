@@ -4,14 +4,14 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { GPTV3ResponseMcpListToolsToolDtoInputSchema } from './gPTV3ResponseMcpListToolsToolDtoInputSchema';
 import type { GPTV3ResponseMcpListToolsToolDtoAnnotations } from './gPTV3ResponseMcpListToolsToolDtoAnnotations';
+import type { GPTV3ResponseMcpListToolsToolDtoInputSchema } from './gPTV3ResponseMcpListToolsToolDtoInputSchema';
 
 export interface GPTV3ResponseMcpListToolsToolDto {
   name: string;
-  input_schema?: GPTV3ResponseMcpListToolsToolDtoInputSchema;
   /** @nullable */
   annotations?: GPTV3ResponseMcpListToolsToolDtoAnnotations;
   /** @nullable */
   description?: string | null;
+  input_schema: GPTV3ResponseMcpListToolsToolDtoInputSchema;
 }
