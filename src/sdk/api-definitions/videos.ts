@@ -74,11 +74,11 @@ export const useVideosApi = () => {
             const isBrowser = typeof window !== 'undefined' && typeof Blob !== 'undefined';
 
             if (isBrowser) {
-                const response = await axios.get(fileUrl, { responseType: 'blob', timeout: 30000 });
+                const response = await axios.get(fileUrl, { responseType: 'blob', timeout: 60000 });
                 const blob = new Blob([response.data], { type: response.headers['content-type'] });
                 return sdk.videos.createFromFile(blob);
             } else {
-                const response = await axios.get(fileUrl, { responseType: 'stream', timeout: 30000 });
+                const response = await axios.get(fileUrl, { responseType: 'stream', timeout: 60000 });
                 return sdk.videos.createFromFile({
                     stream: response.data,
                     filename: fileUrl.split('/').pop()!,

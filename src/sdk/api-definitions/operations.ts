@@ -8,7 +8,7 @@ const waitOperation = wrapCustomMethod(async function <
     T extends Omit<OperationEntity, 'output'> & { output: O extends unknown ? any : O },
 >(this: any, operation: T, timeoutMs = 60000): Promise<T> {
     const deadline = Date.now() + timeoutMs;
-    const delay = 1000;
+    const delay = 3000;
     const sdk: SDK = this;
 
     const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

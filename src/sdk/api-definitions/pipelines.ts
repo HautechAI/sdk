@@ -78,7 +78,7 @@ export const usePipelinesApi = () => {
             const sdk: SDK = this;
 
             const deadline = Date.now() + timeoutMs;
-            const delay = 1000;
+            const delay = 3000;
 
             const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
