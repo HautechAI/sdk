@@ -36,7 +36,7 @@ export class WsClient {
             return;
         }
 
-        ws.on('connect', async (event) => {
+        ws.on('connect', async () => {
             await cb();
         });
     }
