@@ -33,11 +33,16 @@ describe('WebSocket Client E2E Tests', () => {
             // Create SDK with invalid WebSocket URL to test error handling
             const invalidSdk = createTestSdk();
             // Override the baseWsUrl to an invalid one
-            const originalConfig = (invalidSdk.ws as any).config;
-            (invalidSdk.ws as any).config = {
+            const originalConfig = invalidSdk.ws.config;
+            invalidSdk.ws.config = {
                 ...originalConfig,
                 baseWsUrl: 'wss://invalid-websocket-url.test:9999',
+                wsConfig: {
+                    timeout: 3000,
+                },
             };
+
+            //invalidSdk.ws.
 
             return new Promise<void>((resolve, reject) => {
                 const timeout = setTimeout(() => {
