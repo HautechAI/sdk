@@ -18,7 +18,7 @@ describe('LoRA API E2E Tests', () => {
             expect(typeof item.trainingId).toBe('string');
             expect(typeof item.destination).toBe('string');
             expect(typeof item.status).toBe('string');
-            expect(typeof item.triggerWord).toBe('string');
+            expect(typeof item.input).toBe('object');
             expect(typeof item.creatorId).toBe('string');
             expect(typeof item.createdAt).toBe('string');
             expect(typeof item.updatedAt).toBe('string');
@@ -26,9 +26,8 @@ describe('LoRA API E2E Tests', () => {
     }, 60_000);
 
     it('should start a lora training and wait for status change', async () => {
-        const createdLora = await sdk.lora.start({
+        const createdLora = await sdk.lora.startFlux({
             inputImages: `https://picsum.photos/seed/${Date.now()}/512/512`,
-            triggerWord: `e2e_${Date.now()}`,
             trainingSteps: 1,
         });
 

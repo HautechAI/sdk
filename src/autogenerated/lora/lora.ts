@@ -9,7 +9,9 @@ import type {
   LoraControllerListV1Params,
   LoraDto,
   LoraWebhookDto,
-  StartLoraTrainingParamsDto
+  StartFluxTrainingParamsDto,
+  StartNaomiTrainingParamsDto,
+  StartTrainingParamsDto
 } from '.././schemas';
 
 import { axiosMutator } from '../../api-utils';
@@ -19,13 +21,33 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
   export const getLora = () => {
-const loraControllerStartV1 = (
-    startLoraTrainingParamsDto: StartLoraTrainingParamsDto,
+const loraControllerStartFluxV1 = (
+    startFluxTrainingParamsDto: StartFluxTrainingParamsDto,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<LoraDto>(
+      {url: `/v1/lora/train/flux`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: startFluxTrainingParamsDto
+    },
+      options);
+    }
+  const loraControllerStartNaomiV1 = (
+    startNaomiTrainingParamsDto: StartNaomiTrainingParamsDto,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<LoraDto>(
+      {url: `/v1/lora/train/naomi`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: startNaomiTrainingParamsDto
+    },
+      options);
+    }
+  const loraControllerStartGeneralV1 = (
+    startTrainingParamsDto: StartTrainingParamsDto,
  options?: SecondParameter<typeof axiosMutator>,) => {
       return axiosMutator<LoraDto>(
       {url: `/v1/lora/train`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
-      data: startLoraTrainingParamsDto
+      data: startTrainingParamsDto
     },
       options);
     }
@@ -56,8 +78,10 @@ const loraControllerStartV1 = (
     },
       options);
     }
-  return {loraControllerStartV1,loraControllerListV1,loraControllerGetV1,loraControllerTrainingsWebhookV1}};
-export type LoraControllerStartV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerStartV1']>>>
+  return {loraControllerStartFluxV1,loraControllerStartNaomiV1,loraControllerStartGeneralV1,loraControllerListV1,loraControllerGetV1,loraControllerTrainingsWebhookV1}};
+export type LoraControllerStartFluxV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerStartFluxV1']>>>
+export type LoraControllerStartNaomiV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerStartNaomiV1']>>>
+export type LoraControllerStartGeneralV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerStartGeneralV1']>>>
 export type LoraControllerListV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerListV1']>>>
 export type LoraControllerGetV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerGetV1']>>>
 export type LoraControllerTrainingsWebhookV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getLora>['loraControllerTrainingsWebhookV1']>>>

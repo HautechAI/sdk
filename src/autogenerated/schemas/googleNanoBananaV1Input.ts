@@ -4,10 +4,11 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { GoogleNanoBananaV1InputOutputFormat } from './googleNanoBananaV1InputOutputFormat';
 
 export interface GoogleNanoBananaV1Input {
   /** @minItems 1 */
   imageIds: string[];
   prompt: string;
-  negativePrompt?: string;
+  outputFormat?: GoogleNanoBananaV1InputOutputFormat;
 }

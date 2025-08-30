@@ -20,7 +20,6 @@ export interface LoraDto {
   error?: string;
   output?: LoraDtoOutput;
   status: LoraDtoStatus;
-  triggerWord: string;
   creatorId: string;
   createdAt: string;
   updatedAt: string;
