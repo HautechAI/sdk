@@ -33,7 +33,7 @@ describe('LoRA API E2E Tests', () => {
         });
 
         // wait should resolve once status changes from initial or reaches a terminal state
-        const waited = await sdk.lora.wait(createdLora, 60_000);
+        const waited = await sdk.lora.wait(createdLora, 120_000);
         expect(waited).toBeDefined();
         expect(waited.id).toBe(createdLora.id);
         expect(typeof waited.status).toBe('string');

@@ -194,6 +194,11 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunLumaPhotonV1V1,
         },
       },
+      'google': {
+        'nano_banana': {
+          'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
+        },
+      },
     },
   },
   'poses': {

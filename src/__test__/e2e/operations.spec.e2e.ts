@@ -158,6 +158,24 @@ describe('Operations API E2E Tests', () => {
             expect(completedOperation.status).toBe('finished');
             expect(completedOperation.output.data).toEqual(2);
         });
+
+        it('should run google nano banana operation', async () => {
+            const result = await sdk.operations.run.google.nano_banana.v1({
+                input: {
+                    imageIds: ['test-image-id-1'],
+                    prompt: 'Generate banana-style transformation',
+                    negativePrompt: 'low quality, distorted',
+                },
+            });
+
+            expect(result).toBeDefined();
+            expect(result.id).toBeDefined();
+            expect(result.status).toBeDefined();
+            expect(result.createdAt).toBeDefined();
+            expect(result.updatedAt).toBeDefined();
+
+            expect(['pending', 'finished', 'failed'].includes(result.status)).toBe(true);
+        });
     });
 
     describe('Error Handling', () => {

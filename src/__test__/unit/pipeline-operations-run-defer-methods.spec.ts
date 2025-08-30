@@ -632,4 +632,26 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
             expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'topaz', 'upscale', 'v1']);
         });
     });
+
+    describe('Operations Run Google Defer Methods', () => {
+        it('should create defer.operations.run.google.nano_banana.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const bananaTask = pipeline.defer.operations.run.google.nano_banana.v1({
+                    input: {
+                        imageIds: ['test-image-id-1', 'test-image-id-2'],
+                        prompt: 'Generate banana-style image transformation',
+                        negativePrompt: 'low quality, blurry',
+                    },
+                });
+
+                pipeline.output = bananaTask.result;
+                return pipeline;
+            });
+
+            expect(pipelineData).toBeDefined();
+            expect(pipelineData.tasks).toBeDefined();
+            expect(pipelineData.tasks.length).toBeGreaterThan(0);
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'google', 'nano_banana', 'v1']);
+        });
+    });
 });

@@ -164,6 +164,11 @@ export const useOperationsApi = () => {
             echo: {
                 v1: hautechApi.operationsControllerRunEchoV1V1,
             },
+            google: {
+                nano_banana: {
+                    v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
+                },
+            },
         },
         get: wrapApiCallNullable(hautechApi.operationsControllerGetOperationV1),
         getMany: hautechApi.operationsControllerGetOperationsV1,

@@ -9,7 +9,7 @@ export const useWsClient = (config: Config) => new WsClient(config);
 export class WsClient {
     private socket?: Socket;
 
-    constructor(private config: Config) {}
+    constructor(public config: Config) {}
 
     private getSocket(): Socket {
         if (!this.socket) {
