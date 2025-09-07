@@ -194,6 +194,9 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunLumaPhotonV1V1,
         },
       },
+      'seed': {
+        'v1': api.callControllerCallOperationsRunSeedV1V1,
+      },
       'google': {
         'nano_banana': {
           'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
