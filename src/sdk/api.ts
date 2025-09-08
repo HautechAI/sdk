@@ -11,7 +11,6 @@ import { useCollectionsApi } from './api-definitions/collections';
 import { useBalancesApi } from './api-definitions/balances';
 import { useAccessApi } from './api-definitions/access';
 import { usePipelinesApi } from './api-definitions/pipelines';
-import { useLoraApi } from './api-definitions/lora';
 import { useUploadApi } from './api-definitions/upload';
 import { useChatsApi } from './api-definitions/chats';
 import { useWsClient, WsClient } from './ws-client';
@@ -33,7 +32,6 @@ export const apiDefinitions = {
     balances: useBalancesApi(),
     access: useAccessApi(),
     pipelines: usePipelinesApi(),
-    lora: useLoraApi(),
     upload: useUploadApi(),
 };
 

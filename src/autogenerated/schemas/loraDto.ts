@@ -9,11 +9,11 @@ import type { LoraDtoOutput } from './loraDtoOutput';
 import type { LoraDtoStatus } from './loraDtoStatus';
 
 export interface LoraDto {
-  id: string;
   modelName: string;
   modelOwner: string;
   modelVersion: string;
   trainingId: string;
+  connectedOperationId: string;
   weightsUrl?: string;
   destination: string;
   input: LoraDtoInput;

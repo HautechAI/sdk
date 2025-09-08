@@ -4,12 +4,13 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { StartTrainingParamsDtoModelType } from './startTrainingParamsDtoModelType';
 import type { StartTrainingParamsDtoInput } from './startTrainingParamsDtoInput';
 
 export interface StartTrainingParamsDto {
-  modelName: string;
-  modelOwner: string;
+  modelType: StartTrainingParamsDtoModelType;
+  modelName?: string;
+  modelOwner?: string;
   modelVersion?: string;
-  modelDestination: string;
   input: StartTrainingParamsDtoInput;
 }

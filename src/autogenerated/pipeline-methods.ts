@@ -202,6 +202,9 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
         },
       },
+      'lora': {
+        'training': api.callControllerCallOperationsRunLoraTrainingV1,
+      },
     },
   },
   'poses': {

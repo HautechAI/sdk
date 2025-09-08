@@ -169,6 +169,9 @@ export const useOperationsApi = () => {
                     v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
                 },
             },
+            lora: {
+                training: hautechApi.operationsControllerRunLoraTrainingV1,
+            },
         },
         get: wrapApiCallNullable(hautechApi.operationsControllerGetOperationV1),
         getMany: hautechApi.operationsControllerGetOperationsV1,

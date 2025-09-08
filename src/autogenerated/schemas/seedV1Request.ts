@@ -4,10 +4,10 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { SeedV1RequestInput } from './seedV1RequestInput';
+import type { SeedV1Input } from './seedV1Input';
 import type { SeedV1RequestMetadata } from './seedV1RequestMetadata';
 
 export interface SeedV1Request {
-  input: SeedV1RequestInput;
+  input: SeedV1Input;
   metadata?: SeedV1RequestMetadata;
 }

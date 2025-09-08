@@ -164,7 +164,6 @@ describe('Operations API E2E Tests', () => {
                 input: {
                     imageIds: ['test-image-id-1'],
                     prompt: 'Generate banana-style transformation',
-                    negativePrompt: 'low quality, distorted',
                 },
             });
 
