@@ -21,18 +21,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 
   export const getWorkflows = () => {
-const workflowsControllerRunWorkflowV1 = (
-    workflowId: string,
-    runWorkflowParamsDto: RunWorkflowParamsDto,
- options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<RunWorkflowResponseDto>(
-      {url: `/v1/workflows/run/${workflowId}`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: runWorkflowParamsDto
-    },
-      options);
-    }
-  const workflowsControllerCreateWorkflowV1 = (
+const workflowsControllerCreateWorkflowV1 = (
     createWorkflowParamsDto: CreateWorkflowParamsDto,
  options?: SecondParameter<typeof axiosMutator>,) => {
       return axiosMutator<WorkflowDto>(
@@ -78,10 +67,30 @@ const workflowsControllerRunWorkflowV1 = (
     },
       options);
     }
-  return {workflowsControllerRunWorkflowV1,workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1}};
-export type WorkflowsControllerRunWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerRunWorkflowV1']>>>
+  const workflowsControllerRunWorkflowV1 = (
+    id: string,
+    runWorkflowParamsDto: RunWorkflowParamsDto,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<RunWorkflowResponseDto>(
+      {url: `/v1/workflows/${id}/run`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: runWorkflowParamsDto
+    },
+      options);
+    }
+  const workflowsControllerGetWorkflowSchemaV1 = (
+    id: string,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<void>(
+      {url: `/v1/workflows/${id}/schema`, method: 'GET'
+    },
+      options);
+    }
+  return {workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1,workflowsControllerRunWorkflowV1,workflowsControllerGetWorkflowSchemaV1}};
 export type WorkflowsControllerCreateWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerCreateWorkflowV1']>>>
 export type WorkflowsControllerListWorkflowsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerListWorkflowsV1']>>>
 export type WorkflowsControllerGetWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetWorkflowV1']>>>
 export type WorkflowsControllerUpdateWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerUpdateWorkflowV1']>>>
 export type WorkflowsControllerDeleteWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerDeleteWorkflowV1']>>>
+export type WorkflowsControllerRunWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerRunWorkflowV1']>>>
+export type WorkflowsControllerGetWorkflowSchemaV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetWorkflowSchemaV1']>>>

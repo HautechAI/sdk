@@ -5,10 +5,12 @@
  * OpenAPI spec version: 1.0
  */
 import type { UpdateWorkflowParamsDtoData } from './updateWorkflowParamsDtoData';
+import type { UpdateWorkflowParamsDtoPipelineTemplate } from './updateWorkflowParamsDtoPipelineTemplate';
 import type { UpdateWorkflowParamsDtoMetadata } from './updateWorkflowParamsDtoMetadata';
 
 export interface UpdateWorkflowParamsDto {
   data?: UpdateWorkflowParamsDtoData;
+  pipelineTemplate?: UpdateWorkflowParamsDtoPipelineTemplate;
   version?: string;
   metadata?: UpdateWorkflowParamsDtoMetadata;
 }

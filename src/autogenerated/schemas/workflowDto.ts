@@ -5,12 +5,14 @@
  * OpenAPI spec version: 1.0
  */
 import type { WorkflowDtoData } from './workflowDtoData';
+import type { WorkflowDtoPipelineTemplate } from './workflowDtoPipelineTemplate';
 import type { WorkflowDtoMetadata } from './workflowDtoMetadata';
 
 export interface WorkflowDto {
   id: string;
   creatorId: string;
   data: WorkflowDtoData;
+  pipelineTemplate?: WorkflowDtoPipelineTemplate;
   version: string;
   metadata: WorkflowDtoMetadata;
   createdAt: string;

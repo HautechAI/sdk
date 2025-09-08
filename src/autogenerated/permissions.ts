@@ -60,6 +60,7 @@ export type MethodsPermissions = {
         read: boolean;
         update: boolean;
         delete: boolean;
+        execute: boolean;
     };
     poses: {
         create: boolean;
