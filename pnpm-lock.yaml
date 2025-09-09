@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hautechai/pipelines':
-        specifier: ^2.0.2
-        version: 2.0.2(@swc/core@1.13.3)(@types/node@22.5.2)
+        specifier: ^2.0.3
+        version: 2.0.3(@swc/core@1.13.3)(@types/node@22.5.2)
       axios:
         specifier: 1.7.9
         version: 1.7.9
@@ -487,8 +487,8 @@ packages:
   '@gerrit0/mini-shiki@3.8.1':
     resolution: {integrity: sha512-HVZW+8pxoOExr5ZMPK15U79jQAZTO/S6i5byQyyZGjtNj+qaYd82cizTncwFzTQgiLo8uUBym6vh+/1tfJklTw==}
 
-  '@hautechai/pipelines@2.0.2':
-    resolution: {integrity: sha512-GD6DIWKJpNHMmkhxmF1MVCjazOgorGxJklwxhiKoI2nu/TS4roRxGZxe9suqLVTCNiICKK4udp2zI4xbKadksg==}
+  '@hautechai/pipelines@2.0.3':
+    resolution: {integrity: sha512-NOyTIXhDqWzxWZEuaJ3+uaCZ6uAlCeCfNd6KEXHJUnjamgi/B32B0saCWexThB8enayIo7WU8J/nQinO05YXKQ==}
 
   '@ibm-cloud/openapi-ruleset-utilities@1.9.0':
     resolution: {integrity: sha512-AoFbSarOqFBYH+1TZ9Ahkm2IWYSi5v0pBk88fpV+5b3qGJukypX8PwvCWADjuyIccKg48/F73a6hTTkBzDQ2UA==}
@@ -4237,7 +4237,7 @@ snapshots:
       '@shikijs/types': 3.8.1
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@hautechai/pipelines@2.0.2(@swc/core@1.13.3)(@types/node@22.5.2)':
+  '@hautechai/pipelines@2.0.3(@swc/core@1.13.3)(@types/node@22.5.2)':
     dependencies:
       ts-node: 10.9.2(@swc/core@1.13.3)(@types/node@22.5.2)(typescript@5.9.2)
       tsx: 4.20.5
@@ -6883,7 +6883,7 @@ snapshots:
       string-argv: 0.3.2
       tsconfck: 2.1.2(typescript@5.7.3)
       typedoc: 0.28.8(typescript@5.7.3)
-      typedoc-plugin-markdown: 4.7.1(typedoc@0.28.8(typescript@5.5.4))
+      typedoc-plugin-markdown: 4.7.1(typedoc@0.28.8(typescript@5.7.3))
       typescript: 5.7.3
     transitivePeerDependencies:
       - encoding
@@ -7816,7 +7816,7 @@ snapshots:
     dependencies:
       is-typedarray: 1.0.0
 
-  typedoc-plugin-markdown@4.7.1(typedoc@0.28.8(typescript@5.5.4)):
+  typedoc-plugin-markdown@4.7.1(typedoc@0.28.8(typescript@5.7.3)):
     dependencies:
       typedoc: 0.28.8(typescript@5.7.3)
 
