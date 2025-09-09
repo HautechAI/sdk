@@ -670,6 +670,7 @@ export * from './runWorkflowParamsDtoInput';
 export * from './runWorkflowParamsDtoMetadata';
 export * from './runWorkflowResponseDto';
 export * from './seedV1Input';
+export * from './seedV1InputSeedId';
 export * from './seedV1Request';
 export * from './seedV1RequestMetadata';
 export * from './seedV1Response';
