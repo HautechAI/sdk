@@ -640,7 +640,6 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     input: {
                         imageIds: ['test-image-id-1', 'test-image-id-2'],
                         prompt: 'Generate banana-style image transformation',
-                        negativePrompt: 'low quality, blurry',
                     },
                 });
 

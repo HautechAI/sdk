@@ -74,11 +74,11 @@ export const usePipelinesApi = () => {
             this: any,
             pipeline: T,
             timeoutMs = 60000,
+            delay = 3000,
         ): Promise<T> {
             const sdk: SDK = this;
 
             const deadline = Date.now() + timeoutMs;
-            const delay = 3000;
 
             const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
