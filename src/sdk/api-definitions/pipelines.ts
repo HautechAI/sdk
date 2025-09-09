@@ -53,9 +53,9 @@ export const usePipelinesApi = () => {
             const sdk: SDK = this;
 
             return sdk.pipelines.create({
-                pipelineInput: template.input as CreatePipelineParamsDtoPipelineInput,
+                pipelineInput: template.getInput() as CreatePipelineParamsDtoPipelineInput,
                 tasks: template.tasks as TaskDto[],
-                outputRef: template.outputRef as CreatePipelineParamsDtoOutputRef,
+                outputRef: template.$output as CreatePipelineParamsDtoOutputRef,
                 state: template.state,
                 ...params,
             });

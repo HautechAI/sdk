@@ -363,7 +363,6 @@ describe('Chats API E2E Tests', () => {
                 sdk.chats.get(testChat.id),
                 sdk.chats.addItems(testChat.id, { items: [{ role: 'user', content: 'Test 1' }] }),
                 sdk.chats.addItems(testChat.id, { items: [{ role: 'user', content: 'Test 2' }] }),
-                sdk.chats.get(testChat.id),
             ];
 
             const results = await Promise.all(operations);
@@ -372,10 +371,10 @@ describe('Chats API E2E Tests', () => {
             expect(results[0]).toBeDefined(); // First get
             expect(results[1]).toBeDefined(); // First addItems
             expect(results[2]).toBeDefined(); // Second addItems
-            expect(results[3]).toBeDefined(); // Second get
 
             // Final state should have items from the operations
-            const finalChat = results[3];
+            const finalChat = await sdk.chats.get(testChat.id);
+
             expect(finalChat!.items.length).toBeGreaterThanOrEqual(1);
         });
     });

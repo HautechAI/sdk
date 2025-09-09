@@ -14,7 +14,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     access: 'can_view',
                 });
 
-                pipeline.output = grantTask.result;
+                pipeline.setOutputRef(grantTask.result);
                 return pipeline;
             });
 
@@ -31,7 +31,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     parentResourceId: 'test-parent-resource-id',
                 });
 
-                pipeline.output = attachTask.result;
+                pipeline.setOutputRef(attachTask.result);
                 return pipeline;
             });
 
@@ -49,7 +49,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     alias: 'test-user',
                 });
 
-                pipeline.output = createTask.result;
+                pipeline.setOutputRef(createTask.result);
                 return pipeline;
             });
 
@@ -65,7 +65,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-account-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -79,7 +79,7 @@ describe('Pipeline Defer Methods Tests', () => {
             const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
                 const selfTask = pipeline.defer.accounts.self('test-account-id');
 
-                pipeline.output = selfTask.result;
+                pipeline.setOutputRef(selfTask.result);
                 return pipeline;
             });
 
@@ -95,7 +95,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     limit: 10,
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -112,7 +112,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     alias: 'updated-alias',
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 
@@ -129,7 +129,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     accountId: 'test-account-id',
                 });
 
-                pipeline.output = addBalanceTask.result;
+                pipeline.setOutputRef(addBalanceTask.result);
                 return pipeline;
             });
 
@@ -143,7 +143,7 @@ describe('Pipeline Defer Methods Tests', () => {
             const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
                 const selfBalanceTask = pipeline.defer.accounts.balance.self('test-account-id');
 
-                pipeline.output = selfBalanceTask.result;
+                pipeline.setOutputRef(selfBalanceTask.result);
                 return pipeline;
             });
 
@@ -159,7 +159,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     accountId: 'test-account-id',
                 });
 
-                pipeline.output = getBalanceTask.result;
+                pipeline.setOutputRef(getBalanceTask.result);
                 return pipeline;
             });
 
@@ -177,7 +177,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     metadata: { name: 'Test Collection' },
                 });
 
-                pipeline.output = createTask.result;
+                pipeline.setOutputRef(createTask.result);
                 return pipeline;
             });
 
@@ -193,7 +193,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     collectionId: 'test-collection-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -209,7 +209,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     limit: 10,
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -226,7 +226,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     update: { overwrite: { key: 'value' } },
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 
@@ -243,7 +243,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     itemIds: ['test-item-id'],
                 });
 
-                pipeline.output = addTask.result;
+                pipeline.setOutputRef(addTask.result);
                 return pipeline;
             });
 
@@ -259,7 +259,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     collectionId: 'test-collection-id',
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -276,7 +276,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     itemIds: ['test-item-id'],
                 });
 
-                pipeline.output = removeTask.result;
+                pipeline.setOutputRef(removeTask.result);
                 return pipeline;
             });
 
@@ -292,7 +292,7 @@ describe('Pipeline Defer Methods Tests', () => {
             const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
                 const createTask = pipeline.defer.groups.create('test-group-id');
 
-                pipeline.output = createTask.result;
+                pipeline.setOutputRef(createTask.result);
                 return pipeline;
             });
 
@@ -308,7 +308,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-group-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -324,7 +324,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-group-id',
                 });
 
-                pipeline.output = deleteTask.result;
+                pipeline.setOutputRef(deleteTask.result);
                 return pipeline;
             });
 
@@ -342,7 +342,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     role: 'member',
                 });
 
-                pipeline.output = addTask.result;
+                pipeline.setOutputRef(addTask.result);
                 return pipeline;
             });
 
@@ -360,7 +360,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     role: 'member',
                 });
 
-                pipeline.output = removeTask.result;
+                pipeline.setOutputRef(removeTask.result);
                 return pipeline;
             });
 
@@ -378,7 +378,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     ids: ['image1', 'image2'],
                 });
 
-                pipeline.output = getManyTask.result;
+                pipeline.setOutputRef(getManyTask.result);
                 return pipeline;
             });
 
@@ -394,7 +394,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-image-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -411,7 +411,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     type: 'sam.v1',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -429,7 +429,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     ids: ['video1', 'video2'],
                 });
 
-                pipeline.output = getManyTask.result;
+                pipeline.setOutputRef(getManyTask.result);
                 return pipeline;
             });
 
@@ -445,7 +445,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-video-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -463,7 +463,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-operation-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -479,7 +479,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     ids: ['op1', 'op2'],
                 });
 
-                pipeline.output = getManyTask.result;
+                pipeline.setOutputRef(getManyTask.result);
                 return pipeline;
             });
 
@@ -495,7 +495,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     limit: 10,
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -512,7 +512,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     update: { overwrite: { key: 'value' } },
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 
@@ -530,7 +530,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-pose-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -546,7 +546,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     limit: 10,
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -563,7 +563,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     previewImageId: 'test-preview-image-id',
                 });
 
-                pipeline.output = setTask.result;
+                pipeline.setOutputRef(setTask.result);
                 return pipeline;
             });
 
@@ -580,7 +580,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     update: { overwrite: { key: 'value' } },
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 
@@ -598,7 +598,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     metadata: { name: 'Test Stack' },
                 });
 
-                pipeline.output = createTask.result;
+                pipeline.setOutputRef(createTask.result);
                 return pipeline;
             });
 
@@ -614,7 +614,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     id: 'test-stack-id',
                 });
 
-                pipeline.output = getTask.result;
+                pipeline.setOutputRef(getTask.result);
                 return pipeline;
             });
 
@@ -630,7 +630,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     limit: 10,
                 });
 
-                pipeline.output = listTask.result;
+                pipeline.setOutputRef(listTask.result);
                 return pipeline;
             });
 
@@ -647,7 +647,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     update: { overwrite: { key: 'value' } },
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 
@@ -664,7 +664,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     itemIds: ['test-item-id'],
                 });
 
-                pipeline.output = addTask.result;
+                pipeline.setOutputRef(addTask.result);
                 return pipeline;
             });
 
@@ -681,7 +681,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     itemIds: ['test-item-id'],
                 });
 
-                pipeline.output = removeTask.result;
+                pipeline.setOutputRef(removeTask.result);
                 return pipeline;
             });
 
@@ -700,7 +700,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     value: 'test content',
                 });
 
-                pipeline.output = createTask.result;
+                pipeline.setOutputRef(createTask.result);
                 return pipeline;
             });
 
@@ -716,7 +716,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     key: 'test-storage-key',
                 });
 
-                pipeline.output = deleteTask.result;
+                pipeline.setOutputRef(deleteTask.result);
                 return pipeline;
             });
 
@@ -732,7 +732,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     keys: ['storage1', 'storage2'],
                 });
 
-                pipeline.output = getManyTask.result;
+                pipeline.setOutputRef(getManyTask.result);
                 return pipeline;
             });
 
@@ -749,7 +749,7 @@ describe('Pipeline Defer Methods Tests', () => {
                     value: 'updated content',
                 });
 
-                pipeline.output = updateTask.result;
+                pipeline.setOutputRef(updateTask.result);
                 return pipeline;
             });
 

@@ -18,7 +18,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = lindaTask.result;
+                pipeline.setOutputRef(lindaTask.result);
                 return pipeline;
             });
 
@@ -41,7 +41,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = naomiTask.result;
+                pipeline.setOutputRef(naomiTask.result);
                 return pipeline;
             });
 
@@ -66,7 +66,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = inpaintTask.result;
+                pipeline.setOutputRef(inpaintTask.result);
                 return pipeline;
             });
 
@@ -87,7 +87,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = gptTask.result;
+                pipeline.setOutputRef(gptTask.result);
                 return pipeline;
             });
 
@@ -106,7 +106,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = gptTask.result;
+                pipeline.setOutputRef(gptTask.result);
                 return pipeline;
             });
 
@@ -127,7 +127,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = translateTask.result;
+                pipeline.setOutputRef(translateTask.result);
                 return pipeline;
             });
 
@@ -148,7 +148,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = templateTask.result;
+                pipeline.setOutputRef(templateTask.result);
                 return pipeline;
             });
 
@@ -170,7 +170,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = imagineTask.result;
+                pipeline.setOutputRef(imagineTask.result);
                 return pipeline;
             });
 
@@ -190,7 +190,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = upscaleTask.result;
+                pipeline.setOutputRef(upscaleTask.result);
                 return pipeline;
             });
 
@@ -209,7 +209,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = cutTask.result;
+                pipeline.setOutputRef(cutTask.result);
                 return pipeline;
             });
 
@@ -231,7 +231,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = cropTask.result;
+                pipeline.setOutputRef(cropTask.result);
                 return pipeline;
             });
 
@@ -249,7 +249,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = noiseTask.result;
+                pipeline.setOutputRef(noiseTask.result);
                 return pipeline;
             });
 
@@ -269,7 +269,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = resizeTask.result;
+                pipeline.setOutputRef(resizeTask.result);
                 return pipeline;
             });
 
@@ -288,7 +288,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = contrastTask.result;
+                pipeline.setOutputRef(contrastTask.result);
                 return pipeline;
             });
 
@@ -309,7 +309,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = compositeTask.result;
+                pipeline.setOutputRef(compositeTask.result);
                 return pipeline;
             });
 
@@ -327,7 +327,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = negateTask.result;
+                pipeline.setOutputRef(negateTask.result);
                 return pipeline;
             });
 
@@ -348,7 +348,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = detectionTask.result;
+                pipeline.setOutputRef(detectionTask.result);
                 return pipeline;
             });
 
@@ -366,7 +366,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = embeddingsTask.result;
+                pipeline.setOutputRef(embeddingsTask.result);
                 return pipeline;
             });
 
@@ -385,7 +385,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = maskTask.result;
+                pipeline.setOutputRef(maskTask.result);
                 return pipeline;
             });
 
@@ -403,7 +403,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = poseTask.result;
+                pipeline.setOutputRef(poseTask.result);
                 return pipeline;
             });
 
@@ -427,7 +427,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = vtonTask.result;
+                pipeline.setOutputRef(vtonTask.result);
                 return pipeline;
             });
 
@@ -447,7 +447,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = mathTask.result;
+                pipeline.setOutputRef(mathTask.result);
                 return pipeline;
             });
 
@@ -466,7 +466,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = compilerTask.result;
+                pipeline.setOutputRef(compilerTask.result);
                 return pipeline;
             });
 
@@ -485,7 +485,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = mapTask.result;
+                pipeline.setOutputRef(mapTask.result);
                 return pipeline;
             });
 
@@ -506,7 +506,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = animateTask.result;
+                pipeline.setOutputRef(animateTask.result);
                 return pipeline;
             });
 
@@ -524,7 +524,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = animateTask.result;
+                pipeline.setOutputRef(animateTask.result);
                 return pipeline;
             });
 
@@ -542,7 +542,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = animateTask.result;
+                pipeline.setOutputRef(animateTask.result);
                 return pipeline;
             });
 
@@ -563,7 +563,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = editTask.result;
+                pipeline.setOutputRef(editTask.result);
                 return pipeline;
             });
 
@@ -582,7 +582,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = veoTask.result;
+                pipeline.setOutputRef(veoTask.result);
                 return pipeline;
             });
 
@@ -601,7 +601,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = imagenTask.result;
+                pipeline.setOutputRef(imagenTask.result);
                 return pipeline;
             });
 
@@ -622,7 +622,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = topazTask.result;
+                pipeline.setOutputRef(topazTask.result);
                 return pipeline;
             });
 
@@ -643,7 +643,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                     },
                 });
 
-                pipeline.output = bananaTask.result;
+                pipeline.setOutputRef(bananaTask.result);
                 return pipeline;
             });
 
