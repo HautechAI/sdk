@@ -19,4 +19,5 @@ export const CollectionsControllerListItemsV1Kind = {
   storage: 'storage',
   pipeline: 'pipeline',
   workflow: 'workflow',
+  dataset: 'dataset',
 } as const;

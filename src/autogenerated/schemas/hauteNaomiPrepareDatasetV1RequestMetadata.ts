@@ -5,4 +5,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export type StartTrainingParamsDtoInput = { [key: string]: unknown };
+export type HauteNaomiPrepareDatasetV1RequestMetadata = { [key: string]: unknown };

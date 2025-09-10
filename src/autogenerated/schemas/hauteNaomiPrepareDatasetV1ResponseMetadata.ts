@@ -5,4 +5,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraDtoInput = { [key: string]: unknown };
+export type HauteNaomiPrepareDatasetV1ResponseMetadata = { [key: string]: unknown };

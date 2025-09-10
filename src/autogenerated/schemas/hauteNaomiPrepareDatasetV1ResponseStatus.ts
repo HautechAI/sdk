@@ -5,11 +5,11 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraTrainingResponseStatus = typeof LoraTrainingResponseStatus[keyof typeof LoraTrainingResponseStatus];
+export type HauteNaomiPrepareDatasetV1ResponseStatus = typeof HauteNaomiPrepareDatasetV1ResponseStatus[keyof typeof HauteNaomiPrepareDatasetV1ResponseStatus];
 
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const LoraTrainingResponseStatus = {
+export const HauteNaomiPrepareDatasetV1ResponseStatus = {
   pending: 'pending',
   finished: 'finished',
   failed: 'failed',

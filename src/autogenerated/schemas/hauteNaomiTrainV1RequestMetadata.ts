@@ -5,4 +5,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraTrainingResponseInput = { [key: string]: unknown };
+export type HauteNaomiTrainV1RequestMetadata = { [key: string]: unknown };

@@ -50,6 +50,50 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
             expect(pipelineData.tasks.length).toBeGreaterThan(0);
             expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'haute', 'naomi', 'v1']);
         });
+
+        it('should create defer.operations.run.haute.naomi.train.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const naomiTrainTask = pipeline.defer.operations.run.haute.naomi.train.v1({
+                    input: {
+                        datasetFileId: 'test-dataset-file-id',
+                        epochs: 1,
+                    },
+                });
+
+                pipeline.setOutputRef(naomiTrainTask.result);
+                return pipeline;
+            });
+
+            expect(pipelineData).toBeDefined();
+            expect(pipelineData.tasks).toBeDefined();
+            expect(pipelineData.tasks.length).toBeGreaterThan(0);
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'haute', 'naomi', 'train', 'v1']);
+        });
+
+        it('should create defer.operations.run.haute.naomi.prepare_dataset.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const naomiPrepareDatasetTask = pipeline.defer.operations.run.haute.naomi.prepare_dataset.v1({
+                    input: {
+                        data: [
+                            {
+                                garmentImageId: 'test-garment-image-id',
+                                outputImageId: 'test-output-image-id',
+                                prompt: 'Test garment for Naomi training',
+                                category: 'upper_body',
+                            },
+                        ],
+                    },
+                });
+
+                pipeline.setOutputRef(naomiPrepareDatasetTask.result);
+                return pipeline;
+            });
+
+            expect(pipelineData).toBeDefined();
+            expect(pipelineData.tasks).toBeDefined();
+            expect(pipelineData.tasks.length).toBeGreaterThan(0);
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'haute', 'naomi', 'prepare_dataset', 'v1']);
+        });
     });
 
     describe('Operations Run Inpaint Defer Methods', () => {

@@ -5,10 +5,10 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraTrainingResponseKind = typeof LoraTrainingResponseKind[keyof typeof LoraTrainingResponseKind];
+export type HauteNaomiTrainV1ResponseKind = typeof HauteNaomiTrainV1ResponseKind[keyof typeof HauteNaomiTrainV1ResponseKind];
 
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const LoraTrainingResponseKind = {
+export const HauteNaomiTrainV1ResponseKind = {
   operation: 'operation',
 } as const;

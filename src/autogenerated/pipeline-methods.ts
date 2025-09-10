@@ -68,6 +68,12 @@ export const usePipelineDefinitions = () => {
         },
         'naomi': {
           'v1': api.callControllerCallOperationsRunHauteNaomiV1V1,
+          'train': {
+            'v1': api.callControllerCallOperationsRunHauteNaomiTrainV1V1,
+          },
+          'prepare_dataset': {
+            'v1': api.callControllerCallOperationsRunHauteNaomiPrepareDatasetV1V1,
+          },
         },
       },
       'inpaint': {
@@ -201,9 +207,6 @@ export const usePipelineDefinitions = () => {
         'nano_banana': {
           'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
         },
-      },
-      'lora': {
-        'training': api.callControllerCallOperationsRunLoraTrainingV1,
       },
       'fashn': {
         'vton_1_6': {

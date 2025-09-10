@@ -5,10 +5,10 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraTrainingOutputKind = typeof LoraTrainingOutputKind[keyof typeof LoraTrainingOutputKind];
+export type NaomiPrepareDatasetOutputDtoKind = typeof NaomiPrepareDatasetOutputDtoKind[keyof typeof NaomiPrepareDatasetOutputDtoKind];
 
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const LoraTrainingOutputKind = {
+export const NaomiPrepareDatasetOutputDtoKind = {
   json: 'json',
 } as const;

@@ -19,4 +19,5 @@ export const VideoEntityKind = {
   storage: 'storage',
   pipeline: 'pipeline',
   workflow: 'workflow',
+  dataset: 'dataset',
 } as const;

@@ -5,4 +5,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type LoraTrainingRequestMetadata = { [key: string]: unknown };
+export interface NaomiPrepareDatasetResultDto {
+  fileId: string;
+}
