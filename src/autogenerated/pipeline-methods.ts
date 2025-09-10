@@ -205,6 +205,16 @@ export const usePipelineDefinitions = () => {
       'lora': {
         'training': api.callControllerCallOperationsRunLoraTrainingV1,
       },
+      'fashn': {
+        'vton_1_6': {
+          'v1': api.callControllerCallOperationsRunFashnVton16V1V1,
+        },
+      },
+      'alphabake': {
+        'vton': {
+          'v1': api.callControllerCallOperationsRunAlphabakeVtonV1V1,
+        },
+      },
     },
   },
   'poses': {
