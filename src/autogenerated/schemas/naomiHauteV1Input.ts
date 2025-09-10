@@ -36,5 +36,4 @@ export interface NaomiHauteV1Input {
    */
   numInferenceSteps?: number;
   mode?: NaomiHauteV1InputMode;
-  extraLoraIds?: string[];
 }
