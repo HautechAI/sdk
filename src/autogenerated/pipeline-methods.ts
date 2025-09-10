@@ -218,6 +218,11 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunAlphabakeVtonV1V1,
         },
       },
+      'kling': {
+        'kolors_vton': {
+          'v1': api.callControllerCallOperationsRunKlingKolorsVtonV1V1,
+        },
+      },
       'seedream': {
         '4_edit': {
           'v1': api.callControllerCallOperationsRunSeedream4EditV1V1,
