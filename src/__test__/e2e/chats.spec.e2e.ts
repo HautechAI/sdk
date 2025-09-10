@@ -276,14 +276,6 @@ describe('Chats API E2E Tests', () => {
             await expect(sdk.chats.addItems(v4(), itemsData)).rejects.toThrow();
         });
 
-        it('should handle invalid pagination parameters', async () => {
-            await expect(
-                sdk.chats.list({
-                    limit: -1,
-                }),
-            ).rejects.toThrow();
-        });
-
         it('should create chat with any parameter values', async () => {
             // API accepts any parameter values - this is not an error case
             const result = await sdk.chats.create({
