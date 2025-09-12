@@ -4,9 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { SeedV1InputSeedId } from './seedV1InputSeedId';
+import type { SeedV1InputSeed } from './seedV1InputSeed';
 
 export interface SeedV1Input {
   /** @nullable */
-  seedId?: SeedV1InputSeedId;
+  seed?: SeedV1InputSeed;
 }
