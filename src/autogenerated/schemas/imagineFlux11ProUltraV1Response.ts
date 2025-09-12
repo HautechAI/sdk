@@ -18,6 +18,7 @@ export interface ImagineFlux11ProUltraV1Response {
   type: string;
   price?: string;
   estimatedPrice?: string;
+  errorMessage?: string;
   id: string;
   creatorId: string;
   metadata: ImagineFlux11ProUltraV1ResponseMetadata;

@@ -18,6 +18,7 @@ export interface Seedream4EditV1Response {
   type: string;
   price?: string;
   estimatedPrice?: string;
+  errorMessage?: string;
   id: string;
   creatorId: string;
   metadata: Seedream4EditV1ResponseMetadata;

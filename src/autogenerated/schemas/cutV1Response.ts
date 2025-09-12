@@ -18,6 +18,7 @@ export interface CutV1Response {
   type: string;
   price?: string;
   estimatedPrice?: string;
+  errorMessage?: string;
   id: string;
   creatorId: string;
   metadata: CutV1ResponseMetadata;

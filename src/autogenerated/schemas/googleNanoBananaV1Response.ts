@@ -18,6 +18,7 @@ export interface GoogleNanoBananaV1Response {
   type: string;
   price?: string;
   estimatedPrice?: string;
+  errorMessage?: string;
   id: string;
   creatorId: string;
   metadata: GoogleNanoBananaV1ResponseMetadata;
