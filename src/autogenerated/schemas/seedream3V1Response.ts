@@ -19,6 +19,7 @@ export interface Seedream3V1Response {
   price?: string;
   estimatedPrice?: string;
   errorMessage?: string;
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: Seedream3V1ResponseMetadata;

@@ -19,6 +19,7 @@ export interface HauteNaomiPrepareDatasetV1Response {
   price?: string;
   estimatedPrice?: string;
   errorMessage?: string;
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: HauteNaomiPrepareDatasetV1ResponseMetadata;

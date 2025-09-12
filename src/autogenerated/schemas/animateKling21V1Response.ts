@@ -19,6 +19,7 @@ export interface AnimateKling21V1Response {
   price?: string;
   estimatedPrice?: string;
   errorMessage?: string;
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: AnimateKling21V1ResponseMetadata;

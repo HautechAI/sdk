@@ -19,6 +19,7 @@ export interface TopazUpscaleV1Response {
   price?: string;
   estimatedPrice?: string;
   errorMessage?: string;
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: TopazUpscaleV1ResponseMetadata;

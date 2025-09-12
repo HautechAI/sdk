@@ -19,6 +19,7 @@ export interface OperationEntity {
   price?: string;
   estimatedPrice?: string;
   errorMessage?: string;
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: OperationEntityMetadata;
