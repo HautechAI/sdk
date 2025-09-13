@@ -54,6 +54,10 @@ import type {
   ImagineKateV1Response,
   InpaintKateV1Request,
   InpaintKateV1Response,
+  JsonToImageV1Request,
+  JsonToImageV1Response,
+  JsonToVideoV1Request,
+  JsonToVideoV1Response,
   KlingKolorsVtonV1Request,
   KlingKolorsVtonV1Response,
   ListOperationsDto,
@@ -610,7 +614,27 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
-  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1}};
+  const operationsControllerRunJsonToImageV1V1 = (
+    jsonToImageV1Request: JsonToImageV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<JsonToImageV1Response>(
+      {url: `/v1/operations/run/json_to_image.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: jsonToImageV1Request
+    },
+      options);
+    }
+  const operationsControllerRunJsonToVideoV1V1 = (
+    jsonToVideoV1Request: JsonToVideoV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<JsonToVideoV1Response>(
+      {url: `/v1/operations/run/json_to_video.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: jsonToVideoV1Request
+    },
+      options);
+    }
+  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1,operationsControllerRunJsonToImageV1V1,operationsControllerRunJsonToVideoV1V1}};
 export type OperationsControllerGetOperationV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationV1']>>>
 export type OperationsControllerGetOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationsV1']>>>
 export type OperationsControllerListOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerListOperationsV1']>>>
@@ -661,3 +685,5 @@ export type OperationsControllerRunFashnVton16V1V1Result = NonNullable<Awaited<R
 export type OperationsControllerRunAlphabakeVtonV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAlphabakeVtonV1V1']>>>
 export type OperationsControllerRunKlingKolorsVtonV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunKlingKolorsVtonV1V1']>>>
 export type OperationsControllerRunSeedream4EditV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedream4EditV1V1']>>>
+export type OperationsControllerRunJsonToImageV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunJsonToImageV1V1']>>>
+export type OperationsControllerRunJsonToVideoV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunJsonToVideoV1V1']>>>

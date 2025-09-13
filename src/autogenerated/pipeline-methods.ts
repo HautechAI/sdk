@@ -228,6 +228,12 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunSeedream4EditV1V1,
         },
       },
+      'json_to_image': {
+        'v1': api.callControllerCallOperationsRunJsonToImageV1V1,
+      },
+      'json_to_video': {
+        'v1': api.callControllerCallOperationsRunJsonToVideoV1V1,
+      },
     },
   },
   'poses': {
