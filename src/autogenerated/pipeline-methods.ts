@@ -234,6 +234,9 @@ export const usePipelineDefinitions = () => {
       'json_to_video': {
         'v1': api.callControllerCallOperationsRunJsonToVideoV1V1,
       },
+      'yolo11x_pose': {
+        'v1': api.callControllerCallOperationsRunYolo11xPoseV1V1,
+      },
     },
   },
   'poses': {

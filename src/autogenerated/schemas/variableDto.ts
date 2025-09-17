@@ -4,8 +4,9 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { VariableDtoValue } from './variableDtoValue';
 
 export interface VariableDto {
   name: string;
-  value: string;
+  value: VariableDtoValue;
 }
