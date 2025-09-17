@@ -58,7 +58,7 @@ describe('Naomi Operation E2E Tests', () => {
                     garmentImageId: garmentImage.id,
                     poseId: awaitedEstimationTask.result.output.data.poseId,
                     seed: 999,
-                    extraLoraIds: [awaitedTrainNaomiTask.result.output.data.loraId],
+                    loraIds: [awaitedTrainNaomiTask.result.output.data.loraId],
                 },
             });
             const awaitedNaomiTask = pipeline.defer.operations.wait(naomiTask.result);
@@ -73,6 +73,7 @@ describe('Naomi Operation E2E Tests', () => {
 
         expect(createdPipeline).toBeDefined();
         expect(createdPipeline.id).toBeDefined();
+        console.log(createdPipeline.id);
 
         // Wait for the pipeline to complete
         const completedPipeline = await sdk.pipelines.wait(createdPipeline, 600_000);

@@ -8,4 +8,5 @@
 export interface NaomiHauteTrainInputDto {
   datasetFileId: string;
   epochs?: number;
+  alias?: string;
 }

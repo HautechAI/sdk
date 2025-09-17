@@ -11,6 +11,6 @@ export interface VideoCompositionJson {
   height: number;
   format?: string;
   fps: number;
-  durationInFrames: number;
+  duration: number;
   elements?: VideoCompositionJsonElementsItem[];
 }
