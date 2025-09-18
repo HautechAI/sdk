@@ -7,6 +7,7 @@
 import type { VariableDtoValue } from './variableDtoValue';
 
 export interface VariableDto {
-  name: string;
+  /** Variable value, string or number */
   value: VariableDtoValue;
+  name: string;
 }

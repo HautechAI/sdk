@@ -5,4 +5,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type VariableDtoValue = { [key: string]: unknown };
+/**
+ * Variable value, string or number
+ */
+export type VariableDtoValue = string | number;
