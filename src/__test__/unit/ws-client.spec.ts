@@ -238,7 +238,7 @@ describe('WsClient', () => {
             const callback = vi.fn();
             const id = '123e4567-e89b-12d3-a456-426614174000';
 
-            wsClient.subscribeEntityById('operation', id as any, callback);
+            wsClient.subscribeEntityById('operation', id, callback);
 
             expect(mockSocket.emit).toHaveBeenCalledWith('entity:subscribe', {
                 entity: 'operation',
@@ -250,7 +250,7 @@ describe('WsClient', () => {
         it('should unsubscribe from entity by id and emit unsubscribe payload', () => {
             const id = '123e4567-e89b-12d3-a456-426614174000';
 
-            wsClient.unsubscribeEntityById('operation', id as any);
+            wsClient.unsubscribeEntityById('operation', id);
 
             expect(mockSocket.emit).toHaveBeenCalledWith('entity:unsubscribe', {
                 entity: 'operation',

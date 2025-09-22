@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { apiDefinitions, getWsClientDefinitions, pipelineDefinitions } from './sdk/api';
+import { apiDefinitions, getDirectoryApiDefinitions, getWsClientDefinitions, pipelineDefinitions } from './sdk/api';
 import { io } from 'socket.io-client';
 
 export interface SDKOptions {
@@ -7,6 +7,11 @@ export interface SDKOptions {
     baseUrl?: string;
     baseWsUrl?: string;
     wsConfig?: Parameters<typeof io>[1];
+}
+
+export interface DirectorySDKOptions {
+    authToken: () => string | Promise<string>;
+    baseUrl?: string;
 }
 
 export type ApiDefinitionTree<T> = {
@@ -23,5 +28,9 @@ export type DeepWrap<T> = {
             : T[K];
 };
 
-export type SDK = DeepWrap<typeof apiDefinitions & ReturnType<typeof getWsClientDefinitions>>;
+export type SDK = DeepWrap<
+    typeof apiDefinitions &
+        ReturnType<typeof getWsClientDefinitions>
+>;
+export type DirectorySDK = DeepWrap<ReturnType<typeof getDirectoryApiDefinitions>>;
 export type PipelineSDK = DeepWrap<typeof pipelineDefinitions>;

@@ -22,6 +22,7 @@ This document captures non-trivial, project-specific knowledge to speed up futur
     - SDK creation (`createSDK`) accepts:
         - `authToken: () => string | Promise<string>` function that supplies a valid JWT (server-issued) for every request.
         - `baseUrl?: string` (default `https://api.hautech.ai`).
+        - `baseDirectoryUrl?: string` (default `https://api-directory.hautech.ai`).
         - `baseWsUrl?: string` (default `baseUrl`).
         - `wsConfig?: Parameters<typeof io>[1]` forwarded to socket.io client.
     - JWT caching: `createSDK` caches the last token in-memory and reuses it until its `exp` is in the future; clock skew in CI can affect this. If you rely on near-expiry tokens, prefer shorter test runs or refresh earlier.

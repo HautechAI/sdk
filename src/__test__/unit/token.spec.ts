@@ -96,6 +96,7 @@ describe('token', () => {
                     iss: 'test-app-id',
                     permissions: [],
                     sub: 'test-account-id',
+                    kind: 'core-api',
                 });
                 expect(mockSignJWT.setExpirationTime).toHaveBeenCalledWith('3600s');
                 expect(mockSignJWT.setProtectedHeader).toHaveBeenCalledWith({
@@ -133,6 +134,7 @@ describe('token', () => {
                     iss: 'test-app-id',
                     permissions: ['accounts:create', 'accounts:read', 'balances:read', 'balances:self:read'],
                     sub: 'test-account-id',
+                    kind: 'core-api',
                 });
                 expect(mockSignJWT.setExpirationTime).toHaveBeenCalledWith('7200s');
             });
@@ -149,6 +151,7 @@ describe('token', () => {
                     iss: 'test-app-id',
                     permissions: [],
                     sub: 'test-account-id',
+                    kind: 'core-api',
                 });
             });
 
@@ -196,8 +199,23 @@ describe('token', () => {
                         'resources:access:detach',
                     ],
                     sub: 'test-account-id',
+                    kind: 'core-api',
                 });
             });
+        it('should allow overriding kind to directory-api for account token', async () => {
+            await signer.createAccountToken({
+                accountId: 'test-account-id',
+                expiresInSeconds: 3600,
+                kind: 'directory-api',
+            });
+
+            expect(jose.SignJWT).toHaveBeenCalledWith({
+                iss: 'test-app-id',
+                permissions: [],
+                sub: 'test-account-id',
+                kind: 'directory-api',
+            });
+        });
         });
 
         describe('createRootToken', () => {
@@ -216,6 +234,7 @@ describe('token', () => {
                 expect(jose.SignJWT).toHaveBeenCalledWith({
                     iss: 'test-app-id',
                     permissions: ['*'],
+                    kind: 'core-api',
                 });
                 expect(mockSignJWT.setExpirationTime).toHaveBeenCalledWith('7200s');
                 expect(mockSignJWT.setProtectedHeader).toHaveBeenCalledWith({
@@ -304,6 +323,7 @@ describe('token', () => {
                 iss: 'test-app-id',
                 permissions: [],
                 sub: 'test-account-id',
+                kind: 'core-api',
             });
         });
 
@@ -327,6 +347,7 @@ describe('token', () => {
                 iss: 'test-app-id',
                 permissions: ['accounts:create', 'accounts:list'],
                 sub: 'test-account-id',
+                kind: 'core-api',
             });
         });
 
@@ -352,6 +373,7 @@ describe('token', () => {
                 iss: 'test-app-id',
                 permissions: ['balances:self:read', 'balances:self:update'],
                 sub: 'test-account-id',
+                kind: 'core-api',
             });
         });
 
@@ -397,6 +419,7 @@ describe('token', () => {
                     'collections:items:remove',
                 ],
                 sub: 'test-account-id',
+                kind: 'core-api',
             });
         });
     });
