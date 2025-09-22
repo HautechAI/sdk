@@ -5,10 +5,12 @@
  * OpenAPI spec version: 1.0
  */
 import type {
+  AccessControllerListSharedV1Params,
   AttachAccessControllerParamsDto,
   DetachAccessControllerParamsDto,
   GrantAccessControllerParams,
   ListAccessControllerDto,
+  ListSharedResourcesResponseDto,
   RevokeAccessControllerParamsDto
 } from '.././schemas';
 
@@ -74,9 +76,22 @@ const accessControllerAccessV1 = (
     },
       options);
     }
-  return {accessControllerGrantAccessV1,accessControllerRevokeAccessV1,accessControllerAttachAccessV1,accessControllerDetachAccessV1,accessControllerAccessV1}};
+  /**
+ * @summary List resources shared with current user
+ */
+const accessControllerListSharedV1 = (
+    params?: AccessControllerListSharedV1Params,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<ListSharedResourcesResponseDto>(
+      {url: `/v1/access/shared`, method: 'GET',
+        params
+    },
+      options);
+    }
+  return {accessControllerGrantAccessV1,accessControllerRevokeAccessV1,accessControllerAttachAccessV1,accessControllerDetachAccessV1,accessControllerAccessV1,accessControllerListSharedV1}};
 export type AccessControllerGrantAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerGrantAccessV1']>>>
 export type AccessControllerRevokeAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerRevokeAccessV1']>>>
 export type AccessControllerAttachAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerAttachAccessV1']>>>
 export type AccessControllerDetachAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerDetachAccessV1']>>>
 export type AccessControllerAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerAccessV1']>>>
+export type AccessControllerListSharedV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerListSharedV1']>>>

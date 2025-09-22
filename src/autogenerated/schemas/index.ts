@@ -5,6 +5,8 @@
  * OpenAPI spec version: 1.0
  */
 
+export * from './accessControllerListSharedV1Params';
+export * from './accessControllerListSharedV1Type';
 export * from './accountEntity';
 export * from './accountEntityType';
 export * from './accountsControllerListAccountsV1OrderBy';
@@ -562,6 +564,7 @@ export * from './listPipelinesDto';
 export * from './listPosesDto';
 export * from './listPosesParamsDto';
 export * from './listPosesParamsDtoOrderBy';
+export * from './listSharedResourcesResponseDto';
 export * from './listStacksDto';
 export * from './listStacksParamsDto';
 export * from './listStacksParamsDtoOrderBy';
@@ -783,6 +786,8 @@ export * from './selfAccountDtoPermissions';
 export * from './selfAccountDtoType';
 export * from './setPosePreviewControllerParamsDto';
 export * from './setPosePreviewDto';
+export * from './sharedResourceDto';
+export * from './sharedResourceDtoType';
 export * from './stackEntity';
 export * from './stackEntityItemsItem';
 export * from './stackEntityKind';

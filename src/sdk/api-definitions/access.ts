@@ -10,5 +10,6 @@ export const useAccessApi = () => {
         grant: api.accessControllerGrantAccessV1,
         revoke: api.accessControllerRevokeAccessV1,
         list: api.accessControllerAccessV1,
+        listShared: api.accessControllerListSharedV1,
     });
 };
