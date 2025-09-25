@@ -181,6 +181,9 @@ export const usePipelineDefinitions = () => {
       },
       'imagen4': {
         'v1': api.callControllerCallOperationsRunImagen4V1V1,
+        'fast': {
+          'v1': api.callControllerCallOperationsRunImagen4FastV1V1,
+        },
       },
       'topaz': {
         'upscale': {
@@ -226,6 +229,9 @@ export const usePipelineDefinitions = () => {
       'seedream': {
         '4_edit': {
           'v1': api.callControllerCallOperationsRunSeedream4EditV1V1,
+        },
+        '4_t2i': {
+          'v1': api.callControllerCallOperationsRunSeedream4T2iV1V1,
         },
       },
       'json_to_image': {

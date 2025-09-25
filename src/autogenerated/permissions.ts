@@ -101,4 +101,10 @@ export type MethodsPermissions = {
         connect: boolean;
         subscribe: boolean;
     };
+    userProfiles: {
+        create: boolean;
+        read: boolean;
+        update: boolean;
+        list: boolean;
+    };
 };
