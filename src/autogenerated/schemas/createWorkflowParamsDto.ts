@@ -13,4 +13,5 @@ export interface CreateWorkflowParamsDto {
   pipelineTemplate?: CreateWorkflowParamsDtoPipelineTemplate;
   version: string;
   metadata?: CreateWorkflowParamsDtoMetadata;
+  customExecutionPrice?: string;
 }

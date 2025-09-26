@@ -170,6 +170,11 @@ export const useOperationsApi = () => {
                     v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
                 },
             },
+            workflow: {
+                run: {
+                    v1: hautechApi.operationsControllerRunWorkflowsRunV1V1,
+                },
+            },
         },
         get: wrapApiCallNullable(hautechApi.operationsControllerGetOperationV1),
         getMany: hautechApi.operationsControllerGetOperationsV1,

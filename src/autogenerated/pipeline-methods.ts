@@ -243,6 +243,11 @@ export const usePipelineDefinitions = () => {
       'yolo11x_pose': {
         'v1': api.callControllerCallOperationsRunYolo11xPoseV1V1,
       },
+      'workflows': {
+        'run': {
+          'v1': api.callControllerCallOperationsRunWorkflowsRunV1V1,
+        },
+      },
     },
   },
   'poses': {

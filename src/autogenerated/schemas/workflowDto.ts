@@ -15,6 +15,11 @@ export interface WorkflowDto {
   pipelineTemplate?: WorkflowDtoPipelineTemplate;
   version: string;
   metadata: WorkflowDtoMetadata;
+  /**
+   * Custom execution price (decimal string) charged for running this workflow
+   * @nullable
+   */
+  customExecutionPrice?: string | null;
   createdAt: string;
   updatedAt: string;
 }

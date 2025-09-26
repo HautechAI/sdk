@@ -9,5 +9,6 @@ import type { WorkflowsControllerListWorkflowsV1OrderBy } from './workflowsContr
 export type WorkflowsControllerListWorkflowsV1Params = {
 orderBy?: WorkflowsControllerListWorkflowsV1OrderBy;
 limit?: number;
+includeShared?: boolean;
 cursor?: string;
 };

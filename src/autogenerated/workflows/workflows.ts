@@ -11,6 +11,7 @@ import type {
   RunWorkflowResponseDto,
   UpdateWorkflowParamsDto,
   WorkflowDto,
+  WorkflowStatisticsDto,
   WorkflowsControllerListWorkflowsV1Params
 } from '.././schemas';
 
@@ -86,7 +87,15 @@ const workflowsControllerCreateWorkflowV1 = (
     },
       options);
     }
-  return {workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1,workflowsControllerRunWorkflowV1,workflowsControllerGetWorkflowSchemaV1}};
+  const workflowsControllerGetSharedWorkflowStatisticsV1 = (
+    id: string,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<WorkflowStatisticsDto>(
+      {url: `/v1/workflows/${id}/statistics`, method: 'GET'
+    },
+      options);
+    }
+  return {workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1,workflowsControllerRunWorkflowV1,workflowsControllerGetWorkflowSchemaV1,workflowsControllerGetSharedWorkflowStatisticsV1}};
 export type WorkflowsControllerCreateWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerCreateWorkflowV1']>>>
 export type WorkflowsControllerListWorkflowsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerListWorkflowsV1']>>>
 export type WorkflowsControllerGetWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetWorkflowV1']>>>
@@ -94,3 +103,4 @@ export type WorkflowsControllerUpdateWorkflowV1Result = NonNullable<Awaited<Retu
 export type WorkflowsControllerDeleteWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerDeleteWorkflowV1']>>>
 export type WorkflowsControllerRunWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerRunWorkflowV1']>>>
 export type WorkflowsControllerGetWorkflowSchemaV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetWorkflowSchemaV1']>>>
+export type WorkflowsControllerGetSharedWorkflowStatisticsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetSharedWorkflowStatisticsV1']>>>
