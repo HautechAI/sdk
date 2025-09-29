@@ -12,6 +12,4 @@ export interface WorkflowStatisticsDto {
   completedRuns: number;
   /** Number of failed runs */
   failedRuns: number;
-  /** Total earned amount (credits) by the workflow owner from these runs as a decimal string */
-  totalEarned: string;
 }
