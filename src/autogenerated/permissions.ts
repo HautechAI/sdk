@@ -14,6 +14,14 @@ export type MethodsPermissions = {
             update: boolean;
         };
     };
+    rewards: {
+        read: boolean;
+        update: boolean;
+        self: {
+            read: boolean;
+            update: boolean;
+        };
+    };
     collections: {
         create: boolean;
         read: boolean;
