@@ -248,6 +248,17 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunWorkflowsRunV1V1,
         },
       },
+      'flux': {
+        'kontext': {
+          'prepare_dataset': {
+            'v1': api.callControllerCallOperationsRunFluxKontextPrepareDatasetV1V1,
+          },
+          'train': {
+            'v1': api.callControllerCallOperationsRunFluxKontextTrainV1V1,
+          },
+          'v1': api.callControllerCallOperationsRunFluxKontextV1V1,
+        },
+      },
     },
   },
   'poses': {
