@@ -5,8 +5,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface FluxKontextDatasetItemDto {
-  startImageId: string;
-  endImageId: string;
-  prompt: string;
-}
+export type FluxKontextDevTrainV1RequestMetadata = { [key: string]: unknown };

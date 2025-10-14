@@ -249,14 +249,14 @@ export const usePipelineDefinitions = () => {
         },
       },
       'flux': {
-        'kontext': {
+        'kontext_dev': {
           'prepare_dataset': {
-            'v1': api.callControllerCallOperationsRunFluxKontextPrepareDatasetV1V1,
+            'v1': api.callControllerCallOperationsRunFluxKontextDevPrepareDatasetV1V1,
           },
           'train': {
-            'v1': api.callControllerCallOperationsRunFluxKontextTrainV1V1,
+            'v1': api.callControllerCallOperationsRunFluxKontextDevTrainV1V1,
           },
-          'v1': api.callControllerCallOperationsRunFluxKontextV1V1,
+          'v1': api.callControllerCallOperationsRunFluxKontextDevV1V1,
         },
       },
     },

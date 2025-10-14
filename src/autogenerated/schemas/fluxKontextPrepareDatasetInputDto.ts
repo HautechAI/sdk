@@ -7,5 +7,5 @@
 import type { FluxKontextDatasetItemDto } from './fluxKontextDatasetItemDto';
 
 export interface FluxKontextPrepareDatasetInputDto {
-  data: FluxKontextDatasetItemDto[];
+  items: FluxKontextDatasetItemDto[];
 }
