@@ -453,6 +453,7 @@ export * from './getVideosParamsDto';
 export * from './giseleVtonV1Input';
 export * from './giseleVtonV1InputCategory';
 export * from './googleNanoBananaV1Input';
+export * from './googleNanoBananaV1InputAspectRatio';
 export * from './googleNanoBananaV1InputOutputFormat';
 export * from './googleNanoBananaV1Request';
 export * from './googleNanoBananaV1RequestMetadata';
