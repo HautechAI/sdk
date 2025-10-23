@@ -16,6 +16,10 @@ import type {
   AnimateCreatomateV1Response,
   AnimateKling16ProV1Request,
   AnimateKling16ProV1Response,
+  AnimateKling21ProV1Request,
+  AnimateKling21ProV1Response,
+  AnimateKling21StandardV1Request,
+  AnimateKling21StandardV1Response,
   AnimateKling21V1Request,
   AnimateKling21V1Response,
   AttachAccessParamsDto,
@@ -85,6 +89,10 @@ import type {
   ImageUrlResponseDto,
   Imagen4FastV1Request,
   Imagen4FastV1Response,
+  Imagen4StandardV1Request,
+  Imagen4StandardV1Response,
+  Imagen4UltraV1Request,
+  Imagen4UltraV1Response,
   Imagen4V1Request,
   Imagen4V1Response,
   ImagineFlux11ProUltraV1Request,
@@ -99,6 +107,8 @@ import type {
   JsonToVideoV1Response,
   KlingKolorsVtonV1Request,
   KlingKolorsVtonV1Response,
+  KlingVideo25ProImageToVideoV1Request,
+  KlingVideo25ProImageToVideoV1Response,
   ListAccountsDto,
   ListAccountsParamsDto,
   ListCollectionItemsDto,
@@ -767,6 +777,26 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
+  const callControllerCallOperationsRunAnimateKling21StandardV1V1 = (
+    animateKling21StandardV1Request: AnimateKling21StandardV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<AnimateKling21StandardV1Response>(
+      {url: `/v1/call/operations.run.animate.kling_2_1.standard.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: animateKling21StandardV1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunAnimateKling21ProV1V1 = (
+    animateKling21ProV1Request: AnimateKling21ProV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<AnimateKling21ProV1Response>(
+      {url: `/v1/call/operations.run.animate.kling_2_1.pro.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: animateKling21ProV1Request
+    },
+      options);
+    }
   const callControllerCallOperationsRunAnimateCreatomateV1V1 = (
     animateCreatomateV1Request: AnimateCreatomateV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -1027,6 +1057,26 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
+  const callControllerCallOperationsRunImagen4StandardV1V1 = (
+    imagen4StandardV1Request: Imagen4StandardV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Imagen4StandardV1Response>(
+      {url: `/v1/call/operations.run.imagen4.standard.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: imagen4StandardV1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunImagen4UltraV1V1 = (
+    imagen4UltraV1Request: Imagen4UltraV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Imagen4UltraV1Response>(
+      {url: `/v1/call/operations.run.imagen4.ultra.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: imagen4UltraV1Request
+    },
+      options);
+    }
   const callControllerCallOperationsRunWorkflowsRunV1V1 = (
     workflowsRunV1Request: WorkflowsRunV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -1034,6 +1084,16 @@ const callControllerCallAccessGrantV1 = (
       {url: `/v1/call/operations.run.workflows.run.v1`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: workflowsRunV1Request
+    },
+      options);
+    }
+  const callControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1 = (
+    klingVideo25ProImageToVideoV1Request: KlingVideo25ProImageToVideoV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<KlingVideo25ProImageToVideoV1Response>(
+      {url: `/v1/call/operations.run.kling.video_2_5_pro.image_to_video.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: klingVideo25ProImageToVideoV1Request
     },
       options);
     }
@@ -1207,7 +1267,7 @@ const callControllerCallAccessGrantV1 = (
     },
       options);
     }
-  return {callControllerCallAccessGrantV1,callControllerCallAccessAttachV1,callControllerCallAccountsCreateV1,callControllerCallAccountsGetV1,callControllerCallAccountsSelfV1,callControllerCallAccountsListV1,callControllerCallAccountsUpdateV1,callControllerCallAccountsBalanceAddV1,callControllerCallAccountsBalanceSelfV1,callControllerCallAccountsBalanceGetV1,callControllerCallCollectionsCreateV1,callControllerCallCollectionsGetV1,callControllerCallCollectionsListV1,callControllerCallCollectionsMetadataUpdateV1,callControllerCallCollectionsItemsAddV1,callControllerCallCollectionsItemsListV1,callControllerCallCollectionsItemsRemoveV1,callControllerCallGroupsCreateV1,callControllerCallGroupsGetV1,callControllerCallGroupsDeleteV1,callControllerCallGroupsAccountsAddV1,callControllerCallGroupsAccountsRemoveV1,callControllerCallImagesGetManyV1,callControllerCallImagesGetV1,callControllerCallImagesRepresentationsGetV1,callControllerCallVideosGetManyV1,callControllerCallVideosGetV1,callControllerCallOperationsGetV1,callControllerCallOperationsGetManyV1,callControllerCallOperationsListV1,callControllerCallOperationsMetadataUpdateV1,callControllerCallOperationsWaitV1,callControllerCallOperationsRunHauteLindaV1V1,callControllerCallOperationsRunHauteNaomiV1V1,callControllerCallOperationsRunInpaintKateV1V1,callControllerCallOperationsRunGptV1V1,callControllerCallOperationsRunGptV2V1,callControllerCallOperationsRunGptV3V1,callControllerCallOperationsRunTranslateV1V1,callControllerCallOperationsRunStringsTemplateV1V1,callControllerCallOperationsRunImagineKateV1V1,callControllerCallOperationsRunUpscaleV1V1,callControllerCallOperationsRunObjectDetectionV1V1,callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1,callControllerCallOperationsRunSegmentAnythingMaskV1V1,callControllerCallOperationsRunPoseEstimationV1V1,callControllerCallOperationsRunCutV1V1,callControllerCallOperationsRunCropV1V1,callControllerCallOperationsRunNoiseV1V1,callControllerCallOperationsRunResizeV1V1,callControllerCallOperationsRunContrastV1V1,callControllerCallOperationsRunCompositeV1V1,callControllerCallOperationsRunVtonGiseleV1V1,callControllerCallOperationsRunNegateImageV1V1,callControllerCallOperationsRunEchoV1V1,callControllerCallOperationsRunMathV1V1,callControllerCallOperationsRunAnimateKling16ProV1V1,callControllerCallOperationsRunAnimateKling21V1V1,callControllerCallOperationsRunAnimateCreatomateV1V1,callControllerCallOperationsRunOnecompilerV1V1,callControllerCallOperationsRunEditFluxKontextDevV1V1,callControllerCallOperationsRunVeo3V1V1,callControllerCallOperationsRunVeo3FastV1V1,callControllerCallOperationsRunPipelineMapV1V1,callControllerCallOperationsRunImagen4V1V1,callControllerCallOperationsRunTopazUpscaleV1V1,callControllerCallOperationsRunIdeogramCharacterV1V1,callControllerCallOperationsRunSeedream3V1V1,callControllerCallOperationsRunLumaPhotonV1V1,callControllerCallOperationsRunImagineFlux11ProUltraV1V1,callControllerCallOperationsRunSeedV1V1,callControllerCallOperationsRunGoogleNanoBananaV1V1,callControllerCallOperationsRunHauteNaomiTrainV1V1,callControllerCallOperationsRunHauteNaomiPrepareDatasetV1V1,callControllerCallOperationsRunFashnVton16V1V1,callControllerCallOperationsRunAlphabakeVtonV1V1,callControllerCallOperationsRunKlingKolorsVtonV1V1,callControllerCallOperationsRunSeedream4EditV1V1,callControllerCallOperationsRunJsonToImageV1V1,callControllerCallOperationsRunJsonToVideoV1V1,callControllerCallOperationsRunReveRemixV1V1,callControllerCallOperationsRunYolo11xPoseV1V1,callControllerCallOperationsRunSeedream4T2iV1V1,callControllerCallOperationsRunImagen4FastV1V1,callControllerCallOperationsRunWorkflowsRunV1V1,callControllerCallOperationsRunFluxKontextDevPrepareDatasetV1V1,callControllerCallOperationsRunFluxKontextDevTrainV1V1,callControllerCallOperationsRunFluxKontextDevV1V1,callControllerCallPosesGetV1,callControllerCallPosesListV1,callControllerCallPosesPreviewSetV1,callControllerCallPosesMetadataUpdateV1,callControllerCallStacksCreateV1,callControllerCallStacksGetV1,callControllerCallStacksListV1,callControllerCallStacksMetadataUpdateV1,callControllerCallStacksItemsAddV1,callControllerCallStacksItemsRemoveV1,callControllerCallStorageCreateV1,callControllerCallStorageDeleteV1,callControllerCallStorageGetManyV1,callControllerCallStorageUpdateV1}};
+  return {callControllerCallAccessGrantV1,callControllerCallAccessAttachV1,callControllerCallAccountsCreateV1,callControllerCallAccountsGetV1,callControllerCallAccountsSelfV1,callControllerCallAccountsListV1,callControllerCallAccountsUpdateV1,callControllerCallAccountsBalanceAddV1,callControllerCallAccountsBalanceSelfV1,callControllerCallAccountsBalanceGetV1,callControllerCallCollectionsCreateV1,callControllerCallCollectionsGetV1,callControllerCallCollectionsListV1,callControllerCallCollectionsMetadataUpdateV1,callControllerCallCollectionsItemsAddV1,callControllerCallCollectionsItemsListV1,callControllerCallCollectionsItemsRemoveV1,callControllerCallGroupsCreateV1,callControllerCallGroupsGetV1,callControllerCallGroupsDeleteV1,callControllerCallGroupsAccountsAddV1,callControllerCallGroupsAccountsRemoveV1,callControllerCallImagesGetManyV1,callControllerCallImagesGetV1,callControllerCallImagesRepresentationsGetV1,callControllerCallVideosGetManyV1,callControllerCallVideosGetV1,callControllerCallOperationsGetV1,callControllerCallOperationsGetManyV1,callControllerCallOperationsListV1,callControllerCallOperationsMetadataUpdateV1,callControllerCallOperationsWaitV1,callControllerCallOperationsRunHauteLindaV1V1,callControllerCallOperationsRunHauteNaomiV1V1,callControllerCallOperationsRunInpaintKateV1V1,callControllerCallOperationsRunGptV1V1,callControllerCallOperationsRunGptV2V1,callControllerCallOperationsRunGptV3V1,callControllerCallOperationsRunTranslateV1V1,callControllerCallOperationsRunStringsTemplateV1V1,callControllerCallOperationsRunImagineKateV1V1,callControllerCallOperationsRunUpscaleV1V1,callControllerCallOperationsRunObjectDetectionV1V1,callControllerCallOperationsRunSegmentAnythingEmbeddingsV1V1,callControllerCallOperationsRunSegmentAnythingMaskV1V1,callControllerCallOperationsRunPoseEstimationV1V1,callControllerCallOperationsRunCutV1V1,callControllerCallOperationsRunCropV1V1,callControllerCallOperationsRunNoiseV1V1,callControllerCallOperationsRunResizeV1V1,callControllerCallOperationsRunContrastV1V1,callControllerCallOperationsRunCompositeV1V1,callControllerCallOperationsRunVtonGiseleV1V1,callControllerCallOperationsRunNegateImageV1V1,callControllerCallOperationsRunEchoV1V1,callControllerCallOperationsRunMathV1V1,callControllerCallOperationsRunAnimateKling16ProV1V1,callControllerCallOperationsRunAnimateKling21V1V1,callControllerCallOperationsRunAnimateKling21StandardV1V1,callControllerCallOperationsRunAnimateKling21ProV1V1,callControllerCallOperationsRunAnimateCreatomateV1V1,callControllerCallOperationsRunOnecompilerV1V1,callControllerCallOperationsRunEditFluxKontextDevV1V1,callControllerCallOperationsRunVeo3V1V1,callControllerCallOperationsRunVeo3FastV1V1,callControllerCallOperationsRunPipelineMapV1V1,callControllerCallOperationsRunImagen4V1V1,callControllerCallOperationsRunTopazUpscaleV1V1,callControllerCallOperationsRunIdeogramCharacterV1V1,callControllerCallOperationsRunSeedream3V1V1,callControllerCallOperationsRunLumaPhotonV1V1,callControllerCallOperationsRunImagineFlux11ProUltraV1V1,callControllerCallOperationsRunSeedV1V1,callControllerCallOperationsRunGoogleNanoBananaV1V1,callControllerCallOperationsRunHauteNaomiTrainV1V1,callControllerCallOperationsRunHauteNaomiPrepareDatasetV1V1,callControllerCallOperationsRunFashnVton16V1V1,callControllerCallOperationsRunAlphabakeVtonV1V1,callControllerCallOperationsRunKlingKolorsVtonV1V1,callControllerCallOperationsRunSeedream4EditV1V1,callControllerCallOperationsRunJsonToImageV1V1,callControllerCallOperationsRunJsonToVideoV1V1,callControllerCallOperationsRunReveRemixV1V1,callControllerCallOperationsRunYolo11xPoseV1V1,callControllerCallOperationsRunSeedream4T2iV1V1,callControllerCallOperationsRunImagen4FastV1V1,callControllerCallOperationsRunImagen4StandardV1V1,callControllerCallOperationsRunImagen4UltraV1V1,callControllerCallOperationsRunWorkflowsRunV1V1,callControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1,callControllerCallOperationsRunFluxKontextDevPrepareDatasetV1V1,callControllerCallOperationsRunFluxKontextDevTrainV1V1,callControllerCallOperationsRunFluxKontextDevV1V1,callControllerCallPosesGetV1,callControllerCallPosesListV1,callControllerCallPosesPreviewSetV1,callControllerCallPosesMetadataUpdateV1,callControllerCallStacksCreateV1,callControllerCallStacksGetV1,callControllerCallStacksListV1,callControllerCallStacksMetadataUpdateV1,callControllerCallStacksItemsAddV1,callControllerCallStacksItemsRemoveV1,callControllerCallStorageCreateV1,callControllerCallStorageDeleteV1,callControllerCallStorageGetManyV1,callControllerCallStorageUpdateV1}};
 export type CallControllerCallAccessGrantV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccessGrantV1']>>>
 export type CallControllerCallAccessAttachV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccessAttachV1']>>>
 export type CallControllerCallAccountsCreateV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallAccountsCreateV1']>>>
@@ -1266,6 +1326,8 @@ export type CallControllerCallOperationsRunEchoV1V1Result = NonNullable<Awaited<
 export type CallControllerCallOperationsRunMathV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunMathV1V1']>>>
 export type CallControllerCallOperationsRunAnimateKling16ProV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunAnimateKling16ProV1V1']>>>
 export type CallControllerCallOperationsRunAnimateKling21V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunAnimateKling21V1V1']>>>
+export type CallControllerCallOperationsRunAnimateKling21StandardV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunAnimateKling21StandardV1V1']>>>
+export type CallControllerCallOperationsRunAnimateKling21ProV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunAnimateKling21ProV1V1']>>>
 export type CallControllerCallOperationsRunAnimateCreatomateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunAnimateCreatomateV1V1']>>>
 export type CallControllerCallOperationsRunOnecompilerV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunOnecompilerV1V1']>>>
 export type CallControllerCallOperationsRunEditFluxKontextDevV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunEditFluxKontextDevV1V1']>>>
@@ -1292,7 +1354,10 @@ export type CallControllerCallOperationsRunReveRemixV1V1Result = NonNullable<Awa
 export type CallControllerCallOperationsRunYolo11xPoseV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunYolo11xPoseV1V1']>>>
 export type CallControllerCallOperationsRunSeedream4T2iV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunSeedream4T2iV1V1']>>>
 export type CallControllerCallOperationsRunImagen4FastV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunImagen4FastV1V1']>>>
+export type CallControllerCallOperationsRunImagen4StandardV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunImagen4StandardV1V1']>>>
+export type CallControllerCallOperationsRunImagen4UltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunImagen4UltraV1V1']>>>
 export type CallControllerCallOperationsRunWorkflowsRunV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunWorkflowsRunV1V1']>>>
+export type CallControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1']>>>
 export type CallControllerCallOperationsRunFluxKontextDevPrepareDatasetV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunFluxKontextDevPrepareDatasetV1V1']>>>
 export type CallControllerCallOperationsRunFluxKontextDevTrainV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunFluxKontextDevTrainV1V1']>>>
 export type CallControllerCallOperationsRunFluxKontextDevV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getCall>['callControllerCallOperationsRunFluxKontextDevV1V1']>>>

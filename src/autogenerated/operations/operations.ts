@@ -11,6 +11,10 @@ import type {
   AnimateCreatomateV1Response,
   AnimateKling16ProV1Request,
   AnimateKling16ProV1Response,
+  AnimateKling21ProV1Request,
+  AnimateKling21ProV1Response,
+  AnimateKling21StandardV1Request,
+  AnimateKling21StandardV1Response,
   AnimateKling21V1Request,
   AnimateKling21V1Response,
   CompositeV1Request,
@@ -54,6 +58,10 @@ import type {
   IdeogramCharacterV1Response,
   Imagen4FastV1Request,
   Imagen4FastV1Response,
+  Imagen4StandardV1Request,
+  Imagen4StandardV1Response,
+  Imagen4UltraV1Request,
+  Imagen4UltraV1Response,
   Imagen4V1Request,
   Imagen4V1Response,
   ImagineFlux11ProUltraV1Request,
@@ -68,6 +76,8 @@ import type {
   JsonToVideoV1Response,
   KlingKolorsVtonV1Request,
   KlingKolorsVtonV1Response,
+  KlingVideo25ProImageToVideoV1Request,
+  KlingVideo25ProImageToVideoV1Response,
   ListOperationsDto,
   LumaPhotonV1Request,
   LumaPhotonV1Response,
@@ -430,6 +440,26 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
+  const operationsControllerRunAnimateKling21StandardV1V1 = (
+    animateKling21StandardV1Request: AnimateKling21StandardV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<AnimateKling21StandardV1Response>(
+      {url: `/v1/operations/run/animate.kling_2_1.standard.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: animateKling21StandardV1Request
+    },
+      options);
+    }
+  const operationsControllerRunAnimateKling21ProV1V1 = (
+    animateKling21ProV1Request: AnimateKling21ProV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<AnimateKling21ProV1Response>(
+      {url: `/v1/operations/run/animate.kling_2_1.pro.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: animateKling21ProV1Request
+    },
+      options);
+    }
   const operationsControllerRunAnimateCreatomateV1V1 = (
     animateCreatomateV1Request: AnimateCreatomateV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -690,6 +720,26 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
+  const operationsControllerRunImagen4StandardV1V1 = (
+    imagen4StandardV1Request: Imagen4StandardV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Imagen4StandardV1Response>(
+      {url: `/v1/operations/run/imagen4.standard.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: imagen4StandardV1Request
+    },
+      options);
+    }
+  const operationsControllerRunImagen4UltraV1V1 = (
+    imagen4UltraV1Request: Imagen4UltraV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<Imagen4UltraV1Response>(
+      {url: `/v1/operations/run/imagen4.ultra.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: imagen4UltraV1Request
+    },
+      options);
+    }
   const operationsControllerRunWorkflowsRunV1V1 = (
     workflowsRunV1Request: WorkflowsRunV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -697,6 +747,16 @@ const operationsControllerGetOperationV1 = (
       {url: `/v1/operations/run/workflows.run.v1`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: workflowsRunV1Request
+    },
+      options);
+    }
+  const operationsControllerRunKlingVideo25ProImageToVideoV1V1 = (
+    klingVideo25ProImageToVideoV1Request: KlingVideo25ProImageToVideoV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<KlingVideo25ProImageToVideoV1Response>(
+      {url: `/v1/operations/run/kling.video_2_5_pro.image_to_video.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: klingVideo25ProImageToVideoV1Request
     },
       options);
     }
@@ -730,7 +790,7 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
-  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1,operationsControllerRunJsonToImageV1V1,operationsControllerRunJsonToVideoV1V1,operationsControllerRunReveRemixV1V1,operationsControllerRunYolo11xPoseV1V1,operationsControllerRunSeedream4T2iV1V1,operationsControllerRunImagen4FastV1V1,operationsControllerRunWorkflowsRunV1V1,operationsControllerRunFluxKontextDevPrepareDatasetV1V1,operationsControllerRunFluxKontextDevTrainV1V1,operationsControllerRunFluxKontextDevV1V1}};
+  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateKling21StandardV1V1,operationsControllerRunAnimateKling21ProV1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1,operationsControllerRunJsonToImageV1V1,operationsControllerRunJsonToVideoV1V1,operationsControllerRunReveRemixV1V1,operationsControllerRunYolo11xPoseV1V1,operationsControllerRunSeedream4T2iV1V1,operationsControllerRunImagen4FastV1V1,operationsControllerRunImagen4StandardV1V1,operationsControllerRunImagen4UltraV1V1,operationsControllerRunWorkflowsRunV1V1,operationsControllerRunKlingVideo25ProImageToVideoV1V1,operationsControllerRunFluxKontextDevPrepareDatasetV1V1,operationsControllerRunFluxKontextDevTrainV1V1,operationsControllerRunFluxKontextDevV1V1}};
 export type OperationsControllerGetOperationV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationV1']>>>
 export type OperationsControllerGetOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationsV1']>>>
 export type OperationsControllerListOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerListOperationsV1']>>>
@@ -761,6 +821,8 @@ export type OperationsControllerRunEchoV1V1Result = NonNullable<Awaited<ReturnTy
 export type OperationsControllerRunMathV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunMathV1V1']>>>
 export type OperationsControllerRunAnimateKling16ProV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAnimateKling16ProV1V1']>>>
 export type OperationsControllerRunAnimateKling21V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAnimateKling21V1V1']>>>
+export type OperationsControllerRunAnimateKling21StandardV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAnimateKling21StandardV1V1']>>>
+export type OperationsControllerRunAnimateKling21ProV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAnimateKling21ProV1V1']>>>
 export type OperationsControllerRunAnimateCreatomateV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunAnimateCreatomateV1V1']>>>
 export type OperationsControllerRunOnecompilerV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunOnecompilerV1V1']>>>
 export type OperationsControllerRunEditFluxKontextDevV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunEditFluxKontextDevV1V1']>>>
@@ -787,7 +849,10 @@ export type OperationsControllerRunReveRemixV1V1Result = NonNullable<Awaited<Ret
 export type OperationsControllerRunYolo11xPoseV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunYolo11xPoseV1V1']>>>
 export type OperationsControllerRunSeedream4T2iV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedream4T2iV1V1']>>>
 export type OperationsControllerRunImagen4FastV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4FastV1V1']>>>
+export type OperationsControllerRunImagen4StandardV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4StandardV1V1']>>>
+export type OperationsControllerRunImagen4UltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4UltraV1V1']>>>
 export type OperationsControllerRunWorkflowsRunV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunWorkflowsRunV1V1']>>>
+export type OperationsControllerRunKlingVideo25ProImageToVideoV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunKlingVideo25ProImageToVideoV1V1']>>>
 export type OperationsControllerRunFluxKontextDevPrepareDatasetV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunFluxKontextDevPrepareDatasetV1V1']>>>
 export type OperationsControllerRunFluxKontextDevTrainV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunFluxKontextDevTrainV1V1']>>>
 export type OperationsControllerRunFluxKontextDevV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunFluxKontextDevV1V1']>>>

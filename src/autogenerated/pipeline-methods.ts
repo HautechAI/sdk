@@ -157,6 +157,12 @@ export const usePipelineDefinitions = () => {
         },
         'kling_2_1': {
           'v1': api.callControllerCallOperationsRunAnimateKling21V1V1,
+          'standard': {
+            'v1': api.callControllerCallOperationsRunAnimateKling21StandardV1V1,
+          },
+          'pro': {
+            'v1': api.callControllerCallOperationsRunAnimateKling21ProV1V1,
+          },
         },
         'creatomate': {
           'v1': api.callControllerCallOperationsRunAnimateCreatomateV1V1,
@@ -183,6 +189,12 @@ export const usePipelineDefinitions = () => {
         'v1': api.callControllerCallOperationsRunImagen4V1V1,
         'fast': {
           'v1': api.callControllerCallOperationsRunImagen4FastV1V1,
+        },
+        'standard': {
+          'v1': api.callControllerCallOperationsRunImagen4StandardV1V1,
+        },
+        'ultra': {
+          'v1': api.callControllerCallOperationsRunImagen4UltraV1V1,
         },
       },
       'topaz': {
@@ -224,6 +236,11 @@ export const usePipelineDefinitions = () => {
       'kling': {
         'kolors_vton': {
           'v1': api.callControllerCallOperationsRunKlingKolorsVtonV1V1,
+        },
+        'video_2_5_pro': {
+          'image_to_video': {
+            'v1': api.callControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1,
+          },
         },
       },
       'seedream': {

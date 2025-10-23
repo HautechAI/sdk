@@ -5,6 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Output resolution
+ */
 export type Veo3V1InputResolution = typeof Veo3V1InputResolution[keyof typeof Veo3V1InputResolution];
 
 

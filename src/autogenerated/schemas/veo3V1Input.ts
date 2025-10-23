@@ -6,14 +6,23 @@
  */
 import type { Veo3V1InputResolution } from './veo3V1InputResolution';
 import type { Veo3V1InputAspectRatio } from './veo3V1InputAspectRatio';
+import type { Veo3V1InputDuration } from './veo3V1InputDuration';
 
 export interface Veo3V1Input {
+  /** Text prompt for video generation */
   prompt: string;
+  /** Negative prompt to avoid elements */
   negativePrompt?: string;
+  /** Output resolution */
   resolution?: Veo3V1InputResolution;
+  /** Random seed for deterministic generation */
   seed?: number;
+  /** Output aspect ratio */
   aspectRatio?: Veo3V1InputAspectRatio;
-  duration?: number;
+  /** Video duration in seconds */
+  duration?: Veo3V1InputDuration;
+  /** Image ID for first frame */
   imageId?: string;
+  /** Generate audio track */
   generateAudio?: boolean;
 }

@@ -5,6 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Output aspect ratio
+ */
 export type Veo3V1InputAspectRatio = typeof Veo3V1InputAspectRatio[keyof typeof Veo3V1InputAspectRatio];
 
 
