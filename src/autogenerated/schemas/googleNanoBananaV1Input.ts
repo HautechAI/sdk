@@ -4,14 +4,16 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { GoogleNanoBananaV1InputAspectRatio } from './googleNanoBananaV1InputAspectRatio';
 import type { GoogleNanoBananaV1InputOutputFormat } from './googleNanoBananaV1InputOutputFormat';
+import type { GoogleNanoBananaV1InputAspectRatio } from './googleNanoBananaV1InputAspectRatio';
 
 export interface GoogleNanoBananaV1Input {
+  /** IDs of input images to guide generation */
+  imageIds?: string[];
+  /** Text prompt for generation */
+  prompt: string;
+  /** Output image format */
+  outputFormat?: GoogleNanoBananaV1InputOutputFormat;
   /** Aspect ratio of the generated image */
   aspectRatio?: GoogleNanoBananaV1InputAspectRatio;
-  /** @minItems 1 */
-  imageIds: string[];
-  prompt: string;
-  outputFormat?: GoogleNanoBananaV1InputOutputFormat;
 }

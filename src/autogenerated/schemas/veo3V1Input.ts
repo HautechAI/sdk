@@ -5,10 +5,15 @@
  * OpenAPI spec version: 1.0
  */
 import type { Veo3V1InputResolution } from './veo3V1InputResolution';
+import type { Veo3V1InputAspectRatio } from './veo3V1InputAspectRatio';
 
 export interface Veo3V1Input {
   prompt: string;
   negativePrompt?: string;
   resolution?: Veo3V1InputResolution;
   seed?: number;
+  aspectRatio?: Veo3V1InputAspectRatio;
+  duration?: number;
+  imageId?: string;
+  generateAudio?: boolean;
 }

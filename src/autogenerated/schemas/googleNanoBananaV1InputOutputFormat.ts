@@ -5,6 +5,9 @@
  * OpenAPI spec version: 1.0
  */
 
+/**
+ * Output image format
+ */
 export type GoogleNanoBananaV1InputOutputFormat = typeof GoogleNanoBananaV1InputOutputFormat[keyof typeof GoogleNanoBananaV1InputOutputFormat];
 
 

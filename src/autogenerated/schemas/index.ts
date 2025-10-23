@@ -946,6 +946,7 @@ export * from './veo3FastV1ResponseKind';
 export * from './veo3FastV1ResponseMetadata';
 export * from './veo3FastV1ResponseStatus';
 export * from './veo3V1Input';
+export * from './veo3V1InputAspectRatio';
 export * from './veo3V1InputResolution';
 export * from './veo3V1Request';
 export * from './veo3V1RequestMetadata';
