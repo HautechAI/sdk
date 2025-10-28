@@ -182,6 +182,12 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunVeo3FastV1V1,
         },
       },
+      'veo3_1': {
+        'v1': api.callControllerCallOperationsRunVeo31V1V1,
+        'fast': {
+          'v1': api.callControllerCallOperationsRunVeo31FastV1V1,
+        },
+      },
       'pipelineMap': {
         'v1': api.callControllerCallOperationsRunPipelineMapV1V1,
       },

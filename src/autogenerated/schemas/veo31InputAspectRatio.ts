@@ -6,13 +6,14 @@
  */
 
 /**
- * Output aspect ratio (allowed: 16:9 or 9:16)
+ * Output aspect ratio
  */
-export type Veo3V1InputAspectRatio = typeof Veo3V1InputAspectRatio[keyof typeof Veo3V1InputAspectRatio];
+export type Veo31InputAspectRatio = typeof Veo31InputAspectRatio[keyof typeof Veo31InputAspectRatio];
 
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const Veo3V1InputAspectRatio = {
+export const Veo31InputAspectRatio = {
   '16:9': '16:9',
   '9:16': '9:16',
+  '1:1': '1:1',
 } as const;

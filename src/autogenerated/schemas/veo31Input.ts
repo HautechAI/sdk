@@ -4,25 +4,31 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { Veo3V1InputResolution } from './veo3V1InputResolution';
-import type { Veo3V1InputAspectRatio } from './veo3V1InputAspectRatio';
-import type { Veo3V1InputDuration } from './veo3V1InputDuration';
+import type { Veo31InputResolution } from './veo31InputResolution';
+import type { Veo31InputAspectRatio } from './veo31InputAspectRatio';
+import type { Veo31InputDuration } from './veo31InputDuration';
 
-export interface Veo3V1Input {
+export interface Veo31Input {
   /** Text prompt for video generation */
   prompt: string;
   /** Negative prompt to avoid elements */
   negativePrompt?: string;
   /** Output resolution */
-  resolution?: Veo3V1InputResolution;
+  resolution?: Veo31InputResolution;
   /** Random seed for deterministic generation */
   seed?: number;
-  /** Output aspect ratio (allowed: 16:9 or 9:16) */
-  aspectRatio?: Veo3V1InputAspectRatio;
+  /** Output aspect ratio */
+  aspectRatio?: Veo31InputAspectRatio;
   /** Video duration in seconds */
-  duration?: Veo3V1InputDuration;
+  duration?: Veo31InputDuration;
   /** Image ID for first frame */
   imageId?: string;
   /** Generate audio track */
   generateAudio?: boolean;
+  lastFrameImageId?: string;
+  /**
+   * @minItems 1
+   * @maxItems 3
+   */
+  referenceImageIds?: string[];
 }
