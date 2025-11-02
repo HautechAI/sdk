@@ -93,6 +93,9 @@ export const usePipelineDefinitions = () => {
         'template': {
           'v1': api.callControllerCallOperationsRunStringsTemplateV1V1,
         },
+        'switch': {
+          'v1': api.callControllerCallOperationsRunStringsSwitchV1V1,
+        },
       },
       'imagine': {
         'kate': {
