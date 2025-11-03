@@ -15,6 +15,10 @@ export interface ImageEntity {
   createdAt: string;
   updatedAt: string;
   format: string;
+  /** @nullable */
+  originalFilenameBase?: string | null;
+  /** @nullable */
+  originalFilenameExt?: string | null;
   width: number;
   height: number;
   url: string;
