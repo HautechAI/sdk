@@ -40,7 +40,11 @@ export const useVideosApi = () => {
             if (typeof file === 'string') {
                 if (isBrowser) throw new Error('Cannot use file path in browser');
                 const fs = require('fs');
-                formData.append('file', fs.createReadStream(file));
+                const path = require('path');
+                // Ensure filename is explicitly set for Node path uploads
+                formData.append('file', fs.createReadStream(file), {
+                    filename: path.basename(file),
+                });
             } else if (isBrowser && file instanceof Blob) {
                 formData.append('file', file);
             } else if (!(file instanceof Blob) && typeof file === 'object' && 'stream' in file) {
