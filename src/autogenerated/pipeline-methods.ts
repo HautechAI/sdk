@@ -290,6 +290,11 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunFluxKontextDevV1V1,
         },
       },
+      'images': {
+        'rename': {
+          'v1': api.callControllerCallOperationsRunImagesRenameV1V1,
+        },
+      },
     },
   },
   'poses': {
