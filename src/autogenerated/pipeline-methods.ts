@@ -295,6 +295,9 @@ export const usePipelineDefinitions = () => {
           'v1': api.callControllerCallOperationsRunImagesRenameV1V1,
         },
       },
+      'clipClassify': {
+        'v1': api.callControllerCallOperationsRunClipClassifyV1V1,
+      },
     },
   },
   'poses': {
