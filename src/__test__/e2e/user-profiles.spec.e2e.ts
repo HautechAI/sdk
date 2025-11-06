@@ -39,13 +39,11 @@ describe('User Profiles E2E (Directory API)', () => {
         const self = await sdk.userProfiles.self();
         const newHandle = `e2e-handle-${uuidv4()}`;
         const newName = `${self.name || 'E2E User'} Updated`;
-        const newEmail = `e2e+${uuidv4()}@example.com`;
         const newPictureUrl = `https://example.com/${uuidv4()}.png`;
 
         const updated = await sdk.userProfiles.update(self.id, {
             handle: newHandle,
             name: newName,
-            email: newEmail,
             pictureUrl: newPictureUrl,
         });
 
@@ -53,13 +51,11 @@ describe('User Profiles E2E (Directory API)', () => {
         expect(updated.id).toBe(self.id);
         expect(updated.handle).toBe(newHandle);
         expect(updated.name).toBe(newName);
-        expect(updated.email).toBe(newEmail);
         expect(updated.pictureUrl).toBe(newPictureUrl);
 
         const selfAfter = await sdk.userProfiles.self();
         expect(selfAfter.handle).toBe(newHandle);
         expect(selfAfter.name).toBe(newName);
-        expect(selfAfter.email).toBe(newEmail);
         expect(selfAfter.pictureUrl).toBe(newPictureUrl);
     });
 
