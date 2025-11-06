@@ -6,7 +6,9 @@
  */
 import type {
   CreateUserProfileDto,
-  UpdateUserProfileDto
+  PublicUserProfileDto,
+  UpdateUserProfileDto,
+  UserProfileDto
 } from '.././schemas';
 
 import { axiosMutator } from '../../../api-utils';
@@ -19,7 +21,7 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 const createUserProfile = (
     createUserProfileDto: CreateUserProfileDto,
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<void>(
+      return axiosMutator<UserProfileDto>(
       {url: `/api/v1/user-profiles`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: createUserProfileDto
@@ -29,7 +31,7 @@ const createUserProfile = (
   const getUserProfiles = (
     
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<void>(
+      return axiosMutator<UserProfileDto[]>(
       {url: `/api/v1/user-profiles`, method: 'GET'
     },
       options);
@@ -37,7 +39,7 @@ const createUserProfile = (
   const getSelfProfile = (
     
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<void>(
+      return axiosMutator<UserProfileDto>(
       {url: `/api/v1/user-profiles/self`, method: 'GET'
     },
       options);
@@ -45,7 +47,7 @@ const createUserProfile = (
   const getByHandle = (
     handle: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<void>(
+      return axiosMutator<PublicUserProfileDto>(
       {url: `/api/v1/user-profiles/handle/${handle}`, method: 'GET'
     },
       options);
@@ -54,7 +56,7 @@ const createUserProfile = (
     id: string,
     updateUserProfileDto: UpdateUserProfileDto,
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<void>(
+      return axiosMutator<UserProfileDto>(
       {url: `/api/v1/user-profiles/${id}`, method: 'PATCH',
       headers: {'Content-Type': 'application/json', },
       data: updateUserProfileDto

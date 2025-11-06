@@ -930,6 +930,8 @@ export * from './selfAccountDtoPermissions';
 export * from './selfAccountDtoType';
 export * from './setPosePreviewControllerParamsDto';
 export * from './setPosePreviewDto';
+export * from './shareWithEveryoneControllerParamsDto';
+export * from './shareWithEveryoneControllerParamsDtoAccess';
 export * from './sharedResourceDto';
 export * from './sharedResourceDtoType';
 export * from './stackEntity';
