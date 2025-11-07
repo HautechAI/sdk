@@ -894,6 +894,7 @@ export * from './seedream3V1ResponseKind';
 export * from './seedream3V1ResponseMetadata';
 export * from './seedream3V1ResponseStatus';
 export * from './seedream4EditV1Input';
+export * from './seedream4EditV1InputOptimizePromptOptions';
 export * from './seedream4EditV1Request';
 export * from './seedream4EditV1RequestMetadata';
 export * from './seedream4EditV1Response';

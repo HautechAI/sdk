@@ -4,20 +4,30 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { Seedream4EditV1InputOptimizePromptOptions } from './seedream4EditV1InputOptimizePromptOptions';
 
 export interface Seedream4EditV1Input {
+  /** Text prompt describing the edit to perform */
   prompt: string;
-  /** @minItems 1 */
+  /**
+   * IDs of input images to edit
+   * @minItems 1
+   */
   imageIds: string[];
   /**
+   * Width of the generated image in pixels (1024-4096)
    * @minimum 1024
    * @maximum 4096
    */
-  width: number;
+  width?: number;
   /**
+   * Height of the generated image in pixels (1024-4096)
    * @minimum 1024
    * @maximum 4096
    */
-  height: number;
+  height?: number;
+  /** Random seed for deterministic generation */
   seed?: number;
+  /** Prompt optimization mode */
+  optimizePromptOptions?: Seedream4EditV1InputOptimizePromptOptions;
 }
