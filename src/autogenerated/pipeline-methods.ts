@@ -134,6 +134,14 @@ export const usePipelineDefinitions = () => {
       'resize': {
         'v1': api.callControllerCallOperationsRunResizeV1V1,
       },
+      'images': {
+        'downscale': {
+          'v1': api.callControllerCallOperationsRunImagesDownscaleV1V1,
+        },
+        'rename': {
+          'v1': api.callControllerCallOperationsRunImagesRenameV1V1,
+        },
+      },
       'contrast': {
         'v1': api.callControllerCallOperationsRunContrastV1V1,
       },
@@ -288,11 +296,6 @@ export const usePipelineDefinitions = () => {
             'v1': api.callControllerCallOperationsRunFluxKontextDevTrainV1V1,
           },
           'v1': api.callControllerCallOperationsRunFluxKontextDevV1V1,
-        },
-      },
-      'images': {
-        'rename': {
-          'v1': api.callControllerCallOperationsRunImagesRenameV1V1,
         },
       },
       'clipClassify': {
