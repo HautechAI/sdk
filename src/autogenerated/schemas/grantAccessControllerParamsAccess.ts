@@ -15,6 +15,9 @@ export const GrantAccessControllerParamsAccess = {
   writer: 'writer',
   reader: 'reader',
   member: 'member',
+  public_execute: 'public_execute',
+  public_read: 'public_read',
+  public_write: 'public_write',
   can_assign_members: 'can_assign_members',
   can_assign_maintainers: 'can_assign_maintainers',
   can_assign_owners: 'can_assign_owners',
@@ -26,5 +29,6 @@ export const GrantAccessControllerParamsAccess = {
   can_add_items: 'can_add_items',
   can_remove_items: 'can_remove_items',
   can_list: 'can_list',
+  can_execute: 'can_execute',
   parent: 'parent',
 } as const;

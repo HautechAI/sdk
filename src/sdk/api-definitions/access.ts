@@ -9,6 +9,8 @@ export const useAccessApi = () => {
         detach: api.accessControllerDetachAccessV1,
         grant: api.accessControllerGrantAccessV1,
         revoke: api.accessControllerRevokeAccessV1,
+        shareWithEveryone: api.accessControllerGrantAccessToEveryoneV1,
+        revokeFromEveryone: api.accessControllerRevokeAccessFromEveryoneV1,
         list: api.accessControllerAccessV1,
         listShared: api.accessControllerListSharedV1,
     });

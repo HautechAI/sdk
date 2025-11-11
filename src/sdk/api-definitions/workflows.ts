@@ -12,5 +12,9 @@ export const useWorkflowsApi = () => {
         delete: hautechApi.workflowsControllerDeleteWorkflowV1,
         getSchema: hautechApi.workflowsControllerGetWorkflowSchemaV1,
         run: hautechApi.workflowsControllerRunWorkflowV1,
+        listPublic: hautechApi.workflowsControllerListPublicWorkflowsV1,
+        getPublic: hautechApi.workflowsControllerGetPublicWorkflowV1,
+        shareWithEveryone: hautechApi.workflowsControllerShareWorkflowWithEveryoneV1,
+        getStatistics: hautechApi.workflowsControllerGetSharedWorkflowStatisticsV1,
     });
 };

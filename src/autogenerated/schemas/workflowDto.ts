@@ -22,4 +22,6 @@ export interface WorkflowDto {
   customExecutionPrice?: string | null;
   createdAt: string;
   updatedAt: string;
+  /** Indicates whether the workflow is shared publicly */
+  isPublic: boolean;
 }

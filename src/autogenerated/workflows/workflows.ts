@@ -7,8 +7,11 @@
 import type {
   CreateWorkflowParamsDto,
   ListWorkflowsDto,
+  PublicWorkflowDto,
+  PublicWorkflowSummaryDto,
   RunWorkflowParamsDto,
   RunWorkflowResponseDto,
+  ShareWithEveryoneControllerParamsDto,
   UpdateWorkflowParamsDto,
   WorkflowDto,
   WorkflowStatisticsDto,
@@ -38,6 +41,33 @@ const workflowsControllerCreateWorkflowV1 = (
       return axiosMutator<ListWorkflowsDto>(
       {url: `/v1/workflows`, method: 'GET',
         params
+    },
+      options);
+    }
+  const workflowsControllerListPublicWorkflowsV1 = (
+    
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<PublicWorkflowSummaryDto[]>(
+      {url: `/v1/workflows/public`, method: 'GET'
+    },
+      options);
+    }
+  const workflowsControllerGetPublicWorkflowV1 = (
+    id: string,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<PublicWorkflowDto>(
+      {url: `/v1/workflows/public/${id}`, method: 'GET'
+    },
+      options);
+    }
+  const workflowsControllerShareWorkflowWithEveryoneV1 = (
+    id: string,
+    shareWithEveryoneControllerParamsDto: ShareWithEveryoneControllerParamsDto,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<WorkflowDto>(
+      {url: `/v1/workflows/${id}/share/public`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: shareWithEveryoneControllerParamsDto
     },
       options);
     }
@@ -95,9 +125,12 @@ const workflowsControllerCreateWorkflowV1 = (
     },
       options);
     }
-  return {workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1,workflowsControllerRunWorkflowV1,workflowsControllerGetWorkflowSchemaV1,workflowsControllerGetSharedWorkflowStatisticsV1}};
+  return {workflowsControllerCreateWorkflowV1,workflowsControllerListWorkflowsV1,workflowsControllerListPublicWorkflowsV1,workflowsControllerGetPublicWorkflowV1,workflowsControllerShareWorkflowWithEveryoneV1,workflowsControllerGetWorkflowV1,workflowsControllerUpdateWorkflowV1,workflowsControllerDeleteWorkflowV1,workflowsControllerRunWorkflowV1,workflowsControllerGetWorkflowSchemaV1,workflowsControllerGetSharedWorkflowStatisticsV1}};
 export type WorkflowsControllerCreateWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerCreateWorkflowV1']>>>
 export type WorkflowsControllerListWorkflowsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerListWorkflowsV1']>>>
+export type WorkflowsControllerListPublicWorkflowsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerListPublicWorkflowsV1']>>>
+export type WorkflowsControllerGetPublicWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetPublicWorkflowV1']>>>
+export type WorkflowsControllerShareWorkflowWithEveryoneV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerShareWorkflowWithEveryoneV1']>>>
 export type WorkflowsControllerGetWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerGetWorkflowV1']>>>
 export type WorkflowsControllerUpdateWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerUpdateWorkflowV1']>>>
 export type WorkflowsControllerDeleteWorkflowV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflows>['workflowsControllerDeleteWorkflowV1']>>>
