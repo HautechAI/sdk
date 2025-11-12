@@ -79,12 +79,9 @@ const accessControllerGrantAccessV1 = (
     }
   const accessControllerRevokeAccessFromEveryoneV1 = (
     id: string,
-    shareWithEveryoneControllerParamsDto: ShareWithEveryoneControllerParamsDto,
  options?: SecondParameter<typeof axiosMutator>,) => {
       return axiosMutator<void>(
-      {url: `/v1/resources/${id}/access/revoke/everyone`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: shareWithEveryoneControllerParamsDto
+      {url: `/v1/resources/${id}/access/revoke/everyone`, method: 'POST'
     },
       options);
     }

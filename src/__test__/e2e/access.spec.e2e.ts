@@ -27,38 +27,34 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
 
     it('should share resource with everyone with public_read access', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
-        
+
         await expect(
             sdk.access.shareWithEveryone(imageEntity.id, {
                 access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
-            })
+            }),
         ).resolves.not.toThrow();
     });
 
     it('should share resource with everyone with public_write access', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
-        
+
         await expect(
             sdk.access.shareWithEveryone(imageEntity.id, {
                 access: ShareWithEveryoneControllerParamsDtoAccess.public_write,
-            })
+            }),
         ).resolves.not.toThrow();
     });
 
     it('should revoke everyone access from resource', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
-        
+
         // First share with everyone
         await sdk.access.shareWithEveryone(imageEntity.id, {
             access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
         });
 
         // Then revoke
-        await expect(
-            sdk.access.revokeFromEveryone(imageEntity.id, {
-                access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
-            })
-        ).resolves.not.toThrow();
+        await expect(sdk.access.revokeFromEveryone(imageEntity.id)).resolves.not.toThrow();
     });
 
     it('should handle multiple access levels for shareWithEveryone', async () => {
@@ -70,9 +66,7 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
         ];
 
         for (const access of accessLevels) {
-            await expect(
-                sdk.access.shareWithEveryone(imageEntity.id, { access })
-            ).resolves.not.toThrow();
+            await expect(sdk.access.shareWithEveryone(imageEntity.id, { access })).resolves.not.toThrow();
         }
     });
 
@@ -89,9 +83,7 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
             await sdk.access.shareWithEveryone(imageEntity.id, { access });
 
             // Then revoke
-            await expect(
-                sdk.access.revokeFromEveryone(imageEntity.id, { access })
-            ).resolves.not.toThrow();
+            await expect(sdk.access.revokeFromEveryone(imageEntity.id)).resolves.not.toThrow();
         }
     });
 });
