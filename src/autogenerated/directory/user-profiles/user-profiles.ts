@@ -52,6 +52,14 @@ const createUserProfile = (
     },
       options);
     }
+  const getById = (
+    id: string,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<PublicUserProfileDto>(
+      {url: `/api/v1/user-profiles/${id}`, method: 'GET'
+    },
+      options);
+    }
   const updateUserProfile = (
     id: string,
     updateUserProfileDto: UpdateUserProfileDto,
@@ -63,9 +71,10 @@ const createUserProfile = (
     },
       options);
     }
-  return {createUserProfile,getUserProfiles,getSelfProfile,getByHandle,updateUserProfile}};
+  return {createUserProfile,getUserProfiles,getSelfProfile,getByHandle,getById,updateUserProfile}};
 export type CreateUserProfileResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['createUserProfile']>>>
 export type GetUserProfilesResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['getUserProfiles']>>>
 export type GetSelfProfileResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['getSelfProfile']>>>
 export type GetByHandleResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['getByHandle']>>>
+export type GetByIdResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['getById']>>>
 export type UpdateUserProfileResult = NonNullable<Awaited<ReturnType<ReturnType<typeof getUserProfiles>['updateUserProfile']>>>

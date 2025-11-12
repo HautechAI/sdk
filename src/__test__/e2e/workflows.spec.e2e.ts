@@ -236,7 +236,7 @@ describe('Workflows API E2E Tests', () => {
 
             // First share with everyone
             await sdk.workflows.shareWithEveryone(newWorkflow.id, {
-                access: { public: true },
+                access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
             });
 
             // Then revoke public access

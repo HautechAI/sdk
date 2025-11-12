@@ -60,4 +60,21 @@ describe('User Profiles E2E (Directory API)', () => {
         expect(byHandle).not.toBeNull();
         expect(byHandle!.handle).toBe(selfProfile.handle);
     });
+
+    it('should get user profile by ID', async () => {
+        const selfProfile = await sdk.userProfiles.self();
+        expect(selfProfile).toBeDefined();
+        expect(selfProfile.id).toBeDefined();
+
+        const byId = await sdk.userProfiles.getById(selfProfile.id);
+        expect(byId).not.toBeNull();
+        expect(byId!.id).toBe(selfProfile.id);
+        expect(byId!.handle).toBe(selfProfile.handle);
+    });
+
+    it('should return null for non-existent user ID', async () => {
+        const nonExistentId = uuidv4();
+        const result = await sdk.userProfiles.getById(nonExistentId);
+        expect(result).toBeNull();
+    });
 });

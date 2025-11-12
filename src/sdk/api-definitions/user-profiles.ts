@@ -9,6 +9,7 @@ export const useUserProfilesApi = () => {
         list: api.getUserProfiles,
         self: api.getSelfProfile,
         getByHandle: wrapApiCallNullable(api.getByHandle),
+        getById: wrapApiCallNullable(api.getById),
         update: api.updateUserProfile,
     });
 };
