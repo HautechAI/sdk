@@ -12,5 +12,4 @@ export type ShareWithEveryoneControllerParamsDtoAccess = typeof ShareWithEveryon
 export const ShareWithEveryoneControllerParamsDtoAccess = {
   public_execute: 'public_execute',
   public_read: 'public_read',
-  public_write: 'public_write',
 } as const;

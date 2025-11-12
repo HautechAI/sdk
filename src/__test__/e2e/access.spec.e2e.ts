@@ -35,16 +35,6 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
         ).resolves.not.toThrow();
     });
 
-    it('should share resource with everyone with public_write access', async () => {
-        const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
-
-        await expect(
-            sdk.access.shareWithEveryone(imageEntity.id, {
-                access: ShareWithEveryoneControllerParamsDtoAccess.public_write,
-            }),
-        ).resolves.not.toThrow();
-    });
-
     it('should revoke everyone access from resource', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
 
@@ -61,7 +51,6 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
         const accessLevels = [
             ShareWithEveryoneControllerParamsDtoAccess.public_read,
-            ShareWithEveryoneControllerParamsDtoAccess.public_write,
             ShareWithEveryoneControllerParamsDtoAccess.public_execute,
         ];
 
@@ -74,7 +63,6 @@ describe('Access E2E - shareWithEveryone and revokeFromEveryone', () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
         const accessLevels = [
             ShareWithEveryoneControllerParamsDtoAccess.public_read,
-            ShareWithEveryoneControllerParamsDtoAccess.public_write,
             ShareWithEveryoneControllerParamsDtoAccess.public_execute,
         ];
 

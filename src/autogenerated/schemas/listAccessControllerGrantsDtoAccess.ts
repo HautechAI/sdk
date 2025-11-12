@@ -17,7 +17,6 @@ export const ListAccessControllerGrantsDtoAccess = {
   member: 'member',
   public_execute: 'public_execute',
   public_read: 'public_read',
-  public_write: 'public_write',
   can_assign_members: 'can_assign_members',
   can_assign_maintainers: 'can_assign_maintainers',
   can_assign_owners: 'can_assign_owners',

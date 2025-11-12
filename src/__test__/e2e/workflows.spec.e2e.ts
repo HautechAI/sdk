@@ -220,5 +220,30 @@ describe('Workflows API E2E Tests', () => {
             expect(result).toBeDefined();
             expect(result.id).toBe(newWorkflow.id);
         });
+
+        it('should revoke public access from workflow', async () => {
+            const newWorkflowData = {
+                data: {
+                    name: 'Workflow to Revoke',
+                    description: 'Test revoking public access',
+                    steps: [],
+                },
+                version: '1.0.0',
+                metadata: {},
+            };
+
+            const newWorkflow = await sdk.workflows.create(newWorkflowData);
+
+            // First share with everyone
+            await sdk.workflows.shareWithEveryone(newWorkflow.id, {
+                access: { public: true },
+            });
+
+            // Then revoke public access
+            const result = await sdk.workflows.revokePublicAccess(newWorkflow.id);
+
+            expect(result).toBeDefined();
+            expect(result.id).toBe(newWorkflow.id);
+        });
     });
 });
