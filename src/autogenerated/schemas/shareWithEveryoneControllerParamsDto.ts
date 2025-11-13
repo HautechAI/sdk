@@ -8,4 +8,5 @@ import type { ShareWithEveryoneControllerParamsDtoAccess } from './shareWithEver
 
 export interface ShareWithEveryoneControllerParamsDto {
   access: ShareWithEveryoneControllerParamsDtoAccess;
+  customExecutionPrice: string;
 }
