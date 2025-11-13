@@ -4,12 +4,22 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { PublicWorkflowSummaryDtoInputSchema } from './publicWorkflowSummaryDtoInputSchema';
+import type { PublicWorkflowSummaryDtoOutputSchema } from './publicWorkflowSummaryDtoOutputSchema';
 import type { PublicWorkflowSummaryDtoMetadata } from './publicWorkflowSummaryDtoMetadata';
 
 export interface PublicWorkflowSummaryDto {
   id: string;
   creatorId: string;
   version: string;
+  /** Workflow title */
+  title?: string;
+  /** Workflow description */
+  description?: string;
+  /** Input schema for the workflow */
+  inputSchema?: PublicWorkflowSummaryDtoInputSchema;
+  /** Output schema for the workflow */
+  outputSchema?: PublicWorkflowSummaryDtoOutputSchema;
   metadata: PublicWorkflowSummaryDtoMetadata;
   /** @nullable */
   customExecutionPrice?: string | null;
