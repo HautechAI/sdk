@@ -888,6 +888,7 @@ export * from './reveRemixV1ResponseStatus';
 export * from './revokeAccessControllerParamsDto';
 export * from './revokeAccessControllerParamsDtoAccess';
 export * from './revokeAccessControllerParamsDtoPrincipalType';
+export * from './runPublicWorkflowResponseDto';
 export * from './runWorkflowParamsDto';
 export * from './runWorkflowParamsDtoInput';
 export * from './runWorkflowParamsDtoMetadata';

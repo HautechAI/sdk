@@ -201,6 +201,19 @@ describe('Workflows API E2E Tests', () => {
             expect(typeof result.failedRuns).toBe('number');
         });
 
+        it('should run a public workflow', async () => {
+            const runParams = {
+                input: {
+                    testInput: 'test-value',
+                },
+            };
+
+            const result = await sdk.workflows.runPublic(sharedWorkflowId, runParams);
+            expect(result).toBeDefined();
+            expect(result.operationId).toBeDefined();
+            expect(typeof result.operationId).toBe('string');
+        });
+
         it('should share workflow with everyone', async () => {
             const newWorkflowData = {
                 data: {
