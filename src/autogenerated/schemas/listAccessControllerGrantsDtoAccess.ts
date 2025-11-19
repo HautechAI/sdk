@@ -21,7 +21,6 @@ export const ListAccessControllerGrantsDtoAccess = {
   can_assign_maintainers: 'can_assign_maintainers',
   can_assign_owners: 'can_assign_owners',
   can_view: 'can_view',
-  can_write: 'can_write',
   can_edit: 'can_edit',
   can_delete: 'can_delete',
   can_change_access: 'can_change_access',

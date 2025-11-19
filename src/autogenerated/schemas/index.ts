@@ -953,6 +953,7 @@ export * from './setPosePreviewControllerParamsDto';
 export * from './setPosePreviewDto';
 export * from './shareWithEveryoneControllerParamsDto';
 export * from './shareWithEveryoneControllerParamsDtoAccess';
+export * from './shareWithEveryoneControllerParamsDtoAccessItem';
 export * from './sharedResourceDto';
 export * from './sharedResourceDtoType';
 export * from './stackEntity';

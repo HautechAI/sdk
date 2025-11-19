@@ -4,9 +4,10 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { ShareWithEveryoneControllerParamsDtoAccess } from './shareWithEveryoneControllerParamsDtoAccess';
+import type { ShareWithEveryoneControllerParamsDtoAccessItem } from './shareWithEveryoneControllerParamsDtoAccessItem';
 
 export interface ShareWithEveryoneControllerParamsDto {
-  access: ShareWithEveryoneControllerParamsDtoAccess;
+  /** @minItems 1 */
+  access: ShareWithEveryoneControllerParamsDtoAccessItem[];
   customExecutionPrice: string;
 }

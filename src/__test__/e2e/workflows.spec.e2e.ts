@@ -165,7 +165,7 @@ describe('Workflows API E2E Tests', () => {
             sharedWorkflowId = result.id;
 
             await sdk.workflows.shareWithEveryone(sharedWorkflowId, {
-                access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
+                access: [ShareWithEveryoneControllerParamsDtoAccess.public_read],
                 customExecutionPrice: '10',
             });
         });
@@ -228,7 +228,7 @@ describe('Workflows API E2E Tests', () => {
 
             const newWorkflow = await sdk.workflows.create(newWorkflowData);
             const result = await sdk.workflows.shareWithEveryone(newWorkflow.id, {
-                access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
+                access: [ShareWithEveryoneControllerParamsDtoAccess.public_read],
                 customExecutionPrice: '10',
             });
 
@@ -251,7 +251,7 @@ describe('Workflows API E2E Tests', () => {
 
             // First share with everyone
             await sdk.workflows.shareWithEveryone(newWorkflow.id, {
-                access: ShareWithEveryoneControllerParamsDtoAccess.public_read,
+                access: [ShareWithEveryoneControllerParamsDtoAccess.public_read],
                 customExecutionPrice: '10',
             });
 

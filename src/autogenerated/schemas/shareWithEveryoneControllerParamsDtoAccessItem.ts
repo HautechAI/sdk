@@ -5,14 +5,11 @@
  * OpenAPI spec version: 1.0
  */
 
-/**
- * @minItems 1
- */
-export type ShareWithEveryoneControllerParamsDtoAccess = typeof ShareWithEveryoneControllerParamsDtoAccess[keyof typeof ShareWithEveryoneControllerParamsDtoAccess];
+export type ShareWithEveryoneControllerParamsDtoAccessItem = typeof ShareWithEveryoneControllerParamsDtoAccessItem[keyof typeof ShareWithEveryoneControllerParamsDtoAccessItem];
 
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const ShareWithEveryoneControllerParamsDtoAccess = {
+export const ShareWithEveryoneControllerParamsDtoAccessItem = {
   public_execute: 'public_execute',
   public_read: 'public_read',
 } as const;
