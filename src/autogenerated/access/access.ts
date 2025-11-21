@@ -14,7 +14,7 @@ import type {
   ListSharedResourcesResponseDto,
   RevokeAccessControllerParamsDto,
   ShareWithEveryoneControllerParamsDto,
-  SharedAccessEntryDto
+  SharedAccessResponseDto
 } from '.././schemas';
 
 import { axiosMutator } from '../../api-utils';
@@ -101,7 +101,7 @@ const accessControllerAccessV1 = (
   /**
  * @summary Get current user access relations for a resource
  */
-const accessControllerCurrentAccessV1 = (
+const accessControllerCurrentUserAccessV1 = (
     id: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
       return axiosMutator<CurrentAccessControllerDto>(
@@ -115,7 +115,7 @@ const accessControllerCurrentAccessV1 = (
 const accessControllerListSharedUsersV1 = (
     id: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
-      return axiosMutator<SharedAccessEntryDto[]>(
+      return axiosMutator<SharedAccessResponseDto>(
       {url: `/v1/resources/${id}/access/shared`, method: 'GET'
     },
       options);
@@ -132,7 +132,7 @@ const accessControllerListSharedV1 = (
     },
       options);
     }
-  return {accessControllerGrantAccessV1,accessControllerRevokeAccessV1,accessControllerAttachAccessV1,accessControllerDetachAccessV1,accessControllerGrantAccessToEveryoneV1,accessControllerRevokeAccessFromEveryoneV1,accessControllerAccessV1,accessControllerCurrentAccessV1,accessControllerListSharedUsersV1,accessControllerListSharedV1}};
+  return {accessControllerGrantAccessV1,accessControllerRevokeAccessV1,accessControllerAttachAccessV1,accessControllerDetachAccessV1,accessControllerGrantAccessToEveryoneV1,accessControllerRevokeAccessFromEveryoneV1,accessControllerAccessV1,accessControllerCurrentUserAccessV1,accessControllerListSharedUsersV1,accessControllerListSharedV1}};
 export type AccessControllerGrantAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerGrantAccessV1']>>>
 export type AccessControllerRevokeAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerRevokeAccessV1']>>>
 export type AccessControllerAttachAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerAttachAccessV1']>>>
@@ -140,6 +140,6 @@ export type AccessControllerDetachAccessV1Result = NonNullable<Awaited<ReturnTyp
 export type AccessControllerGrantAccessToEveryoneV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerGrantAccessToEveryoneV1']>>>
 export type AccessControllerRevokeAccessFromEveryoneV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerRevokeAccessFromEveryoneV1']>>>
 export type AccessControllerAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerAccessV1']>>>
-export type AccessControllerCurrentAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerCurrentAccessV1']>>>
+export type AccessControllerCurrentUserAccessV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerCurrentUserAccessV1']>>>
 export type AccessControllerListSharedUsersV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerListSharedUsersV1']>>>
 export type AccessControllerListSharedV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getAccess>['accessControllerListSharedV1']>>>

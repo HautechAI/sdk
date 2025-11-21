@@ -7,7 +7,6 @@
 import type { SharedAccessEntryDtoRelationsItem } from './sharedAccessEntryDtoRelationsItem';
 
 export interface SharedAccessEntryDto {
-  resourceId: string;
   principalId: string;
   relations: SharedAccessEntryDtoRelationsItem[];
 }

@@ -958,6 +958,8 @@ export * from './shareWithEveryoneControllerParamsDtoAccess';
 export * from './shareWithEveryoneControllerParamsDtoAccessItem';
 export * from './sharedAccessEntryDto';
 export * from './sharedAccessEntryDtoRelationsItem';
+export * from './sharedAccessResponseDto';
+export * from './sharedAccessResponseDtoPublicAccessItem';
 export * from './sharedResourceDto';
 export * from './sharedResourceDtoType';
 export * from './stackEntity';

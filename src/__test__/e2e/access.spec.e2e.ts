@@ -9,7 +9,7 @@ describe('Access E2E - currentAccess', () => {
     it('should get current user access for a resource', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
 
-        const currentAccess = await sdk.access.currentAccess(imageEntity.id);
+        const currentAccess = await sdk.access.currentUserAccess(imageEntity.id);
         expect(currentAccess).toBeDefined();
         expect(currentAccess).toHaveProperty('resourceId');
         expect(currentAccess.resourceId).toBe(imageEntity.id);
@@ -21,21 +21,25 @@ describe('Access E2E - currentAccess', () => {
 describe('Access E2E - listSharedUsers', () => {
     const sdk = createTestSdk();
 
-    it('should get list of users with access to a resource', async () => {
+    it('should get shared access response for a resource', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
 
-        const sharedUsers = await sdk.access.listSharedUsers(imageEntity.id);
-        expect(sharedUsers).toBeDefined();
-        expect(Array.isArray(sharedUsers)).toBe(true);
+        const response = await sdk.access.listSharedUsers(imageEntity.id);
+        expect(response).toBeDefined();
+        expect(response).toHaveProperty('resourceId');
+        expect(response.resourceId).toBe(imageEntity.id);
+        expect(response).toHaveProperty('entries');
+        expect(Array.isArray(response.entries)).toBe(true);
+        expect(response).toHaveProperty('publicAccess');
+        expect(Array.isArray(response.publicAccess)).toBe(true);
     });
 
-    it('should return shared users with correct structure', async () => {
+    it('should return shared users with correct structure in entries', async () => {
         const imageEntity = await sdk.images.createFromFile(path.join(__dirname, 'assets', 'pose.png'));
 
-        const sharedUsers = await sdk.access.listSharedUsers(imageEntity.id);
-        if (sharedUsers.length > 0) {
-            const entry = sharedUsers[0];
-            expect(entry).toHaveProperty('resourceId');
+        const response = await sdk.access.listSharedUsers(imageEntity.id);
+        if (response.entries.length > 0) {
+            const entry = response.entries[0];
             expect(entry).toHaveProperty('principalId');
             expect(entry).toHaveProperty('relations');
             expect(Array.isArray(entry.relations)).toBe(true);

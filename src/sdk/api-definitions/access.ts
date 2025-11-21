@@ -12,7 +12,7 @@ export const useAccessApi = () => {
         shareWithEveryone: api.accessControllerGrantAccessToEveryoneV1,
         revokeFromEveryone: api.accessControllerRevokeAccessFromEveryoneV1,
         list: api.accessControllerAccessV1,
-        currentAccess: api.accessControllerCurrentAccessV1,
+        currentUserAccess: api.accessControllerCurrentUserAccessV1,
         listSharedUsers: api.accessControllerListSharedUsersV1,
         listShared: api.accessControllerListSharedV1,
     });
