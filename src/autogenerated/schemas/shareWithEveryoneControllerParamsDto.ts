@@ -9,5 +9,4 @@ import type { ShareWithEveryoneControllerParamsDtoAccessItem } from './shareWith
 export interface ShareWithEveryoneControllerParamsDto {
   /** @minItems 1 */
   access: ShareWithEveryoneControllerParamsDtoAccessItem[];
-  customExecutionPrice: string;
 }
