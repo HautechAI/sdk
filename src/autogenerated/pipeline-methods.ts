@@ -245,6 +245,11 @@ export const usePipelineDefinitions = () => {
         'nano_banana': {
           'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
         },
+        'nano_banana_pro': {
+          'edit': {
+            'v1': api.callControllerCallOperationsRunGoogleNanoBananaProEditV1V1,
+          },
+        },
       },
       'fashn': {
         'vton_1_6': {
@@ -287,6 +292,17 @@ export const usePipelineDefinitions = () => {
       },
       'yolo11x_pose': {
         'v1': api.callControllerCallOperationsRunYolo11xPoseV1V1,
+      },
+      'seedance_v1': {
+        'pro': {
+          'v1': api.callControllerCallOperationsRunSeedanceV1ProV1V1,
+        },
+        'fast': {
+          'v1': api.callControllerCallOperationsRunSeedanceV1FastV1V1,
+        },
+        'light': {
+          'v1': api.callControllerCallOperationsRunSeedanceV1LightV1V1,
+        },
       },
       'workflows': {
         'run': {

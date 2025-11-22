@@ -40,6 +40,8 @@ import type {
   FluxKontextDevV1Request,
   FluxKontextDevV1Response,
   GetOperationsParamsDto,
+  GoogleNanoBananaProEditV1Request,
+  GoogleNanoBananaProEditV1Response,
   GoogleNanoBananaV1Request,
   GoogleNanoBananaV1Response,
   GptV1Request,
@@ -110,6 +112,12 @@ import type {
   ReveRemixV1Response,
   SeedV1Request,
   SeedV1Response,
+  SeedanceV1FastV1Request,
+  SeedanceV1FastV1Response,
+  SeedanceV1LightV1Request,
+  SeedanceV1LightV1Response,
+  SeedanceV1ProV1Request,
+  SeedanceV1ProV1Response,
   Seedream3V1Request,
   Seedream3V1Response,
   Seedream4EditV1Request,
@@ -676,6 +684,16 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
+  const operationsControllerRunGoogleNanoBananaProEditV1V1 = (
+    googleNanoBananaProEditV1Request: GoogleNanoBananaProEditV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<GoogleNanoBananaProEditV1Response>(
+      {url: `/v1/operations/run/google.nano_banana_pro.edit.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: googleNanoBananaProEditV1Request
+    },
+      options);
+    }
   const operationsControllerRunHauteNaomiTrainV1V1 = (
     hauteNaomiTrainV1Request: HauteNaomiTrainV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -786,6 +804,36 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
+  const operationsControllerRunSeedanceV1ProV1V1 = (
+    seedanceV1ProV1Request: SeedanceV1ProV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<SeedanceV1ProV1Response>(
+      {url: `/v1/operations/run/seedance_v1.pro.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: seedanceV1ProV1Request
+    },
+      options);
+    }
+  const operationsControllerRunSeedanceV1FastV1V1 = (
+    seedanceV1FastV1Request: SeedanceV1FastV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<SeedanceV1FastV1Response>(
+      {url: `/v1/operations/run/seedance_v1.fast.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: seedanceV1FastV1Request
+    },
+      options);
+    }
+  const operationsControllerRunSeedanceV1LightV1V1 = (
+    seedanceV1LightV1Request: SeedanceV1LightV1Request,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<SeedanceV1LightV1Response>(
+      {url: `/v1/operations/run/seedance_v1.light.v1`, method: 'POST',
+      headers: {'Content-Type': 'application/json', },
+      data: seedanceV1LightV1Request
+    },
+      options);
+    }
   const operationsControllerRunImagen4FastV1V1 = (
     imagen4FastV1Request: Imagen4FastV1Request,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -886,7 +934,7 @@ const operationsControllerGetOperationV1 = (
     },
       options);
     }
-  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunStringsSwitchV1V1,operationsControllerRunStringsSliceV1V1,operationsControllerRunStringsLengthV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunImagesDownscaleV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateKling21StandardV1V1,operationsControllerRunAnimateKling21ProV1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunVeo31V1V1,operationsControllerRunVeo31FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1,operationsControllerRunJsonToImageV1V1,operationsControllerRunJsonToVideoV1V1,operationsControllerRunReveRemixV1V1,operationsControllerRunYolo11xPoseV1V1,operationsControllerRunSeedream4T2iV1V1,operationsControllerRunImagen4FastV1V1,operationsControllerRunImagen4StandardV1V1,operationsControllerRunImagen4UltraV1V1,operationsControllerRunWorkflowsRunV1V1,operationsControllerRunKlingVideo25ProImageToVideoV1V1,operationsControllerRunFluxKontextDevPrepareDatasetV1V1,operationsControllerRunFluxKontextDevTrainV1V1,operationsControllerRunFluxKontextDevV1V1,operationsControllerRunImagesRenameV1V1,operationsControllerRunClipClassifyV1V1}};
+  return {operationsControllerGetOperationV1,operationsControllerGetOperationsV1,operationsControllerListOperationsV1,operationsControllerUpdateMetadataV1,operationsControllerRunHauteLindaV1V1,operationsControllerRunHauteNaomiV1V1,operationsControllerRunInpaintKateV1V1,operationsControllerRunGptV1V1,operationsControllerRunGptV2V1,operationsControllerRunGptV3V1,operationsControllerRunTranslateV1V1,operationsControllerRunStringsTemplateV1V1,operationsControllerRunStringsSwitchV1V1,operationsControllerRunStringsSliceV1V1,operationsControllerRunStringsLengthV1V1,operationsControllerRunImagineKateV1V1,operationsControllerRunUpscaleV1V1,operationsControllerRunObjectDetectionV1V1,operationsControllerRunSegmentAnythingEmbeddingsV1V1,operationsControllerRunSegmentAnythingMaskV1V1,operationsControllerRunPoseEstimationV1V1,operationsControllerRunCutV1V1,operationsControllerRunCropV1V1,operationsControllerRunNoiseV1V1,operationsControllerRunResizeV1V1,operationsControllerRunImagesDownscaleV1V1,operationsControllerRunContrastV1V1,operationsControllerRunCompositeV1V1,operationsControllerRunVtonGiseleV1V1,operationsControllerRunNegateImageV1V1,operationsControllerRunEchoV1V1,operationsControllerRunMathV1V1,operationsControllerRunAnimateKling16ProV1V1,operationsControllerRunAnimateKling21V1V1,operationsControllerRunAnimateKling21StandardV1V1,operationsControllerRunAnimateKling21ProV1V1,operationsControllerRunAnimateCreatomateV1V1,operationsControllerRunOnecompilerV1V1,operationsControllerRunEditFluxKontextDevV1V1,operationsControllerRunVeo3V1V1,operationsControllerRunVeo3FastV1V1,operationsControllerRunVeo31V1V1,operationsControllerRunVeo31FastV1V1,operationsControllerRunPipelineMapV1V1,operationsControllerRunImagen4V1V1,operationsControllerRunTopazUpscaleV1V1,operationsControllerRunIdeogramCharacterV1V1,operationsControllerRunSeedream3V1V1,operationsControllerRunLumaPhotonV1V1,operationsControllerRunImagineFlux11ProUltraV1V1,operationsControllerRunSeedV1V1,operationsControllerRunGoogleNanoBananaV1V1,operationsControllerRunGoogleNanoBananaProEditV1V1,operationsControllerRunHauteNaomiTrainV1V1,operationsControllerRunHauteNaomiPrepareDatasetV1V1,operationsControllerRunFashnVton16V1V1,operationsControllerRunAlphabakeVtonV1V1,operationsControllerRunKlingKolorsVtonV1V1,operationsControllerRunSeedream4EditV1V1,operationsControllerRunJsonToImageV1V1,operationsControllerRunJsonToVideoV1V1,operationsControllerRunReveRemixV1V1,operationsControllerRunYolo11xPoseV1V1,operationsControllerRunSeedream4T2iV1V1,operationsControllerRunSeedanceV1ProV1V1,operationsControllerRunSeedanceV1FastV1V1,operationsControllerRunSeedanceV1LightV1V1,operationsControllerRunImagen4FastV1V1,operationsControllerRunImagen4StandardV1V1,operationsControllerRunImagen4UltraV1V1,operationsControllerRunWorkflowsRunV1V1,operationsControllerRunKlingVideo25ProImageToVideoV1V1,operationsControllerRunFluxKontextDevPrepareDatasetV1V1,operationsControllerRunFluxKontextDevTrainV1V1,operationsControllerRunFluxKontextDevV1V1,operationsControllerRunImagesRenameV1V1,operationsControllerRunClipClassifyV1V1}};
 export type OperationsControllerGetOperationV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationV1']>>>
 export type OperationsControllerGetOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerGetOperationsV1']>>>
 export type OperationsControllerListOperationsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerListOperationsV1']>>>
@@ -939,6 +987,7 @@ export type OperationsControllerRunLumaPhotonV1V1Result = NonNullable<Awaited<Re
 export type OperationsControllerRunImagineFlux11ProUltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagineFlux11ProUltraV1V1']>>>
 export type OperationsControllerRunSeedV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedV1V1']>>>
 export type OperationsControllerRunGoogleNanoBananaV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunGoogleNanoBananaV1V1']>>>
+export type OperationsControllerRunGoogleNanoBananaProEditV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunGoogleNanoBananaProEditV1V1']>>>
 export type OperationsControllerRunHauteNaomiTrainV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunHauteNaomiTrainV1V1']>>>
 export type OperationsControllerRunHauteNaomiPrepareDatasetV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunHauteNaomiPrepareDatasetV1V1']>>>
 export type OperationsControllerRunFashnVton16V1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunFashnVton16V1V1']>>>
@@ -950,6 +999,9 @@ export type OperationsControllerRunJsonToVideoV1V1Result = NonNullable<Awaited<R
 export type OperationsControllerRunReveRemixV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunReveRemixV1V1']>>>
 export type OperationsControllerRunYolo11xPoseV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunYolo11xPoseV1V1']>>>
 export type OperationsControllerRunSeedream4T2iV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedream4T2iV1V1']>>>
+export type OperationsControllerRunSeedanceV1ProV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedanceV1ProV1V1']>>>
+export type OperationsControllerRunSeedanceV1FastV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedanceV1FastV1V1']>>>
+export type OperationsControllerRunSeedanceV1LightV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunSeedanceV1LightV1V1']>>>
 export type OperationsControllerRunImagen4FastV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4FastV1V1']>>>
 export type OperationsControllerRunImagen4StandardV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4StandardV1V1']>>>
 export type OperationsControllerRunImagen4UltraV1V1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getOperations>['operationsControllerRunImagen4UltraV1V1']>>>
