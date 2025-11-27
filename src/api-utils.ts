@@ -66,7 +66,7 @@ const enhanceAxiosError = (error: AxiosError): void => {
 };
 
 const runOnRequestError = async (
-    config: { onRequestError?: OnRequestError },
+    config: ApiCallConfig,
     info: RequestErrorInfo,
     context: RequestContextInfo,
 ): Promise<OnRequestErrorResult | void> => {
@@ -162,12 +162,12 @@ const createApiCallWrapper = <C extends ApiCallConfig>(getBaseURL: (config: C) =
                         context,
                     );
 
+                    if (handlerResult?.invalidateToken) {
+                        config.invalidateAuthToken();
+                    }
+
                     const hasAttemptsRemaining = attempt < MAX_ATTEMPTS;
                     if (handlerResult?.retry && hasAttemptsRemaining) {
-                        if (handlerResult.invalidateToken) {
-                            config.invalidateAuthToken();
-                        }
-
                         const backoffMs = handlerResult.backoffMs ?? 0;
                         if (backoffMs > 0) {
                             await delay(backoffMs);

@@ -169,4 +169,67 @@ describe('onRequestError hook', () => {
         expect(onRequestError).not.toHaveBeenCalled();
         expect(config.invalidateAuthToken).not.toHaveBeenCalled();
     });
+
+    it('invalidates token cache when handler opts not to retry', async () => {
+        const axiosFn = vi
+            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
+            .mockResolvedValueOnce(createAxiosResponse({ ok: true }));
+
+        let issuedToken = 'token-initial';
+        const authToken = vi.fn().mockImplementation(async () => issuedToken);
+        const invalidateAuthToken = vi.fn().mockImplementation(() => {
+            issuedToken = 'token-refreshed';
+        });
+        const onRequestError = vi.fn().mockResolvedValue({ retry: false, invalidateToken: true });
+
+        const config = createConfig({ authToken, onRequestError, invalidateAuthToken });
+        const wrapped = wrapApiCall(axiosFn as any, config);
+
+        await expect(wrapped()).rejects.toMatchObject({ message: expect.stringContaining('unauthorized') });
+        expect(invalidateAuthToken).toHaveBeenCalledTimes(1);
+
+        const secondResult = await wrapped();
+
+        expect(secondResult).toEqual({ ok: true });
+        expect(authToken).toHaveBeenCalledTimes(2);
+
+        const firstAttemptConfig = axiosFn.mock.calls[0][axiosFn.mock.calls[0].length - 1] as AxiosRequestConfig;
+        const secondAttemptConfig = axiosFn.mock.calls[1][axiosFn.mock.calls[1].length - 1] as AxiosRequestConfig;
+
+        expect(firstAttemptConfig.headers?.Authorization).toBe('Bearer token-initial');
+        expect(secondAttemptConfig.headers?.Authorization).toBe('Bearer token-refreshed');
+    });
+
+    it('invalidates token cache even when retry fails', async () => {
+        const axiosFn = vi
+            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
+            .mockRejectedValueOnce(createAxiosError(500, 'server-error'));
+
+        let issuedToken = 'token-initial';
+        const authToken = vi.fn().mockImplementation(async () => issuedToken);
+        const invalidateAuthToken = vi.fn().mockImplementation(() => {
+            issuedToken = 'token-refreshed';
+        });
+        const onRequestError = vi
+            .fn()
+            .mockResolvedValueOnce({ retry: true, invalidateToken: true })
+            .mockResolvedValueOnce({ retry: false, invalidateToken: true });
+
+        const config = createConfig({ authToken, onRequestError, invalidateAuthToken });
+        const wrapped = wrapApiCall(axiosFn as any, config);
+
+        await expect(wrapped()).rejects.toMatchObject({ message: expect.stringContaining('server-error') });
+
+        expect(onRequestError).toHaveBeenCalledTimes(2);
+        expect(invalidateAuthToken).toHaveBeenCalledTimes(2);
+        expect(authToken).toHaveBeenCalledTimes(2);
+
+        const firstAttemptConfig = axiosFn.mock.calls[0][axiosFn.mock.calls[0].length - 1] as AxiosRequestConfig;
+        const secondAttemptConfig = axiosFn.mock.calls[1][axiosFn.mock.calls[1].length - 1] as AxiosRequestConfig;
+
+        expect(firstAttemptConfig.headers?.Authorization).toBe('Bearer token-initial');
+        expect(secondAttemptConfig.headers?.Authorization).toBe('Bearer token-refreshed');
+    });
 });
