@@ -57,6 +57,30 @@ import { createSDK } from '@hautechai/sdk';
 const sdk = createSDK({ authToken: () => accountToken }); // you should call the server here for getting the token
 ```
 
+#### Handling request errors and retries
+
+You can centralize HTTP error handling by providing an `onRequestError` hook. The hook receives the typed
+`RequestErrorInfo` and `RequestContextInfo`, and can instruct the SDK to retry the request, invalidate the cached
+token, and optionally wait before retrying.
+
+```ts
+const sdk = createSDK({
+    baseUrl,
+    authToken: getCurrentToken,
+    onRequestError: async ({ error }) => {
+        if (error.status === 401) {
+            await refreshToken();
+            return { retry: true, invalidateToken: true };
+        }
+
+        return { retry: false };
+    },
+});
+
+// Later, when using websockets, you can disconnect explicitly
+sdk.ws.disconnect();
+```
+
 ### Using SDK
 
 Docs about how to use the SDK are available [here](https://docs.hautech.ai/)

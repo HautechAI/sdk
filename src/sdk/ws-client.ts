@@ -97,4 +97,11 @@ export class WsClient {
             this.getSocket().off('server_error');
         }
     }
+
+    public disconnect(): void {
+        if (this.socket) {
+            this.socket.disconnect();
+            this.socket = undefined;
+        }
+    }
 }
