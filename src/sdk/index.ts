@@ -8,6 +8,10 @@ export const createSDK = (options: SDKOptions): SDK => {
     let token: string | undefined = undefined;
     const config = getConfig(options);
 
+    config.invalidateAuthToken = () => {
+        token = undefined;
+    };
+
     const authToken = config.authToken;
     const getAuthToken = async (): Promise<string> => {
         if (token) {
@@ -36,6 +40,10 @@ export const createSDK = (options: SDKOptions): SDK => {
 export const createDirectorySDK = (options: DirectorySDKOptions): DirectorySDK => {
     let token: string | undefined = undefined;
     const config = getDirectoryConfig(options);
+
+    config.invalidateAuthToken = () => {
+        token = undefined;
+    };
 
     const authToken = config.authToken;
     const getAuthToken = async (): Promise<string> => {

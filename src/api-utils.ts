@@ -1,6 +1,16 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as qs from 'qs';
-import { ApiDefinitionTree, DeepWrap, SDK, DirectorySDK } from './types';
+import {
+    ApiDefinitionTree,
+    DeepWrap,
+    DirectorySDK,
+    OnRequestError,
+    OnRequestErrorResult,
+    RequestContextInfo,
+    RequestErrorInfo,
+    ResponseInfo,
+    SDK,
+} from './types';
 
 const looksLikeAxiosRequestOptions = (arg: unknown): arg is AxiosRequestConfig =>
     typeof arg === 'object' && arg !== null && ('headers' in arg || 'baseURL' in arg || 'timeout' in arg);
@@ -15,59 +25,162 @@ const isCustomWrappedFn = (
     return typeof fn === 'function' && fn.__customMethodWrapper === true;
 };
 
-const createApiCallWrapper = <C extends { baseUrl: string; authToken: () => string | Promise<string> }>(
-    getBaseURL: (config: C) => string,
-) => {
+const retryLocks = new WeakMap<object, Promise<OnRequestErrorResult | void>>();
+
+const delay = (ms: number): Promise<void> =>
+    ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve();
+
+const cloneRequestConfig = (request: AxiosRequestConfig): AxiosRequestConfig => ({
+    ...request,
+    headers: request.headers ? { ...request.headers } : request.headers,
+});
+
+const toResponseInfo = (response?: AxiosResponse): ResponseInfo | undefined => {
+    if (!response) return undefined;
+    return {
+        status: response.status,
+        headers: response.headers,
+        data: response.data,
+    } satisfies ResponseInfo;
+};
+
+const enhanceAxiosError = (error: AxiosError): void => {
+    let responseData: string;
+
+    try {
+        const messageFromBody = (error.response?.data as any)?.message;
+        if (typeof messageFromBody === 'string' && messageFromBody.length > 0) {
+            responseData = messageFromBody;
+        } else if (typeof error.response?.data === 'string') {
+            responseData = error.response.data;
+        } else if (error.response?.data !== undefined) {
+            responseData = JSON.stringify(error.response.data);
+        } else {
+            responseData = '[no response data]';
+        }
+    } catch {
+        responseData = '[unserializable data]';
+    }
+
+    error.message = `Request error: ${error.message || 'Unknown error'}.\n${responseData}`;
+};
+
+const runOnRequestError = async (
+    config: { onRequestError?: OnRequestError },
+    info: RequestErrorInfo,
+    context: RequestContextInfo,
+): Promise<OnRequestErrorResult | void> => {
+    if (!config.onRequestError) {
+        return undefined;
+    }
+
+    const status = info.error.response?.status;
+
+    if (status === 401) {
+        const existing = retryLocks.get(config);
+        if (existing) {
+            return existing;
+        }
+
+        const pending = (async () => config.onRequestError!(info, context))();
+        retryLocks.set(config, pending);
+        try {
+            return await pending;
+        } finally {
+            retryLocks.delete(config);
+        }
+    }
+
+    return await config.onRequestError(info, context);
+};
+
+type ApiCallConfig = {
+    baseUrl: string;
+    authToken: () => string | Promise<string>;
+    onRequestError?: OnRequestError;
+    invalidateAuthToken: () => void;
+};
+
+const MAX_ATTEMPTS = 2;
+
+const createApiCallWrapper = <C extends ApiCallConfig>(getBaseURL: (config: C) => string) => {
     return <Fn extends (...args: any[]) => Promise<AxiosResponse<any>>>(fn: Fn, config: C) => {
         const wrapped = async function (this: SDK, ...args: Parameters<Fn>) {
-            const token = await config.authToken();
-            const baseOptions: AxiosRequestConfig = {
-                baseURL: getBaseURL(config),
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            };
+            const originalArgs = [...args] as Parameters<Fn>;
 
-            const finalArgs = [...args];
-            const lastParamIndex = fn.length - 1;
+            for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+                const token = await config.authToken();
 
-            if (looksLikeAxiosRequestOptions(args[lastParamIndex])) {
-                finalArgs[lastParamIndex] = {
-                    ...args[lastParamIndex],
-                    ...baseOptions,
+                const baseOptions: AxiosRequestConfig = {
+                    baseURL: getBaseURL(config),
                     headers: {
-                        ...(args[lastParamIndex]?.headers ?? {}),
                         Authorization: `Bearer ${token}`,
                     },
                 };
-            } else {
-                while (finalArgs.length < fn.length - 1) {
-                    finalArgs.push(undefined);
+
+                const finalArgs = [...originalArgs];
+                const lastParamIndex = fn.length - 1;
+
+                if (looksLikeAxiosRequestOptions(originalArgs[lastParamIndex])) {
+                    finalArgs[lastParamIndex] = {
+                        ...originalArgs[lastParamIndex],
+                        ...baseOptions,
+                        headers: {
+                            ...(originalArgs[lastParamIndex]?.headers ?? {}),
+                            Authorization: `Bearer ${token}`,
+                        },
+                    } as any;
+                } else {
+                    while (finalArgs.length < fn.length - 1) {
+                        finalArgs.push(undefined as any);
+                    }
+                    finalArgs.push(baseOptions as any);
                 }
-                finalArgs.push(baseOptions);
-            }
 
-            try {
-                const res = await fn.call(this, ...finalArgs);
-                return typeof res === 'object' && 'headers' in res ? res.data : res;
-            } catch (err: any) {
-                if (axios.isAxiosError(err)) {
-                    let responseData: string;
+                const requestConfig = (finalArgs[finalArgs.length - 1] ?? {}) as AxiosRequestConfig;
 
-                    try {
-                        responseData =
-                            err.response?.data?.message ??
-                            (typeof err.response?.data === 'string'
-                                ? err.response.data
-                                : JSON.stringify(err.response?.data));
-                    } catch {
-                        responseData = '[unserializable data]';
+                try {
+                    const res = await fn.call(this, ...(finalArgs as Parameters<Fn>));
+                    return typeof res === 'object' && 'headers' in res ? (res as AxiosResponse).data : res;
+                } catch (err) {
+                    if (!axios.isAxiosError(err)) {
+                        throw err;
                     }
 
-                    err.message = `Request error: ${err.message || 'Unknown error'}.\n${responseData}`;
+                    enhanceAxiosError(err);
+
+                    const context: RequestContextInfo = {
+                        attempt,
+                        request: cloneRequestConfig(requestConfig),
+                    };
+                    const handlerResult = await runOnRequestError(
+                        config,
+                        {
+                            error: err,
+                            response: toResponseInfo(err.response),
+                        } satisfies RequestErrorInfo,
+                        context,
+                    );
+
+                    const hasAttemptsRemaining = attempt < MAX_ATTEMPTS;
+                    if (handlerResult?.retry && hasAttemptsRemaining) {
+                        if (handlerResult.invalidateToken) {
+                            config.invalidateAuthToken();
+                        }
+
+                        const backoffMs = handlerResult.backoffMs ?? 0;
+                        if (backoffMs > 0) {
+                            await delay(backoffMs);
+                        }
+
+                        continue;
+                    }
+
+                    throw err;
                 }
-                throw err;
             }
+
+            throw new Error('Request error handling exceeded maximum attempts');
         };
 
         (wrapped as any).__isWrapped = true;
@@ -113,7 +226,7 @@ export const wrapCustomMethod = <Fn extends (...args: any[]) => any | Promise<an
     return fn;
 };
 
-export const wrapApiCallDeep = <T, C extends { baseUrl: string; authToken: () => string | Promise<string> }>(
+export const wrapApiCallDeep = <T, C extends ApiCallConfig>(
     obj: T,
     config: C,
     sdkContext?: Partial<SDK | DirectorySDK>,
@@ -139,7 +252,7 @@ export const wrapApiCallDeep = <T, C extends { baseUrl: string; authToken: () =>
     return obj as any;
 };
 
-export const wrapDirectoryApiCallDeep = <T, C extends { baseUrl: string; authToken: () => string | Promise<string> }>(
+export const wrapDirectoryApiCallDeep = <T, C extends ApiCallConfig>(
     obj: T,
     config: C,
     sdkContext?: Partial<DirectorySDK>,
