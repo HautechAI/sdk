@@ -7,6 +7,7 @@ export const useWorkflowsApi = () => {
     return useApi({
         create: hautechApi.workflowsControllerCreateWorkflowV1,
         get: wrapApiCallNullable(hautechApi.workflowsControllerGetWorkflowV1),
+        getByAlias: wrapApiCallNullable(hautechApi.workflowsControllerGetPublicWorkflowByAliasV1),
         list: hautechApi.workflowsControllerListWorkflowsV1,
         update: hautechApi.workflowsControllerUpdateWorkflowV1,
         delete: hautechApi.workflowsControllerDeleteWorkflowV1,

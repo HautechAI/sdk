@@ -13,7 +13,8 @@ export interface WorkflowDto {
   creatorId: string;
   data: WorkflowDtoData;
   pipelineTemplate?: WorkflowDtoPipelineTemplate;
-  version: string;
+  /** Alias assigned to this workflow */
+  alias: string;
   metadata: WorkflowDtoMetadata;
   /**
    * Custom execution price (decimal string) charged for running this workflow

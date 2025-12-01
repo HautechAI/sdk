@@ -8,7 +8,8 @@ import type { WorkflowsRunV1InputInput } from './workflowsRunV1InputInput';
 import type { WorkflowsRunV1InputMetadata } from './workflowsRunV1InputMetadata';
 
 export interface WorkflowsRunV1Input {
-  workflowId: string;
+  workflowId?: string;
   input: WorkflowsRunV1InputInput;
   metadata?: WorkflowsRunV1InputMetadata;
+  publicVersionId?: string;
 }

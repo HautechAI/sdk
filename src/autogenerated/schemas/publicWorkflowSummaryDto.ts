@@ -10,8 +10,8 @@ import type { PublicWorkflowSummaryDtoMetadata } from './publicWorkflowSummaryDt
 
 export interface PublicWorkflowSummaryDto {
   id: string;
+  alias: string;
   creatorId: string;
-  version: string;
   /** Workflow title */
   title?: string;
   /** Workflow description */
@@ -27,4 +27,7 @@ export interface PublicWorkflowSummaryDto {
   updatedAt: string;
   /** Indicates whether the workflow was marked as public */
   isPublic: boolean;
+  latestVersionId?: string;
+  latestVersionNumber?: number;
+  latestPublishedAt?: string;
 }

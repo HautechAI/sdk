@@ -8,4 +8,4 @@
 /**
  * @nullable
  */
-export type SeedV1InputSeedId = number | 'random' | null;
+export type WorkflowVersionDtoData = { [key: string]: unknown } | null;

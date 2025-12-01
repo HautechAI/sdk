@@ -13,8 +13,8 @@ import type { PublicWorkflowAccessDto } from './publicWorkflowAccessDto';
 
 export interface PublicWorkflowDto {
   id: string;
+  alias: string;
   creatorId: string;
-  version: string;
   /** Workflow title */
   title?: string;
   /** Workflow description */
@@ -30,6 +30,9 @@ export interface PublicWorkflowDto {
   updatedAt: string;
   /** Indicates whether the workflow was marked as public */
   isPublic: boolean;
+  latestVersionId?: string;
+  latestVersionNumber?: number;
+  latestPublishedAt?: string;
   data?: PublicWorkflowDtoData;
   pipelineTemplate?: PublicWorkflowDtoPipelineTemplate;
   publicAccess: PublicWorkflowAccessDto;

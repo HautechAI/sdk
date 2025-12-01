@@ -5,4 +5,4 @@
  * OpenAPI spec version: 1.0
  */
 
-export type FluxKontextV1ResponseMetadata = { [key: string]: unknown };
+export type WorkflowVersionDtoMetadata = { [key: string]: unknown };

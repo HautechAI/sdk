@@ -11,7 +11,7 @@ import type { UpdateWorkflowParamsDtoMetadata } from './updateWorkflowParamsDtoM
 export interface UpdateWorkflowParamsDto {
   data?: UpdateWorkflowParamsDtoData;
   pipelineTemplate?: UpdateWorkflowParamsDtoPipelineTemplate;
-  version?: string;
   metadata?: UpdateWorkflowParamsDtoMetadata;
+  alias?: string;
   customExecutionPrice?: string;
 }

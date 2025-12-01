@@ -5,4 +5,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type FluxKontextPrepareDatasetV1ResponseMetadata = { [key: string]: unknown };
+export interface PublishWorkflowVersionParamsDto {
+  changelog?: string;
+}

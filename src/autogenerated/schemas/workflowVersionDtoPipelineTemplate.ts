@@ -5,4 +5,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type FluxKontextTrainV1ResponseMetadata = { [key: string]: unknown };
+/**
+ * @nullable
+ */
+export type WorkflowVersionDtoPipelineTemplate = { [key: string]: unknown } | null;
