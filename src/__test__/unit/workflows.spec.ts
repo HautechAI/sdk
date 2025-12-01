@@ -27,24 +27,25 @@ describe('Workflows API Tests', () => {
             const workflowsApi = useWorkflowsApi();
             const result = await workflowsApi.getByAlias('my-workflow-alias');
 
-            expect(result).toEqual(mockResponse);
+            expect(result.data).toEqual(mockResponse);
             expect(axios.request).toHaveBeenCalledWith(
                 expect.objectContaining({
-                    url: '/v1/workflows/alias/my-workflow-alias',
+                    url: '/v1/workflows/public/alias/my-workflow-alias',
                     method: 'GET',
                 }),
             );
         });
 
-        it('should return null when workflow alias is not found', async () => {
+        it('should return null data when workflow alias is not found', async () => {
             vi.spyOn(axios, 'request').mockRejectedValue({
                 response: { status: 404 },
+                isAxiosError: true,
             });
 
             const workflowsApi = useWorkflowsApi();
             const result = await workflowsApi.getByAlias('non-existent-alias');
 
-            expect(result).toBeNull();
+            expect(result.data).toBeNull();
         });
     });
 });

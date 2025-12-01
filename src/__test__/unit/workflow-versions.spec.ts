@@ -30,7 +30,7 @@ describe('Workflow Versions API Tests', () => {
             const workflowVersionsApi = useWorkflowVersionsApi();
             const result = await workflowVersionsApi.publish('workflow-id-123', { changelog: 'Initial release' });
 
-            expect(result).toEqual(mockResponse);
+            expect(result.data).toEqual(mockResponse);
             expect(axios.request).toHaveBeenCalledWith(
                 expect.objectContaining({
                     url: '/v1/workflow-versions/workflows/workflow-id-123',
@@ -77,7 +77,7 @@ describe('Workflow Versions API Tests', () => {
             const workflowVersionsApi = useWorkflowVersionsApi();
             const result = await workflowVersionsApi.list('workflow-id-123');
 
-            expect(result).toEqual(mockResponse);
+            expect(result.data).toEqual(mockResponse);
             expect(axios.request).toHaveBeenCalledWith(
                 expect.objectContaining({
                     url: '/v1/workflow-versions/workflows/workflow-id-123',
@@ -108,7 +108,7 @@ describe('Workflow Versions API Tests', () => {
             const workflowVersionsApi = useWorkflowVersionsApi();
             const result = await workflowVersionsApi.get('version-id-123');
 
-            expect(result).toEqual(mockResponse);
+            expect(result.data).toEqual(mockResponse);
             expect(axios.request).toHaveBeenCalledWith(
                 expect.objectContaining({
                     url: '/v1/workflow-versions/version-id-123',
@@ -141,7 +141,7 @@ describe('Workflow Versions API Tests', () => {
             const workflowVersionsApi = useWorkflowVersionsApi();
             const result = await workflowVersionsApi.getByNumber('workflow-id-123', 2);
 
-            expect(result).toEqual(mockResponse);
+            expect(result.data).toEqual(mockResponse);
             expect(axios.request).toHaveBeenCalledWith(
                 expect.objectContaining({
                     url: '/v1/workflow-versions/workflows/workflow-id-123/version/2',
