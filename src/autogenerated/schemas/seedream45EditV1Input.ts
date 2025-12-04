@@ -4,8 +4,6 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { Seedream45EditV1InputWidth } from './seedream45EditV1InputWidth';
-import type { Seedream45EditV1InputHeight } from './seedream45EditV1InputHeight';
 import type { Seedream45EditV1InputOptimizePromptOptions } from './seedream45EditV1InputOptimizePromptOptions';
 
 export interface Seedream45EditV1Input {
@@ -16,10 +14,18 @@ export interface Seedream45EditV1Input {
    * @minItems 1
    */
   imageIds: string[];
-  /** Width of the generated image in pixels (2048 or 4096) */
-  width?: Seedream45EditV1InputWidth;
-  /** Height of the generated image in pixels (2048 or 4096) */
-  height?: Seedream45EditV1InputHeight;
+  /**
+   * Width of the generated image in pixels (range 2048-4096 inclusive).
+   * @minimum 2048
+   * @maximum 4096
+   */
+  width?: number;
+  /**
+   * Height of the generated image in pixels (range 2048-4096 inclusive).
+   * @minimum 2048
+   * @maximum 4096
+   */
+  height?: number;
   /** Random seed for deterministic generation */
   seed?: number;
   /** Prompt optimization mode */

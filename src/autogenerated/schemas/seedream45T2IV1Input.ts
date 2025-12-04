@@ -4,16 +4,22 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
-import type { Seedream45T2IV1InputWidth } from './seedream45T2IV1InputWidth';
-import type { Seedream45T2IV1InputHeight } from './seedream45T2IV1InputHeight';
 
 export interface Seedream45T2IV1Input {
   /** Text prompt describing the image to generate. Uses BytePlus ModelArk endpoint ep-20251204195257-ptf48. */
   prompt: string;
-  /** Width of the generated image in pixels (2048 or 4096) */
-  width?: Seedream45T2IV1InputWidth;
-  /** Height of the generated image in pixels (2048 or 4096) */
-  height?: Seedream45T2IV1InputHeight;
+  /**
+   * Width of the generated image in pixels (range 2048-4096 inclusive).
+   * @minimum 2048
+   * @maximum 4096
+   */
+  width?: number;
+  /**
+   * Height of the generated image in pixels (range 2048-4096 inclusive).
+   * @minimum 2048
+   * @maximum 4096
+   */
+  height?: number;
   /** Random seed for deterministic generation */
   seed?: number;
 }
