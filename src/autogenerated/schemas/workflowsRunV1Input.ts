@@ -9,7 +9,8 @@ import type { WorkflowsRunV1InputMetadata } from './workflowsRunV1InputMetadata'
 
 export interface WorkflowsRunV1Input {
   workflowId?: string;
+  workflowAlias?: string;
   input: WorkflowsRunV1InputInput;
   metadata?: WorkflowsRunV1InputMetadata;
-  publicVersionId?: string;
+  versionNumber?: number;
 }

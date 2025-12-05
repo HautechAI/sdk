@@ -7,7 +7,9 @@ const createAxiosResponse = <T>(data: T, status = 200): AxiosResponse<T> => ({
     status,
     statusText: 'OK',
     headers: {},
-    config: {},
+    config: {
+        headers: new (require('axios').AxiosHeaders)(),
+    } as any,
 });
 
 const createAxiosError = (status: number, message = 'error', data?: unknown): AxiosError => {
@@ -16,17 +18,21 @@ const createAxiosError = (status: number, message = 'error', data?: unknown): Ax
         status,
         statusText: 'Error',
         headers: {},
-        config: {},
+        config: {
+            headers: new (require('axios').AxiosHeaders)(),
+        } as any,
     };
 
-    const error = new AxiosError(message, undefined, {}, undefined, response);
+    const error = new AxiosError(message, undefined, {
+        headers: new (require('axios').AxiosHeaders)(),
+    } as any, undefined, response);
     error.response = response;
     error.status = status;
     return error;
 };
 
 const createConfig = (overrides: Partial<Parameters<typeof wrapApiCall>[1]> = {}) => {
-    const authToken = overrides.authToken ?? vi.fn<[], Promise<string>>().mockResolvedValue('token-1');
+    const authToken = overrides.authToken ?? vi.fn().mockResolvedValue('token-1');
     const invalidateAuthToken = overrides.invalidateAuthToken ?? vi.fn();
 
     return {
@@ -34,7 +40,7 @@ const createConfig = (overrides: Partial<Parameters<typeof wrapApiCall>[1]> = {}
         authToken,
         onRequestError: overrides.onRequestError,
         invalidateAuthToken,
-    } satisfies Parameters<typeof wrapApiCall>[1];
+    } as any as Parameters<typeof wrapApiCall>[1];
 };
 
 describe('onRequestError hook', () => {
@@ -45,12 +51,12 @@ describe('onRequestError hook', () => {
 
     it('retries once on 401 and invalidates the token cache when handler requests retry', async () => {
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
             .mockResolvedValueOnce(createAxiosResponse({ ok: true }));
 
         const authToken = vi
-            .fn<[], Promise<string>>()
+            .fn()
             .mockResolvedValueOnce('token-initial')
             .mockResolvedValueOnce('token-refreshed');
 
@@ -63,7 +69,7 @@ describe('onRequestError hook', () => {
 
         const config = createConfig({ authToken, onRequestError: handler });
 
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
 
         const result = await wrapped();
 
@@ -81,7 +87,7 @@ describe('onRequestError hook', () => {
 
     it('runs the error handler once for concurrent 401 responses', async () => {
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized-1'))
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized-2'))
             .mockResolvedValueOnce(createAxiosResponse({ ok: true }))
@@ -98,7 +104,7 @@ describe('onRequestError hook', () => {
 
         const config = createConfig({ authToken, onRequestError });
 
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
 
         const [first, second] = await Promise.all([wrapped(), wrapped()]);
 
@@ -112,14 +118,14 @@ describe('onRequestError hook', () => {
         vi.useFakeTimers();
 
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(500, 'server-error'))
             .mockResolvedValueOnce(createAxiosResponse({ ok: true }));
 
         const onRequestError = vi.fn().mockResolvedValue({ retry: true, backoffMs: 500 });
         const config = createConfig({ onRequestError });
 
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
         const promise = wrapped();
 
         await Promise.resolve();
@@ -138,13 +144,13 @@ describe('onRequestError hook', () => {
     it('propagates non-401 errors when handler does not retry', async () => {
         const axiosError = createAxiosError(500, 'server');
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<unknown>>>()
+            .fn()
             .mockRejectedValueOnce(axiosError);
 
         const onRequestError = vi.fn().mockResolvedValue({ retry: false });
         const config = createConfig({ onRequestError });
 
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
 
         await expect(wrapped()).rejects.toMatchObject({
             message: expect.stringContaining('Request error: server'),
@@ -155,13 +161,13 @@ describe('onRequestError hook', () => {
 
     it('preserves nullable 404 handling when using wrapApiCallNullable', async () => {
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<unknown>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(404, 'not-found', { message: 'not found' }));
 
         const nullableWrapped = wrapApiCallNullable(axiosFn as any);
         const onRequestError = vi.fn();
         const config = createConfig({ onRequestError });
-        const wrapped = wrapApiCall(nullableWrapped as any, config);
+        const wrapped = wrapApiCall(nullableWrapped as any, config) as any;
 
         const result = await wrapped();
 
@@ -172,7 +178,7 @@ describe('onRequestError hook', () => {
 
     it('invalidates token cache when handler opts not to retry', async () => {
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
             .mockResolvedValueOnce(createAxiosResponse({ ok: true }));
 
@@ -184,7 +190,7 @@ describe('onRequestError hook', () => {
         const onRequestError = vi.fn().mockResolvedValue({ retry: false, invalidateToken: true });
 
         const config = createConfig({ authToken, onRequestError, invalidateAuthToken });
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
 
         await expect(wrapped()).rejects.toMatchObject({ message: expect.stringContaining('unauthorized') });
         expect(invalidateAuthToken).toHaveBeenCalledTimes(1);
@@ -203,7 +209,7 @@ describe('onRequestError hook', () => {
 
     it('invalidates token cache even when retry fails', async () => {
         const axiosFn = vi
-            .fn<(options: AxiosRequestConfig) => Promise<AxiosResponse<{ ok: boolean }>>>()
+            .fn()
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
             .mockRejectedValueOnce(createAxiosError(500, 'server-error'));
 
@@ -218,7 +224,7 @@ describe('onRequestError hook', () => {
             .mockResolvedValueOnce({ retry: false, invalidateToken: true });
 
         const config = createConfig({ authToken, onRequestError, invalidateAuthToken });
-        const wrapped = wrapApiCall(axiosFn as any, config);
+        const wrapped = wrapApiCall(axiosFn as any, config) as any;
 
         await expect(wrapped()).rejects.toMatchObject({ message: expect.stringContaining('server-error') });
 

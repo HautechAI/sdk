@@ -64,11 +64,12 @@ describe('User Profiles E2E (Directory API)', () => {
     it('should get user profile by ID', async () => {
         const selfProfile = await sdk.userProfiles.self();
         expect(selfProfile).toBeDefined();
-        expect(selfProfile.id).toBeDefined();
+        expect(selfProfile.externalId).toBeDefined();
 
-        const byId = await sdk.userProfiles.getById(selfProfile.id);
+        const byId = await sdk.userProfiles.getById(selfProfile.externalId);
         expect(byId).not.toBeNull();
         expect(byId!.id).toBe(selfProfile.id);
+        expect(byId!.externalId).toBe(selfProfile.externalId);
         expect(byId!.handle).toBe(selfProfile.handle);
     });
 

@@ -159,6 +159,41 @@ describe('Operations API E2E Tests', () => {
             expect(completedOperation.output.data).toEqual(2);
         });
 
+        it('should wait for operation completion by ID', async () => {
+            const operation = await sdk.operations.run.math.v1({
+                input: {
+                    code: '2+2',
+                },
+            });
+
+            expect(operation).toBeDefined();
+            expect(operation.id).toBeDefined();
+
+            const completedOperation = await sdk.operations.waitById(operation.id, 10000);
+
+            expect(completedOperation).toBeDefined();
+            expect(completedOperation.id).toBe(operation.id);
+            expect(completedOperation.status).toBe('finished');
+            expect(completedOperation.output.data).toEqual(4);
+        });
+
+        it('should handle waitById with custom polling parameters', async () => {
+            const operation = await sdk.operations.run.echo.v1({
+                input: {
+                    text: 'Test with custom polling',
+                },
+            });
+
+            expect(operation).toBeDefined();
+            expect(operation.id).toBeDefined();
+
+            const completedOperation = await sdk.operations.waitById(operation.id, 15000, 2000);
+
+            expect(completedOperation).toBeDefined();
+            expect(completedOperation.id).toBe(operation.id);
+            expect(['finished', 'failed'].includes(completedOperation.status)).toBe(true);
+        });
+
         it('should run google nano banana operation', async () => {
             const result = await sdk.operations.run.google.nano_banana.v1({
                 input: {
@@ -212,6 +247,19 @@ describe('Operations API E2E Tests', () => {
                 expect(true).toBe(false); // Should not reach here
             } catch (error) {
                 expect(error).toBeDefined();
+            }
+        });
+
+        it('should handle waitById with non-existent operation ID', async () => {
+            const invalidId = v4();
+
+            try {
+                await sdk.operations.waitById(invalidId, 5000, 1000);
+                expect(true).toBe(false); // Should not reach here
+            } catch (error) {
+                expect(error).toBeDefined();
+                expect(error instanceof Error).toBe(true);
+                expect((error as Error).message).toContain('Operation not found');
             }
         });
     });

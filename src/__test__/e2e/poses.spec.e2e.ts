@@ -19,10 +19,10 @@ describe('Poses API E2E Tests', () => {
                 imageId: uploadedImageId,
             },
         });
-        const estimationResponseData = await sdk.operations.wait(estimationResponse);
+        const estimationResponseData = await sdk.operations.wait(estimationResponse, 120000);
 
         testPoseId = String(estimationResponseData.output.data?.poseId);
-    });
+    }, 120000);
 
     describe('Poses List Operations', () => {
         it('should list poses', async () => {

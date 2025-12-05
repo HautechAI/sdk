@@ -13,6 +13,7 @@ export default defineConfig({
         globals: true,
         setupFiles: ['./vitest.setup.ts'],
         include: ['src/**/*.spec.ts'],
+        maxWorkers: 1,
         exclude: ['src/**/*.spec.e2e.ts', '**/node_modules/**', '**/dist/**'],
         coverage: {
             enabled: false,

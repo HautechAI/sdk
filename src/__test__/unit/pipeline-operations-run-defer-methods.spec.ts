@@ -82,6 +82,7 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
                                 category: 'upper_body',
                             },
                         ],
+                        returnStream: true,
                     },
                 });
 
@@ -92,7 +93,14 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
             expect(pipelineData).toBeDefined();
             expect(pipelineData.tasks).toBeDefined();
             expect(pipelineData.tasks.length).toBeGreaterThan(0);
-            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'haute', 'naomi', 'prepare_dataset', 'v1']);
+            expect(pipelineData.tasks[0].method).toEqual([
+                'operations',
+                'run',
+                'haute',
+                'naomi',
+                'prepare_dataset',
+                'v1',
+            ]);
         });
     });
 

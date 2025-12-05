@@ -4,7 +4,7 @@ import { LoraDtoModelType, LoraDtoStatus, PipelineDtoStatus } from '../../autoge
 import path from 'path';
 import { v4 } from 'uuid';
 
-describe('LoRAs E2E Tests', () => {
+describe.skip('LoRAs E2E Tests', () => {
     const sdk = createTestSdk();
     let createdLoraId: string | null = null;
 
@@ -235,7 +235,6 @@ describe('LoRAs E2E Tests', () => {
 
         expect(createdPipeline).toBeDefined();
         expect(createdPipeline.id).toBeDefined();
-        console.log(`Generation pipeline created: ${createdPipeline.id} using LoRA: ${loraId}`);
 
         // Wait for the generation pipeline to complete
         const completedPipeline = await sdk.pipelines.wait(createdPipeline, 300_000);

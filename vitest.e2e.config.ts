@@ -9,10 +9,12 @@ export default defineConfig({
         exclude: ['**/node_modules/**', '**/dist/**'],
         testTimeout: 120000,
         hookTimeout: 120000,
-        maxConcurrency: 1,
+        disableConsoleIntercept: true,
+        fileParallelism: false,
+        maxWorkers: 1,
         poolOptions: {
             threads: {
-                maxThreads: 1,
+                maxThreads: 3,
                 useAtomics: true,
             },
         },

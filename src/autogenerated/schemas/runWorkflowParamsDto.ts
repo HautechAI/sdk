@@ -10,5 +10,5 @@ import type { RunWorkflowParamsDtoMetadata } from './runWorkflowParamsDtoMetadat
 export interface RunWorkflowParamsDto {
   input: RunWorkflowParamsDtoInput;
   metadata?: RunWorkflowParamsDtoMetadata;
-  publicVersionId?: string;
+  versionNumber?: number;
 }

@@ -17,11 +17,16 @@ describe('Node path uploads include filename in FormData', () => {
         // Stub fs.createReadStream so no actual file access happens
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const fs = require('fs');
-        vi.spyOn(fs, 'createReadStream').mockImplementation((p: string) => ({ __mockStream: true, path: p } as any));
+        vi.spyOn(fs, 'createReadStream').mockImplementation(((p: string) => ({ __mockStream: true, path: p })) as any);
         // Spy on form-data append to capture options
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const FormDataCtor = require('form-data');
-        vi.spyOn(FormDataCtor.prototype, 'append').mockImplementation(function (this: any, name: string, value: any, options?: any) {
+        (vi.spyOn(FormDataCtor.prototype, 'append') as any).mockImplementation(function (
+            this: any,
+            name: string,
+            value: any,
+            options?: any,
+        ) {
             appendCalls.push({ name, value, options });
             return this;
         });

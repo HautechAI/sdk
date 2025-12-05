@@ -28,6 +28,33 @@ const waitOperation = wrapCustomMethod(async function <
     throw new Error('Operation timed out');
 });
 
+const waitOperationById = wrapCustomMethod(async function (
+    this: any,
+    operationId: string,
+    timeoutMs = 60000,
+    delay = 3000,
+): Promise<OperationEntity> {
+    const deadline = Date.now() + timeoutMs;
+    const sdk: SDK = this;
+
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const poll = async (id: string) => {
+        const op = await sdk.operations.get(id);
+        if (!op) throw new Error('Operation not found');
+        if (op.status !== 'pending') return op;
+        return null;
+    };
+
+    while (Date.now() < deadline) {
+        const result = await poll(operationId);
+        if (result) return result;
+        await sleep(delay);
+    }
+
+    throw new Error('Operation timed out');
+});
+
 export const useOperationsApi = () => {
     const hautechApi = getOperations();
 
@@ -61,8 +88,8 @@ export const useOperationsApi = () => {
                 },
                 naomi: {
                     v1: hautechApi.operationsControllerRunHauteNaomiV1V1,
-                    train: hautechApi.operationsControllerRunNaomiHauteTrainV1V1,
-                    prepareDataset: hautechApi.operationsControllerRunNaomiHautePrepareDatasetV1V1,
+                    train: hautechApi.operationsControllerRunHauteNaomiTrainV1V1,
+                    prepareDataset: hautechApi.operationsControllerRunHauteNaomiPrepareDatasetV1V1,
                 },
             },
             ideogram: {
@@ -181,5 +208,6 @@ export const useOperationsApi = () => {
         list: hautechApi.operationsControllerListOperationsV1,
         updateMetadata: hautechApi.operationsControllerUpdateMetadataV1,
         wait: waitOperation,
+        waitById: waitOperationById,
     });
 };

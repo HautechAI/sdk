@@ -34,6 +34,7 @@ describe('WsClient', () => {
             baseUrl: 'https://api.test.com',
             baseWsUrl: 'wss://api.test.com',
             authToken: vi.fn().mockResolvedValue('test-token'),
+            invalidateAuthToken: vi.fn(),
         };
 
         wsClient = new WsClient(mockConfig);
@@ -162,6 +163,7 @@ describe('WsClient', () => {
                 baseUrl: 'https://custom.api.com',
                 baseWsUrl: 'wss://custom.ws.com',
                 authToken: vi.fn().mockResolvedValue('custom-token'),
+                invalidateAuthToken: vi.fn(),
             };
 
             const customWsClient = new WsClient(customConfig);
@@ -267,6 +269,7 @@ describe('useWsClient', () => {
             baseUrl: 'https://api.test.com',
             baseWsUrl: 'wss://api.test.com',
             authToken: vi.fn().mockResolvedValue('test-token'),
+            invalidateAuthToken: vi.fn(),
         };
 
         const client = useWsClient(mockConfig);

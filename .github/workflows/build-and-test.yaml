@@ -37,7 +37,9 @@ jobs:
                   HUSKY: 0
 
             - name: Build the package
-              run: pnpm build
+              run: |
+                pnpm build:tsc
+                pnpm build
 
             - name: Test
               run: |

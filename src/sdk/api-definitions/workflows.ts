@@ -16,6 +16,7 @@ export const useWorkflowsApi = () => {
         listPublic: hautechApi.workflowsControllerListPublicWorkflowsV1,
         getPublic: hautechApi.workflowsControllerGetPublicWorkflowV1,
         runPublic: hautechApi.workflowsControllerRunPublicWorkflowV1,
+        runPublicByAlias: hautechApi.workflowsControllerRunPublicWorkflowByAliasV1,
         shareWithEveryone: hautechApi.workflowsControllerShareWorkflowWithEveryoneV1,
         revokePublicAccess: hautechApi.workflowsControllerRevokeWorkflowPublicAccessV1,
         getStatistics: hautechApi.workflowsControllerGetSharedWorkflowStatisticsV1,
