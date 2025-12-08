@@ -151,6 +151,47 @@ describe('Workflow Versions API Tests', () => {
         });
     });
 
+    describe('update', () => {
+        it('should update a workflow version', async () => {
+            const mockResponse = {
+                id: 'version-id-123',
+                workflowId: 'workflow-id-123',
+                ownerId: 'owner-id-123',
+                publisherId: 'publisher-id-123',
+                versionNumber: 1,
+                workflowVersion: '1.0.0',
+                changelog: 'Updated changelog',
+                exampleOutput: { result: 'example' },
+                metadata: {},
+                customExecutionPriceSnapshot: null,
+                estimatedExecutionPriceSnapshot: null,
+                publishedAt: '2024-01-01T00:00:00Z',
+                data: {},
+                pipelineTemplate: {},
+            };
+
+            vi.spyOn(axios, 'request').mockResolvedValue({ data: mockResponse } as any);
+
+            const workflowVersionsApi = useWorkflowVersionsApi();
+            const result = await workflowVersionsApi.update('version-id-123', {
+                changelog: 'Updated changelog',
+                exampleOutput: { result: 'example' },
+            });
+
+            expect(result.data).toEqual(mockResponse);
+            expect(axios.request).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    url: '/v1/workflow-versions/version-id-123',
+                    method: 'PATCH',
+                    data: {
+                        changelog: 'Updated changelog',
+                        exampleOutput: { result: 'example' },
+                    },
+                }),
+            );
+        });
+    });
+
     describe('delete', () => {
         it('should delete a workflow version', async () => {
             vi.spyOn(axios, 'request').mockResolvedValue({ data: undefined } as any);

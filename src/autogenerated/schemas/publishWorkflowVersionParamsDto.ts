@@ -4,7 +4,10 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { PublishWorkflowVersionParamsDtoExampleOutput } from './publishWorkflowVersionParamsDtoExampleOutput';
 
 export interface PublishWorkflowVersionParamsDto {
   changelog?: string;
+  /** @nullable */
+  exampleOutput?: PublishWorkflowVersionParamsDtoExampleOutput;
 }

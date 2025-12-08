@@ -4,6 +4,7 @@
  * Hautech API
  * OpenAPI spec version: 1.0
  */
+import type { WorkflowVersionSummaryDtoExampleOutput } from './workflowVersionSummaryDtoExampleOutput';
 import type { WorkflowVersionSummaryDtoMetadata } from './workflowVersionSummaryDtoMetadata';
 
 export interface WorkflowVersionSummaryDto {
@@ -15,6 +16,8 @@ export interface WorkflowVersionSummaryDto {
   versionNumber: number;
   /** @nullable */
   changelog?: string | null;
+  /** @nullable */
+  exampleOutput?: WorkflowVersionSummaryDtoExampleOutput;
   metadata: WorkflowVersionSummaryDtoMetadata;
   /** @nullable */
   customExecutionPriceSnapshot?: string | null;

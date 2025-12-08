@@ -9,6 +9,7 @@ export const useWorkflowVersionsApi = () => {
         list: hautechApi.workflowVersionsControllerListWorkflowVersionsV1,
         get: hautechApi.workflowVersionsControllerGetVersionV1,
         getByNumber: hautechApi.workflowVersionsControllerGetVersionByNumberV1,
+        update: hautechApi.workflowVersionsControllerUpdateVersionV1,
         delete: hautechApi.workflowVersionsControllerDeleteVersionV1,
     });
 };

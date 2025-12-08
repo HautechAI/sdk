@@ -6,6 +6,7 @@
  */
 import type {
   PublishWorkflowVersionParamsDto,
+  UpdateWorkflowVersionParamsDto,
   WorkflowVersionDto,
   WorkflowVersionSummaryDto
 } from '.././schemas';
@@ -53,6 +54,17 @@ const workflowVersionsControllerPublishVersionV1 = (
     },
       options);
     }
+  const workflowVersionsControllerUpdateVersionV1 = (
+    versionId: string,
+    updateWorkflowVersionParamsDto: UpdateWorkflowVersionParamsDto,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<WorkflowVersionDto>(
+      {url: `/v1/workflow-versions/${versionId}`, method: 'PATCH',
+      headers: {'Content-Type': 'application/json', },
+      data: updateWorkflowVersionParamsDto
+    },
+      options);
+    }
   const workflowVersionsControllerDeleteVersionV1 = (
     versionId: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -61,9 +73,10 @@ const workflowVersionsControllerPublishVersionV1 = (
     },
       options);
     }
-  return {workflowVersionsControllerPublishVersionV1,workflowVersionsControllerListWorkflowVersionsV1,workflowVersionsControllerGetVersionByNumberV1,workflowVersionsControllerGetVersionV1,workflowVersionsControllerDeleteVersionV1}};
+  return {workflowVersionsControllerPublishVersionV1,workflowVersionsControllerListWorkflowVersionsV1,workflowVersionsControllerGetVersionByNumberV1,workflowVersionsControllerGetVersionV1,workflowVersionsControllerUpdateVersionV1,workflowVersionsControllerDeleteVersionV1}};
 export type WorkflowVersionsControllerPublishVersionV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerPublishVersionV1']>>>
 export type WorkflowVersionsControllerListWorkflowVersionsV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerListWorkflowVersionsV1']>>>
 export type WorkflowVersionsControllerGetVersionByNumberV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerGetVersionByNumberV1']>>>
 export type WorkflowVersionsControllerGetVersionV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerGetVersionV1']>>>
+export type WorkflowVersionsControllerUpdateVersionV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerUpdateVersionV1']>>>
 export type WorkflowVersionsControllerDeleteVersionV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getWorkflowVersions>['workflowVersionsControllerDeleteVersionV1']>>>
