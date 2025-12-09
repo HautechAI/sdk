@@ -11,6 +11,7 @@ import { useCollectionsApi } from './api-definitions/collections';
 import { useBalancesApi } from './api-definitions/balances';
 import { useAccessApi } from './api-definitions/access';
 import { usePipelinesApi } from './api-definitions/pipelines';
+import { usePricingApi } from './api-definitions/pricing';
 import { useUploadApi } from './api-definitions/upload';
 import { useChatsApi } from './api-definitions/chats';
 import { useLorasApi } from './api-definitions/loras';
@@ -37,6 +38,7 @@ export const apiDefinitions = {
     balances: useBalancesApi(),
     access: useAccessApi(),
     pipelines: usePipelinesApi(),
+    pricing: usePricingApi(),
     upload: useUploadApi(),
     loras: useLorasApi(),
     rewards: useRewardsApi(),

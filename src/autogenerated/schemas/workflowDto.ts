@@ -25,4 +25,6 @@ export interface WorkflowDto {
   updatedAt: string;
   /** Indicates whether the workflow is shared publicly */
   isPublic: boolean;
+  /** Optimistic concurrency version for workflow updates */
+  version: number;
 }

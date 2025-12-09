@@ -9,6 +9,8 @@ import type { UpdateWorkflowParamsDtoPipelineTemplate } from './updateWorkflowPa
 import type { UpdateWorkflowParamsDtoMetadata } from './updateWorkflowParamsDtoMetadata';
 
 export interface UpdateWorkflowParamsDto {
+  /** @minimum 1 */
+  targetVersion: number;
   data?: UpdateWorkflowParamsDtoData;
   pipelineTemplate?: UpdateWorkflowParamsDtoPipelineTemplate;
   metadata?: UpdateWorkflowParamsDtoMetadata;
