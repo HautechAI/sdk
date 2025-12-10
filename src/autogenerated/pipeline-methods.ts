@@ -102,6 +102,11 @@ export const usePipelineDefinitions = () => {
         'length': {
           'v1': api.callControllerCallOperationsRunStringsLengthV1V1,
         },
+        'parse': {
+          'json': {
+            'v1': api.callControllerCallOperationsRunStringsParseJsonV1V1,
+          },
+        },
       },
       'imagine': {
         'kate': {
