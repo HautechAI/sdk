@@ -15,6 +15,8 @@ export type GPTV3InputModel = typeof GPTV3InputModel[keyof typeof GPTV3InputMode
 export const GPTV3InputModel = {
   'gpt-4o': 'gpt-4o',
   'gpt-5': 'gpt-5',
+  'gpt-5-mini': 'gpt-5-mini',
+  'gpt-5-nano': 'gpt-5-nano',
   'seed-16-flash': 'seed-1.6-flash',
   o3: 'o3',
   'o3-mini': 'o3-mini',
