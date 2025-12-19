@@ -18,6 +18,7 @@ describe('Workflows API E2E Tests', () => {
                 description: 'A test workflow for e2e testing',
                 steps: [],
             },
+            version: '1.0.0',
             metadata: {
                 testType: 'e2e',
                 createdBy: 'automated-test',
@@ -36,6 +37,7 @@ describe('Workflows API E2E Tests', () => {
                     description: 'A separate workflow to test creation',
                     steps: [{ id: 1, name: 'test-step', type: 'action' }],
                 },
+                version: '2.0.0',
                 metadata: {
                     testType: 'create-test',
                     createdBy: 'create-test',
@@ -94,12 +96,12 @@ describe('Workflows API E2E Tests', () => {
             expect(current).toBeDefined();
 
             const updateData: UpdateWorkflowParamsDto = {
-                targetVersion: current!.version,
                 data: {
                     name: 'Updated Test Workflow E2E',
                     description: 'Updated description for e2e testing',
                     steps: [{ id: 1, name: 'step1', type: 'action' }],
                 },
+                targetVersion: current!.version,
                 metadata: {
                     testType: 'e2e',
                     createdBy: 'automated-test',
@@ -132,6 +134,7 @@ describe('Workflows API E2E Tests', () => {
         it('should handle invalid workflow data gracefully', async () => {
             const invalidWorkflowData = {
                 data: null,
+                version: null,
             };
 
             try {
@@ -154,6 +157,7 @@ describe('Workflows API E2E Tests', () => {
                     description: 'A workflow to test public sharing',
                     steps: [],
                 },
+                version: '1.0.0',
                 metadata: {
                     testType: 'public-test',
                     createdBy: 'automated-test',
