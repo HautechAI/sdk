@@ -16,8 +16,10 @@ export interface Seedream45EditV1Response {
   input: Seedream45EditV1ResponseInput;
   status: Seedream45EditV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

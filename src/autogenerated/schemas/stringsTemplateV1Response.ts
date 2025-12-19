@@ -16,8 +16,10 @@ export interface StringsTemplateV1Response {
   input: StringsTemplateV1ResponseInput;
   status: StringsTemplateV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

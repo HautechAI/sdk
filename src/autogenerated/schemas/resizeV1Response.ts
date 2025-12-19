@@ -16,8 +16,10 @@ export interface ResizeV1Response {
   input: ResizeV1ResponseInput;
   status: ResizeV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

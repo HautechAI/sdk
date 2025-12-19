@@ -16,8 +16,10 @@ export interface HauteNaomiTrainV1Response {
   input: HauteNaomiTrainV1ResponseInput;
   status: HauteNaomiTrainV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

@@ -16,8 +16,10 @@ export interface CutV1Response {
   input: CutV1ResponseInput;
   status: CutV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

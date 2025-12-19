@@ -16,8 +16,10 @@ export interface SeedanceV1FastV1Response {
   input: SeedanceV1FastV1ResponseInput;
   status: SeedanceV1FastV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

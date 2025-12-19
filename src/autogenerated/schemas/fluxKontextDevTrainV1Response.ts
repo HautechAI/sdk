@@ -16,8 +16,10 @@ export interface FluxKontextDevTrainV1Response {
   input: FluxKontextDevTrainV1ResponseInput;
   status: FluxKontextDevTrainV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

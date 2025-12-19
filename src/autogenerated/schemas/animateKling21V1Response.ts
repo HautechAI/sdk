@@ -16,8 +16,10 @@ export interface AnimateKling21V1Response {
   input: AnimateKling21V1ResponseInput;
   status: AnimateKling21V1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

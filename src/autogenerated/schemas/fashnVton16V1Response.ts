@@ -16,8 +16,10 @@ export interface FashnVton16V1Response {
   input: FashnVton16V1ResponseInput;
   status: FashnVton16V1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

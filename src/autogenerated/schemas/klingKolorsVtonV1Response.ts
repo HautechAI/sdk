@@ -16,8 +16,10 @@ export interface KlingKolorsVtonV1Response {
   input: KlingKolorsVtonV1ResponseInput;
   status: KlingKolorsVtonV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

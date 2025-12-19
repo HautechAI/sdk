@@ -16,8 +16,10 @@ export interface Imagen4UltraV1Response {
   input: Imagen4UltraV1ResponseInput;
   status: Imagen4UltraV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

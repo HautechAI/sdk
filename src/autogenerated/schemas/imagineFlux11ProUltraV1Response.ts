@@ -16,8 +16,10 @@ export interface ImagineFlux11ProUltraV1Response {
   input: ImagineFlux11ProUltraV1ResponseInput;
   status: ImagineFlux11ProUltraV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

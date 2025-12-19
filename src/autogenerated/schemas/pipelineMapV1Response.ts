@@ -16,8 +16,10 @@ export interface PipelineMapV1Response {
   input: PipelineMapV1ResponseInput;
   status: PipelineMapV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

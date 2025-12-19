@@ -16,8 +16,10 @@ export interface EchoV1Response {
   input: EchoV1ResponseInput;
   status: EchoV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

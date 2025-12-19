@@ -16,8 +16,10 @@ export interface ContrastV1Response {
   input: ContrastV1ResponseInput;
   status: ContrastV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

@@ -16,8 +16,10 @@ export interface TopazUpscaleV1Response {
   input: TopazUpscaleV1ResponseInput;
   status: TopazUpscaleV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;
