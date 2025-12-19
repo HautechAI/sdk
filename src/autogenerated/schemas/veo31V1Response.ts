@@ -16,8 +16,10 @@ export interface Veo31V1Response {
   input: Veo31V1ResponseInput;
   status: Veo31V1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

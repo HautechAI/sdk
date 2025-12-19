@@ -16,8 +16,10 @@ export interface Yolo11xPoseV1Response {
   input: Yolo11xPoseV1ResponseInput;
   status: Yolo11xPoseV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

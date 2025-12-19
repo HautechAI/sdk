@@ -16,8 +16,10 @@ export interface GptV2Response {
   input: GptV2ResponseInput;
   status: GptV2ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

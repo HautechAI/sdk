@@ -16,8 +16,10 @@ export interface Veo3FastV1Response {
   input: Veo3FastV1ResponseInput;
   status: Veo3FastV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

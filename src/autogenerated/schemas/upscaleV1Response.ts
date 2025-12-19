@@ -16,8 +16,10 @@ export interface UpscaleV1Response {
   input: UpscaleV1ResponseInput;
   status: UpscaleV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

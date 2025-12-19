@@ -16,8 +16,10 @@ export interface OperationEntity {
   output: OperationEntityOutput;
   status: OperationEntityStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

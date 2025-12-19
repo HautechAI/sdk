@@ -16,8 +16,10 @@ export interface VtonGiseleV1Response {
   input: VtonGiseleV1ResponseInput;
   status: VtonGiseleV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;

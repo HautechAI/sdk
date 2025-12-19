@@ -16,8 +16,10 @@ export interface AnimateKling16ProV1Response {
   input: AnimateKling16ProV1ResponseInput;
   status: AnimateKling16ProV1ResponseStatus;
   type: string;
-  price?: string;
-  estimatedPrice?: string;
+  /** @nullable */
+  price?: string | null;
+  /** @nullable */
+  estimatedPrice?: string | null;
   errorMessage?: string;
   errorCode?: string;
   id: string;
