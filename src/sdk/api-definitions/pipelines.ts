@@ -61,6 +61,7 @@ export const usePipelinesApi = () => {
             });
         }),
         get: wrapApiCallNullable(hautechApi.pipelinesControllerGetPipelineV1),
+        getStatus: wrapApiCallNullable(hautechApi.pipelinesControllerGetPipelineStatusV1),
         count: hautechApi.pipelinesControllerCountPipelinesV1,
         list: hautechApi.pipelinesControllerListPipelinesV1,
         constructTemplate: wrapCustomMethod(function <TSdk extends PipelineSDK, O = any, I = any>(
@@ -83,13 +84,13 @@ export const usePipelinesApi = () => {
             const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
             const poll = async (id: string) => {
-                const pipeline = await sdk.pipelines.get(id);
+                const pipeline = await sdk.pipelines.getStatus(id);
 
                 if (!pipeline) {
                     throw new Error('Pipeline not found');
                 }
 
-                if (pipeline.status !== PipelineDtoStatus.pending) return pipeline;
+                if (pipeline.status !== PipelineDtoStatus.pending) return pipeline.pipeline;
 
                 return null;
             };

@@ -13,9 +13,9 @@ const waitOperation = wrapCustomMethod(async function <
     const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
     const poll = async (id: string) => {
-        const op = await sdk.operations.get(id);
+        const op = await sdk.operations.getStatus(id);
         if (!op) throw new Error('Operation not found');
-        if (op.status !== 'pending') return op;
+        if (op.status !== 'pending') return op.operation;
         return null;
     };
 
@@ -127,9 +127,35 @@ export const useOperationsApi = () => {
                 },
                 imagen4: {
                     v1: hautechApi.operationsControllerRunImagen4V1V1,
+                    fast: {
+                        v1: hautechApi.operationsControllerRunImagen4FastV1V1,
+                    },
+                    standard: {
+                        v1: hautechApi.operationsControllerRunImagen4StandardV1V1,
+                    },
+                    ultra: {
+                        v1: hautechApi.operationsControllerRunImagen4UltraV1V1,
+                    },
                 },
                 seedream3: {
                     v1: hautechApi.operationsControllerRunSeedream3V1V1,
+                },
+                seed: {
+                    v1: hautechApi.operationsControllerRunSeedV1V1,
+                },
+                seedream: {
+                    '4_edit': {
+                        v1: hautechApi.operationsControllerRunSeedream4EditV1V1,
+                    },
+                    '4_5_edit': {
+                        v1: hautechApi.operationsControllerRunSeedream45EditV1V1,
+                    },
+                    '4_t2i': {
+                        v1: hautechApi.operationsControllerRunSeedream4T2iV1V1,
+                    },
+                    '4_5_t2i': {
+                        v1: hautechApi.operationsControllerRunSeedream45T2iV1V1,
+                    },
                 },
             },
             upscale: {
@@ -167,6 +193,14 @@ export const useOperationsApi = () => {
             composite: {
                 v1: hautechApi.operationsControllerRunCompositeV1V1,
             },
+            images: {
+                downscale: {
+                    v1: hautechApi.operationsControllerRunImagesDownscaleV1V1,
+                },
+                rename: {
+                    v1: hautechApi.operationsControllerRunImagesRenameV1V1,
+                },
+            },
             vton: {
                 gisele: {
                     v1: hautechApi.operationsControllerRunVtonGiseleV1V1,
@@ -182,6 +216,20 @@ export const useOperationsApi = () => {
                 template: {
                     v1: hautechApi.operationsControllerRunStringsTemplateV1V1,
                 },
+                switch: {
+                    v1: hautechApi.operationsControllerRunStringsSwitchV1V1,
+                },
+                slice: {
+                    v1: hautechApi.operationsControllerRunStringsSliceV1V1,
+                },
+                length: {
+                    v1: hautechApi.operationsControllerRunStringsLengthV1V1,
+                },
+                parse: {
+                    json: {
+                        v1: hautechApi.operationsControllerRunStringsParseJsonV1V1,
+                    },
+                },
             },
             onecompiler: {
                 v1: hautechApi.operationsControllerRunOnecompilerV1V1,
@@ -196,14 +244,85 @@ export const useOperationsApi = () => {
                 nano_banana: {
                     v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
                 },
+                nano_banana_pro: {
+                    edit: {
+                        v1: hautechApi.operationsControllerRunGoogleNanoBananaProEditV1V1,
+                    },
+                },
+            },
+            fashn: {
+                vton_1_6: {
+                    v1: hautechApi.operationsControllerRunFashnVton16V1V1,
+                },
+            },
+            alphabake: {
+                vton: {
+                    v1: hautechApi.operationsControllerRunAlphabakeVtonV1V1,
+                },
+            },
+            kling: {
+                kolors_vton: {
+                    v1: hautechApi.operationsControllerRunKlingKolorsVtonV1V1,
+                },
+                video_2_5_pro: {
+                    image_to_video: {
+                        v1: hautechApi.operationsControllerRunKlingVideo25ProImageToVideoV1V1,
+                    },
+                },
+            },
+            json_to_image: {
+                v1: hautechApi.operationsControllerRunJsonToImageV1V1,
+            },
+            json_to_video: {
+                v1: hautechApi.operationsControllerRunJsonToVideoV1V1,
+            },
+            reve: {
+                remix: {
+                    v1: hautechApi.operationsControllerRunReveRemixV1V1,
+                },
+            },
+            yolo11x_pose: {
+                v1: hautechApi.operationsControllerRunYolo11xPoseV1V1,
+            },
+            seedance_v1: {
+                pro: {
+                    v1: hautechApi.operationsControllerRunSeedanceV1ProV1V1,
+                },
+                fast: {
+                    v1: hautechApi.operationsControllerRunSeedanceV1FastV1V1,
+                },
+                light: {
+                    v1: hautechApi.operationsControllerRunSeedanceV1LightV1V1,
+                },
+            },
+            flux: {
+                kontext_dev: {
+                    prepare_dataset: {
+                        v1: hautechApi.operationsControllerRunFluxKontextDevPrepareDatasetV1V1,
+                    },
+                    train: {
+                        v1: hautechApi.operationsControllerRunFluxKontextDevTrainV1V1,
+                    },
+                    v1: hautechApi.operationsControllerRunFluxKontextDevV1V1,
+                },
+            },
+            clipClassify: {
+                v1: hautechApi.operationsControllerRunClipClassifyV1V1,
             },
             workflow: {
                 run: {
                     v1: hautechApi.operationsControllerRunWorkflowsRunV1V1,
                 },
             },
+            veo3_1: {
+                v1: hautechApi.operationsControllerRunVeo31V1V1,
+                fast: {
+                    v1: hautechApi.operationsControllerRunVeo31FastV1V1,
+                },
+            },
         },
         get: wrapApiCallNullable(hautechApi.operationsControllerGetOperationV1),
+        getStatus: wrapApiCallNullable(hautechApi.operationsControllerGetOperationStatusV1),
         getMany: hautechApi.operationsControllerGetOperationsV1,
         list: hautechApi.operationsControllerListOperationsV1,
         updateMetadata: hautechApi.operationsControllerUpdateMetadataV1,

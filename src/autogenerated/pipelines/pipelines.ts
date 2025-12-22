@@ -9,6 +9,7 @@ import type {
   CreatePipelineParamsDto,
   ListPipelinesDto,
   PipelineDto,
+  PipelineStatusDto,
   PipelinesControllerCountPipelinesV1Params,
   PipelinesControllerListPipelinesV1Params
 } from '.././schemas';
@@ -48,6 +49,14 @@ const pipelinesControllerCreatePipelineV1 = (
     },
       options);
     }
+  const pipelinesControllerGetPipelineStatusV1 = (
+    id: string,
+ options?: SecondParameter<typeof axiosMutator>,) => {
+      return axiosMutator<PipelineStatusDto>(
+      {url: `/v1/pipelines/${id}/status`, method: 'GET'
+    },
+      options);
+    }
   const pipelinesControllerGetPipelineV1 = (
     id: string,
  options?: SecondParameter<typeof axiosMutator>,) => {
@@ -56,8 +65,9 @@ const pipelinesControllerCreatePipelineV1 = (
     },
       options);
     }
-  return {pipelinesControllerCreatePipelineV1,pipelinesControllerListPipelinesV1,pipelinesControllerCountPipelinesV1,pipelinesControllerGetPipelineV1}};
+  return {pipelinesControllerCreatePipelineV1,pipelinesControllerListPipelinesV1,pipelinesControllerCountPipelinesV1,pipelinesControllerGetPipelineStatusV1,pipelinesControllerGetPipelineV1}};
 export type PipelinesControllerCreatePipelineV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerCreatePipelineV1']>>>
 export type PipelinesControllerListPipelinesV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerListPipelinesV1']>>>
 export type PipelinesControllerCountPipelinesV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerCountPipelinesV1']>>>
+export type PipelinesControllerGetPipelineStatusV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerGetPipelineStatusV1']>>>
 export type PipelinesControllerGetPipelineV1Result = NonNullable<Awaited<ReturnType<ReturnType<typeof getPipelines>['pipelinesControllerGetPipelineV1']>>>
