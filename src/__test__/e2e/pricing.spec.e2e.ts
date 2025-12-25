@@ -40,3 +40,4 @@ describe('Pricing API E2E Tests', () => {
         expect(details).toBeDefined();
     });
 });
+

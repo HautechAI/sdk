@@ -157,6 +157,7 @@ describe('Workflows API E2E Tests', () => {
                     description: 'A workflow to test public sharing',
                     steps: [],
                 },
+                customExecutionPrice: '0.1',
                 version: '1.0.0',
                 metadata: {
                     testType: 'public-test',

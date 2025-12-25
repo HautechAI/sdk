@@ -66,10 +66,18 @@ export const usePipelinesApi = () => {
         list: hautechApi.pipelinesControllerListPipelinesV1,
         constructTemplate: wrapCustomMethod(function <TSdk extends PipelineSDK, O = any, I = any>(
             this: any,
-            builder: (pipeline: PipelineTyped<TSdk>) => PipelineTyped<TSdk>,
+            builder?: (pipeline: PipelineTyped<TSdk>) => PipelineTyped<TSdk>,
         ): PipelineTyped<TSdk> {
             const sdk: TSdk = this;
-            return builder(buildPipeline<TSdk, O, I>(sdk as TSdk & Methods));
+            const pipeline = buildPipeline<TSdk, O, I>(sdk as TSdk & Methods);
+            
+            // If builder function is provided, use callback style
+            if (builder) {
+                return builder(pipeline);
+            }
+            
+            // Otherwise, return pipeline directly for direct method chaining
+            return pipeline;
         }),
         wait: wrapCustomMethod(async function <T extends PipelineDto>(
             this: any,

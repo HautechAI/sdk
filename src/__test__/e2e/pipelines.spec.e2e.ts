@@ -171,7 +171,7 @@ describe('Pipelines API E2E Tests', () => {
     });
 
     describe('Pipeline Construction and Execution', () => {
-        it('should construct a pipeline using the fluent API and run it', async () => {
+        it('should construct a pipeline using the fluent API with callback and run it', async () => {
             const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
                 const echoTask = pipeline.defer.operations.run.echo.v1({
                     input: {
@@ -207,6 +207,51 @@ describe('Pipelines API E2E Tests', () => {
             expect(createdPipeline.tasks.length).toBeGreaterThan(0);
             expect(createdPipeline.status).toBeDefined();
             expect(Object.values(PipelineDtoStatus)).toContain(createdPipeline.status);
+            // Wait for the pipeline to complete
+            const completedPipeline = await sdk.pipelines.wait(createdPipeline, 30000);
+
+            expect(completedPipeline).toBeDefined();
+            expect(completedPipeline.id).toBe(createdPipeline.id);
+            expect(completedPipeline.status).toBe(PipelineDtoStatus.completed);
+            expect(completedPipeline.output).toBeDefined();
+            expect(completedPipeline.output?.text).toEqual(pipelineData.getInput().message);
+        });
+
+        it('should construct a pipeline using the fluent API without callback and run it', async () => {
+            // Create pipeline without callback
+            const pipelineData = sdk.pipelines.constructTemplate();
+
+            const echoTask = pipelineData.defer.operations.run.echo.v1({
+                input: {
+                    text: pipelineData.$input.message || 'fallback text',
+                },
+            });
+
+            const awaitedEcho = pipelineData.defer.operations.wait(echoTask.result);
+
+            const echoTask2 = pipelineData.defer.operations.run.echo.v1({
+                input: {
+                    text: awaitedEcho.result.output.text,
+                },
+            });
+
+            const awaitedEcho2 = pipelineData.defer.operations.wait(echoTask2.result);
+
+            pipelineData.setOutputRef(awaitedEcho2.result.output);
+            pipelineData.setInput({ message: 'Hello from non-callback pipeline!' });
+
+            // Create the pipeline using the API
+            const createdPipeline = await sdk.pipelines.createFromTemplate(pipelineData);
+
+            expect(createdPipeline).toBeDefined();
+            expect(createdPipeline.id).toBeDefined();
+            expect(typeof createdPipeline.id).toBe('string');
+            expect(createdPipeline.tasks).toBeDefined();
+            expect(Array.isArray(createdPipeline.tasks)).toBe(true);
+            expect(createdPipeline.tasks.length).toBeGreaterThan(0);
+            expect(createdPipeline.status).toBeDefined();
+            expect(Object.values(PipelineDtoStatus)).toContain(createdPipeline.status);
+
             // Wait for the pipeline to complete
             const completedPipeline = await sdk.pipelines.wait(createdPipeline, 30000);
 
