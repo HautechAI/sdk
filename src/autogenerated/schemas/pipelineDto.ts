@@ -14,6 +14,10 @@ import type { PipelineDtoStatus } from './pipelineDtoStatus';
 
 export interface PipelineDto {
   kind: PipelineDtoKind;
+  /** Error message (present when pipeline failed) */
+  errorMessage?: string;
+  /** Error code (present when pipeline failed) */
+  errorCode?: string;
   /** State of the pipeline tasks */
   state: PipelineDtoState;
   /** Total estimated credits of all tasks in the pipeline as a decimal string */

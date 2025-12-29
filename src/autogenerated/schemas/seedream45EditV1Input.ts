@@ -14,17 +14,9 @@ export interface Seedream45EditV1Input {
    * @minItems 1
    */
   imageIds: string[];
-  /**
-   * Width of the generated image in pixels (range 2048-4096 inclusive).
-   * @minimum 2048
-   * @maximum 4096
-   */
+  /** Width of the generated image in pixels. Must satisfy: total pixels (width×height) in range [3,686,400, 16,777,216] and aspect ratio (width/height) in range [1/16, 16] */
   width?: number;
-  /**
-   * Height of the generated image in pixels (range 2048-4096 inclusive).
-   * @minimum 2048
-   * @maximum 4096
-   */
+  /** Height of the generated image in pixels. Must satisfy: total pixels (width×height) in range [3,686,400, 16,777,216] and aspect ratio (width/height) in range [1/16, 16] */
   height?: number;
   /** Random seed for deterministic generation */
   seed?: number;

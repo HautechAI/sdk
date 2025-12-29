@@ -8,17 +8,9 @@
 export interface Seedream4T2IV1Input {
   /** Text prompt describing the image to generate */
   prompt: string;
-  /**
-   * Width of the generated image in pixels (1024-4096)
-   * @minimum 1024
-   * @maximum 4096
-   */
+  /** Width of the generated image in pixels. Must satisfy: total pixels (width×height) in range [921,600, 16,777,216] and aspect ratio (width/height) in range [1/16, 16] */
   width?: number;
-  /**
-   * Height of the generated image in pixels (1024-4096)
-   * @minimum 1024
-   * @maximum 4096
-   */
+  /** Height of the generated image in pixels. Must satisfy: total pixels (width×height) in range [921,600, 16,777,216] and aspect ratio (width/height) in range [1/16, 16] */
   height?: number;
   /** Random seed for deterministic generation */
   seed?: number;

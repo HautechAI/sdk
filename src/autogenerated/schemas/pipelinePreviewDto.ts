@@ -10,6 +10,10 @@ import type { PipelinePreviewDtoStatus } from './pipelinePreviewDtoStatus';
 
 export interface PipelinePreviewDto {
   kind: PipelinePreviewDtoKind;
+  /** Error message (present when pipeline failed) */
+  errorMessage?: string;
+  /** Error code (present when pipeline failed) */
+  errorCode?: string;
   id: string;
   creatorId: string;
   metadata: PipelinePreviewDtoMetadata;
