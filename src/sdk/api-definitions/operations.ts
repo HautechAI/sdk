@@ -269,6 +269,11 @@ export const useOperationsApi = () => {
                         v1: hautechApi.operationsControllerRunKlingVideo25ProImageToVideoV1V1,
                     },
                 },
+                video_2_5_turbo_pro: {
+                    image_to_video: {
+                        v1: hautechApi.operationsControllerRunKlingVideo25TurboProImageToVideoV1V1,
+                    },
+                },
             },
             json_to_image: {
                 v1: hautechApi.operationsControllerRunJsonToImageV1V1,

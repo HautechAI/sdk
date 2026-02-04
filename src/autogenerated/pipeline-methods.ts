@@ -275,6 +275,11 @@ export const usePipelineDefinitions = () => {
             'v1': api.callControllerCallOperationsRunKlingVideo25ProImageToVideoV1V1,
           },
         },
+        'video_2_5_turbo_pro': {
+          'image_to_video': {
+            'v1': api.callControllerCallOperationsRunKlingVideo25TurboProImageToVideoV1V1,
+          },
+        },
       },
       'seedream': {
         '4_edit': {
