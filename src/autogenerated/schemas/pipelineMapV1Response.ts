@@ -25,6 +25,8 @@ export interface PipelineMapV1Response {
   id: string;
   creatorId: string;
   metadata: PipelineMapV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

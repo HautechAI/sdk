@@ -25,6 +25,8 @@ export interface KlingKolorsVtonV1Response {
   id: string;
   creatorId: string;
   metadata: KlingKolorsVtonV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

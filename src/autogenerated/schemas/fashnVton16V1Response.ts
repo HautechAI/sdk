@@ -25,6 +25,8 @@ export interface FashnVton16V1Response {
   id: string;
   creatorId: string;
   metadata: FashnVton16V1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

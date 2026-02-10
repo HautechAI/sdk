@@ -25,6 +25,8 @@ export interface UpscaleV1Response {
   id: string;
   creatorId: string;
   metadata: UpscaleV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

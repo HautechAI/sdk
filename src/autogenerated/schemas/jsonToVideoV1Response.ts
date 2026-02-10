@@ -25,6 +25,8 @@ export interface JsonToVideoV1Response {
   id: string;
   creatorId: string;
   metadata: JsonToVideoV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface ImagineFlux11ProUltraV1Response {
   id: string;
   creatorId: string;
   metadata: ImagineFlux11ProUltraV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

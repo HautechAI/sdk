@@ -7,4 +7,6 @@
 
 export interface CreateImageParamsDto {
   fileToken?: string;
+  /** @minimum 1 */
+  ttlSeconds?: number;
 }

@@ -25,6 +25,8 @@ export interface SeedanceV1ProV1Response {
   id: string;
   creatorId: string;
   metadata: SeedanceV1ProV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

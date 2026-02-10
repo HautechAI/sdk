@@ -25,6 +25,8 @@ export interface FluxKontextDevPrepareDatasetV1Response {
   id: string;
   creatorId: string;
   metadata: FluxKontextDevPrepareDatasetV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

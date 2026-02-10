@@ -25,6 +25,8 @@ export interface InpaintKateV1Response {
   id: string;
   creatorId: string;
   metadata: InpaintKateV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface PoseEstimationV1Response {
   id: string;
   creatorId: string;
   metadata: PoseEstimationV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

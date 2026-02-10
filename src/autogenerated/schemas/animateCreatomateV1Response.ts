@@ -25,6 +25,8 @@ export interface AnimateCreatomateV1Response {
   id: string;
   creatorId: string;
   metadata: AnimateCreatomateV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

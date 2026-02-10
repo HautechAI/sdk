@@ -12,6 +12,8 @@ export interface CollectionEntity {
   id: string;
   creatorId: string;
   metadata: CollectionEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

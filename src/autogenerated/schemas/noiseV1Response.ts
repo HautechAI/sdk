@@ -25,6 +25,8 @@ export interface NoiseV1Response {
   id: string;
   creatorId: string;
   metadata: NoiseV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

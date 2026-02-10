@@ -25,6 +25,8 @@ export interface AnimateKling21V1Response {
   id: string;
   creatorId: string;
   metadata: AnimateKling21V1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

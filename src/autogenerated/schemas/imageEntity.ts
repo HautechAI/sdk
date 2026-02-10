@@ -12,6 +12,8 @@ export interface ImageEntity {
   id: string;
   creatorId: string;
   metadata: ImageEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
   format: string;

@@ -25,6 +25,8 @@ export interface FluxKontextDevTrainV1Response {
   id: string;
   creatorId: string;
   metadata: FluxKontextDevTrainV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

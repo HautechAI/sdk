@@ -12,6 +12,8 @@ export interface ResourceEntity {
   id: string;
   creatorId: string;
   metadata: ResourceEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

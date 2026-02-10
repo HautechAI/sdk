@@ -25,6 +25,8 @@ export interface CropV1Response {
   id: string;
   creatorId: string;
   metadata: CropV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

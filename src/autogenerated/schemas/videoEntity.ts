@@ -19,6 +19,8 @@ export interface VideoEntity {
   id: string;
   creatorId: string;
   metadata: VideoEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

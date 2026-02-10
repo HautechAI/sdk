@@ -25,6 +25,8 @@ export interface ContrastV1Response {
   id: string;
   creatorId: string;
   metadata: ContrastV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

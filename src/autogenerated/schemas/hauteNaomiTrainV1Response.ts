@@ -25,6 +25,8 @@ export interface HauteNaomiTrainV1Response {
   id: string;
   creatorId: string;
   metadata: HauteNaomiTrainV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface KlingVideo25ProImageToVideoV1Response {
   id: string;
   creatorId: string;
   metadata: KlingVideo25ProImageToVideoV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

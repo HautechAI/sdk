@@ -25,6 +25,8 @@ export interface NegateImageV1Response {
   id: string;
   creatorId: string;
   metadata: NegateImageV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

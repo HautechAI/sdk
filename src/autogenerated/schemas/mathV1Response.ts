@@ -25,6 +25,8 @@ export interface MathV1Response {
   id: string;
   creatorId: string;
   metadata: MathV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

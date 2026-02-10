@@ -25,6 +25,8 @@ export interface AlphabakeVtonV1Response {
   id: string;
   creatorId: string;
   metadata: AlphabakeVtonV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

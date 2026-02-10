@@ -25,6 +25,8 @@ export interface LumaPhotonV1Response {
   id: string;
   creatorId: string;
   metadata: LumaPhotonV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

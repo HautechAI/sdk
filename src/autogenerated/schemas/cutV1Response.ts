@@ -25,6 +25,8 @@ export interface CutV1Response {
   id: string;
   creatorId: string;
   metadata: CutV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

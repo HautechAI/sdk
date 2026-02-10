@@ -25,6 +25,8 @@ export interface StringsSwitchV1Response {
   id: string;
   creatorId: string;
   metadata: StringsSwitchV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

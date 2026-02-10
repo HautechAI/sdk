@@ -25,6 +25,8 @@ export interface ImagesDownscaleV1Response {
   id: string;
   creatorId: string;
   metadata: ImagesDownscaleV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

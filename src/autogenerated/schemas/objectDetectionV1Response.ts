@@ -25,6 +25,8 @@ export interface ObjectDetectionV1Response {
   id: string;
   creatorId: string;
   metadata: ObjectDetectionV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

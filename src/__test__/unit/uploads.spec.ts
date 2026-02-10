@@ -39,10 +39,11 @@ describe('Node path uploads include filename in FormData', () => {
     it('images.createFromFile(path) appends file with explicit filename', async () => {
         const imagesApi = useImagesApi();
 
+        const finalizeUpload = vi.fn().mockResolvedValue({ id: 'img-id' });
         const fakeSdk: any = {
             images: {
                 startUpload: async () => ({ uploadUrl: 'http://example.com/upload' }),
-                finalizeUpload: async () => ({ id: 'img-id' }),
+                finalizeUpload,
             },
         };
 
@@ -53,6 +54,7 @@ describe('Node path uploads include filename in FormData', () => {
         const fileAppend = appendCalls.find((c) => c.name === 'file');
         expect(fileAppend).toBeTruthy();
         expect(fileAppend!.options?.filename).toBe('example-image.png');
+        expect(finalizeUpload).toHaveBeenCalledWith({ fileToken: 'tok' });
     });
 
     it('videos.createFromFile(path) appends file with explicit filename', async () => {
@@ -72,5 +74,35 @@ describe('Node path uploads include filename in FormData', () => {
         const fileAppend = appendCalls.find((c) => c.name === 'file');
         expect(fileAppend).toBeTruthy();
         expect(fileAppend!.options?.filename).toBe('movie.mp4');
+    });
+
+    it('passes ttlSeconds to finalizeUpload when provided', async () => {
+        const imagesApi = useImagesApi();
+        const finalizeUpload = vi.fn().mockResolvedValue({ id: 'img-id' });
+        const fakeSdk: any = {
+            images: {
+                startUpload: async () => ({ uploadUrl: 'http://example.com/upload' }),
+                finalizeUpload,
+            },
+        };
+
+        await imagesApi.createFromFile.call(fakeSdk, '/tmp/example.png', { ttlSeconds: 300 });
+
+        expect(finalizeUpload).toHaveBeenCalledWith({ fileToken: 'tok', ttlSeconds: 300 });
+    });
+
+    it('omits ttlSeconds when not provided', async () => {
+        const imagesApi = useImagesApi();
+        const finalizeUpload = vi.fn().mockResolvedValue({ id: 'img-id' });
+        const fakeSdk: any = {
+            images: {
+                startUpload: async () => ({ uploadUrl: 'http://example.com/upload' }),
+                finalizeUpload,
+            },
+        };
+
+        await imagesApi.createFromFile.call(fakeSdk, '/tmp/example.png');
+
+        expect(finalizeUpload).toHaveBeenCalledWith({ fileToken: 'tok' });
     });
 });
