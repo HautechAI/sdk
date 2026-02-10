@@ -25,6 +25,8 @@ export interface ReveRemixV1Response {
   id: string;
   creatorId: string;
   metadata: ReveRemixV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

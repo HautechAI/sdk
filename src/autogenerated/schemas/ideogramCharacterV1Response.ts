@@ -25,6 +25,8 @@ export interface IdeogramCharacterV1Response {
   id: string;
   creatorId: string;
   metadata: IdeogramCharacterV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

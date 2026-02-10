@@ -25,6 +25,8 @@ export interface ImagineKateV1Response {
   id: string;
   creatorId: string;
   metadata: ImagineKateV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface ImagesRenameV1Response {
   id: string;
   creatorId: string;
   metadata: ImagesRenameV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface StringsSliceV1Response {
   id: string;
   creatorId: string;
   metadata: StringsSliceV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

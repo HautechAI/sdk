@@ -25,6 +25,8 @@ export interface EditFluxKontextDevV1Response {
   id: string;
   creatorId: string;
   metadata: EditFluxKontextDevV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

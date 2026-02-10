@@ -25,6 +25,8 @@ export interface Veo31V1Response {
   id: string;
   creatorId: string;
   metadata: Veo31V1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

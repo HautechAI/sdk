@@ -25,6 +25,8 @@ export interface Imagen4V1Response {
   id: string;
   creatorId: string;
   metadata: Imagen4V1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

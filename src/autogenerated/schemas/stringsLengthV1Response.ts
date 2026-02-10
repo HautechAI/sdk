@@ -25,6 +25,8 @@ export interface StringsLengthV1Response {
   id: string;
   creatorId: string;
   metadata: StringsLengthV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

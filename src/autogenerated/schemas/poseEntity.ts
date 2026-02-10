@@ -16,6 +16,8 @@ export interface PoseEntity {
   id: string;
   creatorId: string;
   metadata: PoseEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -23,6 +23,9 @@ export const useImagesApi = () => {
                       filename: string;
                       contentType: string;
                   },
+            options?: {
+                ttlSeconds?: number;
+            },
         ): Promise<ImageEntity> {
             const sdk: SDK = this;
             const uploadResult = await sdk.images.startUpload();
@@ -65,9 +68,13 @@ export const useImagesApi = () => {
             });
 
             const fileToken = uploadResponse.data.fileToken;
-            const finalizeResult = await sdk.images.finalizeUpload({
-                fileToken: fileToken,
-            });
+            const finalizeParams: { fileToken: string; ttlSeconds?: number } = { fileToken };
+
+            if (options?.ttlSeconds !== undefined) {
+                finalizeParams.ttlSeconds = options.ttlSeconds;
+            }
+
+            const finalizeResult = await sdk.images.finalizeUpload(finalizeParams);
 
             if (!finalizeResult?.id) {
                 throw new Error('Failed to finalize image upload');

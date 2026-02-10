@@ -25,6 +25,8 @@ export interface SegmentAnythingMaskV1Response {
   id: string;
   creatorId: string;
   metadata: SegmentAnythingMaskV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

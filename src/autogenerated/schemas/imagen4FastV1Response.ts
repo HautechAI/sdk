@@ -25,6 +25,8 @@ export interface Imagen4FastV1Response {
   id: string;
   creatorId: string;
   metadata: Imagen4FastV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

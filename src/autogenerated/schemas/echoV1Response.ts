@@ -25,6 +25,8 @@ export interface EchoV1Response {
   id: string;
   creatorId: string;
   metadata: EchoV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

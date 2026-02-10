@@ -25,6 +25,8 @@ export interface VtonGiseleV1Response {
   id: string;
   creatorId: string;
   metadata: VtonGiseleV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

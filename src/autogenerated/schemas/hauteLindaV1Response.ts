@@ -25,6 +25,8 @@ export interface HauteLindaV1Response {
   id: string;
   creatorId: string;
   metadata: HauteLindaV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

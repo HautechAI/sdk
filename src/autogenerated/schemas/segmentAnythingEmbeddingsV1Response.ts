@@ -25,6 +25,8 @@ export interface SegmentAnythingEmbeddingsV1Response {
   id: string;
   creatorId: string;
   metadata: SegmentAnythingEmbeddingsV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

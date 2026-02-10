@@ -14,6 +14,8 @@ export interface StackEntity {
   id: string;
   creatorId: string;
   metadata: StackEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

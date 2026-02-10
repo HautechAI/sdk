@@ -25,6 +25,8 @@ export interface SeedV1Response {
   id: string;
   creatorId: string;
   metadata: SeedV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

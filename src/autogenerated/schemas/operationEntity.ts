@@ -25,6 +25,8 @@ export interface OperationEntity {
   id: string;
   creatorId: string;
   metadata: OperationEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

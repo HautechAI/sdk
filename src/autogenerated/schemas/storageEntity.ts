@@ -15,6 +15,8 @@ export interface StorageEntity {
   id: string;
   creatorId: string;
   metadata: StorageEntityMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

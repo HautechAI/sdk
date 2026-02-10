@@ -25,6 +25,8 @@ export interface WorkflowsRunV1Response {
   id: string;
   creatorId: string;
   metadata: WorkflowsRunV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

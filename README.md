@@ -91,6 +91,12 @@ Docs about how to use the SDK are available [here](https://docs.hautech.ai/)
 - If you pass a `Blob` in the browser, some environments may set the filename to a default value (e.g., `"blob"`). To control the filename when using a `Blob`, wrap it in an object with explicit metadata on server-side, or construct a `File` from the `Blob`.
 - In Node.js, when you pass a string path (e.g., `/path/to/image.png`), the SDK sets the multipart filename to the basename of the path (e.g., `image.png`). You can also pass an object with `{ stream, filename, contentType }` to control metadata explicitly.
 
+You can also expire uploads automatically by specifying a TTL when finalizing image uploads:
+
+```ts
+await sdk.images.createFromFile('/path/to/image.png', { ttlSeconds: 3600 });
+```
+
 ## Development
 
 ### Prerequisites

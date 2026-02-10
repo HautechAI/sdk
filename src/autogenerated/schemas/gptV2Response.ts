@@ -25,6 +25,8 @@ export interface GptV2Response {
   id: string;
   creatorId: string;
   metadata: GptV2ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

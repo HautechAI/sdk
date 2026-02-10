@@ -25,6 +25,8 @@ export interface Imagen4UltraV1Response {
   id: string;
   creatorId: string;
   metadata: Imagen4UltraV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

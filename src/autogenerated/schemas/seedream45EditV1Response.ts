@@ -25,6 +25,8 @@ export interface Seedream45EditV1Response {
   id: string;
   creatorId: string;
   metadata: Seedream45EditV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

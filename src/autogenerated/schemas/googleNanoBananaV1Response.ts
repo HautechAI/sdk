@@ -25,6 +25,8 @@ export interface GoogleNanoBananaV1Response {
   id: string;
   creatorId: string;
   metadata: GoogleNanoBananaV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

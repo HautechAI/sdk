@@ -25,6 +25,8 @@ export interface GoogleNanoBananaProEditV1Response {
   id: string;
   creatorId: string;
   metadata: GoogleNanoBananaProEditV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface ClipClassifyV1Response {
   id: string;
   creatorId: string;
   metadata: ClipClassifyV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

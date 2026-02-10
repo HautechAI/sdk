@@ -25,6 +25,8 @@ export interface Veo3FastV1Response {
   id: string;
   creatorId: string;
   metadata: Veo3FastV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

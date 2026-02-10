@@ -25,6 +25,8 @@ export interface CompositeV1Response {
   id: string;
   creatorId: string;
   metadata: CompositeV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

@@ -25,6 +25,8 @@ export interface HauteNaomiV1Response {
   id: string;
   creatorId: string;
   metadata: HauteNaomiV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }

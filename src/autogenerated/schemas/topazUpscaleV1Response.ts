@@ -25,6 +25,8 @@ export interface TopazUpscaleV1Response {
   id: string;
   creatorId: string;
   metadata: TopazUpscaleV1ResponseMetadata;
+  /** @nullable */
+  expiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 }
