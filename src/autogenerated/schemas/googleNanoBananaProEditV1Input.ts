@@ -10,11 +10,8 @@ import type { GoogleNanoBananaProEditV1InputResolution } from './googleNanoBanan
 export interface GoogleNanoBananaProEditV1Input {
   /** Text prompt describing the desired edit */
   prompt: string;
-  /**
-   * IDs of existing images to edit
-   * @minItems 1
-   */
-  imageIds: string[];
+  /** IDs of existing images to edit */
+  imageIds?: string[];
   /** Output aspect ratio */
   aspectRatio?: GoogleNanoBananaProEditV1InputAspectRatio;
   /** Output resolution preset */

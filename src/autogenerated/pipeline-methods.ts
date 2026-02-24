@@ -294,6 +294,12 @@ export const usePipelineDefinitions = () => {
         '4_5_t2i': {
           'v1': api.callControllerCallOperationsRunSeedream45T2iV1V1,
         },
+        '5_lite_t2i': {
+          'v1': api.callControllerCallOperationsRunSeedream5LiteT2iV1V1,
+        },
+        '5_lite_edit': {
+          'v1': api.callControllerCallOperationsRunSeedream5LiteEditV1V1,
+        },
       },
       'json_to_image': {
         'v1': api.callControllerCallOperationsRunJsonToImageV1V1,
