@@ -112,6 +112,28 @@ const finalizedEdit = await sdk.operations.wait(editOperation);
 
 Both variants accept dimensions up to 3072×3072. Pricing endpoints report a cost of **$0.04375 USD per run** for the text-to-image and edit models—use `sdk.pricing.list()` or `sdk.pricing.get('seedream.5_lite_t2i.v1')` / `sdk.pricing.get('seedream.5_lite_edit.v1')` to confirm the current catalog pricing.
 
+#### Google Nano Banana prompt-only vs. edit mode
+
+```ts
+// Prompt-only generation (no source images required)
+const promptOnly = await sdk.operations.run.google.nano_banana_pro.edit.v1({
+    input: {
+        prompt: 'Generate a high-fashion catalog shot of a model in neon streetwear',
+        // imageIds omitted on purpose
+    },
+});
+
+// Classic edit mode with at least one source image
+const editFromImage = await sdk.operations.run.google.nano_banana_pro.edit.v1({
+    input: {
+        prompt: 'Apply a cinematic golden-hour lighting pass to this asset',
+        imageIds: ['existing-image-id'],
+    },
+});
+```
+
+The backend Swagger DTO (`GoogleNanoBananaProEditV1Input`) intentionally marks `imageIds` as optional so prompt-only runs remain valid. Provide one or more IDs when you need edit behavior; omit the field when you want the model to generate a fresh asset purely from text.
+
 ### Uploading files
 
 - In browsers, prefer passing a `File` object to methods like `sdk.images.createFromFile` and `sdk.videos.createFromFile`. The `File.name` will be included in the multipart upload automatically.
