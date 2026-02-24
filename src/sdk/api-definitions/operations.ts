@@ -156,6 +156,12 @@ export const useOperationsApi = () => {
                     '4_5_t2i': {
                         v1: hautechApi.operationsControllerRunSeedream45T2iV1V1,
                     },
+                    '5_lite_t2i': {
+                        v1: hautechApi.operationsControllerRunSeedream5LiteT2iV1V1,
+                    },
+                    '5_lite_edit': {
+                        v1: hautechApi.operationsControllerRunSeedream5LiteEditV1V1,
+                    },
                 },
             },
             upscale: {

@@ -85,6 +85,33 @@ sdk.ws.disconnect();
 
 Docs about how to use the SDK are available [here](https://docs.hautech.ai/)
 
+#### Seedream v5 Lite imagine operations
+
+```ts
+// Text-to-image
+const t2iOperation = await sdk.operations.run.imagine.seedream['5_lite_t2i'].v1({
+    input: {
+        prompt: 'A cinematic skyline at sunrise above a crystal bay',
+        width: 2048,
+        height: 2048,
+    },
+});
+
+// Image edit
+const editOperation = await sdk.operations.run.imagine.seedream['5_lite_edit'].v1({
+    input: {
+        prompt: 'Reimagine this scene as a watercolor illustration',
+        imageIds: ['existing-image-id'],
+    },
+});
+
+// Wait for the generated assets
+const finalizedT2i = await sdk.operations.wait(t2iOperation);
+const finalizedEdit = await sdk.operations.wait(editOperation);
+```
+
+Both variants accept dimensions up to 3072×3072. Pricing endpoints report a cost of **$0.04375 USD per run** for the text-to-image and edit models—use `sdk.pricing.list()` or `sdk.pricing.get('seedream.5_lite_t2i.v1')` / `sdk.pricing.get('seedream.5_lite_edit.v1')` to confirm the current catalog pricing.
+
 ### Uploading files
 
 - In browsers, prefer passing a `File` object to methods like `sdk.images.createFromFile` and `sdk.videos.createFromFile`. The `File.name` will be included in the multipart upload automatically.
