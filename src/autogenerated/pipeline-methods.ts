@@ -250,6 +250,9 @@ export const usePipelineDefinitions = () => {
         'nano_banana': {
           'v1': api.callControllerCallOperationsRunGoogleNanoBananaV1V1,
         },
+        'nano_banana_2': {
+          'v1': api.callControllerCallOperationsRunGoogleNanoBanana2V1V1,
+        },
         'nano_banana_pro': {
           'edit': {
             'v1': api.callControllerCallOperationsRunGoogleNanoBananaProEditV1V1,
