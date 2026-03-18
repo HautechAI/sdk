@@ -10,6 +10,7 @@ export type GPTV1InputModel = typeof GPTV1InputModel[keyof typeof GPTV1InputMode
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const GPTV1InputModel = {
+  'gpt-5': 'gpt-5',
   'gpt-4o': 'gpt-4o',
   'gpt-41-mini': 'gpt-4.1-mini',
 } as const;
