@@ -475,6 +475,7 @@ export * from './googleNanoBanana2V1ResponseMetadata';
 export * from './googleNanoBanana2V1ResponseStatus';
 export * from './googleNanoBananaProEditV1Input';
 export * from './googleNanoBananaProEditV1InputAspectRatio';
+export * from './googleNanoBananaProEditV1InputOutputFormat';
 export * from './googleNanoBananaProEditV1InputResolution';
 export * from './googleNanoBananaProEditV1Request';
 export * from './googleNanoBananaProEditV1RequestMetadata';

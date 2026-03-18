@@ -6,6 +6,7 @@
  */
 import type { GoogleNanoBananaProEditV1InputAspectRatio } from './googleNanoBananaProEditV1InputAspectRatio';
 import type { GoogleNanoBananaProEditV1InputResolution } from './googleNanoBananaProEditV1InputResolution';
+import type { GoogleNanoBananaProEditV1InputOutputFormat } from './googleNanoBananaProEditV1InputOutputFormat';
 
 export interface GoogleNanoBananaProEditV1Input {
   /** Text prompt describing the desired edit */
@@ -16,4 +17,6 @@ export interface GoogleNanoBananaProEditV1Input {
   aspectRatio?: GoogleNanoBananaProEditV1InputAspectRatio;
   /** Output resolution preset */
   resolution?: GoogleNanoBananaProEditV1InputResolution;
+  /** Output image format */
+  outputFormat?: GoogleNanoBananaProEditV1InputOutputFormat;
 }
