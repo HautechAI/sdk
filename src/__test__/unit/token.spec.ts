@@ -202,20 +202,20 @@ describe('token', () => {
                     kind: 'core-api',
                 });
             });
-        it('should allow overriding kind to directory-api for account token', async () => {
-            await signer.createAccountToken({
-                accountId: 'test-account-id',
-                expiresInSeconds: 3600,
-                kind: 'directory-api',
-            });
+            it('should allow overriding kind to directory-api for account token', async () => {
+                await signer.createAccountToken({
+                    accountId: 'test-account-id',
+                    expiresInSeconds: 3600,
+                    kind: 'directory-api',
+                });
 
-            expect(jose.SignJWT).toHaveBeenCalledWith({
-                iss: 'test-app-id',
-                permissions: [],
-                sub: 'test-account-id',
-                kind: 'directory-api',
+                expect(jose.SignJWT).toHaveBeenCalledWith({
+                    iss: 'test-app-id',
+                    permissions: [],
+                    sub: 'test-account-id',
+                    kind: 'directory-api',
+                });
             });
-        });
         });
 
         describe('createRootToken', () => {

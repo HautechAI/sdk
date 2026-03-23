@@ -38,8 +38,8 @@ jobs:
 
             - name: Build the package
               run: |
-                pnpm build:tsc
-                pnpm build
+                  pnpm build:tsc
+                  pnpm build
 
             - name: Test
               run: |

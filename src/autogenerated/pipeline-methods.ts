@@ -149,6 +149,9 @@ export const usePipelineDefinitions = () => {
         'downscale': {
           'v1': api.callControllerCallOperationsRunImagesDownscaleV1V1,
         },
+        'convert_format': {
+          'v1': api.callControllerCallOperationsRunImagesConvertFormatV1V1,
+        },
         'rename': {
           'v1': api.callControllerCallOperationsRunImagesRenameV1V1,
         },

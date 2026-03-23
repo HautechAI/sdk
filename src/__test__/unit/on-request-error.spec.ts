@@ -23,9 +23,15 @@ const createAxiosError = (status: number, message = 'error', data?: unknown): Ax
         } as any,
     };
 
-    const error = new AxiosError(message, undefined, {
-        headers: new (require('axios').AxiosHeaders)(),
-    } as any, undefined, response);
+    const error = new AxiosError(
+        message,
+        undefined,
+        {
+            headers: new (require('axios').AxiosHeaders)(),
+        } as any,
+        undefined,
+        response,
+    );
     error.response = response;
     error.status = status;
     return error;
@@ -55,10 +61,7 @@ describe('onRequestError hook', () => {
             .mockRejectedValueOnce(createAxiosError(401, 'unauthorized'))
             .mockResolvedValueOnce(createAxiosResponse({ ok: true }));
 
-        const authToken = vi
-            .fn()
-            .mockResolvedValueOnce('token-initial')
-            .mockResolvedValueOnce('token-refreshed');
+        const authToken = vi.fn().mockResolvedValueOnce('token-initial').mockResolvedValueOnce('token-refreshed');
 
         const handler = vi.fn().mockImplementation(async ({ error }, { request, attempt }) => {
             expect(error.status).toBe(401);
@@ -143,9 +146,7 @@ describe('onRequestError hook', () => {
 
     it('propagates non-401 errors when handler does not retry', async () => {
         const axiosError = createAxiosError(500, 'server');
-        const axiosFn = vi
-            .fn()
-            .mockRejectedValueOnce(axiosError);
+        const axiosFn = vi.fn().mockRejectedValueOnce(axiosError);
 
         const onRequestError = vi.fn().mockResolvedValue({ retry: false });
         const config = createConfig({ onRequestError });
@@ -160,9 +161,7 @@ describe('onRequestError hook', () => {
     });
 
     it('preserves nullable 404 handling when using wrapApiCallNullable', async () => {
-        const axiosFn = vi
-            .fn()
-            .mockRejectedValueOnce(createAxiosError(404, 'not-found', { message: 'not found' }));
+        const axiosFn = vi.fn().mockRejectedValueOnce(createAxiosError(404, 'not-found', { message: 'not found' }));
 
         const nullableWrapped = wrapApiCallNullable(axiosFn as any);
         const onRequestError = vi.fn();
