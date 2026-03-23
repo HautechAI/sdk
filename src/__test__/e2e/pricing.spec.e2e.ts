@@ -26,7 +26,7 @@ describe('Pricing API E2E Tests', () => {
             items[0]?.type ??
             items[0]?.id ??
             items[0]?.code ??
-            (Array.isArray(listResult) ? (listResult as any)[0]?.type ?? (listResult as any)[0]?.id : undefined);
+            (Array.isArray(listResult) ? ((listResult as any)[0]?.type ?? (listResult as any)[0]?.id) : undefined);
 
         expect(listResult).toBeDefined();
 
@@ -40,4 +40,3 @@ describe('Pricing API E2E Tests', () => {
         expect(details).toBeDefined();
     });
 });
-

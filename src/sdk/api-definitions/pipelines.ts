@@ -70,12 +70,12 @@ export const usePipelinesApi = () => {
         ): PipelineTyped<TSdk> {
             const sdk: TSdk = this;
             const pipeline = buildPipeline<TSdk, O, I>(sdk as TSdk & Methods);
-            
+
             // If builder function is provided, use callback style
             if (builder) {
                 return builder(pipeline);
             }
-            
+
             // Otherwise, return pipeline directly for direct method chaining
             return pipeline;
         }),
