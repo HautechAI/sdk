@@ -200,6 +200,9 @@ export const usePipelineDefinitions = () => {
         'flux_kontext_dev': {
           'v1': api.callControllerCallOperationsRunEditFluxKontextDevV1V1,
         },
+        'flux2_klein': {
+          'v1': api.callControllerCallOperationsRunEditFlux2KleinV1V1,
+        },
       },
       'veo3': {
         'v1': api.callControllerCallOperationsRunVeo3V1V1,
