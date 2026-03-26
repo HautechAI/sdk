@@ -81,6 +81,9 @@ export const useOperationsApi = () => {
                 flux_kontext_dev: {
                     v1: hautechApi.operationsControllerRunEditFluxKontextDevV1V1,
                 },
+                flux2_klein: {
+                    v1: hautechApi.operationsControllerRunEditFlux2KleinV1V1,
+                },
             },
             haute: {
                 linda: {
