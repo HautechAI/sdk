@@ -259,6 +259,9 @@ export const useOperationsApi = () => {
                 nano_banana: {
                     v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
                 },
+                nano_banana_2: {
+                    v1: hautechApi.operationsControllerRunGoogleNanoBanana2V1V1,
+                },
                 nano_banana_2_1: {
                     v1: hautechApi.operationsControllerRunGoogleNanoBanana21V1V1,
                 },
