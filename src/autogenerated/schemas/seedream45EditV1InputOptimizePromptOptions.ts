@@ -6,7 +6,7 @@
  */
 
 /**
- * Prompt optimization mode
+ * Prompt optimization mode. Applies to ModelArk only; ignored on fal.
  */
 export type Seedream45EditV1InputOptimizePromptOptions = typeof Seedream45EditV1InputOptimizePromptOptions[keyof typeof Seedream45EditV1InputOptimizePromptOptions];
 

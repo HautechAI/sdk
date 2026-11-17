@@ -259,6 +259,9 @@ export const usePipelineDefinitions = () => {
         'nano_banana_2': {
           'v1': api.callControllerCallOperationsRunGoogleNanoBanana2V1V1,
         },
+        'nano_banana_2_1': {
+          'v1': api.callControllerCallOperationsRunGoogleNanoBanana21V1V1,
+        },
         'nano_banana_pro': {
           'edit': {
             'v1': api.callControllerCallOperationsRunGoogleNanoBananaProEditV1V1,
@@ -308,6 +311,12 @@ export const usePipelineDefinitions = () => {
         },
         '5_lite_edit': {
           'v1': api.callControllerCallOperationsRunSeedream5LiteEditV1V1,
+        },
+        '5_5_t2i': {
+          'v1': api.callControllerCallOperationsRunSeedream55T2iV1V1,
+        },
+        '5_5_edit': {
+          'v1': api.callControllerCallOperationsRunSeedream55EditV1V1,
         },
       },
       'json_to_image': {

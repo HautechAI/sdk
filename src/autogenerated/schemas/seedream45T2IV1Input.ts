@@ -6,7 +6,7 @@
  */
 
 export interface Seedream45T2IV1Input {
-  /** Text prompt describing the image to generate. Uses BytePlus ModelArk endpoint ep-20251204195257-ptf48. */
+  /** Text prompt describing the image to generate. Runs on fal or BytePlus ModelArk, depending on the configured Seedream provider. */
   prompt: string;
   /** Width of the generated image in pixels. Must satisfy: total pixels (width×height) in range [3,686,400, 16,777,216] and aspect ratio (width/height) in range [1/16, 16] */
   width?: number;
