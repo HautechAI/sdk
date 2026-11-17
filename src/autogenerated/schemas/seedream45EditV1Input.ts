@@ -7,7 +7,7 @@
 import type { Seedream45EditV1InputOptimizePromptOptions } from './seedream45EditV1InputOptimizePromptOptions';
 
 export interface Seedream45EditV1Input {
-  /** Text prompt describing the edit to perform. Uses BytePlus ModelArk endpoint ep-20251204195257-ptf48. */
+  /** Text prompt describing the edit to perform. Runs on fal or BytePlus ModelArk, depending on the configured Seedream provider. */
   prompt: string;
   /**
    * IDs of input images to edit
@@ -20,6 +20,6 @@ export interface Seedream45EditV1Input {
   height?: number;
   /** Random seed for deterministic generation */
   seed?: number;
-  /** Prompt optimization mode */
+  /** Prompt optimization mode. Applies to ModelArk only; ignored on fal. */
   optimizePromptOptions?: Seedream45EditV1InputOptimizePromptOptions;
 }

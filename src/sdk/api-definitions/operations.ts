@@ -165,6 +165,12 @@ export const useOperationsApi = () => {
                     '5_lite_edit': {
                         v1: hautechApi.operationsControllerRunSeedream5LiteEditV1V1,
                     },
+                    '5_5_t2i': {
+                        v1: hautechApi.operationsControllerRunSeedream55T2iV1V1,
+                    },
+                    '5_5_edit': {
+                        v1: hautechApi.operationsControllerRunSeedream55EditV1V1,
+                    },
                 },
             },
             upscale: {
@@ -252,6 +258,9 @@ export const useOperationsApi = () => {
             google: {
                 nano_banana: {
                     v1: hautechApi.operationsControllerRunGoogleNanoBananaV1V1,
+                },
+                nano_banana_2_1: {
+                    v1: hautechApi.operationsControllerRunGoogleNanoBanana21V1V1,
                 },
                 nano_banana_pro: {
                     edit: {

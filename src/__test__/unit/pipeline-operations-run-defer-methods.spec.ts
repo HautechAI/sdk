@@ -704,5 +704,51 @@ describe('Pipeline Operations Run Defer Methods Tests', () => {
             expect(pipelineData.tasks.length).toBeGreaterThan(0);
             expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'google', 'nano_banana', 'v1']);
         });
+
+        it('should create defer.operations.run.google.nano_banana_2_1.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const task = pipeline.defer.operations.run.google.nano_banana_2_1.v1({
+                    input: {
+                        imageIds: ['test-image-id'],
+                        prompt: 'Put the jacket on a mannequin',
+                        resolution: '2K',
+                        thinkingLevel: 'high',
+                    },
+                });
+
+                pipeline.setOutputRef(task.result);
+                return pipeline;
+            });
+
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'google', 'nano_banana_2_1', 'v1']);
+        });
+    });
+
+    describe('Operations Run Seedream 5.5 Defer Methods', () => {
+        it('should create defer.operations.run.seedream.5_5_t2i.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const task = pipeline.defer.operations.run.seedream['5_5_t2i'].v1({
+                    input: { prompt: 'A plain white t-shirt on a hanger', width: 2048, height: 2048 },
+                });
+
+                pipeline.setOutputRef(task.result);
+                return pipeline;
+            });
+
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'seedream', '5_5_t2i', 'v1']);
+        });
+
+        it('should create defer.operations.run.seedream.5_5_edit.v1 method', () => {
+            const pipelineData = sdk.pipelines.constructTemplate((pipeline) => {
+                const task = pipeline.defer.operations.run.seedream['5_5_edit'].v1({
+                    input: { prompt: 'Change the background to light grey', imageIds: ['test-image-id'] },
+                });
+
+                pipeline.setOutputRef(task.result);
+                return pipeline;
+            });
+
+            expect(pipelineData.tasks[0].method).toEqual(['operations', 'run', 'seedream', '5_5_edit', 'v1']);
+        });
     });
 });

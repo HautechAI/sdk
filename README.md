@@ -112,6 +112,42 @@ const finalizedEdit = await sdk.operations.wait(editOperation);
 
 Both variants accept dimensions up to 3072×3072. Pricing endpoints report a cost of **$0.04375 USD per run** for the text-to-image and edit models—use `sdk.pricing.list()` or `sdk.pricing.get('seedream.5_lite_t2i.v1')` / `sdk.pricing.get('seedream.5_lite_edit.v1')` to confirm the current catalog pricing.
 
+#### Seedream v5.5 imagine operations
+
+```ts
+// Text-to-image
+const t2iOperation = await sdk.operations.run.imagine.seedream['5_5_t2i'].v1({
+    input: {
+        prompt: 'A cinematic skyline at sunrise above a crystal bay',
+    },
+});
+
+// Image edit (1 to 10 input images)
+const editOperation = await sdk.operations.run.imagine.seedream['5_5_edit'].v1({
+    input: {
+        prompt: 'Reimagine this scene as a watercolor illustration',
+        imageIds: ['existing-image-id'],
+    },
+});
+```
+
+Seedream 5.5 runs on fal and takes no seed. Width × height must total 921,600 to 4,624,220 pixels; both default to 2048. Text-to-image costs **$0.050625 USD per run**, and edits cost the same plus **$0.015 USD per input image** (`sdk.pricing.get('seedream.5_5_edit.v1')`).
+
+#### Google Nano Banana 2.1
+
+```ts
+const operation = await sdk.operations.run.google.nano_banana_2_1.v1({
+    input: {
+        prompt: 'Put this jacket on a mannequin in a bright studio',
+        imageIds: ['existing-image-id'], // up to 14; omit to generate from the prompt alone
+        resolution: '2K',
+        thinkingLevel: 'high',
+    },
+});
+```
+
+A run costs **$0.055 / $0.07875 / $0.1725 USD** at 1K / 2K / 4K (`sdk.pricing.get('google.nano_banana_2_1.v1')`).
+
 #### Google Nano Banana prompt-only vs. edit mode
 
 ```ts

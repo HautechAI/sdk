@@ -6,12 +6,12 @@
  */
 
 export interface Seedream5LiteT2IV1Input {
-  /** Text prompt describing the image to generate. Uses BytePlus ModelArk endpoint ep-20260224233519-698zc. */
+  /** Text prompt describing the image to generate. Runs on fal or BytePlus ModelArk, depending on the configured Seedream provider. */
   prompt: string;
   /** Width of the generated image in pixels. Must satisfy: total pixels (width×height) in range [3,686,400, 9,437,184] and aspect ratio (width/height) in range [1/16, 16] */
   width?: number;
   /** Height of the generated image in pixels. Must satisfy: total pixels (width×height) in range [3,686,400, 9,437,184] and aspect ratio (width/height) in range [1/16, 16] */
   height?: number;
-  /** Random seed for deterministic generation */
+  /** Random seed for deterministic generation. Applies to ModelArk only; fal accepts no seed. */
   seed?: number;
 }
